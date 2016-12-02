@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <raw name="help">res/raw-bg/help.html</raw>
+    <raw name="help_custom_patch">res/raw-bg/help_custom_patch.html</raw>
+</resources>

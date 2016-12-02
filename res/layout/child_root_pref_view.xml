@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:paddingLeft="30dp" android:paddingRight="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <RadioGroup android:id="@+id/radioGroupRoot" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="0dp" android:layout_alignParentLeft="true">
+        <RadioButton android:id="@+id/radioRootAuto" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:checked="true" android:text="@string/settings_root_auto" android:drawablePadding="8dp" />
+        <RadioButton android:id="@+id/radioRootOn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="@string/settings_force_root_on" android:drawablePadding="8dp" />
+        <RadioButton android:id="@+id/radioRootOff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="@string/settings_force_root_off" android:drawablePadding="8dp" />
+    </RadioGroup>
+</LinearLayout>

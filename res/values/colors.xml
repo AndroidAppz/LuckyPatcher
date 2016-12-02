@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="autoext">#ff00ff73</color>
+    <color name="impossible">#ffcc7943</color>
+    <color name="intonly">#ffff0055</color>
+    <color name="prefint">#ff00ffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="yellow">#fff0e442</color>
+</resources>

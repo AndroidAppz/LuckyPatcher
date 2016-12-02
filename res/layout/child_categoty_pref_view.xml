@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:paddingLeft="30dp" android:paddingRight="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <CheckBox android:id="@+id/checkBoxLVL" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lvltitle" />
+    <CheckBox android:id="@+id/checkBoxADS" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/adstitle" />
+    <CheckBox android:id="@+id/checkBoxCUSTOM" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/customtitle" />
+    <CheckBox android:id="@+id/checkBoxModify" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/modiftitle" />
+    <CheckBox android:id="@+id/checkBoxFIX" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fixedtitle" />
+    <CheckBox android:id="@+id/checkBoxNONE" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/nonetitle" />
+    <CheckBox android:id="@+id/checkBoxSYS" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/systitle" />
+</LinearLayout>

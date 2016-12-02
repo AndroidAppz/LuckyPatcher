@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:textColor="#aaaaaa" android:orientation="vertical" android:id="@+id/alert_dialog_body" android:background="@drawable/background_alert" android:padding="2dp" android:layout_width="match_parent" android:layout_height="match_parent"
+    <LinearLayout android:orientation="horizontal" android:id="@+id/title_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:layout_gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:id="@+id/title_icon" android:layout_width="UNKNOWN_DATA_0x1e01" android:layout_height="UNKNOWN_DATA_0x1e01" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginBottom="10dp" android:layout_weight="0.0" />
+        <TextView android:textSize="18dp" android:textStyle="UNKNOWN_DATA_0x0" android:textColor="#feeb9c" android:gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:layout_gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:id="@+id/TitleText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="10dp" android:layout_weight="1.0" />
+    </LinearLayout>
+    <TextView android:id="@+id/line0" android:background="@drawable/background_gradient" android:layout_width="match_parent" android:layout_height="UNKNOWN_DATA_0x101" android:text="" />
+    <LinearLayout android:orientation="vertical" android:id="@+id/message_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ScrollView android:id="@+id/dialog_message_container" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="10dp" android:layout_marginBottom="10dp">
+            <TextView android:textSize="18dp" android:textColor="#ddffffff" android:id="@+id/message" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="50dp" />
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout android:gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end" android:layout_gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end" android:orientation="horizontal" android:id="@+id/button_alert_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/button_ok" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:layout_marginBottom="5dp" android:text="@string/ok" android:layout_weight="0.5" style="@style/ButtonDarkStyle" />
+    </LinearLayout>
+</LinearLayout>

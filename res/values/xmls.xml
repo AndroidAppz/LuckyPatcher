@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <xml name="android_patch_widget_info">res/xml/android_patch_widget_info.xml</xml>
+    <xml name="android_patch_widget_info">res/xml-v11/android_patch_widget_info.xml</xml>
+    <xml name="android_patch_widget_info">res/xml-v12/android_patch_widget_info.xml</xml>
+    <xml name="android_patch_widget_info">res/xml-v17/android_patch_widget_info.xml</xml>
+    <xml name="app_disabler_widget">res/xml/app_disabler_widget.xml</xml>
+    <xml name="app_disabler_widget">res/xml-v11/app_disabler_widget.xml</xml>
+    <xml name="app_disabler_widget">res/xml-v12/app_disabler_widget.xml</xml>
+    <xml name="app_disabler_widget">res/xml-v17/app_disabler_widget.xml</xml>
+    <xml name="binder_widget_info">res/xml/binder_widget_info.xml</xml>
+    <xml name="binder_widget_info">res/xml-v11/binder_widget_info.xml</xml>
+    <xml name="binder_widget_info">res/xml-v12/binder_widget_info.xml</xml>
+    <xml name="binder_widget_info">res/xml-v17/binder_widget_info.xml</xml>
+    <xml name="inapp_widget_provider">res/xml/inapp_widget_provider.xml</xml>
+    <xml name="inapp_widget_provider">res/xml-v11/inapp_widget_provider.xml</xml>
+    <xml name="inapp_widget_provider">res/xml-v12/inapp_widget_provider.xml</xml>
+    <xml name="inapp_widget_provider">res/xml-v17/inapp_widget_provider.xml</xml>
+    <xml name="lvl_widget_provider">res/xml/lvl_widget_provider.xml</xml>
+    <xml name="lvl_widget_provider">res/xml-v11/lvl_widget_provider.xml</xml>
+    <xml name="lvl_widget_provider">res/xml-v12/lvl_widget_provider.xml</xml>
+    <xml name="lvl_widget_provider">res/xml-v17/lvl_widget_provider.xml</xml>
+    <xml name="preferences">res/xml/preferences.xml</xml>
+    <xml name="proxy_gp_widget_provider">res/xml/proxy_gp_widget_provider.xml</xml>
+    <xml name="proxy_gp_widget_provider">res/xml-v11/proxy_gp_widget_provider.xml</xml>
+    <xml name="proxy_gp_widget_provider">res/xml-v12/proxy_gp_widget_provider.xml</xml>
+    <xml name="proxy_gp_widget_provider">res/xml-v17/proxy_gp_widget_provider.xml</xml>
+</resources>

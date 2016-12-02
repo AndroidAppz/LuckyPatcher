@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="clip_horizontal" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/or_hex_str" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <EditText android:textSize="12dp" android:textStyle="bold" android:id="@+id/originalText" android:layout_width="match_parent" android:layout_height="UNKNOWN_DATA_0x2401" android:hint="Enter Hex: AA DD FF 11" android:singleLine="true" android:layout_below="@+id/textView1" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:inputType="text|textCapCharacters|textCapWords|textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textImeMultiLine|textNoSuggestions|textUri|textEmailAddress|textEmailSubject|textShortMessage|textLongMessage|textPersonName|textPostalAddress|textPassword|textVisiblePassword|textWebEditText|textFilter|textPhonetic|textWebEmailAddress|textWebPassword|phone">
+        <requestFocus />
+    </EditText>
+    <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rep_hex_str" android:layout_below="@+id/originalText" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" />
+    <EditText android:textSize="12dp" android:textStyle="bold" android:id="@+id/replacedText" android:layout_width="match_parent" android:layout_height="UNKNOWN_DATA_0x2401" android:hint="Enter Hex: AA DD FF 11" android:singleLine="true" android:layout_below="@+id/textView2" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:inputType="text|textCapCharacters|textCapWords|textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textImeMultiLine|textNoSuggestions|textUri|textEmailAddress|textEmailSubject|textShortMessage|textLongMessage|textPersonName|textPostalAddress|textPassword|textVisiblePassword|textWebEditText|textFilter|textPhonetic|textWebEmailAddress|textWebPassword|phone" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/liveputchbutton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/patchbutton" android:layout_below="@+id/replacedText" android:layout_alignParentLeft="true" />
+        <Button android:id="@+id/livebackupbutton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/backbutton" android:layout_toRightOf="@+id/liveputchbutton" android:layout_below="@+id/replacedText" />
+        <Button android:id="@+id/liverestorebutton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/restorebutton" android:layout_toRightOf="@+id/livebackupbutton" android:layout_below="@+id/replacedText" />
+        <Button android:id="@+id/livelaunchbutton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/launchbutton" android:layout_toRightOf="@+id/liverestorebutton" android:layout_below="@+id/replacedText" />
+    </LinearLayout>
+    <ScrollView android:id="@+id/patchbodyscroll" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1.0" android:layout_below="@+id/liveputchbutton" android:layout_centerHorizontal="true">
+        <LinearLayout android:id="@+id/dialogbodypatch" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:textSize="12sp" android:id="@+id/result" android:padding="6sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+    <Button android:id="@+id/selecttargetbutton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/sel_target" android:layout_weight="0.0" android:layout_alignParentBottom="true" />
+</LinearLayout>

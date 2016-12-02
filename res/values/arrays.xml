@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="apk">
+        <item>@string/apklabel</item>
+        <item>@string/apkpackage</item>
+    </array>
+    <array name="apk_values">
+        <item>0</item>
+        <item>1</item>
+    </array>
+    <array name="lang">
+        <item>@string/langdef</item>
+        <item>@string/langen</item>
+    </array>
+    <array name="lang_values">
+        <item>1</item>
+        <item>2</item>
+    </array>
+    <array name="orient">
+        <item>@string/viewsensor</item>
+        <item>@string/viewportret</item>
+        <item>@string/viewlandscape</item>
+    </array>
+    <array name="orient_values">
+        <item>3</item>
+        <item>2</item>
+        <item>1</item>
+    </array>
+    <array name="root">
+        <item>@string/settings_root_auto</item>
+        <item>@string/settings_force_root_on</item>
+        <item>@string/settings_force_root_off</item>
+    </array>
+    <array name="root_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </array>
+    <array name="size">
+        <item>@string/viewsmall</item>
+        <item>@string/viewmedium</item>
+        <item>@string/viewlarge</item>
+    </array>
+    <array name="size_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </array>
+    <array name="sort">
+        <item>@string/sortbyname</item>
+        <item>@string/sortbystatus</item>
+        <item>@string/sortbytime</item>
+    </array>
+    <array name="sort_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </array>
+</resources>

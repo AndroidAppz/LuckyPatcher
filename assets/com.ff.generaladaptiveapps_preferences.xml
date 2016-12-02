@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+<int name="currentLevel" value="176" />
+<string name="shouldShowAds">NO</string>
+<string name="replay">YES</string>
+<int name="showAd" value="2" />
+<string name="sound">OFF</string>
+<int name="replayLevel" value="1" />
+</map>
+

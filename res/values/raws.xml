@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <raw name="busybox">res/raw/busybox</raw>
+    <raw name="busyboxmips">res/raw/busyboxmips</raw>
+    <raw name="busyboxmipspie">res/raw/busyboxmipspie</raw>
+    <raw name="busyboxpie">res/raw/busyboxpie</raw>
+    <raw name="busyboxx86">res/raw/busyboxx86</raw>
+    <raw name="busyboxx86pie">res/raw/busyboxx86pie</raw>
+    <raw name="dalvikvm_armv7a">res/raw/dalvikvm_armv7a</raw>
+    <raw name="dexopt">res/raw/dexopt</raw>
+    <raw name="dexoptmips">res/raw/dexoptmips</raw>
+    <raw name="dexoptx86">res/raw/dexoptx86</raw>
+    <raw name="eula">res/raw/eula.doc</raw>
+    <raw name="help">res/raw/help.html</raw>
+    <raw name="help_custom_patch">res/raw/help_custom_patch.html</raw>
+    <raw name="hosts">res/raw/hosts</raw>
+    <raw name="p">res/raw/p.info</raw>
+    <raw name="reboot">res/raw/reboot</raw>
+    <raw name="rebootmips">res/raw/rebootmips</raw>
+    <raw name="rebootx86">res/raw/rebootx86</raw>
+    <raw name="zipalign">res/raw/zipalign</raw>
+</resources>

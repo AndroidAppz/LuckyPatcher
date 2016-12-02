@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/viewmenu">
+        <ListPreference android:entries="@array/size" android:title="@string/text_size" android:key="viewsize" android:summary="" android:defaultValue="0" android:entryValues="@array/size_values" />
+        <ListPreference android:entries="@array/orient" android:title="@string/orientmenu" android:key="orientstion" android:summary="" android:defaultValue="2" android:entryValues="@array/orient_values" />
+        <ListPreference android:entries="@array/sort" android:title="@string/sortmenu" android:key="sortby" android:summary="" android:defaultValue="2" android:entryValues="@array/sort_values" />
+        <PreferenceScreen android:title="@string/filter" android:summary="@string/filterdescr">
+            <CheckBoxPreference android:title="@string/lvltitle" android:key="lvlapp" android:summary="@string/lvldescr" android:defaultValue="true" />
+            <CheckBoxPreference android:title="@string/adstitle" android:key="adsapp" android:summary="@string/adsdescr" android:defaultValue="true" />
+            <CheckBoxPreference android:title="@string/customtitle" android:key="customapp" android:summary="@string/customdescr" android:defaultValue="true" />
+            <CheckBoxPreference android:title="@string/modiftitle" android:key="modifapp" android:summary="@string/modifdescr" android:defaultValue="true" />
+            <CheckBoxPreference android:title="@string/fixedtitle" android:key="fixedapp" android:summary="@string/fixeddescr" android:defaultValue="true" />
+            <CheckBoxPreference android:title="@string/nonetitle" android:key="noneapp" android:summary="@string/nonedescr" android:defaultValue="true" />
+            <CheckBoxPreference android:title="@string/systitle" android:key="systemapp" android:summary="@string/sysdescr" android:defaultValue="false" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/others">
+        <PreferenceScreen android:title="@string/langmenu" android:key="language" android:summary="" />
+        <ListPreference android:entries="@array/root" android:title="@string/settings_force_root" android:key="root_force" android:summary="@string/settings_force_root_description" android:defaultValue="0" android:entryValues="@array/root_values" />
+        <EditTextPreference android:title="@string/dir_change" android:key="path" android:summary="@string/dir_change_descr" android:defaultValue="Nothing" />
+        <EditTextPreference android:title="@string/days_on_up" android:key="days_on_up" android:summary="@string/days_on_up_descr" android:defaultValue="2" />
+        <CheckBoxPreference android:title="@string/setting_confirm_exit" android:key="confirm_exit" android:summary="@string/setting_confirm_exit_descr" android:defaultValue="true" />
+        <CheckBoxPreference android:title="@string/fast_start" android:key="fast_start" android:summary="@string/fast_start_descr" android:defaultValue="false" />
+        <CheckBoxPreference android:title="@string/no_icon" android:key="no_icon" android:summary="@string/no_icon_descr" android:defaultValue="false" />
+        <ListPreference android:entries="@array/apk" android:title="@string/apk_create_option" android:key="apkname" android:summary="@string/apkdescr" android:defaultValue="0" android:entryValues="@array/apk_values" />
+        <CheckBoxPreference android:title="@string/hide_notify" android:key="hide_notify" android:summary="@string/hide_notify_descr" android:defaultValue="false" />
+        <CheckBoxPreference android:title="@string/hide_title_app" android:key="hide_title" android:summary="@string/hide_title_app_descr" android:defaultValue="false" />
+        <CheckBoxPreference android:title="@string/disable_autoupdate" android:key="disable_autoupdate" android:summary="@string/disable_autoupdate_descr" android:defaultValue="false" />
+        <CheckBoxPreference android:title="@string/vibration" android:key="vibration" android:summary="@string/vibration_descr" android:defaultValue="false" />
+        <PreferenceScreen android:title="@string/help" android:key="help" android:summary="" />
+        <PreferenceScreen android:title="@string/update" android:key="upd" android:summary="" />
+        <PreferenceScreen android:title="@string/sendlog" android:key="sendlog" android:summary="" />
+        <PreferenceScreen android:title="@string/aboutmenu" android:key="about" android:summary="" />
+    </PreferenceCategory> />

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="AppTools">Dastur haqida:</string>
+    <string name="P_not_found">Xato: Dasturlar topilmadi!\nBu muammoni yechish uchun Dalvik-kesh joylashuvini ko&apos;ring!\nOdatda: /data/dalvik-cache/*</string>
+    <string name="PatchResult">Patch natijalari</string>
+    <string name="Yes">Ha</string>
+    <string name="about_working_dir">SD Kardda ishlash:</string>
+    <string name="aboutlp">Lucky Patcher bu universal patch qiluvchi ilovadir. U quyidagi yo&apos;llar orqali dasturlarga o&apos;zgartirish kiritadi: Reklamalarni o&apos;chirish, Google litsenziya tasdig&apos;ini yo&apos;qotish (Avtomatik va Foydalanuvchi tomonidan), Ruxsatlarni boshqarish va boshqalar.</string>
+    <string name="aboutmenu">Dastur haqida</string>
+    <string name="abouttitle">ChelpuS dan Lucky Patcher haqida</string>
+    <string name="activity_ads_descr">Dastur Faolligi Reklama uchun</string>
+    <string name="activity_descr">Dastur Faolligi. Izoh Ma&apos;lum Emas.</string>
+    <string name="additinfo">Qo&apos;shimcha Izoh:</string>
+    <string name="adsdescr">Google Reklamali barcha dasturlar.</string>
+    <string name="adstitle">Reklamali dasturlar</string>
+    <string name="advanced_menu">Patchlar menyusini ochish</string>
+    <string name="all_custom_patches_updated">Barcha joriy patchlar yangilandi</string>
+    <string name="allchanges">ODEXdagi barcha o&apos;zgarishlar sozlandi va dastur qayta o&apos;rnatilguncha davom etadi!</string>
+    <string name="apk_create_option">Qayta yig&apos;ilgan APKlar fayl nomi</string>
+    <string name="apk_not_found_error">Xato: APK fayl topilmadi.</string>
+    <string name="apk_size">APK o&apos;lchami:</string>
+    <string name="apkdescr">Yangi APKlarni nomlash sxemasi.</string>
+    <string name="apklabel">Dastur yorlig&apos;iga asoslangan</string>
+    <string name="apkpackage">Dasturning Yig&apos;ma Nomiga asoslangan</string>
+    <string name="app_dialog_no_root_app_control">Dasturni boshqarish</string>
+    <string name="app_info">Dastur haqida</string>
+    <string name="app_install_success">Dastur muvaffaqiyatli o&apos;rnatildi.</string>
+    <string name="app_name">Lucky Patcher</string>
+    <string name="app_not_found">Dastur topilmadi! Iltimos, dasturni o&apos;rnating va qayta urinib ko&apos;ring.</string>
+    <string name="back">Orqaga</string>
+    <string name="backbutton">Bekap</string>
+    <string name="backup_data_empty">Dastur Ma&apos;lumoti bo&apos;sh. Bekap qilishning iloji yo&apos;q.</string>
+    <string name="backup_data_error">Xato: Nimadir o&apos;xshamadi. Bekap yakunlanmadi.</string>
+    <string name="backup_data_success">Sozlamalar muvaffaqiyatli saqlandi.</string>
+    <string name="backup_delete_message">Haqiqatan ham shu bekapni o&apos;chirmoqchimisiz?</string>
+    <string name="backup_done">Bekap muvaffaqiyatli. Yo&apos;l:\n</string>
+    <string name="backups_not_found">Bekap fayllar topilmadi:</string>
+    <string name="begin_changelog">Hozirgi versiya:</string>
+    <string name="billing_buy">Siz shuni bepulga olishni xohlaysizmi?</string>
+    <string name="billing_hack">Muallif va dasturchi dschuermann (Dominik)\n</string>
+</resources>

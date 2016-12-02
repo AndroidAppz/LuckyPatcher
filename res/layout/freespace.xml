@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="left|right|center_horizontal|fill_horizontal|center|fill|start|end" android:orientation="vertical" android:id="@+id/relativeLayout1" android:paddingLeft="10dp" android:paddingTop="0dp" android:paddingRight="10dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="0dp">
+    <TextView android:id="@+id/textSystem" android:paddingTop="0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0dp" />
+    <ProgressBar android:id="@+id/progressBarSystem" android:layout_width="match_parent" android:layout_height="UNKNOWN_DATA_0xa01" android:layout_below="@+id/textSystem" style="?unknown_attr_ref: 1010078" />
+    <TextView android:id="@+id/textData" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/progressBarSystem" />
+    <ProgressBar android:id="@+id/progressBarData" android:layout_width="match_parent" android:layout_height="UNKNOWN_DATA_0xa01" android:layout_below="@+id/textData" style="?unknown_attr_ref: 1010078" />
+    <ScrollView android:id="@+id/systembodyscroll" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_above="@+id/buttonOk" android:layout_below="@+id/progressBarData">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:textSize="17dp" android:id="@+id/messageText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="" />
+        </RelativeLayout>
+    </ScrollView>
+    <Button android:id="@+id/buttonOk" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Ok" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

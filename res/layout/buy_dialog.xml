@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:background="#000000" android:paddingLeft="5dp" android:paddingTop="0dp" android:paddingRight="5dp" android:paddingBottom="16dp" android:layout_width="match_parent" android:layout_height="match_parent" android:minWidth="400dp"
+    <LinearLayout android:orientation="horizontal" android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_width="UNKNOWN_DATA_0x1e01" android:layout_height="UNKNOWN_DATA_0x1e01" android:layout_margin="5dp" android:src="@drawable/ic_notify" />
+        <TextView android:textSize="18sp" android:textColor="#ffeb94" android:id="@+id/TitleText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="5dp" android:text="@string/lp_billing_hack_title" android:maxLines="1" />
+    </LinearLayout>
+    <TextView android:id="@+id/line0" android:background="@drawable/background_gradient" android:layout_width="match_parent" android:layout_height="UNKNOWN_DATA_0x101" android:text="" />
+    <ScrollView android:id="@+id/appbodyscroll" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@+id/appdialogbody" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:background="@drawable/background_gradient" android:layout_width="match_parent" android:layout_height="UNKNOWN_DATA_0x101" android:text="" />
+            <TextView android:textSize="16sp" android:textColor="#ff00ff00" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="20dp" android:layout_marginRight="10dp" android:layout_marginBottom="5dp" android:text="@string/billing_buy" />
+            <CheckBox android:textSize="14sp" android:textColor="#ffffff" android:id="@+id/checkBox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="0dp" android:checked="false" android:text="@string/billing_hack_option" />
+            <CheckBox android:textSize="14sp" android:textColor="#ffffff" android:id="@+id/checkBox2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="0dp" android:checked="false" android:text="@string/billing_hack_option2" />
+            <CheckBox android:textSize="14sp" android:textColor="#ffffff" android:id="@+id/checkBox3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10dp" android:checked="false" android:text="@string/inapp_emulation_auto_repeat" />
+            <TextView android:background="@drawable/background_gradient" android:layout_width="match_parent" android:layout_height="UNKNOWN_DATA_0x101" android:layout_marginBottom="5dp" android:text="" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <Button android:id="@+id/button_no" android:background="@drawable/button_alert" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/no" android:layout_weight="1.0" />
+                <Button android:id="@+id/button_yes" android:background="@drawable/button_alert" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/Yes" android:layout_weight="1.0" />
+            </LinearLayout>
+            <TextView android:background="@drawable/background_gradient" android:layout_width="match_parent" android:layout_height="UNKNOWN_DATA_0x101" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="" />
+            <TextView android:textSize="15sp" android:textStyle="italic" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:text="@string/billing_hack" />
+            <TextView android:textSize="15sp" android:textStyle="UNKNOWN_DATA_0x0" android:textColor="#ffff00" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:text="@string/billing_hack2_new" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

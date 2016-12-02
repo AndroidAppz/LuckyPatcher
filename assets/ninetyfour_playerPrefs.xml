@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <int name="profile_coins_price_joker_letters" value="10" />
+    <boolean name="profile_is_selected" value="true" />
+    <int name="profile_coins_count_theme_finished" value="15" />
+    <int name="profile_level_display_incentive" value="4" />
+    <string name="profile_name">Profile_22</string>
+    <boolean name="bee7_available" value="true" />
+    <int name="profile_init_coins_count" value="5000" />
+    <int name="profile_daily_reward" value="1000" />
+    <int name="profile_coins_price_joker_add_letter" value="10" />
+    <boolean name="player_is_premium" value="true" />
+    <int name="profile_coins_count_level_finished" value="500" />
+    <int name="profile_coins_price_joker_remove_letters" value="10" />
+</map>
+

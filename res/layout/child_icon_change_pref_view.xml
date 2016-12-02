@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:paddingLeft="30dp" android:paddingRight="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <RadioGroup android:id="@+id/radioGroupIconChange" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="0dp" android:layout_alignParentLeft="true">
+        <RadioButton android:id="@+id/radioDefIcon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:checked="true" android:drawableRight="@drawable/ic_launcher" android:drawablePadding="8dp" />
+        <RadioButton android:id="@+id/radioIcon2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="" android:drawableRight="@mipmap/ic_launcher2" android:drawablePadding="8dp" />
+        <RadioButton android:id="@+id/radioIcon3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="" android:drawableRight="@mipmap/ic_launcher3" android:drawablePadding="8dp" />
+        <RadioButton android:id="@+id/radioIcon4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="" android:drawableRight="@mipmap/ic_launcher4" android:drawablePadding="8dp" />
+        <RadioButton android:id="@+id/radioIcon5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="" android:drawableRight="@mipmap/ic_launcher5" android:drawablePadding="8dp" />
+        <RadioButton android:id="@+id/radioIcon6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="" android:drawableRight="@mipmap/ic_launcher6" android:drawablePadding="8dp" />
+        <RadioButton android:id="@+id/radioIcon7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="" android:drawableRight="@mipmap/ic_launcher7" android:drawablePadding="8dp" />
+        <RadioButton android:id="@+id/radioIcon8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="" android:drawableRight="@mipmap/ic_launcher8" android:drawablePadding="8dp" />
+    </RadioGroup>
+</LinearLayout>

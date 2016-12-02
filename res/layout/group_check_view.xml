@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:paddingTop="10dp" android:paddingRight="10dp" android:paddingBottom="10dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <ImageView android:textColor="#00a0af" android:id="@+id/group_image" android:focusable="false" android:layout_width="UNKNOWN_DATA_0x1e01" android:layout_height="UNKNOWN_DATA_0x1e01" android:layout_marginLeft="5dp" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" />
+    <LinearLayout android:layout_gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textColor="0x106000b" android:layout_gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:id="@+id/textGroup" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:text="asdads" />
+        <TextView android:textColor="0x106000b" android:layout_gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:id="@+id/textGroupDescr" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:text="asdads" />
+    </LinearLayout>
+    <CheckBox android:id="@+id/checkBoxPref" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@lzma2options/MODE_UNCOMPRESSED" android:layout_weight="0.0" />
+</LinearLayout>

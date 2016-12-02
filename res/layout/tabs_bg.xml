@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="top|bottom|left|right|center_vertical|fill_vertical|center_horizontal|fill_horizontal|center|fill|start|end" android:orientation="vertical" android:background="@drawable/tab_bg_selector" android:padding="10dp" android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView android:textSize="15dp" android:textColor="@drawable/tab_text_selector" android:id="@+id/tabsText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Title" />
+</LinearLayout>

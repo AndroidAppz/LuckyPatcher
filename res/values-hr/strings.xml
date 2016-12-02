@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="AppTools">Informacije o aplikaciji:</string>
+    <string name="PatchResult">Rezultati krpanja</string>
+    <string name="Yes">Da</string>
+    <string name="aboutmenu">O aplikaciji</string>
+    <string name="abouttitle">O Lucky Patcheru od ChelpuSa</string>
+    <string name="additinfo">Dodatne informacije:</string>
+    <string name="adsdescr">Prikaži sve aplikacije s Google oglasima</string>
+    <string name="adstitle">Aplikacije s oglasima</string>
+    <string name="advanced_menu">Otvori izbornik s patchevima</string>
+    <string name="all_custom_patches_updated">Svi prilagođeni patchevi su ažurirani</string>
+    <string name="apk_size">APK veličina:</string>
+    <string name="app_name">Lucky Patcher</string>
+    <string name="back">Natrag</string>
+    <string name="backbutton">Sigurnosna kopija</string>
+    <string name="begin_changelog">Instalirana verzija je:</string>
+    <string name="binder_browser_current_dir">Trenutni direktorij:</string>
+</resources>

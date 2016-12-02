@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+<boolean name="enableFeatures" value="true" />
+<boolean name="restorePurchase" value="false" />
+<int name="appVersion" value="302" />
+<boolean name="newDashboardPreferences" value="false" />
+<boolean name="userLearnedDrawer" value="true" />
+<boolean name="premiumRequest" value="true" />
+<int name="premiumRequestNumber" value="2" />
+<boolean name="firstRun" value="false" />
+<string name="productID">none</string>
+</map>
+

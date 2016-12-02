@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:id="@+id/dialogbodyscroll" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_above="@+id/abouthr" android:layout_alignParentTop="true">
+        <LinearLayout android:id="@+id/dialogbody" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="12sp" android:id="@+id/intonlydesc" android:padding="3sp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+    <View android:id="@+id/abouthr" android:background="#40ffffff" android:layout_width="match_parent" android:layout_height="UNKNOWN_DATA_0x100" android:layout_above="@+id/thanks" />
+    <TextView android:textSize="8sp" android:gravity="left|right|center_horizontal|fill_horizontal|center|fill|start|end" android:id="@+id/thanks" android:padding="3sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@+id/copyright" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="10sp" android:id="@+id/copyright" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/copyright" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</LinearLayout>

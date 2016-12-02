@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:id="@+id/extpatchbodyscroll" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@+id/extdialogbodypatch" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1.0">
+            <TextView android:textSize="12dp" android:id="@+id/doetogo" android:padding="6dp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <Spinner android:id="@+id/spinner1" android:layout_width="match_parent" android:layout_height="wrap_content" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <Button android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="1dp" android:minHeight="1dp" android:text="@string/patchbutton" android:layout_weight="1.0" android:onClick="patch_click" />
+                <Button android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="1dp" android:minHeight="1dp" android:text="@string/backbutton" android:layout_weight="1.0" android:onClick="backup_click" />
+                <Button android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="1dp" android:minHeight="1dp" android:text="@string/restorebutton" android:layout_weight="1.0" android:onClick="restore_click" />
+                <Button android:textSize="12sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="1dp" android:minHeight="1dp" android:text="@string/launchbutton" android:layout_weight="1.0" android:onClick="launch_click" />
+            </LinearLayout>
+            <TextView android:textSize="12sp" android:id="@+id/posle" android:padding="6sp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1.0" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:layout_gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="0.0">
+        <Button android:textSize="14sp" android:gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:layout_gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:layout_width="wrap_content" android:layout_height="match_parent" android:minWidth="1dp" android:minHeight="1dp" android:text="@string/savebutton" android:layout_weight="1.0" android:onClick="saveobject_click" />
+        <Button android:textSize="14sp" android:gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:layout_gravity="top|bottom|center_vertical|fill_vertical|center|fill" android:layout_width="wrap_content" android:layout_height="match_parent" android:minWidth="1dp" android:minHeight="1dp" android:text="@string/fixbutton" android:singleLine="true" android:layout_weight="0.0" android:onClick="fixobject_click" />
+    </LinearLayout>
+</LinearLayout>

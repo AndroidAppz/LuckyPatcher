@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:paddingLeft="30dp" android:paddingRight="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <RadioGroup android:id="@+id/radioGroupOrient" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="0dp" android:layout_alignParentLeft="true">
+        <RadioButton android:id="@+id/radioSensor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:checked="true" android:text="@string/viewsensor" android:drawablePadding="8dp" />
+        <RadioButton android:id="@+id/radioPortret" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="@string/viewportret" android:drawablePadding="8dp" />
+        <RadioButton android:id="@+id/radioLandscape" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:text="@string/viewlandscape" android:drawablePadding="8dp" />
+    </RadioGroup>
+</LinearLayout>

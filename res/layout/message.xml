@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:id="@+id/relativeLayout1" android:paddingTop="0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="0dp">
+    <TextView android:id="@+id/title" android:background="#afafaf" android:paddingTop="0dp" android:layout_width="match_parent" android:layout_height="UNKNOWN_DATA_0x101" android:layout_marginLeft="0dp" android:layout_marginTop="0dp" android:layout_marginRight="0dp" />
+    <ScrollView android:id="@+id/systembodyscroll" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/title">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="17dp" android:textColor="#ffffff" android:id="@+id/messageText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:text="" />
+        </RelativeLayout>
+    </ScrollView>
+    <Button android:id="@+id/buttonOk" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="30dp" android:text="Ok" android:layout_below="@+id/systembodyscroll" android:layout_centerHorizontal="true" />
+</RelativeLayout>
