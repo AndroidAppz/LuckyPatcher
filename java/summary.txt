@@ -1,0 +1,904 @@
+Summary for /storage/emulated/0/ShowJava/sources/com.android.vending.billing.InAppBillingService.LOCK/com.android.vending.billing.InAppBillingService.LOCK.jar
+Decompiled with CFR 0_110
+
+
+com.chelpus.HttpRequest
+----------------------------
+
+closeOutput()
+  Unable to fully structure code
+
+
+com.chelpus.Piper
+----------------------------
+
+run()
+  Unable to fully structure code
+
+
+com.chelpus.Utils
+----------------------------
+
+XZCompress(java.io.File java.io.File )
+  Loose catch block
+addFilesToZip(java.lang.String java.lang.String java.util.ArrayList<com.android.vending.billing.InAppBillingService.LOCK.AddFilesItem> )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl73 : TryStatement: try { 9[TRYBLOCK]
+
+calcChecksum(java.io.File )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 11[CATCHBLOCK]
+calcSignature(java.io.File )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 7[CATCHBLOCK]
+changePackageNameIds(java.lang.String java.lang.String java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [2[TRYBLOCK]], but top level block is 14[UNCONDITIONALDOLOOP]
+checkCoreJarPatch30(android.content.pm.PackageManager )
+  Exception : java.util.ConcurrentModificationException
+clear_dalvik_cache()
+  Exception : java.util.ConcurrentModificationException
+cmdParam(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 12[UNCONDITIONALDOLOOP]
+convertStringToArraysPatch(java.lang.String java.lang.String byte[] byte[] byte[] byte[] )
+  Exception : java.util.ConcurrentModificationException
+convertToPatchItemAuto(java.util.ArrayList<com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto> java.util.ArrayList<java.lang.String> java.util.ArrayList<java.lang.String> java.util.ArrayList<java.lang.Boolean> java.util.ArrayList<java.lang.String> java.util.ArrayList<java.lang.String> java.util.ArrayList<java.lang.Boolean> java.lang.Boolean )
+  Exception : java.util.ConcurrentModificationException
+copyArchFiles(java.util.zip.ZipInputStream java.util.jar.JarOutputStream java.util.ArrayList<com.android.vending.billing.InAppBillingService.LOCK.AddFilesItem> )
+  Exception : java.util.ConcurrentModificationException
+copyFile(java.io.File java.io.File )
+  Exception : java.util.ConcurrentModificationException
+copyFile(java.lang.String java.lang.String boolean boolean )
+  Exception : java.util.ConcurrentModificationException
+create_DC_root(java.lang.String java.lang.String java.lang.String java.lang.String )
+  Exception : java.util.ConcurrentModificationException
+create_ODEX_root(java.lang.String java.util.ArrayList<java.io.File> java.lang.String java.lang.String java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [15[CATCHBLOCK], 14[CATCHBLOCK]], but top level block is 21[UNCONDITIONALDOLOOP]
+dexopt(java.lang.String java.lang.String java.lang.String java.lang.String java.lang.Boolean )
+  Exception : java.util.ConcurrentModificationException
+dexoptcopy()
+  Exception : java.util.ConcurrentModificationException
+exit()
+  Unable to fully structure code
+fixCRCart(java.io.File java.util.ArrayList<java.io.File> java.lang.String java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [2[TRYBLOCK]], but top level block is 34[UNCONDITIONALDOLOOP]
+fixadlerOdex(java.io.File java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [5[TRYBLOCK]], but top level block is 26[CATCHBLOCK]
+getCurrentRuntimeValue()
+  Loose catch block
+getCustomPatchesForPkg(java.lang.String )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl38 : TryStatement: try { 3[TRYBLOCK]
+
+getFilesWithPkgName(java.lang.String java.io.File java.util.ArrayList<java.io.File> )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[TRYBLOCK]], but top level block is 9[FORLOOP]
+getMethodsIds(java.lang.String java.util.ArrayList<com.android.vending.billing.InAppBillingService.LOCK.CommandItem> boolean boolean )
+  Exception : java.util.ConcurrentModificationException
+getMounts()
+  Exception : java.util.ConcurrentModificationException
+getRoot()
+  Exception : java.util.ConcurrentModificationException
+getSELinux()
+  Unable to fully structure code
+getStoragesReadable()
+  Unable to fully structure code
+getStoragesWriteable()
+  Unable to fully structure code
+getStringIds(java.lang.String java.util.ArrayList<java.lang.String> boolean )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [2[TRYBLOCK]], but top level block is 9[TRYBLOCK]
+getXmlAttribute(java.lang.String java.lang.String java.lang.String )
+  Loose catch block
+initXposedParam()
+  Unable to fully structure code
+isCustomPatchesForPkg(java.lang.String )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl34 : TryStatement: try { 3[TRYBLOCK]
+
+market_billing_services_to_main_stream(boolean )
+  Exception : java.util.ConcurrentModificationException
+market_licensing_services_to_main_stream(boolean )
+  Unable to fully structure code
+remount(java.lang.String java.lang.String )
+  Exception : java.util.ConcurrentModificationException
+removePkgFromSystem(java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[TRYBLOCK]], but top level block is 10[FORLOOP]
+replaceString(java.lang.String java.lang.String java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [2[TRYBLOCK]], but top level block is 16[WHILELOOP]
+replaceStringIds(java.lang.String java.lang.String[] boolean java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [2[TRYBLOCK]], but top level block is 21[UNCONDITIONALDOLOOP]
+replaceStrings(java.lang.String java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [2[TRYBLOCK]], but top level block is 18[WHILELOOP]
+run_all_no_root(java.lang.String[] )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl47 : TryStatement: try { 2[TRYBLOCK]
+
+saveXposedParamBoolean(java.lang.String boolean boolean )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [2[TRYBLOCK]], but top level block is 13[CATCHBLOCK]
+save_text_to_end_file_from_file(java.io.File java.io.File )
+  Unable to fully structure code
+save_text_to_file(java.io.File java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 4[CATCHBLOCK]
+setIcon(int )
+  Loose catch block
+setStringIds(java.lang.String byte[][] boolean byte )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [2[TRYBLOCK]], but top level block is 23[UNCONDITIONALDOLOOP]
+zip(java.lang.String java.lang.String java.util.ArrayList<java.io.File> java.lang.String )
+  Exception : java.util.ConcurrentModificationException
+zipART(java.lang.String java.lang.String java.util.ArrayList<java.io.File> java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [6[CATCHBLOCK], 5[CATCHBLOCK]], but top level block is 9[UNCONDITIONALDOLOOP]
+cmdRoot(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [2[TRYBLOCK]], but top level block is 9[UNCONDITIONALDOLOOP]
+getInput(boolean com.chelpus.Utils$Worker )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 5[WHILELOOP]
+getOffsetOatdump(java.io.File java.util.ArrayList<java.lang.String> )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 6[CATCHBLOCK]
+setAllReadable(java.io.File )
+  Loose catch block
+setAllWritable(java.io.File )
+  Loose catch block
+waitLP(long )
+  Exception : java.util.ConcurrentModificationException
+run()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [3[TRYBLOCK], 0[TRYBLOCK]], but top level block is 9[CATCHBLOCK]
+run()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [2[TRYBLOCK]], but top level block is 16[UNCONDITIONALDOLOOP]
+
+
+com.chelpus.XSupport
+----------------------------
+
+checkForHide(de.robv.android.xposed.XC_MethodHook$MethodHookParam )
+  Exception : java.util.ConcurrentModificationException
+checkForHideApp(de.robv.android.xposed.XC_MethodHook$MethodHookParam )
+  Exception : java.util.ConcurrentModificationException
+afterHookedMethod(de.robv.android.xposed.XC_MethodHook$MethodHookParam )
+  Exception : java.util.ConcurrentModificationException
+initZygote(de.robv.android.xposed.IXposedHookZygoteInit$StartupParam )
+  Unable to fully structure code
+loadPrefs()
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [5, 0] lbl34 : TryStatement: try { 3[TRYBLOCK]
+
+
+
+com.chelpus.root.utils.AdsBlockOFF
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.AdsBlockON
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.ClearODEXfiles
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.backup
+----------------------------
+
+main(java.lang.String[] )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.backupdata
+----------------------------
+
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 9 blocks at once
+
+
+com.chelpus.root.utils.checkOdex
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.checkRoot
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.clearDalvikCache
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.cleardata
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.cloneApp
+----------------------------
+
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+unzipSD(java.io.File boolean )
+  Exception : java.util.ConcurrentModificationException
+unzip(java.lang.String )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl20 : TryStatement: try { 2[TRYBLOCK]
+
+unzip()
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl22 : TryStatement: try { 2[TRYBLOCK]
+
+
+
+com.chelpus.root.utils.copyLibsFilesToSystemBackup
+----------------------------
+
+run_all(java.lang.String )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.corepatch
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.lang.UnsupportedOperationException
+patchWithOatDumpP12(java.util.ArrayList<java.io.File> java.lang.String[] boolean boolean )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 14[UNCONDITIONALDOLOOP]
+patchWithOatDumpP3(java.io.File java.lang.String[] boolean )
+  Exception : java.util.ConcurrentModificationException
+unzip(java.io.File java.lang.String )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.createapkcustom
+----------------------------
+
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.CannotPerformDecode: reachable test BLOCK was exited and re-entered.
+patchProcess(java.util.ArrayList<com.android.vending.billing.InAppBillingService.LOCK.PatchesItem> )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+searchProcess(java.util.ArrayList<com.android.vending.billing.InAppBillingService.LOCK.SearchItem> )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl81 : TryStatement: try { 9[TRYBLOCK]
+
+searchlib(int java.lang.String )
+  Exception : java.util.ConcurrentModificationException
+unzip(java.io.File )
+  Unable to fully structure code
+unzip(java.lang.String )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl20 : TryStatement: try { 2[TRYBLOCK]
+
+unzip()
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl20 : TryStatement: try { 2[TRYBLOCK]
+
+
+
+com.chelpus.root.utils.createnerorunpatch
+----------------------------
+
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [26[UNCONDITIONALDOLOOP]], but top level block is 17[TRYBLOCK]
+
+
+com.chelpus.root.utils.custompatch
+----------------------------
+
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.CannotPerformDecode: reachable test BLOCK was exited and re-entered.
+patchProcess(java.util.ArrayList<com.android.vending.billing.InAppBillingService.LOCK.PatchesItem> )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [4[TRYBLOCK]], but top level block is 26[UNCONDITIONALDOLOOP]
+searchDalvik(java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 6[CATCHBLOCK]
+searchProcess(java.util.ArrayList<com.android.vending.billing.InAppBillingService.LOCK.SearchItem> )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl81 : TryStatement: try { 9[TRYBLOCK]
+
+searchfile(java.lang.String java.lang.String )
+  Exception : java.util.ConcurrentModificationException
+searchlib(java.lang.String java.lang.String java.lang.String )
+  Unable to fully structure code
+unzip(java.io.File )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.deodex
+----------------------------
+
+main(java.lang.String[] )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.install_to_system
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl86 : TryStatement: try { 7[TRYBLOCK]
+
+run_all(java.lang.String )
+  Unable to fully structure code
+unzip()
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.integrate_dalvik_code
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+unzipART(java.io.File )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.live_backup
+----------------------------
+
+main(java.lang.String[] )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.live_backuplib
+----------------------------
+
+main(java.lang.String[] )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.live_restore
+----------------------------
+
+main(java.lang.String[] )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.live_restorelib
+----------------------------
+
+main(java.lang.String[] )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.liverunpatch
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.liverunpatchlib
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.move_to_system
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl49 : TryStatement: try { 2[TRYBLOCK]
+
+run_all(java.lang.String )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.nerorunpatch
+----------------------------
+
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [30[UNCONDITIONALDOLOOP]], but top level block is 19[TRYBLOCK]
+
+
+com.chelpus.root.utils.odex
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.odexSystemApps
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.odexrunpatch
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.lang.UnsupportedOperationException
+unzipART(java.io.File )
+  Exception : java.util.ConcurrentModificationException
+unzipSD(java.io.File )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.pa2
+----------------------------
+
+main(java.lang.String[] )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.pa
+----------------------------
+
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 9[UNCONDITIONALDOLOOP]
+
+
+com.chelpus.root.utils.pinfo
+----------------------------
+
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 3[CATCHBLOCK]
+unzipART(java.io.File )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.remove
+----------------------------
+
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [3[TRYBLOCK]], but top level block is 17[UNCONDITIONALDOLOOP]
+
+
+com.chelpus.root.utils.restore
+----------------------------
+
+main(java.lang.String[] )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.restoredata
+----------------------------
+
+ExtractAllFilesWithInputStreams(net.lingala.zip4j.core.ZipFile java.lang.String java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [35[UNCONDITIONALDOLOOP]], but top level block is 27[CATCHBLOCK]
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 7[CATCHBLOCK]
+
+
+com.chelpus.root.utils.runpatch
+----------------------------
+
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [3[TRYBLOCK]], but top level block is 31[UNCONDITIONALDOLOOP]
+
+
+com.chelpus.root.utils.runpatchads
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.lang.UnsupportedOperationException
+unzipART(java.io.File )
+  Exception : java.util.ConcurrentModificationException
+unzipSD(java.io.File )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.runpatchsupport
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.lang.UnsupportedOperationException
+unzipART(java.io.File )
+  Exception : java.util.ConcurrentModificationException
+unzipSD(java.io.File )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.runpatchsupportOld
+----------------------------
+
+main(java.lang.String[] )
+  Exception : java.lang.UnsupportedOperationException
+unzipART(java.io.File )
+  Exception : java.util.ConcurrentModificationException
+unzipSD(java.io.File )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.chelpus.root.utils.testcore
+----------------------------
+
+main(java.lang.String[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+
+
+com.chelpus.root.utils.uninstall
+----------------------------
+
+getLibs(java.io.File )
+  Exception : java.util.ConcurrentModificationException
+main(java.lang.String[] )
+  Unable to fully structure code
+
+
+com.chelpus.root.utils.unusedodex
+----------------------------
+
+main(java.lang.String[] )
+  Unable to fully structure code
+
+
+com.google.android.finsky.billing.iab.DbHelper
+----------------------------
+
+getItems()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [9[DOLOOP]], but top level block is 3[TRYBLOCK]
+onDowngrade(android.database.sqlite.SQLiteDatabase int int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 6[WHILELOOP]
+onUpgrade(android.database.sqlite.SQLiteDatabase int int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 4[TRYBLOCK]
+saveItem(com.google.android.finsky.billing.iab.ItemsListItem )
+  Unable to fully structure code
+
+
+com.google.android.finsky.billing.iab.InAppBillingFService
+----------------------------
+
+getSkuDetails(int java.lang.String java.lang.String android.os.Bundle )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.google.android.finsky.billing.iab.InAppBillingService
+----------------------------
+
+getSkuDetails(int java.lang.String java.lang.String android.os.Bundle )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.google.android.finsky.billing.iab.MarketBillingService
+----------------------------
+
+sendBillingRequest(android.os.Bundle )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.google.android.finsky.billing.iab.google.util.Base64
+----------------------------
+
+decode(byte[] int int byte[] )
+  Unable to fully structure code
+
+
+com.google.android.finsky.billing.iab.google.util.IabHelper
+----------------------------
+
+handleActivityResult(int int android.content.Intent )
+  Unable to fully structure code
+queryInventory(boolean java.util.List<java.lang.String> java.util.List<java.lang.String> )
+  Exception : java.util.ConcurrentModificationException
+
+
+com.google.android.finsky.services.LicensingService
+----------------------------
+
+cleanupService()
+  Unable to fully structure code
+connectToLicensing(long java.lang.String )
+  Unable to fully structure code
+
+
+com.mba.proxylight.RequestProcessor
+----------------------------
+
+run()
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl114 : TryStatement: try { 20[TRYBLOCK]
+
+
+
+com.mba.proxylight.ProxyLight
+----------------------------
+
+run()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 21[DOLOOP]
+
+
+com.proxoid.ProxoidService
+----------------------------
+
+update()
+  Loose catch block
+
+
+kellinwood.security.zipsigner.Base64
+----------------------------
+
+<clinit>()
+  Unable to fully structure code
+
+
+kellinwood.security.zipsigner.HexDumpEncoder
+----------------------------
+
+encode(byte[] )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 9[UNCONDITIONALDOLOOP]
+
+
+kellinwood.security.zipsigner.ZipSigner
+----------------------------
+
+addDigestsToManifest(java.util.Map<java.lang.String, kellinwood.zipio.ZioEntry> )
+  Exception : java.util.ConcurrentModificationException
+autoDetectKey(java.lang.String java.util.Map<java.lang.String, kellinwood.zipio.ZioEntry> )
+  Exception : java.util.ConcurrentModificationException
+signZip(java.net.URL java.lang.String char[] java.lang.String char[] java.lang.String java.lang.String java.lang.String )
+  Unable to fully structure code
+signZip(java.util.Map<java.lang.String, kellinwood.zipio.ZioEntry> java.io.OutputStream java.lang.String )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [3[TRYBLOCK]], but top level block is 23[UNCONDITIONALDOLOOP]
+
+
+kellinwood.security.zipsigner.optional.KeyStoreFileManager
+----------------------------
+
+copyFile(java.io.File java.io.File boolean )
+  Exception : java.util.ConcurrentModificationException
+getKeyEntry(java.lang.String java.lang.String java.lang.String java.lang.String )
+  Exception : java.util.ConcurrentModificationException
+loadKeyStore(java.lang.String java.lang.String )
+  Unable to fully structure code
+
+
+net.lingala.zip4j.core.HeaderReader
+----------------------------
+
+readAESExtraDataRecord(java.util.ArrayList )
+  Unable to fully structure code
+readCentralDirectory()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 6[UNCONDITIONALDOLOOP]
+readEndOfCentralDirectoryRecord()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 6[UNCONDITIONALDOLOOP]
+readExtraDataRecords(int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [7[WHILELOOP]], but top level block is 3[TRYBLOCK]
+readZip64EndCentralDirRec()
+  Exception : java.util.ConcurrentModificationException
+readZip64ExtendedInfo(java.util.ArrayList long long long int )
+  Exception : java.util.ConcurrentModificationException
+setFilePointerToReadZip64EndCentralDirLoc()
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 3[UNCONDITIONALDOLOOP]
+readLocalFileHeader(net.lingala.zip4j.model.FileHeader )
+  Exception : java.util.ConcurrentModificationException
+
+
+net.lingala.zip4j.core.HeaderWriter
+----------------------------
+
+updateCompressedSizeInLocalFileHeader(net.lingala.zip4j.io.SplitOutputStream net.lingala.zip4j.model.LocalFileHeader long long byte[] boolean )
+  Exception : java.util.ConcurrentModificationException
+writeFileHeader(net.lingala.zip4j.model.ZipModel net.lingala.zip4j.model.FileHeader java.io.OutputStream java.util.List )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [26[TRYBLOCK]], but top level block is 17[TRYBLOCK]
+writeZip64EndOfCentralDirectoryRecord(net.lingala.zip4j.model.ZipModel java.io.OutputStream int long java.util.List )
+  Exception : java.util.ConcurrentModificationException
+updateLocalFileHeader(net.lingala.zip4j.model.LocalFileHeader long int net.lingala.zip4j.model.ZipModel byte[] int net.lingala.zip4j.io.SplitOutputStream )
+  Exception : org.benf.cfr.reader.util.CannotPerformDecode: reachable test BLOCK was exited and re-entered.
+writeLocalFileHeader(net.lingala.zip4j.model.ZipModel net.lingala.zip4j.model.LocalFileHeader java.io.OutputStream )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 2[TRYBLOCK]
+
+
+net.lingala.zip4j.core.ZipFile
+----------------------------
+
+readZipInfo()
+  Unable to fully structure code
+
+
+net.lingala.zip4j.crypto.AESDecrypter
+----------------------------
+
+decryptData(byte[] int int )
+  Loose catch block
+
+
+net.lingala.zip4j.io.CipherOutputStream
+----------------------------
+
+encryptAndWrite(byte[] int int )
+  Loose catch block
+putNextEntry(java.io.File net.lingala.zip4j.model.ZipParameters )
+  Exception : java.util.ConcurrentModificationException
+
+
+net.lingala.zip4j.io.PartInputStream
+----------------------------
+
+read(byte[] int int )
+  Loose catch block
+
+
+net.lingala.zip4j.unzip.Unzip
+----------------------------
+
+initExtractFile(net.lingala.zip4j.model.FileHeader java.lang.String net.lingala.zip4j.model.UnzipParameters java.lang.String net.lingala.zip4j.progress.ProgressMonitor )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 8[CATCHBLOCK]
+
+
+net.lingala.zip4j.unzip.UnzipEngine
+----------------------------
+
+checkLocalHeader()
+  Exception : java.util.ConcurrentModificationException
+closeStreams(java.io.InputStream java.io.OutputStream )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Started 2 blocks at once
+getInputStream()
+  Exception : org.benf.cfr.reader.util.CannotPerformDecode: reachable test BLOCK was exited and re-entered.
+
+
+net.lingala.zip4j.util.ArchiveMaintainer
+----------------------------
+
+createSplitZipFileHandler(net.lingala.zip4j.model.ZipModel int )
+  Loose catch block
+initMergeSplitZipFile(net.lingala.zip4j.model.ZipModel java.io.File net.lingala.zip4j.progress.ProgressMonitor )
+  Exception : java.util.ConcurrentModificationException
+updateSplitEndCentralDirectory(net.lingala.zip4j.model.ZipModel )
+  Unable to fully structure code
+updateSplitFileHeader(net.lingala.zip4j.model.ZipModel java.util.ArrayList boolean )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl6 : TryStatement: try { 1[TRYBLOCK]
+
+initRemoveZipFile(net.lingala.zip4j.model.ZipModel net.lingala.zip4j.model.FileHeader net.lingala.zip4j.progress.ProgressMonitor )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl28 : TryStatement: try { 3[TRYBLOCK]
+
+setComment(net.lingala.zip4j.model.ZipModel java.lang.String )
+  Exception : java.util.ConcurrentModificationException
+
+
+net.lingala.zip4j.util.CRCUtil
+----------------------------
+
+computeFileCRC(java.lang.String net.lingala.zip4j.progress.ProgressMonitor )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [1[TRYBLOCK]], but top level block is 17[WHILELOOP]
+
+
+net.lingala.zip4j.util.Zip4jUtil
+----------------------------
+
+getEncodedStringLength(java.lang.String java.lang.String )
+  Exception : java.util.ConcurrentModificationException
+
+
+net.lingala.zip4j.zip.ZipEngine
+----------------------------
+
+initAddFiles(java.util.ArrayList net.lingala.zip4j.model.ZipParameters net.lingala.zip4j.progress.ProgressMonitor )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [22[CATCHBLOCK]], but top level block is 25[CATCHBLOCK]
+removeFilesIfExists(java.util.ArrayList net.lingala.zip4j.model.ZipParameters net.lingala.zip4j.progress.ProgressMonitor )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 19[SIMPLE_IF_TAKEN]
+addStreamToZip(java.io.InputStream net.lingala.zip4j.model.ZipParameters )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [8[CATCHBLOCK]], but top level block is 10[CATCHBLOCK]
+
+
+org.tukaani.xz.DeltaOutputStream
+----------------------------
+
+close()
+  Unable to fully structure code
+
+
+org.tukaani.xz.LZMA2InputStream
+----------------------------
+
+read(byte[] int int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [4[DOLOOP]], but top level block is 0[TRYBLOCK]
+
+
+org.tukaani.xz.LZMA2OutputStream
+----------------------------
+
+close()
+  Unable to fully structure code
+
+
+org.tukaani.xz.SeekableXZInputStream
+----------------------------
+
+read(byte[] int int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 1[TRYBLOCK]
+
+
+org.tukaani.xz.SimpleInputStream
+----------------------------
+
+read(byte[] int int )
+  Exception : java.util.ConcurrentModificationException
+
+
+org.tukaani.xz.SimpleOutputStream
+----------------------------
+
+close()
+  Unable to fully structure code
+write(byte[] int int )
+  Unable to fully structure code
+
+
+org.tukaani.xz.SingleXZInputStream
+----------------------------
+
+read(byte[] int int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[TRYBLOCK]], but top level block is 2[TRYBLOCK]
+
+
+org.tukaani.xz.UncompressedLZMA2OutputStream
+----------------------------
+
+close()
+  Unable to fully structure code
+
+
+org.tukaani.xz.XZInputStream
+----------------------------
+
+read(byte[] int int )
+  Loose catch block
+
+
+org.tukaani.xz.XZOutputStream
+----------------------------
+
+close()
+  Unable to fully structure code
+
+
+org.tukaani.xz.index.IndexDecoder
+----------------------------
+
+<init>(org.tukaani.xz.SeekableInputStream org.tukaani.xz.common.StreamFlags long int )
+  Exception : java.lang.IllegalStateException: Backjump on non jumping statement [] lbl24 : TryStatement: try { 1[TRYBLOCK]
+
+
+
+org.tukaani.xz.lz.HC4
+----------------------------
+
+skip(int )
+  Unable to fully structure code
+
+
+org.tukaani.xz.lzma.LZMAEncoderFast
+----------------------------
+
+getNextSymbol()
+  Unable to fully structure code
+
+
+org.tukaani.xz.lzma.LZMAEncoderNormal
+----------------------------
+
+getNextSymbol()
+  Unable to fully structure code
+
+
+org.tukaani.xz.simple.X86
+----------------------------
+
+code(byte[] int int )
+  Unable to fully structure code
+
+
+pxb.android.arsc.ArscWriter
+----------------------------
+
+write(java.nio.ByteBuffer int )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Tried to end blocks [0[DOLOOP]], but top level block is 3[DOLOOP]
+
+
+pxb.android.axml.AxmlParser
+----------------------------
+
+next()
+  Unable to fully structure code
+
+
+pxb.android.axml.AxmlWriter
+----------------------------
+
+attr(java.lang.String java.lang.String int int java.lang.Object )
+  Exception : org.benf.cfr.reader.util.CannotPerformDecode: reachable test BLOCK was exited and re-entered.
+
+
+pxb.android.axmlLP.AxmlReader
+----------------------------
+
+accept(pxb.android.axmlLP.AxmlVisitor )
+  Exception : org.benf.cfr.reader.util.CannotPerformDecode: reachable test BLOCK was exited and re-entered.
