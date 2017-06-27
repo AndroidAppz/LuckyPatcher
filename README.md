@@ -1,4 +1,4 @@
-# Lucky Patcher by Chelpus [![Github All Releases](https://img.shields.io/github/downloads/AndroidAppz/LuckyPatcher/total.svg?style=flat-square)]()
+# Lucky Patcher by Chelpus [![Github All Releases](https://img.shields.io/github/downloads/AndroidAppz/LuckyPatcher/total.svg?style=flat-square)]() [![Github Releases](https://img.shields.io/github/downloads/AndroidAppz/LuckyPatcher/latest/total.svg?style=flat-square)]()
 
 Lucky Patcher is a great Android tool to remove ads, modify apps permissions, backup and restore apps, bypass premium applications license verification, and more.
 
