@@ -163,6 +163,32 @@ public class HttpRequest {
         }
     }
 
+    class AnonymousClass3 implements PrivilegedAction<String> {
+        private final /* synthetic */ String val$name;
+        private final /* synthetic */ String val$value;
+
+        AnonymousClass3(String str, String str2) {
+            this.val$name = str;
+            this.val$value = str2;
+        }
+
+        public String run() {
+            return System.setProperty(this.val$name, this.val$value);
+        }
+    }
+
+    class AnonymousClass4 implements PrivilegedAction<String> {
+        private final /* synthetic */ String val$name;
+
+        AnonymousClass4(String str) {
+            this.val$name = str;
+        }
+
+        public String run() {
+            return System.clearProperty(this.val$name);
+        }
+    }
+
     protected static abstract class CloseOperation<V> extends Operation<V> {
         private final Closeable closeable;
         private final boolean ignoreCloseExceptions;
@@ -198,18 +224,24 @@ public class HttpRequest {
 
         private static byte[] encode3to4(byte[] source, int srcOffset, int numSigBytes, byte[] destination, int destOffset) {
             int i;
-            int i2 = 0;
+            int i2;
+            int i3 = 0;
             byte[] ALPHABET = _STANDARD_ALPHABET;
             if (numSigBytes > 0) {
                 i = (source[srcOffset] << 24) >>> 8;
             } else {
                 i = 0;
             }
-            int i3 = (numSigBytes > 1 ? (source[srcOffset + 1] << 24) >>> 16 : 0) | i;
-            if (numSigBytes > 2) {
-                i2 = (source[srcOffset + 2] << 24) >>> 24;
+            if (numSigBytes > 1) {
+                i2 = (source[srcOffset + 1] << 24) >>> 16;
+            } else {
+                i2 = 0;
             }
-            int inBuff = i3 | i2;
+            i2 |= i;
+            if (numSigBytes > 2) {
+                i3 = (source[srcOffset + 2] << 24) >>> 24;
+            }
+            int inBuff = i2 | i3;
             switch (numSigBytes) {
                 case AxmlVisitor.TYPE_REFERENCE /*1*/:
                     destination[destOffset] = ALPHABET[inBuff >>> 18];
@@ -524,7 +556,7 @@ public class HttpRequest {
             String host = parsed.getHost();
             int port = parsed.getPort();
             if (port != -1) {
-                host = host + ':' + Integer.toString(port);
+                host = new StringBuilder(String.valueOf(host)).append(':').append(Integer.toString(port)).toString();
             }
             try {
                 String encoded = new URI(parsed.getProtocol(), host, parsed.getPath(), parsed.getQuery(), null).toASCIIString();
@@ -750,20 +782,12 @@ public class HttpRequest {
         setProperty("http.nonProxyHosts", separated.toString());
     }
 
-    private static String setProperty(final String name, final String value) {
+    private static String setProperty(String name, String value) {
         PrivilegedAction<String> action;
         if (value != null) {
-            action = new PrivilegedAction<String>() {
-                public String run() {
-                    return System.setProperty(name, value);
-                }
-            };
+            action = new AnonymousClass3(name, value);
         } else {
-            action = new PrivilegedAction<String>() {
-                public String run() {
-                    return System.clearProperty(name);
-                }
-            };
+            action = new AnonymousClass4(name);
         }
         return (String) AccessController.doPrivileged(action);
     }
@@ -1277,11 +1301,11 @@ public class HttpRequest {
     }
 
     public HttpRequest basic(String name, String password) {
-        return authorization("Basic " + Base64.encode(name + ':' + password));
+        return authorization("Basic " + Base64.encode(new StringBuilder(String.valueOf(name)).append(':').append(password).toString()));
     }
 
     public HttpRequest proxyBasic(String name, String password) {
-        return proxyAuthorization("Basic " + Base64.encode(name + ':' + password));
+        return proxyAuthorization("Basic " + Base64.encode(new StringBuilder(String.valueOf(name)).append(':').append(password).toString()));
     }
 
     public HttpRequest ifModifiedSince(long ifModifiedSince) {
@@ -1302,7 +1326,7 @@ public class HttpRequest {
             return header(HEADER_CONTENT_TYPE, contentType);
         }
         String separator = "; charset=";
-        return header(HEADER_CONTENT_TYPE, contentType + "; charset=" + charset);
+        return header(HEADER_CONTENT_TYPE, new StringBuilder(String.valueOf(contentType)).append("; charset=").append(charset).toString());
     }
 
     public String contentType() {
@@ -1342,7 +1366,8 @@ public class HttpRequest {
                         return HttpRequest.this;
                     }
                     outputStream.write(buffer, 0, read);
-                    HttpRequest.this.totalWritten = HttpRequest.this.totalWritten + ((long) read);
+                    HttpRequest httpRequest = HttpRequest.this;
+                    httpRequest.totalWritten = httpRequest.totalWritten + ((long) read);
                     HttpRequest.this.progress.onUpload(HttpRequest.this.totalWritten, HttpRequest.this.totalSize);
                 }
             }
@@ -1361,7 +1386,8 @@ public class HttpRequest {
                         return HttpRequest.this;
                     }
                     writer.write(buffer, 0, read);
-                    HttpRequest.this.totalWritten = HttpRequest.this.totalWritten + ((long) read);
+                    HttpRequest httpRequest = HttpRequest.this;
+                    httpRequest.totalWritten = httpRequest.totalWritten + ((long) read);
                     HttpRequest.this.progress.onUpload(HttpRequest.this.totalWritten, -1);
                 }
             }
@@ -1590,7 +1616,12 @@ public class HttpRequest {
     }
 
     public HttpRequest form(Object name, Object value, String charset) throws HttpRequestException {
-        boolean first = !this.form;
+        boolean first;
+        if (this.form) {
+            first = false;
+        } else {
+            first = true;
+        }
         if (first) {
             contentType(CONTENT_TYPE_FORM, charset);
             this.form = true;

@@ -129,20 +129,20 @@ public class DbHelper extends SQLiteOpenHelper {
                 try {
                     db.execSQL("DROP TABLE IF EXISTS '" + c.getString(0) + "';");
                 } catch (SQLiteException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    c.moveToNext();
-                } catch (SQLiteException e2) {
-                    e2.printStackTrace();
-                    if (e2.toString().contains("Could not open the database") && listAppsFragment.su) {
-                        System.out.println("LP: Delete bad database.");
-                        new Utils("").cmdRoot("rm -r /data/data/" + listAppsFragment.getInstance().getPackageName() + "/databases/" + getDatabaseName());
-                        new Utils("").cmdRoot("rm /data/data/" + listAppsFragment.getInstance().getPackageName() + "/databases/" + getDatabaseName());
+                    try {
+                        e.printStackTrace();
+                    } catch (SQLiteException e2) {
+                        e2.printStackTrace();
+                        if (e2.toString().contains("Could not open the database") && listAppsFragment.su) {
+                            System.out.println("LP: Delete bad database.");
+                            new Utils("").cmdRoot("rm -r /data/data/" + listAppsFragment.getInstance().getPackageName() + "/databases/" + getDatabaseName());
+                            new Utils("").cmdRoot("rm /data/data/" + listAppsFragment.getInstance().getPackageName() + "/databases/" + getDatabaseName());
+                            return;
+                        }
                         return;
                     }
-                    return;
                 }
+                c.moveToNext();
             }
         }
         onCreate(db);

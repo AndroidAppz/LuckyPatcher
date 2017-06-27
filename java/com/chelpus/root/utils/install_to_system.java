@@ -52,7 +52,7 @@ public class install_to_system {
                         String data_dir = "";
                         for (int i = 0; i < tail.length - 1; i++) {
                             if (!tail[i].equals("")) {
-                                data_dir = data_dir + InternalZipConstants.ZIP_FILE_SEPARATOR + tail[i];
+                                data_dir = new StringBuilder(String.valueOf(data_dir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(tail[i]).toString();
                             }
                         }
                         _dirChecker(data_dir);
@@ -97,6 +97,7 @@ public class install_to_system {
     }
 
     public static void main(String[] paramArrayOfString) {
+        Iterator it;
         boolean nospace = false;
         Utils.startRootJava(new Object() {
         });
@@ -116,7 +117,6 @@ public class install_to_system {
             e.printStackTrace();
         }
         try {
-            Iterator it;
             if (listAppsFragment.api >= 21) {
                 system_app_dir = "/system/priv-app/" + pkgName + InternalZipConstants.ZIP_FILE_SEPARATOR;
                 if (!new File(system_app_dir).exists()) {
@@ -145,16 +145,16 @@ public class install_to_system {
                             Utils.cmdParam("chmod", "755", "/system/priv-app/" + pkgName + "/lib");
                         }
                         Utils.setPermissionDir("/system/priv-app/" + pkgName, libDir, "755", true);
-                        Utils.copyFile(lib, new File(libDir + lib.getName()));
+                        Utils.copyFile(lib, new File(new StringBuilder(String.valueOf(libDir)).append(lib.getName()).toString()));
                         run_all("chmod 0644 " + libDir + lib.getName());
                         run_all("chown 0.0 " + libDir + lib.getName());
                         run_all("chown 0:0 " + libDir + lib.getName());
-                        if (lib.length() == new File(libDir + lib.getName()).length()) {
+                        if (lib.length() == new File(new StringBuilder(String.valueOf(libDir)).append(lib.getName()).toString()).length()) {
                             System.out.println("LuckyPatcher: copy lib " + libDir + lib.getName());
                         } else {
                             it = libs.iterator();
                             while (it.hasNext()) {
-                                new File(libDir + ((File) it.next()).getName()).delete();
+                                new File(new StringBuilder(String.valueOf(libDir)).append(((File) it.next()).getName()).toString()).delete();
                             }
                             System.out.println("In /system space not found!");
                             nospace = true;
@@ -162,7 +162,7 @@ public class install_to_system {
                     } catch (Exception e2) {
                         it = libs.iterator();
                         while (it.hasNext()) {
-                            new File(libDir + ((File) it.next()).getName()).delete();
+                            new File(new StringBuilder(String.valueOf(libDir)).append(((File) it.next()).getName()).toString()).delete();
                         }
                         System.out.println("In /system space not found!");
                         nospace = true;
@@ -170,32 +170,32 @@ public class install_to_system {
                 }
             }
             if (nospace) {
-                new File(system_app_dir + pkgName + ".apk").delete();
+                new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).delete();
             } else {
                 try {
-                    if (new File(system_app_dir + pkgName + ".odex").exists()) {
-                        new File(system_app_dir + pkgName + ".odex").delete();
+                    if (new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".odex").toString()).exists()) {
+                        new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".odex").toString()).delete();
                     }
-                    String destination = system_app_dir + pkgName + ".apk";
+                    String destination = new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString();
                     if (!Utils.dalvikvm_copyFile(listAppsFragment.toolfilesdir, appfile, destination)) {
                         System.out.println("In /system space not found!");
-                        new File(system_app_dir + pkgName + ".apk").delete();
+                        new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).delete();
                     }
                 } catch (Exception e3) {
                     System.out.println("In /system space not found!");
-                    new File(system_app_dir + pkgName + ".apk").delete();
+                    new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).delete();
                     e3.printStackTrace();
                 }
-                if (appapk.length() == new File(system_app_dir + pkgName + ".apk").length()) {
+                if (appapk.length() == new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).length()) {
                     run_all("chmod 0644 " + system_app_dir + pkgName + ".apk");
                     run_all("chown 0.0 " + system_app_dir + pkgName + ".apk");
                     run_all("chown 0:0 " + system_app_dir + pkgName + ".apk");
                 } else {
-                    new File(system_app_dir + pkgName + ".apk").delete();
+                    new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).delete();
                     System.out.println("In /system space not found!");
                     it = libs.iterator();
                     while (it.hasNext()) {
-                        new File(libDir + ((File) it.next()).getName()).delete();
+                        new File(new StringBuilder(String.valueOf(libDir)).append(((File) it.next()).getName()).toString()).delete();
                     }
                 }
             }
@@ -209,7 +209,7 @@ public class install_to_system {
                     e4.printStackTrace();
                 }
             }
-            File dalvik = Utils.getFileDalvikCache(system_app_dir + pkgName + ".apk");
+            File dalvik = Utils.getFileDalvikCache(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString());
             if (dalvik != null) {
                 dalvik.delete();
             }
@@ -274,7 +274,7 @@ public class install_to_system {
             e1.printStackTrace();
         }
         try {
-            Process localProcess = Runtime.getRuntime().exec(cmd + "\n");
+            Process localProcess = Runtime.getRuntime().exec(new StringBuilder(String.valueOf(cmd)).append("\n").toString());
             localProcess.waitFor();
             localProcess.destroy();
         } catch (Exception e) {

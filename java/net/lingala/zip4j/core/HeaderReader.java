@@ -649,7 +649,12 @@ public class HeaderReader {
         } else if (intByte.length != 4) {
             throw new ZipException("invalid byte length, cannot expand to 8 bytes");
         } else {
-            return new byte[]{intByte[0], intByte[1], intByte[2], intByte[3], (byte) 0, (byte) 0, (byte) 0, (byte) 0};
+            byte[] longBuff = new byte[8];
+            longBuff[0] = intByte[0];
+            longBuff[1] = intByte[1];
+            longBuff[2] = intByte[2];
+            longBuff[3] = intByte[3];
+            return longBuff;
         }
     }
 }

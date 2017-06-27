@@ -156,7 +156,7 @@ public class integrate_dalvik_code {
                 tempdex.delete();
             }
         } catch (Exception e) {
-            Utils.sendFromRoot("" + e.toString());
+            Utils.sendFromRoot(e.toString());
         }
     }
 
@@ -229,7 +229,7 @@ public class integrate_dalvik_code {
                 tempdex.delete();
             }
         } catch (Exception e) {
-            Utils.sendFromRoot("" + e.toString());
+            Utils.sendFromRoot(e.toString());
         }
     }
 }

@@ -30,8 +30,7 @@ public class HeaderWriter {
             byte[] shortByte = new byte[2];
             byte[] intByte = new byte[4];
             byte[] longByte = new byte[8];
-            int i = 8;
-            byte[] emptyLongByte = new byte[]{(byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0};
+            byte[] emptyLongByte = new byte[8];
             Raw.writeIntLittleEndian(intByte, 0, localFileHeader.getSignature());
             copyByteArrayToArrayList(intByte, byteArrayList);
             Raw.writeShortLittleEndian(shortByte, 0, (short) localFileHeader.getVersionNeededToExtract());
@@ -261,10 +260,8 @@ public class HeaderWriter {
             byte[] shortByte = new byte[2];
             byte[] intByte = new byte[4];
             byte[] longByte = new byte[8];
-            int i = 2;
-            byte[] emptyShortByte = new byte[]{(byte) 0, (byte) 0};
-            i = 4;
-            byte[] emptyIntByte = new byte[]{(byte) 0, (byte) 0, (byte) 0, (byte) 0};
+            byte[] emptyShortByte = new byte[2];
+            byte[] emptyIntByte = new byte[4];
             boolean writeZip64FileSize = false;
             boolean writeZip64OffsetLocalHeader = false;
             Raw.writeIntLittleEndian(intByte, 0, fileHeader.getSignature());
@@ -411,7 +408,7 @@ public class HeaderWriter {
         }
         try {
             byte[] shortByte = new byte[2];
-            byte[] emptyShortByte = new byte[]{(byte) 0, (byte) 0};
+            byte[] emptyShortByte = new byte[2];
             byte[] intByte = new byte[4];
             byte[] longByte = new byte[8];
             Raw.writeIntLittleEndian(intByte, 0, 101075792);
@@ -542,11 +539,11 @@ public class HeaderWriter {
                 File file = new File(zipModel.getZipFile());
                 String parentFile = file.getParent();
                 String fileNameWithoutExt = Zip4jUtil.getZipFileNameWithoutExt(file.getName());
-                String fileName = parentFile + System.getProperty("file.separator");
+                String fileName = new StringBuilder(String.valueOf(parentFile)).append(System.getProperty("file.separator")).toString();
                 if (noOfDisk < 9) {
-                    fileName = fileName + fileNameWithoutExt + ".z0" + (noOfDisk + 1);
+                    fileName = new StringBuilder(String.valueOf(fileName)).append(fileNameWithoutExt).append(".z0").append(noOfDisk + 1).toString();
                 } else {
-                    fileName = fileName + fileNameWithoutExt + ".z" + (noOfDisk + 1);
+                    fileName = new StringBuilder(String.valueOf(fileName)).append(fileNameWithoutExt).append(".z").append(noOfDisk + 1).toString();
                 }
                 closeFlag = true;
                 currOutputStream = new SplitOutputStream(new File(fileName));

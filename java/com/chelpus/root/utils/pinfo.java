@@ -36,7 +36,7 @@ public class pinfo {
             }
             Utils.remount(odex, InternalZipConstants.WRITE_MODE);
             if (new File(odex).exists()) {
-                new File(odex).renameTo(new File(odex + "_lpbackup"));
+                new File(odex).renameTo(new File(new StringBuilder(String.valueOf(odex)).append("_lpbackup").toString()));
             }
             Utils.create_ODEX_root(toolfilesdir, classesFiles, source_file_v, uid, odex);
         } else {
@@ -58,8 +58,8 @@ public class pinfo {
                     b_dc.renameTo(dc);
                     new File(odex).delete();
                 }
-                if (new File(odex + "_lpbackup").exists()) {
-                    new File(odex + "_lpbackup").renameTo(new File(odex));
+                if (new File(new StringBuilder(String.valueOf(odex)).append("_lpbackup").toString()).exists()) {
+                    new File(new StringBuilder(String.valueOf(odex)).append("_lpbackup").toString()).renameTo(new File(odex));
                 }
             } catch (Exception e2) {
                 e2.printStackTrace();

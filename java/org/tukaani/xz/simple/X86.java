@@ -1,11 +1,25 @@
 package org.tukaani.xz.simple;
 
 public final class X86 implements SimpleFilter {
-    private static final boolean[] MASK_TO_ALLOWED_STATUS = new boolean[]{true, true, true, false, true, false, false, false};
-    private static final int[] MASK_TO_BIT_NUMBER = new int[]{0, 1, 2, 2, 3, 3, 3, 3};
+    private static final boolean[] MASK_TO_ALLOWED_STATUS;
+    private static final int[] MASK_TO_BIT_NUMBER;
     private final boolean isEncoder;
     private int pos;
     private int prevMask = 0;
+
+    static {
+        r0 = new boolean[8];
+        MASK_TO_ALLOWED_STATUS = r0;
+        int[] iArr = new int[8];
+        iArr[1] = 1;
+        iArr[2] = 2;
+        iArr[3] = 2;
+        iArr[4] = 3;
+        iArr[5] = 3;
+        iArr[6] = 3;
+        iArr[7] = 3;
+        MASK_TO_BIT_NUMBER = iArr;
+    }
 
     private static boolean test86MSByte(byte b) {
         int i = b & 255;

@@ -60,15 +60,14 @@ public class UnzipEngine {
             os = getOutputStream(outPath, newFileName);
             do {
                 int readLength = is.read(buff);
-                if (readLength != -1) {
-                    os.write(buff, 0, readLength);
-                    progressMonitor.updateWorkCompleted((long) readLength);
-                } else {
+                if (readLength == -1) {
                     closeStreams(is, os);
                     UnzipUtil.applyFileAttributes(this.fileHeader, new File(getOutputFileNameWithPath(outPath, newFileName)), unzipParameters);
                     closeStreams(is, os);
                     return;
                 }
+                os.write(buff, 0, readLength);
+                progressMonitor.updateWorkCompleted((long) readLength);
             } while (!progressMonitor.isCancelAllTasks());
             progressMonitor.setResult(3);
             progressMonitor.setState(0);
@@ -246,7 +245,7 @@ public class UnzipEngine {
         } else if ((this.crc.getValue() & InternalZipConstants.ZIP_64_LIMIT) != this.fileHeader.getCrc32()) {
             String errMsg = "invalid CRC for file: " + this.fileHeader.getFileName();
             if (this.localFileHeader.isEncrypted() && this.localFileHeader.getEncryptionMethod() == 0) {
-                errMsg = errMsg + " - Wrong Password?";
+                errMsg = new StringBuilder(String.valueOf(errMsg)).append(" - Wrong Password?").toString();
             }
             throw new ZipException(errMsg);
         }
@@ -262,10 +261,7 @@ public class UnzipEngine {
             this.localFileHeader = new HeaderReader(rafForLH).readLocalFileHeader(this.fileHeader);
             if (this.localFileHeader == null) {
                 throw new ZipException("error reading local file header. Is this a valid zip file?");
-            }
-            boolean z;
-            if (this.localFileHeader.getCompressionMethod() != this.fileHeader.getCompressionMethod()) {
-                z = false;
+            } else if (this.localFileHeader.getCompressionMethod() != this.fileHeader.getCompressionMethod()) {
                 if (rafForLH != null) {
                     try {
                         rafForLH.close();
@@ -273,8 +269,8 @@ public class UnzipEngine {
                     } catch (Exception e2) {
                     }
                 }
+                return false;
             } else {
-                z = true;
                 if (rafForLH != null) {
                     try {
                         rafForLH.close();
@@ -282,8 +278,8 @@ public class UnzipEngine {
                     } catch (Exception e4) {
                     }
                 }
+                return true;
             }
-            return z;
         } catch (Throwable e5) {
             throw new ZipException(e5);
         } catch (Throwable th) {
@@ -371,7 +367,7 @@ public class UnzipEngine {
         } else {
             fileName = this.fileHeader.getFileName();
         }
-        return outPath + System.getProperty("file.separator") + fileName;
+        return new StringBuilder(String.valueOf(outPath)).append(System.getProperty("file.separator")).append(fileName).toString();
     }
 
     public RandomAccessFile startNextSplitFile() throws IOException, FileNotFoundException {

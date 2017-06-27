@@ -8,7 +8,7 @@ import org.tukaani.xz.rangecoder.RangeEncoder;
 import pxb.android.ResConst;
 
 public abstract class LZMAEncoder extends LZMACoder {
-    static final /* synthetic */ boolean $assertionsDisabled = (!LZMAEncoder.class.desiredAssertionStatus() ? true : $assertionsDisabled);
+    static final /* synthetic */ boolean $assertionsDisabled;
     private static final int ALIGN_PRICE_UPDATE_INTERVAL = 16;
     private static final int DIST_PRICE_UPDATE_INTERVAL = 128;
     private static final int LZMA2_COMPRESSED_LIMIT = 65510;
@@ -203,6 +203,16 @@ public abstract class LZMAEncoder extends LZMACoder {
     }
 
     abstract int getNextSymbol();
+
+    static {
+        boolean z;
+        if (LZMAEncoder.class.desiredAssertionStatus()) {
+            z = $assertionsDisabled;
+        } else {
+            z = true;
+        }
+        $assertionsDisabled = z;
+    }
 
     public static int getMemoryUsage(int mode, int dictSize, int extraSizeBefore, int mf) {
         switch (mode) {

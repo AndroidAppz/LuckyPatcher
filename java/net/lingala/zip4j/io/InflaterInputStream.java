@@ -68,7 +68,7 @@ public class InflaterInputStream extends PartInputStream {
                     s = e.getMessage();
                 }
                 if (this.unzipEngine != null && this.unzipEngine.getLocalFileHeader().isEncrypted() && this.unzipEngine.getLocalFileHeader().getEncryptionMethod() == 0) {
-                    s = s + " - Wrong Password?";
+                    s = new StringBuilder(String.valueOf(s)).append(" - Wrong Password?").toString();
                 }
                 throw new IOException(s);
             }

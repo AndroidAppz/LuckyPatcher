@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1393" android:versionName="6.3.8" android:installLocation="internalOnly" package="com.android.vending.billing.InAppBillingService.LOCK" platformBuildVersionCode="19" platformBuildVersionName="4.4.2-1456859">
-    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="19" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1410" android:versionName="6.5.0" android:installLocation="internalOnly" package="com.android.vending.billing.InAppBillingService.LOCK" platformBuildVersionCode="19" platformBuildVersionName="4.4.2-1456859">
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="19" />
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.READ_LOGS" />
@@ -15,82 +15,82 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
-    <application android:theme="@style/Theme_MyTheme" android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name="com.android.vending.billing.InAppBillingService.LOCK.LuckyApp" android:allowBackup="true">
+    <application android:theme="@style/Theme_MyTheme" android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name=".LuckyApp" android:debuggable="true" android:allowBackup="true">
         <meta-data android:name="xposedmodule" android:value="true" />
         <meta-data android:name="xposeddescription" android:value="Lucky Patcher Xposed module (Android patches +)" />
         <meta-data android:name="xposedminversion" android:value="30" />
-        <activity android:label="@string/app_name" android:name="com.android.vending.billing.InAppBillingService.LOCK.patchActivity" android:clearTaskOnLaunch="true" android:stateNotNeeded="true" android:launchMode="singleTask" android:configChanges="locale|keyboardHidden|orientation|screenSize">
+        <activity android:label="@string/app_name" android:name=".patchActivity" android:clearTaskOnLaunch="true" android:stateNotNeeded="true" android:launchMode="singleTask" android:configChanges="locale|keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity-alias android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name="com.android.vending.billing.InAppBillingService.LOCK.MainActivity-Original" android:enabled="true" android:targetActivity="com.android.vending.billing.InAppBillingService.LOCK.patchActivity">
+        <activity-alias android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name=".MainActivity-Original" android:enabled="true" android:targetActivity=".patchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher2" android:name="com.android.vending.billing.InAppBillingService.LOCK.MainActivity-Flint" android:enabled="false" android:targetActivity="com.android.vending.billing.InAppBillingService.LOCK.patchActivity">
+        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher2" android:name=".MainActivity-Flint" android:enabled="false" android:targetActivity=".patchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher3" android:name="com.android.vending.billing.InAppBillingService.LOCK.MainActivity-2" android:enabled="false" android:targetActivity="com.android.vending.billing.InAppBillingService.LOCK.patchActivity">
+        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher3" android:name=".MainActivity-2" android:enabled="false" android:targetActivity=".patchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher4" android:name="com.android.vending.billing.InAppBillingService.LOCK.MainActivity-3" android:enabled="false" android:targetActivity="com.android.vending.billing.InAppBillingService.LOCK.patchActivity">
+        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher4" android:name=".MainActivity-3" android:enabled="false" android:targetActivity=".patchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher5" android:name="com.android.vending.billing.InAppBillingService.LOCK.MainActivity-4" android:enabled="false" android:targetActivity="com.android.vending.billing.InAppBillingService.LOCK.patchActivity">
+        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher5" android:name=".MainActivity-4" android:enabled="false" android:targetActivity=".patchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher6" android:name="com.android.vending.billing.InAppBillingService.LOCK.MainActivity-5" android:enabled="false" android:targetActivity="com.android.vending.billing.InAppBillingService.LOCK.patchActivity">
+        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher6" android:name=".MainActivity-5" android:enabled="false" android:targetActivity=".patchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher7" android:name="com.android.vending.billing.InAppBillingService.LOCK.MainActivity-6" android:enabled="false" android:targetActivity="com.android.vending.billing.InAppBillingService.LOCK.patchActivity">
+        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher7" android:name=".MainActivity-6" android:enabled="false" android:targetActivity=".patchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher8" android:name="com.android.vending.billing.InAppBillingService.LOCK.MainActivity-7" android:enabled="false" android:targetActivity="com.android.vending.billing.InAppBillingService.LOCK.patchActivity">
+        <activity-alias android:label="@string/app_name" android:icon="@mipmap/ic_launcher8" android:name=".MainActivity-7" android:enabled="false" android:targetActivity=".patchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-        <activity android:name="com.android.vending.billing.InAppBillingService.LOCK.InstallApp" />
-        <activity android:name="com.android.vending.billing.InAppBillingService.LOCK.LivepatchActivity" />
-        <activity android:name="com.android.vending.billing.InAppBillingService.LOCK.SetPrefs" android:clearTaskOnLaunch="true" android:stateNotNeeded="true" android:launchMode="singleInstance" android:configChanges="locale|keyboardHidden|orientation|screenSize">
+        <activity android:name=".InstallApp" />
+        <activity android:name=".LivepatchActivity" />
+        <activity android:name=".SetPrefs" android:clearTaskOnLaunch="true" android:stateNotNeeded="true" android:launchMode="singleInstance" android:configChanges="locale|keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.android.vending.billing.InAppBillingService.LOCK.HelpActivity" />
-        <activity android:name="com.android.vending.billing.InAppBillingService.LOCK.BinderActivity" android:clearTaskOnLaunch="true" android:stateNotNeeded="true" android:launchMode="singleInstance" android:configChanges="locale|keyboardHidden|orientation|screenSize" />
-        <activity android:name="com.android.vending.billing.InAppBillingService.LOCK.HelpCommon" />
-        <activity android:name="com.android.vending.billing.InAppBillingService.LOCK.HelpCustom" />
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".BinderActivity" android:clearTaskOnLaunch="true" android:stateNotNeeded="true" android:launchMode="singleInstance" android:configChanges="locale|keyboardHidden|orientation|screenSize" />
+        <activity android:name=".HelpCommon" />
+        <activity android:name=".HelpCustom" />
         <activity android:theme="@style/buydialogstyle" android:name="com.google.android.finsky.billing.iab.BuyActivity" android:configChanges="locale|keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="org.billinghack.BUY" />
             </intent-filter>
         </activity>
         <activity android:theme="@style/buydialogstyle" android:name="com.google.android.finsky.billing.iab.BuyMarketActivity" android:configChanges="locale|keyboardHidden|orientation|screenSize" />
-        <receiver android:name="com.android.vending.billing.InAppBillingService.LOCK.PackageChangeReceiver">
+        <receiver android:name=".PackageChangeReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
@@ -99,12 +99,12 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.android.vending.billing.InAppBillingService.LOCK.OnAlarmReceiver">
+        <receiver android:name=".OnAlarmReceiver">
             <intent-filter>
                 <action android:name="com.android.vending.billing.InAppBillingService.LOCK.OnAlarmReceiver.ACTION_WIDGET_RECEIVER" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.android.vending.billing.InAppBillingService.LOCK.BinderLuckyPatcher" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+        <receiver android:name=".BinderLuckyPatcher" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MEDIA_SCANNER_FINISHED" />
@@ -116,7 +116,7 @@
                 <data android:scheme="file" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.android.vending.billing.InAppBillingService.LOCK.OnBootLuckyPatcher" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+        <receiver android:name=".OnBootLuckyPatcher" android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE" />
@@ -125,7 +125,7 @@
                 <action android:name="android.intent.action.POWER_DISCONNECTED" />
             </intent-filter>
         </receiver>
-        <service android:name="com.android.vending.billing.InAppBillingService.LOCK.PatchService" android:enabled="true" />
+        <service android:name=".PatchService" android:enabled="true" />
         <service android:name="com.google.android.finsky.billing.iab.InAppBillingService" android:enabled="true" android:exported="true">
             <intent-filter android:priority="2147483647">
                 <action android:name="com.android.vending.billing.InAppBillingService.LOCK" />
@@ -152,7 +152,7 @@
             </intent-filter>
         </service>
         <service android:name="com.proxoid.ProxoidService" />
-        <receiver android:label="LP - Proxy for Google Play" android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.proxyGP_widget">
+        <receiver android:label="LP - Proxy for Google Play" android:name=".widgets.proxyGP_widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.proxyGP_widget.ACTION_WIDGET_RECEIVER" />
@@ -160,7 +160,7 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/proxy_gp_widget_provider" />
         </receiver>
-        <receiver android:label="LP - LVL emulation" android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.lvl_widget">
+        <receiver android:label="LP - LVL emulation" android:name=".widgets.lvl_widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.lvl_widget.ACTION_WIDGET_RECEIVER" />
@@ -168,7 +168,7 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/lvl_widget_provider" />
         </receiver>
-        <receiver android:label="LP - InApp emulation" android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.inapp_widget">
+        <receiver android:label="LP - InApp emulation" android:name=".widgets.inapp_widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.inapp_widget.ACTION_WIDGET_RECEIVER" />
@@ -176,18 +176,18 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/inapp_widget_provider" />
         </receiver>
-        <receiver android:label="LP - Patches to Android" android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.AndroidPatchWidget" android:enabled="true">
+        <receiver android:label="LP - Patches to Android" android:name=".widgets.AndroidPatchWidget" android:enabled="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/android_patch_widget_info" />
         </receiver>
-        <activity android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.BinderWidgetConfigureActivity">
+        <activity android:name=".widgets.BinderWidgetConfigureActivity">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
-        <receiver android:label="LP - ON/OFF directory bind" android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.BinderWidget" android:enabled="true">
+        <receiver android:label="LP - ON/OFF directory bind" android:name=".widgets.BinderWidget" android:enabled="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.BinderWidget.ACTION_WIDGET_RECEIVER" />
@@ -195,12 +195,12 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/binder_widget_info" />
         </receiver>
-        <activity android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.AppDisablerWidgetConfigureActivity">
+        <activity android:name=".widgets.AppDisablerWidgetConfigureActivity">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
-        <receiver android:label="LP - Application enabler/disabler" android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.AppDisablerWidget" android:enabled="true">
+        <receiver android:label="LP - Application enabler/disabler" android:name=".widgets.AppDisablerWidget" android:enabled="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="com.android.vending.billing.InAppBillingService.LOCK.widgets.AppDisablerWidget.ACTION_WIDGET_RECEIVER" />
@@ -208,7 +208,7 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/app_disabler_widget" />
         </receiver>
-        <service android:name="com.android.vending.billing.InAppBillingService.LOCK.TestService" android:enabled="true" android:exported="true" android:process=":testservices">
+        <service android:name=".TestService" android:enabled="true" android:exported="true" android:process=":testservices">
             <intent-filter android:priority="2147483647">
                 <action android:name="com.android.vending.billing.InAppBillingService.LOCK.ITestServiceInterface.BIND" />
             </intent-filter>

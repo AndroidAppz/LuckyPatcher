@@ -1,9 +1,24 @@
 package org.tukaani.xz.simple;
 
 public final class IA64 implements SimpleFilter {
-    private static final int[] BRANCH_TABLE = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 6, 6, 0, 0, 7, 7, 4, 4, 0, 0, 4, 4, 0, 0};
+    private static final int[] BRANCH_TABLE;
     private final boolean isEncoder;
     private int pos;
+
+    static {
+        int[] iArr = new int[32];
+        iArr[16] = 4;
+        iArr[17] = 4;
+        iArr[18] = 6;
+        iArr[19] = 6;
+        iArr[22] = 7;
+        iArr[23] = 7;
+        iArr[24] = 4;
+        iArr[25] = 4;
+        iArr[28] = 4;
+        iArr[29] = 4;
+        BRANCH_TABLE = iArr;
+    }
 
     public IA64(boolean isEncoder, int startPos) {
         this.isEncoder = isEncoder;

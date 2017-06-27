@@ -7,12 +7,12 @@ import net.lingala.zip4j.util.InternalZipConstants;
 
 public class deodex {
     public static void main(String[] paramArrayOfString) {
-        String backTemp;
+        File backFile;
         Utils.startRootJava(new Object() {
         });
         Utils.kill(paramArrayOfString[0]);
         Utils.remount(paramArrayOfString[1], InternalZipConstants.WRITE_MODE);
-        File backFile;
+        String backTemp;
         try {
             if (Utils.getFileDalvikCache(paramArrayOfString[1]) == null) {
                 throw new FileNotFoundException();

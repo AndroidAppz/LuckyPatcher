@@ -97,12 +97,12 @@ public class Unzip {
         try {
             progressMonitor.setFileName(fileHeader.getFileName());
             if (!outPath.endsWith(InternalZipConstants.FILE_SEPARATOR)) {
-                outPath = outPath + InternalZipConstants.FILE_SEPARATOR;
+                outPath = new StringBuilder(String.valueOf(outPath)).append(InternalZipConstants.FILE_SEPARATOR).toString();
             }
             if (fileHeader.isDirectory()) {
                 String fileName = fileHeader.getFileName();
                 if (Zip4jUtil.isStringNotNullAndNotEmpty(fileName)) {
-                    File file = new File(outPath + fileName);
+                    File file = new File(new StringBuilder(String.valueOf(outPath)).append(fileName).toString());
                     if (!file.exists()) {
                         file.mkdirs();
                         return;
@@ -142,7 +142,7 @@ public class Unzip {
         }
         if (Zip4jUtil.isStringNotNullAndNotEmpty(fileName)) {
             try {
-                File parentDirFile = new File(new File(outPath + fileName).getParent());
+                File parentDirFile = new File(new File(new StringBuilder(String.valueOf(outPath)).append(fileName).toString()).getParent());
                 if (!parentDirFile.exists()) {
                     parentDirFile.mkdirs();
                 }

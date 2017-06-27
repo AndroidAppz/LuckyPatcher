@@ -67,15 +67,9 @@ public class LicensingService extends Service {
                     LicensingService.this.mService.checkLicense(j, str, new ILicenseResultListener.Stub() {
                         public void verifyLicense(int responseCode1, String signedData1, String signature1) throws RemoteException {
                             LicensingService.this.responseCode = responseCode1;
-                            if (LicensingService.this.responseCode == ResConst.RES_XML_END_ELEMENT_TYPE) {
-                                LicensingService.this.signedData = signedData1;
-                                LicensingService.this.signature = signature1;
-                                LicensingService.this.mSetupDone = true;
-                            } else {
-                                LicensingService.this.signedData = signedData1;
-                                LicensingService.this.signature = signature1;
-                                LicensingService.this.mSetupDone = true;
-                            }
+                            LicensingService.this.signedData = signedData1;
+                            LicensingService.this.signature = signature1;
+                            LicensingService.this.mSetupDone = true;
                         }
                     });
                 } catch (RemoteException e) {

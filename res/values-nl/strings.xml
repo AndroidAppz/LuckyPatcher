@@ -23,13 +23,10 @@
     <string name="apklabel">Gebaseerd op applabel</string>
     <string name="apkpackage">Gebaseerd op app-pakketnaam</string>
     <string name="app_dialog_no_root_app_control">De app beheren</string>
-    <string name="app_disabler_widget_pkg_not_found">App is gedeinstalleerd</string>
     <string name="app_info">App-informatie</string>
     <string name="app_install_success">De applicatie is succesvol geïnstalleerd.</string>
     <string name="app_name">Lucky Patcher</string>
     <string name="app_not_found">De app kon niet worden gevonden! Installeer de applicatie en probeer het opnieuw.</string>
-    <string name="app_not_found_adapter">Deze app is niet gevonden in de geinstalleerde app lijst</string>
-    <string name="apps_not_found">Niks gevonden.</string>
     <string name="back">Terug</string>
     <string name="backbutton">Back-uppen</string>
     <string name="backup_data_empty">De app-gegevens zijn leeg; er is niks om te back-uppen.</string>
@@ -40,7 +37,6 @@
     <string name="backups_not_found">Er zijn geen back-upbestanden gevonden in:</string>
     <string name="begin_changelog">De geïnstalleerde versie is:</string>
     <string name="billing_buy">Weet u zeker dat u wilt proberen om dit item gratis te verkrijgen?</string>
-    <string name="billing_fake_hack_menu">Originele Google Billing nabootsen voor InApp emulatie</string>
     <string name="billing_hack">Auteur en programmeur is dschuermann (Dominik)\n</string>
     <string name="billing_hack2_auto_repeat_note">Om automatisch herhalen uit te schakelen, selecteert u een app en gaat u naar &quot;Hulpmiddelen&quot;-&gt;&quot;Geselecteerde opgeslagen aankopen verwijderen&quot; en verwijdert u het item.</string>
     <string name="billing_hack_menu">Google Billing-emulatie</string>
@@ -65,7 +61,6 @@
     <string name="bootview">Opstartlijst</string>
     <string name="busybox_not_found">Waarschuwing: Buxybox kon niet worden gevonden. Lucky Patcher kan niet doorgaan zonder Busybox...</string>
     <string name="button_advanced_filter">Filters</string>
-    <string name="button_block_internet">Internet blokkeren</string>
     <string name="button_for_delete">Verwijderen</string>
     <string name="button_move_to_sdcard">Verplaatsen naar SD-kaart</string>
     <string name="cancel">Annuleren</string>
@@ -461,4 +456,9 @@
     <string name="warning">Warning</string>
     <string name="well_done">Succesvol voltooid.</string>
     <string name="xposed_settings">Xposed instellingen</string>
+    <string name="app_disabler_widget_pkg_not_found">App is gedeinstalleerd</string>
+    <string name="app_not_found_adapter">Deze app is niet gevonden in de geinstalleerde app lijst</string>
+    <string name="apps_not_found">Niks gevonden.</string>
+    <string name="billing_fake_hack_menu">Originele Google Billing nabootsen voor InApp emulatie</string>
+    <string name="button_block_internet">Internet blokkeren</string>
 </resources>

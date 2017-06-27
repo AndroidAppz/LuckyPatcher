@@ -222,8 +222,6 @@ public class ProxyLight {
         if (message != null) {
             System.err.println(message);
         }
-        if (t == null) {
-        }
     }
 
     public void debug(String message) {

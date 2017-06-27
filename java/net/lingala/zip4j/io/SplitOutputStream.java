@@ -83,11 +83,11 @@ public class SplitOutputStream extends OutputStream {
             File currSplitFile;
             String zipFileWithoutExt = Zip4jUtil.getZipFileNameWithoutExt(this.outFile.getName());
             String zipFileName = this.zipFile.getAbsolutePath();
-            String parentPath = this.outFile.getParent() == null ? "" : this.outFile.getParent() + System.getProperty("file.separator");
+            String parentPath = this.outFile.getParent() == null ? "" : new StringBuilder(String.valueOf(this.outFile.getParent())).append(System.getProperty("file.separator")).toString();
             if (this.currSplitFileCounter < 9) {
-                currSplitFile = new File(parentPath + zipFileWithoutExt + ".z0" + (this.currSplitFileCounter + 1));
+                currSplitFile = new File(new StringBuilder(String.valueOf(parentPath)).append(zipFileWithoutExt).append(".z0").append(this.currSplitFileCounter + 1).toString());
             } else {
-                currSplitFile = new File(parentPath + zipFileWithoutExt + ".z" + (this.currSplitFileCounter + 1));
+                currSplitFile = new File(new StringBuilder(String.valueOf(parentPath)).append(zipFileWithoutExt).append(".z").append(this.currSplitFileCounter + 1).toString());
             }
             this.raf.close();
             if (currSplitFile.exists()) {

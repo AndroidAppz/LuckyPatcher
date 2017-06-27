@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="revision_125" value="true" />
+    <int name="emoji_size" value="30" />
+    <long name="subscribed_valid_until" value="9999999999000" />
+    <int name="color_theme_index" value="1" />
+    <boolean name="enabled" value="true" />
+    <boolean name="new_update2" value="false" />
+    <boolean name="suggestions_enabled" value="true" />
+    <string name="is_activated">ACTIVATED</string>
+    <boolean name="preview_enabled" value="false" />
+    <boolean name="downloaded" value="true" />
+    <int name="key_background_color" value="1711276032" />
+    <string name="msisdn">null</string>
+    <boolean name="key_boarder" value="true" />
+    <string name="background_path">/data/data/lk.bhasha.helakuru/themes/online_image.png</string>
+    <boolean name="phonetic" value="true" />
+    <long name="theme_updated_time" value="1490018526568" />
+    <boolean name="language_toggle" value="true" />
+    <int name="key_text_color" value="-1" />
+    <int name="keyboard_height" value="3" />
+    <boolean name="switched" value="true" />
+    <boolean name="trial_availability" value="false" />
+    <boolean name="hasTypedInSinhala" value="true" />
+    <int name="font_size" value="25" />
+    <int name="theme_type" value="2" />
+    <string name="recent_emoji"></string>
+    <boolean name="emoji_enabled" value="true" />
+    <string name="online_theme_url">http://helakuru.lk/res/themes/image_18.jpg</string>
+</map>
+

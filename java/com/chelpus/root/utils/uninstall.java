@@ -81,22 +81,54 @@ public class uninstall {
     }
 
     public static ArrayList<String> getLibs(File apk) {
-        ZipInputStream in;
+        String[] tail;
         String filename;
         Throwable th;
-        ZipInputStream in2 = null;
+        ZipInputStream in = null;
         FileInputStream fin = null;
         ArrayList<String> libs = new ArrayList();
-        String[] tail;
         try {
             FileInputStream fin2 = new FileInputStream(apk);
             try {
-                in = new ZipInputStream(fin2);
-            } catch (IOException e) {
+                ZipInputStream in2 = new ZipInputStream(fin2);
+                try {
+                    for (ZipEntry entry = in2.getNextEntry(); entry != null; entry = in2.getNextEntry()) {
+                        if (entry.getName().startsWith("lib/")) {
+                            tail = entry.getName().split(InternalZipConstants.ZIP_FILE_SEPARATOR);
+                            filename = tail[tail.length - 1];
+                            if (!(!libs.isEmpty() || filename.equals("") || filename.contains("libjnigraphics.so"))) {
+                                libs.add(filename);
+                            }
+                            if (!(libs.contains(filename) || filename.equals("") || filename.contains("libjnigraphics.so"))) {
+                                libs.add(filename);
+                            }
+                        }
+                    }
+                    if (in2 != null) {
+                        try {
+                            in2.close();
+                        } catch (IOException e) {
+                        }
+                    }
+                    if (fin2 != null) {
+                        try {
+                            fin2.close();
+                        } catch (IOException e2) {
+                        }
+                    }
+                } catch (IOException e3) {
+                    fin = fin2;
+                    in = in2;
+                } catch (Throwable th2) {
+                    th = th2;
+                    fin = fin2;
+                    in = in2;
+                }
+            } catch (IOException e4) {
                 fin = fin2;
                 try {
                     for (FileHeader fileHeader : new ZipFile(apk).getFileHeaders()) {
-                        if (!fileHeader.getFileName().endsWith(".so")) {
+                        if (fileHeader.getFileName().endsWith(".so")) {
                             System.out.println(fileHeader.getFileName());
                             tail = fileHeader.getFileName().split(InternalZipConstants.ZIP_FILE_SEPARATOR);
                             filename = tail[tail.length - 1];
@@ -108,96 +140,40 @@ public class uninstall {
                     e1.printStackTrace();
                 } catch (Exception e12) {
                     e12.printStackTrace();
-                } catch (Throwable th2) {
-                    th = th2;
-                    if (in2 != null) {
+                } catch (Throwable th3) {
+                    th = th3;
+                    if (in != null) {
                         try {
-                            in2.close();
-                        } catch (IOException e2) {
+                            in.close();
+                        } catch (IOException e5) {
                         }
                     }
                     if (fin != null) {
                         try {
                             fin.close();
-                        } catch (IOException e3) {
+                        } catch (IOException e6) {
                         }
                     }
                     throw th;
                 }
-                if (in2 != null) {
+                if (in != null) {
                     try {
-                        in2.close();
-                    } catch (IOException e4) {
+                        in.close();
+                    } catch (IOException e7) {
                     }
                 }
                 if (fin != null) {
                     try {
                         fin.close();
-                    } catch (IOException e5) {
+                    } catch (IOException e8) {
                     }
-                }
-                return libs;
-            } catch (Throwable th3) {
-                th = th3;
-                fin = fin2;
-                if (in2 != null) {
-                    in2.close();
-                }
-                if (fin != null) {
-                    fin.close();
-                }
-                throw th;
-            }
-            try {
-                for (ZipEntry entry = in.getNextEntry(); entry != null; entry = in.getNextEntry()) {
-                    if (entry.getName().startsWith("lib/")) {
-                        tail = entry.getName().split(InternalZipConstants.ZIP_FILE_SEPARATOR);
-                        filename = tail[tail.length - 1];
-                        if (!(!libs.isEmpty() || filename.equals("") || filename.contains("libjnigraphics.so"))) {
-                            libs.add(filename);
-                        }
-                        if (!(libs.contains(filename) || filename.equals("") || filename.contains("libjnigraphics.so"))) {
-                            libs.add(filename);
-                        }
-                    }
-                }
-                if (in != null) {
-                    try {
-                        in.close();
-                    } catch (IOException e6) {
-                    }
-                }
-                if (fin2 != null) {
-                    try {
-                        fin2.close();
-                    } catch (IOException e7) {
-                    }
-                }
-            } catch (IOException e8) {
-                fin = fin2;
-                in2 = in;
-                for (FileHeader fileHeader2 : new ZipFile(apk).getFileHeaders()) {
-                    if (!fileHeader2.getFileName().endsWith(".so")) {
-                        System.out.println(fileHeader2.getFileName());
-                        tail = fileHeader2.getFileName().split(InternalZipConstants.ZIP_FILE_SEPARATOR);
-                        filename = tail[tail.length - 1];
-                        libs.add(filename);
-                        libs.add(filename);
-                    }
-                }
-                if (in2 != null) {
-                    in2.close();
-                }
-                if (fin != null) {
-                    fin.close();
                 }
                 return libs;
             } catch (Throwable th4) {
                 th = th4;
                 fin = fin2;
-                in2 = in;
-                if (in2 != null) {
-                    in2.close();
+                if (in != null) {
+                    in.close();
                 }
                 if (fin != null) {
                     fin.close();
@@ -205,10 +181,10 @@ public class uninstall {
                 throw th;
             }
         } catch (IOException e9) {
-            for (FileHeader fileHeader22 : new ZipFile(apk).getFileHeaders()) {
-                if (!fileHeader22.getFileName().endsWith(".so")) {
-                    System.out.println(fileHeader22.getFileName());
-                    tail = fileHeader22.getFileName().split(InternalZipConstants.ZIP_FILE_SEPARATOR);
+            for (FileHeader fileHeader2 : new ZipFile(apk).getFileHeaders()) {
+                if (fileHeader2.getFileName().endsWith(".so")) {
+                    System.out.println(fileHeader2.getFileName());
+                    tail = fileHeader2.getFileName().split(InternalZipConstants.ZIP_FILE_SEPARATOR);
                     filename = tail[tail.length - 1];
                     if (!(!libs.isEmpty() || filename.equals("") || filename.contains("libjnigraphics.so"))) {
                         libs.add(filename);
@@ -218,8 +194,8 @@ public class uninstall {
                     }
                 }
             }
-            if (in2 != null) {
-                in2.close();
+            if (in != null) {
+                in.close();
             }
             if (fin != null) {
                 fin.close();

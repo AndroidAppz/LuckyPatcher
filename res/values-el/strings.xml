@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="AppTools">Πληροφορίες Εφαρμογής:</string>
+    <string name="P_not_found">Σφάλμα: Τα αρχεία του προγράμματος δεν βρέθηκαν!\n Ελέγξτε την θέση του dalvik-cache για να επιλύσετε αυτό το πρόβλημα\nΠροεπιλογή: /data/dalvik-cache/*javascript:;</string>
     <string name="PatchResult">Αποτελέσματα του Patch</string>
     <string name="Yes">Ναι</string>
-    <string name="about_thanks_for_this_translation">Ευχαριστώ για την ελληνική μετάφραση: caio1478, leskal</string>
+    <string name="about_working_dir">Διαδρομή λειτουργίας στη κάρτα SD:</string>
     <string name="aboutlp">Το LuckyPatcher είναι ένα γενικό εργαλείο patching. Προορίζεται για τροποποίηση εφαρμογών: απομάκρυνση διαφημίσεων (ads), απομάκρυνση της Επαλήθευσης Αδείας της Google (αυτόματα και χειροκίνητα), διαχείριση δικαιωμάτων και άλλα.</string>
     <string name="aboutmenu">Περί</string>
     <string name="abouttitle">Περί του Lucky Patcher απο τον ChelpuS</string>
@@ -24,7 +25,6 @@
     <string name="app_install_success">Η εφαρμογή έχει εγκατασταθεί με επιτυχία.</string>
     <string name="app_name">Lucky Patcher</string>
     <string name="app_not_found">Δε βρέθηκε η εφαρμογή! Παρακαλώ εγκαταστήστε την εφαρμογή και δοκιμάστε ξανά.</string>
-    <string name="appwidget_text">ΠΑΡΑΔΕΙΓΜΑ</string>
     <string name="back">Πίσω</string>
     <string name="backbutton">Backup</string>
     <string name="backup_data_empty">Τα δεδομένα της εφαρμογής είναι άδεια. Δεν υπάρχει τίποτα για backup.</string>
@@ -54,7 +54,6 @@
     <string name="button_advanced_filter">Φίλτρα</string>
     <string name="button_for_delete">Διαγραφή</string>
     <string name="button_move_to_sdcard">Μετακίνηση στην κάρτα SD</string>
-    <string name="button_uninstall_apps">Απεγκατάσταση</string>
     <string name="cancel">Άκυρο</string>
     <string name="change_icon_lp">Αλλαγή εικονιδίου</string>
     <string name="changelog">Αλλαγές</string>
@@ -175,7 +174,6 @@
     <string name="enabled_package">Ενεργοποίηση πακέτου.</string>
     <string name="enter_name_dir">Όνομα φακέλου:</string>
     <string name="equals_version">Χρησιμοποιείται την τελευταία έκδοση του Lucky Patcher.</string>
-    <string name="error">Σφάλμα</string>
     <string name="error_apk_to_system">Δε μπορείτε να εγκαταστήσετε εφαρμογές απο αυτό το μέρος, παρακαλώ τοποθετήστε τη στην κάρτα SD.</string>
     <string name="error_collect_logs">Συνέβη σφάλμα στον logger. Δε δημιουργήθηκε Log.</string>
     <string name="error_detect">Φαίνεται οτι το Lucky Patcher έχει κλείσει με επιθετικό (forced) τρόπο, θέλετε να στείλετε αναφορά για bug;</string>
@@ -190,9 +188,7 @@
     <string name="error_restore">Η επαναφοράαπέτυχε.</string>
     <string name="extpat1">Φαίνεται</string>
     <string name="extpat2">τα αντικείμενα έχουν επαλήθευση αδείας:</string>
-    <string name="failed">αποτυχία</string>
     <string name="fast_start">Γρήγορη έναρξη</string>
-    <string name="file_not_deleted">Το αρχείο δεν διαγράφηκε.</string>
     <string name="filter">Φίλτρο</string>
     <string name="filter0">Νέες και ενημερωμένες εφαρμογές</string>
     <string name="filter1">Εφαρμογές με LVL</string>
@@ -231,7 +227,6 @@
     <string name="licensing_hack_menu">Εξομοίωση επαλήθευσης άδειας Google</string>
     <string name="licensing_hack_menu_disable">Απενεργοποίηση εξομοίωσης επαλήθευσης άδειας Google</string>
     <string name="licensing_hack_menu_enable">Ενεργοποίηση εξομοίωσης επαλήθευσης άδειας Google</string>
-    <string name="line">***********************\n</string>
     <string name="loadpkg">Φόρτωμα πακέτων</string>
     <string name="lvldescr">Εμφάνισε όλες τις εφαρμογές με Επαλήθευση Αδείας.</string>
     <string name="lvltitle">Εφαρμογές με LVL</string>
@@ -274,7 +269,6 @@
     <string name="or_hex_str">Original Hex-String:</string>
     <string name="orientmenu">Προσανατολισμός</string>
     <string name="others">Άλλα</string>
-    <string name="package_name">Όνομα πακέτου</string>
     <string name="patch_ok">Εφαρμογή</string>
     <string name="patch_progress_data_parse">Ανάλυση δεδομένων για patch...</string>
     <string name="patch_step1">Προετοιμασία εφαρμογής...</string>
@@ -282,7 +276,7 @@
     <string name="patch_step3">Ανάλυση αποτελεσμάτων</string>
     <string name="patch_step4">Δημιουργία .odex με τις αλλαγές...</string>
     <string name="patch_step6">Προεραιτικά βήματα μετά το patch...</string>
-    <string name="patch_step_http">λήωη δεδομένων από το root...</string>
+    <string name="patch_step_http">λήψη δεδομένων από το root...</string>
     <string name="patch_to_Android_At_once">Για μια φορά μπορεί να χρησιμοποιήσει το &quot;Κατάσταση Επαλήθευσης Υπογραφής πάντα Αληθής&quot; και &quot;Απενεργοποίηση της Επαλήθευσης Υπογραφής στα .apk&quot; ή &quot;Απενενεργοποίηση της Επαλήθευσης Υπογραφής στον διαχειριστή πακέτων&quot;.</string>
     <string name="patchbutton">~Patch~</string>
     <string name="pattern1">Patch Πρότυπο Νο 1 : Επιτυχής!</string>
@@ -309,7 +303,6 @@
     <string name="permission_not_found">Δε βρέθηκαν δικαιώματα!</string>
     <string name="permissions">Δικαιώματα</string>
     <string name="punkt1">- Ο Patcher χρειάζεται πρόσβαση root!</string>
-    <string name="purchase_db_dialog_saved_purchase">αποθηκευμένες αγορές</string>
     <string name="reboot">Επανεκκίνηση</string>
     <string name="rebuild_info">Περίληψη ανοικοδόμησης</string>
     <string name="remodex">Η επιδιόρθωση του Dalvik-cache απομακρύνθηκε!</string>
@@ -330,7 +323,6 @@
     <string name="setting_confirm_exit">Επιβεβαίωση εξόδου από την εφαρμογή</string>
     <string name="setting_confirm_exit_descr">Αν πατήσετε πίσω, το Lucky Patcher θα ζητήσει επιβεβαίωση για έξοδο.</string>
     <string name="settings">Ρυθμίσεις</string>
-    <string name="share">Κοινοποίηση</string>
     <string name="sortbyname">Ταξινόμηση κατά Όνομα</string>
     <string name="sortbystatus">Ταξινόμηση κατά Κατάσταση</string>
     <string name="sortbytime">Ταξινόμηση κατά Ημερομηνία εγκατάστασης</string>
@@ -354,11 +346,9 @@
     <string name="statsys">Εφαρμογή Συστήματος.</string>
     <string name="statuserid">ID χρήστη:</string>
     <string name="statversion">Έκδοση:</string>
-    <string name="success">επιτυχία</string>
     <string name="sysdescr">Προσοχή! Παρακαλώ δημιουργήστε BACKUP προτού τροποποιήσετε.</string>
     <string name="system_app_change">Παρακαλώ επανεκκινήστε για να εφαρμόσετε τις αλλαγές.</string>
     <string name="systitle">Εμφάνιση εφαρμογών συστήματος</string>
-    <string name="test">δοκιμή</string>
     <string name="text_size">Μέγεθος κειμένου</string>
     <string name="title_upd">Μήνυμα</string>
     <string name="toolbar_adfree">Μπλοκάρισμα των Ads</string>
@@ -385,8 +375,21 @@
     <string name="viewsmall">Μικρή γραμματοσειρά</string>
     <string name="wait">Παρακαλώ περιμένετε...</string>
     <string name="warning">Προειδοποίηση</string>
-    <string name="warning_superSu_mount_name_space_separation_3">Να μην εμφανιστεί ξανά αυτό το παράθυρο διαλόγου</string>
     <string name="well_done">Ολοκληρώθηκε επιτυχώς.</string>
-    <string name="button_disable_package">Απενεργοποίηση</string>
+    <string name="button_uninstall_apps">Απεγκατάσταση</string>
+    <string name="error">Σφάλμα</string>
+    <string name="file_not_deleted">Το αρχείο δεν διαγράφηκε.</string>
+    <string name="share">Κοινοποίηση</string>
+    <string name="appwidget_text">ΠΑΡΑΔΕΙΓΜΑ</string>
+    <string name="line">***********************\n</string>
+    <string name="package_name">Όνομα πακέτου</string>
+    <string name="purchase_db_dialog_saved_purchase">αποθηκευμένες αγορές</string>
+    <string name="test">δοκιμή</string>
+    <string name="failed">αποτυχία</string>
+    <string name="success">επιτυχία</string>
+    <string name="warning_superSu_mount_name_space_separation_3">Να μην εμφανιστεί ξανά αυτό το παράθυρο διαλόγου</string>
     <string name="button_enable_package">Ενεργοποίηση</string>
+    <string name="button_disable_package">Απενεργοποίηση</string>
+    <string name="switchers_service_not_found">Η υπηρεσία δεν βρέθηκε</string>
+    <string name="about_thanks_for_this_translation">Ευχαριστώ για την ελληνική μετάφραση: caio1478, leskal</string>
 </resources>

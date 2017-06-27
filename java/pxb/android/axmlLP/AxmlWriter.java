@@ -76,15 +76,23 @@ public class AxmlWriter extends AxmlVisitor {
             if (name == null) {
                 throw new RuntimeException("name can't be null");
             }
-            String str;
+            Object obj;
+            Object stringItem;
             Map map = this.attrs;
-            StringBuilder stringBuilder = new StringBuilder();
             if (ns == null) {
-                str = "zzz";
+                obj = "zzz";
             } else {
-                str = ns;
+                String str = ns;
             }
-            map.put(stringBuilder.append(str).append(".").append(name).toString(), new Attr(ns == null ? null : new StringItem(ns), new StringItem(name), resourceId, type, type == 3 ? new StringItem((String) value) : value));
+            String stringBuilder = new StringBuilder(String.valueOf(obj)).append(".").append(name).toString();
+            StringItem stringItem2 = ns == null ? null : new StringItem(ns);
+            StringItem stringItem3 = new StringItem(name);
+            if (type == 3) {
+                stringItem = new StringItem((String) value);
+            } else {
+                stringItem = value;
+            }
+            map.put(stringBuilder, new Attr(stringItem2, stringItem3, resourceId, type, stringItem));
         }
 
         public NodeVisitor child(String ns, String name) {
@@ -150,18 +158,12 @@ public class AxmlWriter extends AxmlVisitor {
         }
 
         void write(DataOut out) throws IOException {
-            int i;
-            int i2 = -1;
+            int i = -1;
             out.writeInt(1048834);
             out.writeInt((this.attrs.size() * 20) + 36);
             out.writeInt(this.line);
             out.writeInt(-1);
-            if (this.ns != null) {
-                i = this.ns.index;
-            } else {
-                i = -1;
-            }
-            out.writeInt(i);
+            out.writeInt(this.ns != null ? this.ns.index : -1);
             out.writeInt(this.name.index);
             out.writeInt(1310740);
             out.writeShort(this.attrs.size());
@@ -169,14 +171,15 @@ public class AxmlWriter extends AxmlVisitor {
             out.writeShort(0);
             out.writeShort(0);
             for (Attr attr : sortedAttrs()) {
+                int i2;
                 out.writeInt(attr.ns == null ? -1 : attr.ns.index);
                 out.writeInt(attr.name.index);
                 if (attr.value instanceof StringItem) {
-                    i = ((StringItem) attr.value).index;
+                    i2 = ((StringItem) attr.value).index;
                 } else {
-                    i = -1;
+                    i2 = -1;
                 }
-                out.writeInt(i);
+                out.writeInt(i2);
                 out.writeInt((attr.type << 24) | 8);
                 Object v = attr.value;
                 if (v instanceof StringItem) {
@@ -204,9 +207,9 @@ public class AxmlWriter extends AxmlVisitor {
             out.writeInt(-1);
             out.writeInt(-1);
             if (this.ns != null) {
-                i2 = this.ns.index;
+                i = this.ns.index;
             }
-            out.writeInt(i2);
+            out.writeInt(i);
             out.writeInt(this.name.index);
         }
     }
@@ -243,17 +246,20 @@ public class AxmlWriter extends AxmlVisitor {
         }
         int a = 0;
         for (Entry<String, Ns> e : this.nses.entrySet()) {
+            int a2;
             Ns ns = (Ns) e.getValue();
             if (ns == null) {
                 Object[] objArr = new Object[1];
-                int a2 = a + 1;
+                a2 = a + 1;
                 objArr[0] = Integer.valueOf(a);
                 ns = new Ns(new StringItem(String.format("axml_auto_%02d", objArr)), new StringItem((String) e.getKey()), 0);
                 e.setValue(ns);
-                a = a2;
+            } else {
+                a2 = a;
             }
             ns.prefix = update(ns.prefix);
             ns.uri = update(ns.uri);
+            a = a2;
         }
         this.stringItems.addAll(this.resourceString);
         this.resourceString = null;

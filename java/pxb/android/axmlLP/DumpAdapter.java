@@ -91,7 +91,7 @@ public class DumpAdapter extends AxmlVisitor {
     public NodeVisitor first(String ns, String name) {
         System.out.print("<");
         if (ns != null) {
-            System.out.println(((String) this.nses.get(ns)) + ":");
+            System.out.println(new StringBuilder(String.valueOf((String) this.nses.get(ns))).append(":").toString());
         }
         System.out.println(name);
         NodeVisitor nv = super.first(ns, name);
@@ -102,7 +102,7 @@ public class DumpAdapter extends AxmlVisitor {
     }
 
     public void ns(String prefix, String uri, int ln) {
-        System.out.println(prefix + "=" + uri);
+        System.out.println(new StringBuilder(String.valueOf(prefix)).append("=").append(uri).toString());
         this.nses.put(uri, prefix);
         super.ns(prefix, uri, ln);
     }

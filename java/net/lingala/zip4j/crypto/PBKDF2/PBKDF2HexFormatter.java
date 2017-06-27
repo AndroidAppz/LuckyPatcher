@@ -22,6 +22,6 @@ class PBKDF2HexFormatter {
     }
 
     public String toString(PBKDF2Parameters p) {
-        return BinTools.bin2hex(p.getSalt()) + ":" + String.valueOf(p.getIterationCount()) + ":" + BinTools.bin2hex(p.getDerivedKey());
+        return new StringBuilder(String.valueOf(BinTools.bin2hex(p.getSalt()))).append(":").append(String.valueOf(p.getIterationCount())).append(":").append(BinTools.bin2hex(p.getDerivedKey())).toString();
     }
 }

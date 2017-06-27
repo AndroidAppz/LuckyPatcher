@@ -27,7 +27,6 @@
     <string name="app_install_success">Aplikācija tika veiksmīgi instalēta</string>
     <string name="app_name">Laimīgais Pačeris</string>
     <string name="app_not_found">Aplikācija netika atraksta! Lūdzu uzinstalējiet aplikāciju un mēģiniet vēlreiz.</string>
-    <string name="appwidget_text">PIEMĒRS</string>
     <string name="back">Atpakaļ</string>
     <string name="backbutton">Dublēt</string>
     <string name="backup_data_empty">Aplikācijai nav datu ko dublēt.</string>
@@ -51,7 +50,6 @@
     <string name="extpat1">Līdzinās</string>
     <string name="fast_start_descr">Atspējo ikonu ielādi no Laimīgā Pačera. Tas var radīt lagus aplikāciju sarakstā</string>
     <string name="go_to_file_path">Doties uz failu</string>
-    <string name="line">***********************\n</string>
     <string name="loadpkg">Ielādē pakotnes</string>
     <string name="message_exit">Vai jūs tiešām vēlaties aizvērt Lucky Patcher?</string>
     <string name="no">Nē</string>
@@ -69,4 +67,6 @@
     <string name="toolbar_switchers">Slēdži</string>
     <string name="wait">Lūdzu Uzgaidiet</string>
     <string name="xposed_settings">Xposed iestatījumi</string>
+    <string name="appwidget_text">PIEMĒRS</string>
+    <string name="line">***********************\n</string>
 </resources>

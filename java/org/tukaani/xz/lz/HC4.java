@@ -131,23 +131,21 @@ final class HC4 extends LZEncoder {
     }
 
     public void skip(int len) {
-        if (!$assertionsDisabled && len < 0) {
-            throw new AssertionError();
-        }
-        while (true) {
-            int len2 = len;
+        if ($assertionsDisabled || len >= 0) {
             while (true) {
+                int len2 = len;
                 len = len2 - 1;
-                if (len2 <= 0) {
+                if (len2 > 0) {
+                    if (movePos() != 0) {
+                        this.hash.calcHashes(this.buf, this.readPos);
+                        this.chain[this.cyclicPos] = this.hash.getHash4Pos();
+                        this.hash.updateTables(this.lzPos);
+                    }
+                } else {
                     return;
-                }
-                if (movePos() != 0) {
-                    this.hash.calcHashes(this.buf, this.readPos);
-                    this.chain[this.cyclicPos] = this.hash.getHash4Pos();
-                    this.hash.updateTables(this.lzPos);
-                    len2 = len;
                 }
             }
         }
+        throw new AssertionError();
     }
 }

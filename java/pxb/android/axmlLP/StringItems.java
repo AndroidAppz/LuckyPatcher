@@ -37,6 +37,7 @@ class StringItems extends ArrayList<StringItem> {
             Integer of = (Integer) map.get(stringData);
             if (of != null) {
                 item.dataOffset = of.intValue();
+                i = i2;
             } else {
                 item.dataOffset = offset;
                 map.put(stringData, Integer.valueOf(offset));
@@ -48,8 +49,8 @@ class StringItems extends ArrayList<StringItem> {
                 baos.write(0);
                 baos.write(0);
                 offset += data.length + 4;
+                i = i2;
             }
-            i = i2;
         }
         this.stringData = baos.toByteArray();
     }
@@ -72,7 +73,6 @@ class StringItems extends ArrayList<StringItem> {
             throw new RuntimeException();
         }
         int endOfStringData;
-        Iterator it;
         if (stylesOffset == 0) {
             endOfStringData = size;
         } else {
@@ -101,11 +101,7 @@ class StringItems extends ArrayList<StringItem> {
                 p = in.getCurrentPosition();
             }
         }
-        if (stylesOffset != 0) {
-            it = iterator();
-        } else {
-            it = iterator();
-        }
+        Iterator it = iterator();
         while (it.hasNext()) {
             StringItem item = (StringItem) it.next();
             item.data = (String) stringMap.get(Integer.valueOf(item.dataOffset));

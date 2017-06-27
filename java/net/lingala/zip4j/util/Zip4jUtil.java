@@ -443,7 +443,7 @@ public class Zip4jUtil {
                         } else {
                             partFile = currZipFile;
                         }
-                        retList.add(partFile + fileExt + (i + 1));
+                        retList.add(new StringBuilder(String.valueOf(partFile)).append(fileExt).append(i + 1).toString());
                     }
                 }
                 return retList;
@@ -460,7 +460,7 @@ public class Zip4jUtil {
             if (isStringNotNullAndNotEmpty(rootFolderPath)) {
                 String rootFolderFileRef = new File(rootFolderPath).getPath();
                 if (!rootFolderFileRef.endsWith(InternalZipConstants.FILE_SEPARATOR)) {
-                    rootFolderFileRef = rootFolderFileRef + InternalZipConstants.FILE_SEPARATOR;
+                    rootFolderFileRef = new StringBuilder(String.valueOf(rootFolderFileRef)).append(InternalZipConstants.FILE_SEPARATOR).toString();
                 }
                 String tmpFileName = file.substring(rootFolderFileRef.length());
                 if (tmpFileName.startsWith(System.getProperty("file.separator"))) {
@@ -470,7 +470,7 @@ public class Zip4jUtil {
                 if (tmpFile.isDirectory()) {
                     tmpFileName = tmpFileName.replaceAll("\\\\", InternalZipConstants.ZIP_FILE_SEPARATOR) + InternalZipConstants.ZIP_FILE_SEPARATOR;
                 } else {
-                    tmpFileName = tmpFileName.substring(0, tmpFileName.lastIndexOf(tmpFile.getName())).replaceAll("\\\\", InternalZipConstants.ZIP_FILE_SEPARATOR) + tmpFile.getName();
+                    tmpFileName = new StringBuilder(String.valueOf(tmpFileName.substring(0, tmpFileName.lastIndexOf(tmpFile.getName())).replaceAll("\\\\", InternalZipConstants.ZIP_FILE_SEPARATOR))).append(tmpFile.getName()).toString();
                 }
                 fileName = tmpFileName;
             } else {
@@ -482,7 +482,7 @@ public class Zip4jUtil {
                 }
             }
             if (isStringNotNullAndNotEmpty(rootFolderInZip)) {
-                fileName = rootFolderInZip + fileName;
+                fileName = new StringBuilder(String.valueOf(rootFolderInZip)).append(fileName).toString();
             }
             if (isStringNotNullAndNotEmpty(fileName)) {
                 return fileName;

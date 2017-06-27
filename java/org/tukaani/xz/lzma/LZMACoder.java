@@ -80,7 +80,10 @@ abstract class LZMACoder {
     }
 
     static final int getDistState(int len) {
-        return len < 6 ? len - 2 : 3;
+        if (len < 6) {
+            return len - 2;
+        }
+        return 3;
     }
 
     LZMACoder(int pb) {

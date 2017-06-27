@@ -15,8 +15,8 @@ public class reworkSuperSu {
         }
         if (!dataDirSuperSu.equals(ZipSigner.KEY_NONE)) {
             try {
-                String cfgSuperSu = dataDirSuperSu + "/files/supersu.cfg";
-                String shared_prefs_SuperSu = dataDirSuperSu + "/shared_prefs/eu.chainfire.supersu_preferences.xml";
+                String cfgSuperSu = new StringBuilder(String.valueOf(dataDirSuperSu)).append("/files/supersu.cfg").toString();
+                String shared_prefs_SuperSu = new StringBuilder(String.valueOf(dataDirSuperSu)).append("/shared_prefs/eu.chainfire.supersu_preferences.xml").toString();
                 if (new File(cfgSuperSu).exists()) {
                     String cfg = Utils.read_from_file(new File(cfgSuperSu));
                     if (cfg.contains("enablemountnamespaceseparation=1")) {

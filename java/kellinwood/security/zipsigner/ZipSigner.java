@@ -266,9 +266,9 @@ public class ZipSigner {
     }
 
     public PrivateKey readPrivateKey(URL privateKeyUrl, String keyPassword) throws IOException, GeneralSecurityException {
-        KeySpec spec;
         PrivateKey generatePrivate;
         InputStream input = new DataInputStream(privateKeyUrl.openStream());
+        KeySpec spec;
         try {
             byte[] bytes = readContentAsBytes(input);
             spec = decryptPrivateKey(bytes, keyPassword);

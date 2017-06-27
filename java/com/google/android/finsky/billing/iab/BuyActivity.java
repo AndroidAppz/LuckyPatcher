@@ -49,7 +49,7 @@ public class BuyActivity extends Activity {
             System.out.println(this.type);
             JSONObject purch = new JSONObject();
             try {
-                purch.put("orderId", (Utils.getRandom(1000000000000000000L, Util.VLI_MAX) + Utils.getRandom(0, 9)) + "." + Utils.getRandom(1000000000000000L, 9999999999999999L));
+                purch.put("orderId", new StringBuilder(String.valueOf(Utils.getRandom(1000000000000000000L, Util.VLI_MAX) + Utils.getRandom(0, 9))).append(".").append(Utils.getRandom(1000000000000000L, 9999999999999999L)).toString());
                 purch.put(EXTRA_PACKAGENAME, this.packageName);
                 purch.put("productId", this.productId);
                 purch.put("purchaseTime", new Long(System.currentTimeMillis()));
@@ -91,8 +91,8 @@ public class BuyActivity extends Activity {
             final CheckBox check2 = (CheckBox) findViewById(2131558480);
             final CheckBox check3 = (CheckBox) findViewById(2131558481);
             TextView text2 = (TextView) findViewById(2131558468);
-            text2.setText(Utils.getText(2131165231));
-            text2.append("\n" + Utils.getText(2131165232));
+            text2.setText(Utils.getText(2131361830));
+            text2.append("\n" + Utils.getText(2131361831));
             check2.setChecked(false);
             check3.setChecked(false);
             btnYes.setOnClickListener(new OnClickListener() {

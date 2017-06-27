@@ -222,7 +222,7 @@ public class copyLibsFilesToSystemBackup {
 
     private static void run_all(String cmd) {
         try {
-            Process localProcess = Runtime.getRuntime().exec(cmd + "\n");
+            Process localProcess = Runtime.getRuntime().exec(new StringBuilder(String.valueOf(cmd)).append("\n").toString());
             localProcess.waitFor();
             localProcess.destroy();
         } catch (Exception e) {

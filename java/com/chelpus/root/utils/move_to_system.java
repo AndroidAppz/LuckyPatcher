@@ -74,36 +74,36 @@ public class move_to_system {
                 }
             }
             if (nospace) {
-                new File(system_app_dir + pkgName + ".apk").delete();
+                new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).delete();
             } else {
                 try {
-                    if (new File(system_app_dir + pkgName + ".odex").exists()) {
-                        new File(system_app_dir + pkgName + ".odex").delete();
+                    if (new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".odex").toString()).exists()) {
+                        new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".odex").toString()).delete();
                     }
-                    String destination = system_app_dir + pkgName + ".apk";
+                    String destination = new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString();
                     String source3 = dirapp;
                     Utils.cmdParam("dd", "if=" + source3, "of=" + destination);
-                    if (!(new File(destination).exists() && appapk.length() == new File(system_app_dir + pkgName + ".apk").length())) {
+                    if (!(new File(destination).exists() && appapk.length() == new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).length())) {
                         Utils.cmdParam("toolbox", "dd", "if=" + source3, "of=" + destination);
                     }
-                    if (!(new File(destination).exists() && appapk.length() == new File(system_app_dir + pkgName + ".apk").length())) {
+                    if (!(new File(destination).exists() && appapk.length() == new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).length())) {
                         Utils.cmdParam("busybox", "dd", "if=" + source3, "of=" + destination);
                     }
-                    if (!(new File(destination).exists() && appapk.length() == new File(system_app_dir + pkgName + ".apk").length())) {
+                    if (!(new File(destination).exists() && appapk.length() == new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).length())) {
                         Utils.cmdParam(toolsfiles + "/busybox", "dd", "if=" + source3, "of=" + destination);
                     }
-                    if (!(new File(destination).exists() && appapk.length() == new File(system_app_dir + pkgName + ".apk").length())) {
+                    if (!(new File(destination).exists() && appapk.length() == new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).length())) {
                         Utils.cmdParam(toolsfiles + "/busybox", "cp", "-fp", source3, destination);
                     }
-                    if (!(new File(destination).exists() && appapk.length() == new File(system_app_dir + pkgName + ".apk").length())) {
-                        Utils.copyFile(appapk, new File(system_app_dir + pkgName + ".apk"));
+                    if (!(new File(destination).exists() && appapk.length() == new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).length())) {
+                        Utils.copyFile(appapk, new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()));
                     }
                 } catch (Exception e2) {
                     System.out.println("In /system space not found!");
-                    new File(system_app_dir + pkgName + ".apk").delete();
+                    new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).delete();
                     e2.printStackTrace();
                 }
-                if (appapk.length() == new File(system_app_dir + pkgName + ".apk").length()) {
+                if (appapk.length() == new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).length()) {
                     if (dirapp.startsWith("/mnt/")) {
                         Utils.cmdParam("pm", "uninstall", pkgName);
                     } else {
@@ -118,7 +118,7 @@ public class move_to_system {
                     run_all("chown 0.0 " + system_app_dir + pkgName + ".apk");
                     run_all("chown 0:0 " + system_app_dir + pkgName + ".apk");
                 } else {
-                    new File(system_app_dir + pkgName + ".apk").delete();
+                    new File(new StringBuilder(String.valueOf(system_app_dir)).append(pkgName).append(".apk").toString()).delete();
                     System.out.println("In /system space not found!");
                     it = libs.iterator();
                     while (it.hasNext()) {
@@ -234,7 +234,7 @@ public class move_to_system {
 
     private static void run_all(String cmd) {
         try {
-            Process localProcess = Runtime.getRuntime().exec(cmd + "\n");
+            Process localProcess = Runtime.getRuntime().exec(new StringBuilder(String.valueOf(cmd)).append("\n").toString());
             localProcess.waitFor();
             localProcess.destroy();
         } catch (Exception e) {

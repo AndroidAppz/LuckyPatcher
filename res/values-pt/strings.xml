@@ -290,7 +290,6 @@
     <string name="fixbutton">Corrigir modificações</string>
     <string name="fixeddescr">Mostrar todas as aplicações com modificações corrigidas (marcadas com estrela amarela).</string>
     <string name="fixedtitle">Aplicações com correções na ODEX</string>
-    <string name="generate_log_for_services.odex_fix_android_patches">Criar registo para services.jar\n(para correção do &quot;Patch para Android&quot;)</string>
     <string name="go_to_file_path">Ir para o ficheiro</string>
     <string name="goodresult">% Luck/Sorte!\nPor favor inicie a aplicação para testar!\n\nSe a aplicação funcionar incorretamente, por favor reinstale-a e não tente aplicar um patch nesta versão.</string>
     <string name="have_luck">***********************\n\nTem</string>
@@ -534,4 +533,5 @@
     <string name="viewsmall">Texto Pequeno</string>
     <string name="wait">Por favor aguarde</string>
     <string name="warning_superSu_mount_name_space_separation_3">Não mostrar esta caixa novamente</string>
+    <string name="generate_log_for_services.odex_fix_android_patches">Criar registo para services.jar\n(para correção do &quot;Patch para Android&quot;)</string>
 </resources>

@@ -172,25 +172,26 @@ final class LZMAEncoderNormal extends LZMAEncoder {
                 while (true) {
                     int i2 = this.optCur + 1;
                     this.optCur = i2;
-                    if (i2 >= this.optEnd) {
-                        break;
-                    }
-                    this.matches = getMatches();
-                    if (this.matches.count > 0 && this.matches.len[this.matches.count - 1] >= this.niceLen) {
-                        break;
-                    }
-                    avail--;
-                    pos++;
-                    posState = pos & this.posMask;
-                    updateOptStateAndReps();
-                    anyMatchPrice = this.opts[this.optCur].price + getAnyMatchPrice(this.opts[this.optCur].state, posState);
-                    anyRepPrice = getAnyRepPrice(anyMatchPrice, this.opts[this.optCur].state);
-                    calc1BytePrices(pos, posState, avail, anyRepPrice);
-                    if (avail >= 2) {
-                        int startLen = calcLongRepPrices(pos, posState, avail, anyRepPrice);
-                        if (this.matches.count > 0) {
-                            calcNormalMatchPrices(pos, posState, avail, anyMatchPrice, startLen);
+                    if (i2 < this.optEnd) {
+                        this.matches = getMatches();
+                        if (this.matches.count > 0 && this.matches.len[this.matches.count - 1] >= this.niceLen) {
+                            break;
                         }
+                        avail--;
+                        pos++;
+                        posState = pos & this.posMask;
+                        updateOptStateAndReps();
+                        anyMatchPrice = this.opts[this.optCur].price + getAnyMatchPrice(this.opts[this.optCur].state, posState);
+                        anyRepPrice = getAnyRepPrice(anyMatchPrice, this.opts[this.optCur].state);
+                        calc1BytePrices(pos, posState, avail, anyRepPrice);
+                        if (avail >= 2) {
+                            int startLen = calcLongRepPrices(pos, posState, avail, anyRepPrice);
+                            if (this.matches.count > 0) {
+                                calcNormalMatchPrices(pos, posState, avail, anyMatchPrice, startLen);
+                            }
+                        }
+                    } else {
+                        break;
                     }
                 }
                 return convertOpts();

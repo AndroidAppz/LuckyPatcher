@@ -24,7 +24,7 @@ public class restoredata {
         String backup_data_dir = paramArrayOfString[2];
         String uid = paramArrayOfString[3];
         String sddatadir = paramArrayOfString[4];
-        File data = new File(backup_data_dir + "/data.lpbkp");
+        File data = new File(new StringBuilder(String.valueOf(backup_data_dir)).append("/data.lpbkp").toString());
         System.out.println(data.getAbsolutePath());
         if (data.exists()) {
             File datadirs = new File(datadir);
@@ -40,7 +40,7 @@ public class restoredata {
         try {
             File dbdata;
             if (new File("/dbdata/databases/" + pkg).exists()) {
-                dbdata = new File(backup_data_dir + "/dbdata.lpbkp");
+                dbdata = new File(new StringBuilder(String.valueOf(backup_data_dir)).append("/dbdata.lpbkp").toString());
                 if (dbdata.exists()) {
                     try {
                         ExtractAllFilesWithInputStreams(new ZipFile(dbdata), "/dbdata/databases/" + pkg, uid);
@@ -48,11 +48,11 @@ public class restoredata {
                         e2.printStackTrace();
                         System.out.println("error");
                     }
-                } else if (new File(datadir + "/shared_prefs").exists()) {
-                    copyFolder(new File(datadir + "/shared_prefs"), new File("/dbdata/databases/" + pkg + "/shared_prefs"), uid);
+                } else if (new File(new StringBuilder(String.valueOf(datadir)).append("/shared_prefs").toString()).exists()) {
+                    copyFolder(new File(new StringBuilder(String.valueOf(datadir)).append("/shared_prefs").toString()), new File("/dbdata/databases/" + pkg + "/shared_prefs"), uid);
                 }
             } else {
-                dbdata = new File(backup_data_dir + "/dbdata.lpbkp");
+                dbdata = new File(new StringBuilder(String.valueOf(backup_data_dir)).append("/dbdata.lpbkp").toString());
                 if (dbdata.exists()) {
                     try {
                         ExtractAllFilesWithInputStreams(new ZipFile(dbdata), datadir, uid);
@@ -62,8 +62,8 @@ public class restoredata {
                     }
                 }
             }
-            new File(sddatadir + InternalZipConstants.ZIP_FILE_SEPARATOR).mkdirs();
-            File data3 = new File(backup_data_dir + "/sddata.lpbkp");
+            new File(new StringBuilder(String.valueOf(sddatadir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).toString()).mkdirs();
+            File data3 = new File(new StringBuilder(String.valueOf(backup_data_dir)).append("/sddata.lpbkp").toString());
             System.out.println(data3.getAbsolutePath());
             if (data3.exists()) {
                 File sddatadirs = new File(sddatadir);
@@ -87,13 +87,13 @@ public class restoredata {
     }
 
     public static void ExtractAllFilesWithInputStreams(ZipFile zipFile, String path, String uid) {
+        IOException e;
         Throwable th;
         ZipInputStream is = null;
         OutputStream outputStream = null;
         String destinationPath = path;
-        ZipException e;
-        FileNotFoundException e2;
-        IOException e3;
+        ZipException e2;
+        FileNotFoundException e3;
         Exception e4;
         try {
             if (zipFile.isEncrypted()) {
@@ -103,7 +103,7 @@ public class restoredata {
             for (FileHeader fileHeader : zipFile.getFileHeaders()) {
                 try {
                     if (fileHeader != null) {
-                        File outFile = new File(destinationPath + System.getProperty("file.separator") + fileHeader.getFileName());
+                        File outFile = new File(new StringBuilder(String.valueOf(destinationPath)).append(System.getProperty("file.separator")).append(fileHeader.getFileName()).toString());
                         if (fileHeader.isDirectory()) {
                             outFile.mkdirs();
                             ArrayList<File> dexFound = new ArrayList();
@@ -137,32 +137,31 @@ public class restoredata {
                             UnzipUtil.applyFileAttributes(fileHeader, outFile);
                             if (outFile.getAbsolutePath().endsWith(".dex")) {
                                 Utils.cmdParam("chmod", "700", outFile.getAbsolutePath());
-                                Utils.cmdParam("chown", uid + ":" + uid, outFile.getAbsolutePath());
-                                Utils.cmdParam("chown", uid + "." + uid, outFile.getAbsolutePath());
+                                Utils.cmdParam("chown", new StringBuilder(String.valueOf(uid)).append(":").append(uid).toString(), outFile.getAbsolutePath());
+                                Utils.cmdParam("chown", new StringBuilder(String.valueOf(uid)).append(".").append(uid).toString(), outFile.getAbsolutePath());
                                 Utils utils = new Utils("");
                                 Utils.setPermissionDir(destinationPath, outFile.getAbsolutePath(), "700", false);
                                 utils = new Utils("1");
-                                Utils.setOwnerDir(destinationPath, outFile.getAbsolutePath(), uid + ":" + uid, false);
+                                Utils.setOwnerDir(destinationPath, outFile.getAbsolutePath(), new StringBuilder(String.valueOf(uid)).append(":").append(uid).toString(), false);
                             } else {
                                 Utils.cmdParam("chmod", "771", outFile.getAbsolutePath());
                                 Utils.cmdParam("chown", "0:" + uid, outFile.getAbsolutePath());
                                 Utils.cmdParam("chown", "0." + uid, outFile.getAbsolutePath());
                             }
                             System.out.println("Done extracting: " + fileHeader.getFileName());
+                            os = outputStream;
                         }
                     } else {
                         System.err.println("fileheader is null. Shouldn't be here");
-                        outputStream = os;
                     }
-                    os = outputStream;
                 } catch (ZipException e5) {
-                    e = e5;
+                    e2 = e5;
                     outputStream = os;
                 } catch (FileNotFoundException e6) {
-                    e2 = e6;
+                    e3 = e6;
                     outputStream = os;
                 } catch (IOException e7) {
-                    e3 = e7;
+                    e = e7;
                     outputStream = os;
                 } catch (Exception e8) {
                     e4 = e8;
@@ -176,29 +175,29 @@ public class restoredata {
                 closeFileHandlers(is, os);
                 outputStream = os;
                 return;
-            } catch (IOException e32) {
-                e32.printStackTrace();
+            } catch (IOException e9) {
+                e9.printStackTrace();
                 System.out.println("error");
                 outputStream = os;
                 return;
             }
-            e32.printStackTrace();
+            e9.printStackTrace();
             System.out.println("error");
             try {
                 closeFileHandlers(is, outputStream);
                 return;
-            } catch (IOException e322) {
-                e322.printStackTrace();
+            } catch (IOException e92) {
+                e92.printStackTrace();
                 System.out.println("error");
                 return;
             }
-            e2.printStackTrace();
+            e3.printStackTrace();
             System.out.println("error");
             try {
                 closeFileHandlers(is, outputStream);
                 return;
-            } catch (IOException e3222) {
-                e3222.printStackTrace();
+            } catch (IOException e922) {
+                e922.printStackTrace();
                 System.out.println("error");
                 return;
             }
@@ -207,38 +206,38 @@ public class restoredata {
             try {
                 closeFileHandlers(is, outputStream);
                 return;
-            } catch (IOException e32222) {
-                e32222.printStackTrace();
+            } catch (IOException e9222) {
+                e9222.printStackTrace();
                 System.out.println("error");
                 return;
             }
             try {
-                e.printStackTrace();
+                e2.printStackTrace();
                 System.out.println("error");
                 try {
                     closeFileHandlers(is, outputStream);
-                } catch (IOException e322222) {
-                    e322222.printStackTrace();
+                } catch (IOException e92222) {
+                    e92222.printStackTrace();
                     System.out.println("error");
                 }
             } catch (Throwable th3) {
                 th = th3;
                 try {
                     closeFileHandlers(is, outputStream);
-                } catch (IOException e3222222) {
-                    e3222222.printStackTrace();
+                } catch (IOException e922222) {
+                    e922222.printStackTrace();
                     System.out.println("error");
                 }
                 throw th;
             }
-        } catch (ZipException e9) {
-            e = e9;
-        } catch (FileNotFoundException e10) {
+        } catch (ZipException e10) {
             e2 = e10;
-        } catch (IOException e11) {
-            e3222222 = e11;
-        } catch (Exception e12) {
-            e4 = e12;
+        } catch (FileNotFoundException e11) {
+            e3 = e11;
+        } catch (IOException e12) {
+            e922222 = e12;
+        } catch (Exception e13) {
+            e4 = e13;
         }
     }
 

@@ -59,11 +59,17 @@ final class LZMAEncoderFast extends LZMAEncoder {
                 skip(mainLen - 1);
                 return mainLen;
             }
-            while (this.matches.count > 1 && mainLen == this.matches.len[this.matches.count - 2] + 1 && changePair(this.matches.dist[this.matches.count - 2], mainDist)) {
-                Matches matches = this.matches;
-                matches.count--;
-                mainLen = this.matches.len[this.matches.count - 1];
-                mainDist = this.matches.dist[this.matches.count - 1];
+            while (this.matches.count > 1) {
+                if (mainLen != this.matches.len[this.matches.count - 2] + 1) {
+                    break;
+                } else if (!changePair(this.matches.dist[this.matches.count - 2], mainDist)) {
+                    break;
+                } else {
+                    Matches matches = this.matches;
+                    matches.count--;
+                    mainLen = this.matches.len[this.matches.count - 1];
+                    mainDist = this.matches.dist[this.matches.count - 1];
+                }
             }
             if (mainLen == 2 && mainDist >= Common.INSTALL_ALLOW_DOWNGRADE) {
                 mainLen = 1;

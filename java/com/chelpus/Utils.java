@@ -7,8 +7,8 @@ import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
@@ -35,6 +35,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
@@ -83,6 +84,8 @@ import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileChannel.MapMode;
@@ -152,6 +155,176 @@ public class Utils {
     static Random rnd = new Random();
     float folder_size = 0.0f;
 
+    class AnonymousClass11 implements OnKeyListener {
+        private final /* synthetic */ WindowManager val$manager;
+
+        AnonymousClass11(WindowManager windowManager) {
+            this.val$manager = windowManager;
+        }
+
+        public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+            System.out.println("keyCode " + keyCode);
+            if (keyCode == 4) {
+                this.val$manager.removeView(view.getRootView());
+            }
+            return false;
+        }
+    }
+
+    class AnonymousClass12 implements OnClickListener {
+        private final /* synthetic */ WindowManager val$manager;
+
+        AnonymousClass12(WindowManager windowManager) {
+            this.val$manager = windowManager;
+        }
+
+        public void onClick(View view) {
+            this.val$manager.removeView(view.getRootView());
+        }
+    }
+
+    class AnonymousClass13 implements OnKeyListener {
+        private final /* synthetic */ WindowManager val$manager;
+
+        AnonymousClass13(WindowManager windowManager) {
+            this.val$manager = windowManager;
+        }
+
+        public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+            System.out.println("keyCode " + keyCode);
+            if (keyCode == 4) {
+                this.val$manager.removeView(view.getRootView());
+            }
+            return false;
+        }
+    }
+
+    class AnonymousClass15 implements Runnable {
+        private final /* synthetic */ boolean val$enable;
+
+        AnonymousClass15(boolean z) {
+            this.val$enable = z;
+        }
+
+        public void run() {
+            ArrayList<Components> tmpList = new ArrayList();
+            PackageInfo info = Utils.getPkgInfo(Common.GOOGLEPLAY_PKG, 516);
+            boolean found = false;
+            if (info != null && info.services != null && info.services.length != 0) {
+                int d = 0;
+                while (d < info.services.length) {
+                    try {
+                        if (this.val$enable) {
+                            if ((info.services[d].name.endsWith("InAppBillingService") || info.services[d].name.endsWith("MarketBillingService")) && listAppsFragment.getPkgMng().getComponentEnabledSetting(new ComponentName(Common.GOOGLEPLAY_PKG, info.services[d].name)) != 1) {
+                                new Utils("").cmdRoot("pm enable 'com.android.vending/" + info.services[d].name + "'");
+                                found = true;
+                            }
+                        } else if ((info.services[d].name.endsWith("InAppBillingService") || info.services[d].name.endsWith("MarketBillingService")) && listAppsFragment.getPkgMng().getComponentEnabledSetting(new ComponentName(Common.GOOGLEPLAY_PKG, info.services[d].name)) != 2) {
+                            new Utils("").cmdRoot("pm disable 'com.android.vending/" + info.services[d].name + "'");
+                            found = true;
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    d++;
+                }
+                if (!found && this.val$enable) {
+                    new Utils("").cmdRoot("pm enable 'com.android.vending/com.google.android.finsky.billing.iab.InAppBillingService'");
+                    new Utils("").cmdRoot("pm enable 'com.android.vending/com.google.android.finsky.billing.iab.FirstPartyInAppBillingService'");
+                    new Utils("").cmdRoot("pm enable 'com.android.vending/com.google.android.finsky.billing.iab.MarketBillingService'");
+                }
+                if (listAppsFragment.frag != null) {
+                    listAppsFragment.frag.runToMain(new Runnable() {
+                        public void run() {
+                            try {
+                                if (listAppsFragment.menu_adapt != null) {
+                                    listAppsFragment.removeDialogLP(11);
+                                    listAppsFragment.menu_adapt.notifyDataSetChanged();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    class AnonymousClass16 implements Runnable {
+        private final /* synthetic */ boolean val$enable;
+
+        AnonymousClass16(boolean z) {
+            this.val$enable = z;
+        }
+
+        public void run() {
+            ArrayList<Components> tmpList = new ArrayList();
+            PackageInfo info = Utils.getPkgInfo(Common.GOOGLEPLAY_PKG, 516);
+            boolean found_service = false;
+            if (info != null && info.services != null && info.services.length != 0) {
+                int d = 0;
+                while (d < info.services.length) {
+                    try {
+                        if (this.val$enable) {
+                            if (info.services[d].name.endsWith("LicensingService") && listAppsFragment.getPkgMng().getComponentEnabledSetting(new ComponentName(Common.GOOGLEPLAY_PKG, info.services[d].name)) != 1) {
+                                found_service = true;
+                                new Utils("").cmdRoot("pm enable 'com.android.vending/" + info.services[d].name + "'");
+                            }
+                        } else if (info.services[d].name.endsWith("LicensingService") && listAppsFragment.getPkgMng().getComponentEnabledSetting(new ComponentName(Common.GOOGLEPLAY_PKG, info.services[d].name)) != 2) {
+                            found_service = true;
+                            new Utils("").cmdRoot("pm disable 'com.android.vending/" + info.services[d].name + "'");
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    d++;
+                }
+                if (!found_service && this.val$enable) {
+                    new Utils("").cmdRoot("pm enable 'com.android.vending/com.google.android.finsky.services.LicensingService'");
+                }
+                if (listAppsFragment.frag != null) {
+                    listAppsFragment.frag.runToMain(new Runnable() {
+                        public void run() {
+                            try {
+                                if (listAppsFragment.menu_adapt != null) {
+                                    listAppsFragment.removeDialogLP(11);
+                                    listAppsFragment.menu_adapt.notifyDataSetChanged();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    class AnonymousClass1 implements Runnable {
+        private final /* synthetic */ Activity val$context;
+        private final /* synthetic */ String val$message;
+        private final /* synthetic */ String val$title;
+
+        AnonymousClass1(Activity activity, String str, String str2) {
+            this.val$context = activity;
+            this.val$title = str;
+            this.val$message = str2;
+        }
+
+        public void run() {
+            AlertDlg dialog = new AlertDlg(this.val$context);
+            dialog.setTitle(this.val$title);
+            dialog.setMessage(this.val$message);
+            dialog.setPositiveButton(2131362193, null);
+            try {
+                Utils.showDialog(dialog.create());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public class OatFunc {
         public int codeOffset = 0;
         public int codeSize = 0;
@@ -208,10 +381,10 @@ public class Utils {
                         e2.printStackTrace();
                     }
                     try {
-                        String[] access$100 = this.work.commands;
-                        int length = access$100.length;
+                        String[] access$0 = this.work.commands;
+                        int length = access$0.length;
                         while (i < length) {
-                            System.out.println("Lucky Patcher: freezes root commands:" + access$100[i]);
+                            System.out.println("Lucky Patcher: freezes root commands:" + access$0[i]);
                             i++;
                         }
                     } catch (Exception e22) {
@@ -264,35 +437,35 @@ public class Utils {
                 if (this.commands[0].contains("env LD_LIBRARY_PATH=")) {
                     System.out.println("re-run Dalvik on root with environment " + this.commands[0]);
                 }
-                if (this.commands[0].equals("checkRoot")) {
-                    System.out.println("LuckyPatcher: test root.");
-                    this.commands[0] = "ps init";
-                    checkRoot = true;
-                }
-                listAppsFragment.countRoot++;
-                int thread_number = listAppsFragment.countRoot;
-                System.out.println("Block root thread" + listAppsFragment.countRoot);
                 try {
-                    if (!listAppsFragment.semaphoreRoot.tryAcquire(300, TimeUnit.SECONDS)) {
-                        System.out.println("Root command timeout. Bad root.");
-                        Utils.exitRoot();
-                        listAppsFragment.semaphoreRoot.release();
+                    if (this.commands[0].equals("checkRoot")) {
+                        System.out.println("LuckyPatcher: test root.");
+                        this.commands[0] = "ps init";
+                        checkRoot = true;
                     }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                listAppsFragment.countRoot--;
-                Utils.getRoot();
-                System.out.println("UNBlock root thread N" + thread_number);
-                for (String command2 : this.commands) {
-                    if (dalvikfound) {
-                        listAppsFragment.suOutputStream.writeBytes(new String((listAppsFragment.toolfilesdir + "/busybox killall dalvikvm\n").getBytes(), "ISO-8859-1"));
+                    listAppsFragment.countRoot++;
+                    int thread_number = listAppsFragment.countRoot;
+                    System.out.println("Block root thread" + listAppsFragment.countRoot);
+                    try {
+                        if (!listAppsFragment.semaphoreRoot.tryAcquire(300, TimeUnit.SECONDS)) {
+                            System.out.println("Root command timeout. Bad root.");
+                            Utils.exitRoot();
+                            listAppsFragment.semaphoreRoot.release();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                    if (!command2.equals("skipOut")) {
-                        listAppsFragment.suOutputStream.writeBytes(new String((command2 + "\n").getBytes(), "ISO-8859-1"));
+                    listAppsFragment.countRoot--;
+                    Utils.getRoot();
+                    System.out.println("UNBlock root thread N" + thread_number);
+                    for (String command2 : this.commands) {
+                        if (dalvikfound) {
+                            listAppsFragment.suOutputStream.writeBytes(new String((listAppsFragment.toolfilesdir + "/busybox killall dalvikvm\n").getBytes(), "ISO-8859-1"));
+                        }
+                        if (!command2.equals("skipOut")) {
+                            listAppsFragment.suOutputStream.writeBytes(new String(new StringBuilder(String.valueOf(command2)).append("\n").toString().getBytes(), "ISO-8859-1"));
+                        }
                     }
-                }
-                try {
                     listAppsFragment.suOutputStream.writeBytes("echo 'chelpus done!'\n");
                     listAppsFragment.suOutputStream.flush();
                     if (skipOut) {
@@ -403,154 +576,154 @@ public class Utils {
         r13.<init>();
         r22 = 4;
         r0 = r22;
-        r4 = new java.lang.String[r0];	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r4 = new java.lang.String[r0];	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r22 = 0;
         r23 = "oatdump";
-        r4[r22] = r23;	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r4[r22] = r23;	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r22 = 1;
-        r23 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r23.<init>();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r23 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r24 = "--oat-file=";
-        r23 = r23.append(r24);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r24 = r26.getAbsolutePath();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r23 = r23.append(r24);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r23 = r23.toString();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r4[r22] = r23;	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r23.<init>(r24);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r24 = r26.getAbsolutePath();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r23 = r23.append(r24);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r23 = r23.toString();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r4[r22] = r23;	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r22 = 2;
         r23 = "--no-disassemble";
-        r4[r22] = r23;	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r4[r22] = r23;	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r22 = 3;
         r23 = "--no-dump:vmap";
-        r4[r22] = r23;	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r22 = java.lang.Runtime.getRuntime();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r4[r22] = r23;	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r22 = java.lang.Runtime.getRuntime();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r0 = r22;
-        r17 = r0.exec(r4);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r3 = new java.io.BufferedReader;	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r22 = new java.io.InputStreamReader;	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r23 = r17.getInputStream();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r22.<init>(r23);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r17 = r0.exec(r4);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r3 = new java.io.BufferedReader;	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r22 = new java.io.InputStreamReader;	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r23 = r17.getInputStream();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r22.<init>(r23);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r0 = r22;
-        r3.<init>(r0);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r3.<init>(r0);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r10 = 0;
         r11 = 0;
         r8 = 0;
         r5 = 0;
-    L_0x0066:
-        r12 = r3.readLine();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        if (r12 == 0) goto L_0x0128;
-    L_0x006c:
-        if (r10 != 0) goto L_0x007f;
-    L_0x006e:
-        if (r11 == 0) goto L_0x0073;
+    L_0x0062:
+        r12 = r3.readLine();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        if (r12 != 0) goto L_0x0070;
+    L_0x0068:
+        if (r17 == 0) goto L_0x006d;
+    L_0x006a:
+        r17.destroy();
+    L_0x006d:
+        r17 = 0;
+        return r13;
     L_0x0070:
-        r13.instruction = r12;	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        if (r10 != 0) goto L_0x0083;
+    L_0x0072:
+        if (r11 == 0) goto L_0x0077;
+    L_0x0074:
+        r13.instruction = r12;	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r10 = 1;
-    L_0x0073:
+    L_0x0077:
         r22 = "INSTRUCTION SET:";
         r0 = r22;
-        r22 = r12.equals(r0);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        if (r22 == 0) goto L_0x0066;
-    L_0x007d:
-        r11 = 1;
-        goto L_0x0066;
-    L_0x007f:
-        if (r5 != 0) goto L_0x00a3;
+        r22 = r12.equals(r0);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        if (r22 == 0) goto L_0x0062;
     L_0x0081:
+        r11 = 1;
+        goto L_0x0062;
+    L_0x0083:
+        if (r5 != 0) goto L_0x00a7;
+    L_0x0085:
         r22 = "dex_method_idx";
         r0 = r22;
-        r22 = r12.contains(r0);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        if (r22 == 0) goto L_0x0066;
-    L_0x008b:
-        r22 = r27.iterator();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r22 = r12.contains(r0);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        if (r22 == 0) goto L_0x0062;
     L_0x008f:
-        r23 = r22.hasNext();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        if (r23 == 0) goto L_0x0066;
-    L_0x0095:
-        r9 = r22.next();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r9 = (java.lang.String) r9;	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r23 = r12.contains(r9);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        if (r23 == 0) goto L_0x008f;
-    L_0x00a1:
+        r22 = r27.iterator();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+    L_0x0093:
+        r23 = r22.hasNext();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        if (r23 == 0) goto L_0x0062;
+    L_0x0099:
+        r9 = r22.next();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r9 = (java.lang.String) r9;	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r23 = r12.contains(r9);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        if (r23 == 0) goto L_0x0093;
+    L_0x00a5:
         r5 = r9;
-        goto L_0x008f;
-    L_0x00a3:
+        goto L_0x0093;
+    L_0x00a7:
         r22 = "CODE: ";
         r0 = r22;
-        r22 = r12.contains(r0);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        if (r22 == 0) goto L_0x0066;
-    L_0x00ad:
+        r22 = r12.contains(r0);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        if (r22 == 0) goto L_0x0062;
+    L_0x00b1:
         r8 = r8 + 1;
         r22 = 40;
         r0 = r22;
-        r22 = r12.indexOf(r0);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r22 = r12.indexOf(r0);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r22 = r22 + 1;
         r23 = 41;
         r0 = r23;
-        r23 = r12.indexOf(r0);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r23 = r12.indexOf(r0);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r0 = r22;
         r1 = r23;
-        r21 = r12.substring(r0, r1);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r21 = r12.substring(r0, r1);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r22 = "\\s+";
-        r20 = r21.split(r22);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r20 = r21.split(r22);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r22 = 0;
-        r22 = r20[r22];	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r22 = r20[r22];	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r23 = 0;
-        r23 = r20[r23];	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r23 = r20[r23];	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r24 = 61;
-        r23 = r23.indexOf(r24);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r23 = r23.indexOf(r24);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r23 = r23 + 1;
-        r22 = r22.substring(r23);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r22 = java.lang.Integer.decode(r22);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r14 = r22.intValue();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r22 = r22.substring(r23);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r22 = java.lang.Integer.decode(r22);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r14 = r22.intValue();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r22 = 2;
-        r22 = r20[r22];	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r22 = r20[r22];	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r23 = 2;
-        r23 = r20[r23];	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r23 = r20[r23];	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r24 = 61;
-        r23 = r23.indexOf(r24);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r23 = r23.indexOf(r24);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r23 = r23 + 1;
-        r22 = r22.substring(r23);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r22 = java.lang.Integer.decode(r22);	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r19 = r22.intValue();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r0 = r13.funcArray;	 Catch:{ Exception -> 0x0130, IOException -> 0x0135 }
+        r22 = r22.substring(r23);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r22 = java.lang.Integer.decode(r22);	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r19 = r22.intValue();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r0 = r13.funcArray;	 Catch:{ Exception -> 0x0140, IOException -> 0x012e }
         r22 = r0;
-        r23 = new com.chelpus.Utils$OatFunc;	 Catch:{ Exception -> 0x0130, IOException -> 0x0135 }
+        r23 = new com.chelpus.Utils$OatFunc;	 Catch:{ Exception -> 0x0140, IOException -> 0x012e }
         r0 = r23;
         r1 = r25;
         r2 = r19;
-        r0.<init>(r5, r14, r2);	 Catch:{ Exception -> 0x0130, IOException -> 0x0135 }
-        r22.add(r23);	 Catch:{ Exception -> 0x0130, IOException -> 0x0135 }
-    L_0x0119:
+        r0.<init>(r5, r14, r2);	 Catch:{ Exception -> 0x0140, IOException -> 0x012e }
+        r22.add(r23);	 Catch:{ Exception -> 0x0140, IOException -> 0x012e }
+    L_0x011d:
         r5 = 0;
-        r22 = r27.size();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
+        r22 = r27.size();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
         r0 = r22;
-        if (r8 != r0) goto L_0x0066;
-    L_0x0122:
-        r3.close();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        r17.destroy();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-    L_0x0128:
-        if (r17 == 0) goto L_0x012d;
-    L_0x012a:
-        r17.destroy();
-    L_0x012d:
-        r17 = 0;
-        return r13;
-    L_0x0130:
-        r6 = move-exception;
-        r6.printStackTrace();	 Catch:{ IOException -> 0x0135, Exception -> 0x0146 }
-        goto L_0x0119;
-    L_0x0135:
+        if (r8 != r0) goto L_0x0062;
+    L_0x0126:
+        r3.close();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        r17.destroy();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        goto L_0x0068;
+    L_0x012e:
         r7 = move-exception;
         r22 = r7.toString();
         com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.errorOutput = r22;
         r22 = java.lang.System.out;
         r23 = r7.toString();
         r22.println(r23);
-        goto L_0x0128;
-    L_0x0146:
+        goto L_0x0068;
+    L_0x0140:
+        r6 = move-exception;
+        r6.printStackTrace();	 Catch:{ IOException -> 0x012e, Exception -> 0x0145 }
+        goto L_0x011d;
+    L_0x0145:
         r6 = move-exception;
         r6.printStackTrace();
-        goto L_0x0128;
+        goto L_0x0068;
         */
         throw new UnsupportedOperationException("Method not decompiled: com.chelpus.Utils.getOffsetOatdump(java.io.File, java.util.ArrayList):com.chelpus.Utils$OatFuncDump");
     }
@@ -565,10 +738,10 @@ public class Utils {
         }
     }
 
-    public static void showDialogYesNo(String title, String message, OnClickListener yes, OnClickListener no, OnCancelListener cancel) {
+    public static void showDialogYesNo(String title, String message, DialogInterface.OnClickListener yes, DialogInterface.OnClickListener no, OnCancelListener cancel) {
         try {
             if (listAppsFragment.patchAct != null && !listAppsFragment.patchAct.isFinishing()) {
-                Dialog dialog = new AlertDlg(listAppsFragment.frag.getContext()).setTitle(title).setMessage(message).setIcon(2130837547).setPositiveButton(getText(2131165187), yes).setNegativeButton(getText(2131165607), no).setOnCancelListener(cancel).create();
+                Dialog dialog = new AlertDlg(listAppsFragment.frag.getContext()).setTitle(title).setMessage(message).setIcon(2130837547).setPositiveButton(getText(2131361795), yes).setNegativeButton(getText(2131362169), no).setOnCancelListener(cancel).create();
                 showDialog(dialog);
                 dialog.findViewById(16908299);
             }
@@ -577,10 +750,10 @@ public class Utils {
         }
     }
 
-    public static void showDialogYesNoAndCheckBox(String title, String message, String checkbox_text, OnCheckedChangeListener onCheckedChangeListener, boolean default_set_checkbox, OnClickListener yes, OnClickListener no, OnCancelListener cancel) {
+    public static void showDialogYesNoAndCheckBox(String title, String message, String checkbox_text, OnCheckedChangeListener onCheckedChangeListener, boolean default_set_checkbox, DialogInterface.OnClickListener yes, DialogInterface.OnClickListener no, OnCancelListener cancel) {
         try {
             if (listAppsFragment.patchAct != null && !listAppsFragment.patchAct.isFinishing()) {
-                Dialog dialog = new AlertDlg(listAppsFragment.frag.getContext()).setTitle(title).setMessage(message).setIcon(2130837547).setPositiveButton(getText(2131165187), yes).setNegativeButton(getText(2131165607), no).setOnCancelListener(cancel).setCheckBox(checkbox_text, onCheckedChangeListener, default_set_checkbox).create();
+                Dialog dialog = new AlertDlg(listAppsFragment.frag.getContext()).setTitle(title).setMessage(message).setIcon(2130837547).setPositiveButton(getText(2131361795), yes).setNegativeButton(getText(2131362169), no).setOnCancelListener(cancel).setCheckBox(checkbox_text, onCheckedChangeListener, default_set_checkbox).create();
                 showDialog(dialog);
                 dialog.findViewById(16908299);
             }
@@ -589,10 +762,10 @@ public class Utils {
         }
     }
 
-    public static void showDialogCustomYes(String title, String message, String button_yes, OnClickListener yes, OnClickListener no, OnCancelListener cancel) {
+    public static void showDialogCustomYes(String title, String message, String button_yes, DialogInterface.OnClickListener yes, DialogInterface.OnClickListener no, OnCancelListener cancel) {
         try {
             if (listAppsFragment.patchAct != null && !listAppsFragment.patchAct.isFinishing()) {
-                Dialog dialog = new AlertDlg(listAppsFragment.frag.getContext()).setTitle(title).setMessage(message).setIcon(2130837547).setPositiveButton(button_yes, yes).setNegativeButton(getText(2131165607), no).setOnCancelListener(cancel).create();
+                Dialog dialog = new AlertDlg(listAppsFragment.frag.getContext()).setTitle(title).setMessage(message).setIcon(2130837547).setPositiveButton(button_yes, yes).setNegativeButton(getText(2131362169), no).setOnCancelListener(cancel).create();
                 showDialog(dialog);
                 dialog.findViewById(16908299);
             }
@@ -601,7 +774,7 @@ public class Utils {
         }
     }
 
-    public static void showDialogCustomYesNo(String title, String message, String button_yes, OnClickListener yes, String button_no, OnClickListener no, OnCancelListener cancel) {
+    public static void showDialogCustomYesNo(String title, String message, String button_yes, DialogInterface.OnClickListener yes, String button_no, DialogInterface.OnClickListener no, OnCancelListener cancel) {
         try {
             if (listAppsFragment.patchAct != null && !listAppsFragment.patchAct.isFinishing()) {
                 Dialog dialog = new AlertDlg(listAppsFragment.frag.getContext()).setTitle(title).setMessage(message).setIcon(2130837547).setPositiveButton(button_yes, yes).setNegativeButton(button_no, no).setOnCancelListener(cancel).create();
@@ -613,20 +786,8 @@ public class Utils {
         }
     }
 
-    public static void showMessage(final Activity context, final String title, final String message) {
-        context.runOnUiThread(new Runnable() {
-            public void run() {
-                AlertDlg dialog = new AlertDlg(context);
-                dialog.setTitle(title);
-                dialog.setMessage(message);
-                dialog.setPositiveButton(2131165633, null);
-                try {
-                    Utils.showDialog(dialog.create());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+    public static void showMessage(Activity context, String title, String message) {
+        context.runOnUiThread(new AnonymousClass1(context, title, message));
     }
 
     public static long getRandom(long start, long end) {
@@ -701,7 +862,7 @@ public class Utils {
 
     public void deleteFolder(File fileOrDirectory) throws IOException {
         if (fileOrDirectory.exists()) {
-            if (fileOrDirectory.isDirectory()) {
+            if (fileOrDirectory.isDirectory() && fileOrDirectory.listFiles() != null) {
                 for (File child : fileOrDirectory.listFiles()) {
                     deleteFolder(child);
                 }
@@ -1101,9 +1262,9 @@ public class Utils {
             String[] teils = file.split("\\.");
             for (int i = 0; i < teils.length; i++) {
                 if (i < teils.length - 1) {
-                    result = result + teils[i] + ".";
+                    result = new StringBuilder(String.valueOf(result)).append(teils[i]).append(".").toString();
                 } else {
-                    result = result + extension;
+                    result = new StringBuilder(String.valueOf(result)).append(extension).toString();
                 }
             }
         }
@@ -1118,9 +1279,9 @@ public class Utils {
         String[] teils = file.split("\\.");
         for (int i = 0; i < teils.length; i++) {
             if (i >= teils.length - 2) {
-                return result + teils[i];
+                return new StringBuilder(String.valueOf(result)).append(teils[i]).toString();
             }
-            result = result + teils[i] + ".";
+            result = new StringBuilder(String.valueOf(result)).append(teils[i]).append(".").toString();
         }
         return result;
     }
@@ -1216,7 +1377,7 @@ public class Utils {
                             if (line == null) {
                                 break;
                             }
-                            result = result + line + "\n";
+                            result = new StringBuilder(String.valueOf(result)).append(line).append("\n").toString();
                         }
                         process.waitFor();
                     }
@@ -1244,183 +1405,177 @@ public class Utils {
         r13.<init>();
         r4 = 0;
         r0 = r20;
-        r0 = r0.length;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        r0 = r0.length;	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r18 = r0;
         r17 = 0;
     L_0x0015:
         r0 = r17;
         r1 = r18;
-        if (r0 >= r1) goto L_0x004b;
+        if (r0 < r1) goto L_0x008e;
     L_0x001b:
-        r7 = r20[r17];	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        if (r4 != 0) goto L_0x00d4;
+    L_0x001d:
+        r17 = java.lang.Runtime.getRuntime();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r0 = r17;
+        r1 = r20;
+        r14 = r0.exec(r1);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r3 = new java.io.BufferedReader;	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17 = new java.io.InputStreamReader;	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r18 = r14.getInputStream();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17.<init>(r18);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r0 = r17;
+        r3.<init>(r0);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+    L_0x0039:
+        r8 = r3.readLine();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        if (r8 != 0) goto L_0x00b9;
+    L_0x003f:
+        r14.waitFor();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+    L_0x0042:
+        r17 = new java.io.DataInputStream;	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r18 = r14.getErrorStream();	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r17.<init>(r18);	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.suErrorInputStream = r17;	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r17 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.suErrorInputStream;	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        if (r17 == 0) goto L_0x0087;
+    L_0x0051:
+        r17 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.suErrorInputStream;	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r17 = r17.available();	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r0 = r17;
+        r2 = new byte[r0];	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r17 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.suErrorInputStream;	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r0 = r17;
+        r0.read(r2);	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r17 = new java.lang.String;	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r0 = r17;
+        r0.<init>(r2);	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.errorOutput = r17;	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r17 = new java.lang.String;	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r0 = r17;
+        r0.<init>(r2);	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r17 = r17.trim();	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r18 = "";
+        r17 = r17.equals(r18);	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        if (r17 != 0) goto L_0x0161;
+    L_0x007e:
+        r17 = new java.lang.String;	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        r0 = r17;
+        r0.<init>(r2);	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.errorOutput = r17;	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+    L_0x0087:
+        if (r14 == 0) goto L_0x008c;
+    L_0x0089:
+        r14.destroy();
+    L_0x008c:
+        r14 = 0;
+        return r16;
+    L_0x008e:
+        r7 = r20[r17];	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r19 = "grep";
         r0 = r19;
-        r19 = r7.equals(r0);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        if (r19 == 0) goto L_0x0028;
-    L_0x0027:
+        r19 = r7.equals(r0);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        if (r19 == 0) goto L_0x009b;
+    L_0x009a:
         r4 = 1;
-    L_0x0028:
-        if (r4 == 0) goto L_0x0030;
-    L_0x002a:
-        r13.add(r7);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-    L_0x002d:
+    L_0x009b:
+        if (r4 == 0) goto L_0x00a4;
+    L_0x009d:
+        r13.add(r7);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+    L_0x00a0:
         r17 = r17 + 1;
         goto L_0x0015;
-    L_0x0030:
-        r12.add(r7);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        goto L_0x002d;
-    L_0x0034:
+    L_0x00a4:
+        r12.add(r7);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        goto L_0x00a0;
+    L_0x00a8:
         r6 = move-exception;
         r17 = r6.toString();
         com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.errorOutput = r17;
         r17 = java.lang.System.out;
         r18 = r6.toString();
         r17.println(r18);
-    L_0x0044:
-        if (r14 == 0) goto L_0x0049;
-    L_0x0046:
-        r14.destroy();
-    L_0x0049:
-        r14 = 0;
-        return r16;
-    L_0x004b:
-        if (r4 != 0) goto L_0x00e3;
-    L_0x004d:
-        r17 = java.lang.Runtime.getRuntime();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        goto L_0x0087;
+    L_0x00b9:
+        r17 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r18 = java.lang.String.valueOf(r16);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17.<init>(r18);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r0 = r17;
-        r1 = r20;
-        r14 = r0.exec(r1);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r3 = new java.io.BufferedReader;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17 = new java.io.InputStreamReader;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r18 = r14.getInputStream();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17.<init>(r18);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r0 = r17;
-        r3.<init>(r0);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-    L_0x0069:
-        r8 = r3.readLine();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        if (r8 == 0) goto L_0x008d;
-    L_0x006f:
-        r17 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17.<init>();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r0 = r17;
-        r1 = r16;
-        r17 = r0.append(r1);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r0 = r17;
-        r17 = r0.append(r8);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        r17 = r0.append(r8);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r18 = "\n";
-        r17 = r17.append(r18);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r16 = r17.toString();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        goto L_0x0069;
-    L_0x008d:
-        r14.waitFor();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-    L_0x0090:
-        r17 = new java.io.DataInputStream;	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r18 = r14.getErrorStream();	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r17.<init>(r18);	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.suErrorInputStream = r17;	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r17 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.suErrorInputStream;	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        if (r17 == 0) goto L_0x0044;
-    L_0x009f:
-        r17 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.suErrorInputStream;	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r17 = r17.available();	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
+        r17 = r17.append(r18);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r16 = r17.toString();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        goto L_0x0039;
+    L_0x00d4:
+        r18 = java.lang.Runtime.getRuntime();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17 = r12.size();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r0 = r17;
-        r2 = new byte[r0];	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r17 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.suErrorInputStream;	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r0 = r17;
-        r0.read(r2);	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r17 = new java.lang.String;	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r0 = r17;
-        r0.<init>(r2);	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.errorOutput = r17;	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r17 = new java.lang.String;	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r0 = r17;
-        r0.<init>(r2);	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r17 = r17.trim();	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r18 = "";
-        r17 = r17.equals(r18);	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        if (r17 != 0) goto L_0x0178;
-    L_0x00cc:
-        r17 = new java.lang.String;	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        r0 = r17;
-        r0.<init>(r2);	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.errorOutput = r17;	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        goto L_0x0044;
-    L_0x00d7:
-        r5 = move-exception;
-        r5.printStackTrace();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        goto L_0x0044;
-    L_0x00dd:
-        r6 = move-exception;
-        r6.printStackTrace();
-        goto L_0x0044;
-    L_0x00e3:
-        r18 = java.lang.Runtime.getRuntime();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17 = r12.size();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r0 = r17;
-        r0 = new java.lang.String[r0];	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        r0 = new java.lang.String[r0];	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r17 = r0;
         r0 = r17;
-        r17 = r12.toArray(r0);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17 = (java.lang.String[]) r17;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17 = (java.lang.String[]) r17;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        r17 = r12.toArray(r0);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17 = (java.lang.String[]) r17;	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r0 = r18;
         r1 = r17;
-        r9 = r0.exec(r1);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r18 = java.lang.Runtime.getRuntime();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17 = r13.size();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        r9 = r0.exec(r1);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r18 = java.lang.Runtime.getRuntime();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17 = r13.size();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r0 = r17;
-        r0 = new java.lang.String[r0];	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        r0 = new java.lang.String[r0];	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r17 = r0;
         r0 = r17;
-        r17 = r13.toArray(r0);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17 = (java.lang.String[]) r17;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17 = (java.lang.String[]) r17;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        r17 = r13.toArray(r0);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17 = (java.lang.String[]) r17;	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r0 = r18;
         r1 = r17;
-        r10 = r0.exec(r1);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r11 = new com.chelpus.Piper;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17 = r9.getInputStream();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r18 = r10.getOutputStream();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        r10 = r0.exec(r1);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r11 = new com.chelpus.Piper;	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17 = r9.getInputStream();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r18 = r10.getOutputStream();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r0 = r17;
         r1 = r18;
-        r11.<init>(r0, r1);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17 = new java.lang.Thread;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        r11.<init>(r0, r1);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17 = new java.lang.Thread;	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r0 = r17;
-        r0.<init>(r11);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17.start();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r15 = new java.io.BufferedReader;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17 = new java.io.InputStreamReader;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r18 = r10.getInputStream();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17.<init>(r18);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        r0.<init>(r11);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17.start();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r15 = new java.io.BufferedReader;	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17 = new java.io.InputStreamReader;	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r18 = r10.getInputStream();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17.<init>(r18);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r0 = r17;
-        r15.<init>(r0);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-    L_0x014e:
-        r8 = r15.readLine();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        if (r8 == 0) goto L_0x0172;
-    L_0x0154:
-        r17 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r17.<init>();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r0 = r17;
-        r1 = r16;
-        r17 = r0.append(r1);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r0 = r17;
-        r17 = r0.append(r8);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r18 = "\n";
-        r17 = r17.append(r18);	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        r16 = r17.toString();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
-        goto L_0x014e;
-    L_0x0172:
-        r10.waitFor();	 Catch:{ IOException -> 0x0034, InterruptedException -> 0x00dd, Exception -> 0x017e }
+        r15.<init>(r0);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+    L_0x013b:
+        r8 = r15.readLine();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        if (r8 != 0) goto L_0x0147;
+    L_0x0141:
+        r10.waitFor();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
         r14 = r10;
-        goto L_0x0090;
-    L_0x0178:
+        goto L_0x0042;
+    L_0x0147:
+        r17 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r18 = java.lang.String.valueOf(r16);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r17.<init>(r18);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r0 = r17;
+        r17 = r0.append(r8);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r18 = "\n";
+        r17 = r17.append(r18);	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        r16 = r17.toString();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        goto L_0x013b;
+    L_0x0161:
         r17 = "";
-        com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.errorOutput = r17;	 Catch:{ Exception -> 0x00d7, IOException -> 0x0034, InterruptedException -> 0x00dd }
-        goto L_0x0044;
-    L_0x017e:
+        com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.errorOutput = r17;	 Catch:{ Exception -> 0x0167, IOException -> 0x00a8, InterruptedException -> 0x016d }
+        goto L_0x0087;
+    L_0x0167:
+        r5 = move-exception;
+        r5.printStackTrace();	 Catch:{ IOException -> 0x00a8, InterruptedException -> 0x016d, Exception -> 0x0173 }
+        goto L_0x0087;
+    L_0x016d:
+        r6 = move-exception;
+        r6.printStackTrace();
+        goto L_0x0087;
+    L_0x0173:
         r5 = move-exception;
         r5.printStackTrace();
-        goto L_0x0044;
+        goto L_0x0087;
         */
         throw new UnsupportedOperationException("Method not decompiled: com.chelpus.Utils.cmdParam(java.lang.String[]):java.lang.String");
     }
@@ -1461,8 +1616,7 @@ public class Utils {
                 worker.join();
             } else {
                 worker.join();
-                if (worker.exitCode == null) {
-                }
+                worker.exitCode;
             }
         } catch (InterruptedException ex) {
             ex.printStackTrace();
@@ -1485,120 +1639,121 @@ public class Utils {
             worker.input = listAppsFragment.suInputStream;
             while (true) {
                 String line = readLine(worker.input);
-                if (line == null) {
-                    break;
-                }
-                worker.lastTimeGetStream = System.currentTimeMillis();
-                if (send_to_dialog && listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
-                    String message1;
-                    if (line.contains("Get classes.dex.")) {
-                        message1 = line;
-                        listAppsFragment.frag.runToMain(new Runnable() {
-                            public void run() {
-                                if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
-                                    listAppsFragment.progress_loading.setMessage(Utils.getText(2131165641));
-                                    listAppsFragment.progress_loading.setIndeterminate(false, listAppsFragment.frag.getContext());
-                                }
-                            }
-                        });
-                    }
-                    if (line.equals("String analysis.")) {
-                        message1 = line;
-                        listAppsFragment.frag.runToMain(new Runnable() {
-                            public void run() {
-                                if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
-                                    listAppsFragment.progress_loading.setMessage(Utils.getText(2131165642));
-                                    listAppsFragment.progress_loading.setIndeterminate(false, listAppsFragment.frag.getContext());
-                                }
-                            }
-                        });
-                    }
-                    if (line.equals("Parse data for patch.")) {
-                        message1 = line;
-                        listAppsFragment.frag.runToMain(new Runnable() {
-                            public void run() {
-                                if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
-                                    listAppsFragment.progress_loading.setMessage(Utils.getText(2131165640));
-                                    listAppsFragment.progress_loading.setIndeterminate(false, listAppsFragment.frag.getContext());
-                                }
-                            }
-                        });
-                    }
-                    if (line.startsWith("Progress size:")) {
-                        message1 = line;
-                        listAppsFragment.frag.runToMain(new Runnable() {
-                            public void run() {
-                                if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
-                                    listAppsFragment.progress_loading.setMessage(Utils.getText(2131165644));
-                                    try {
-                                        listAppsFragment.progress_loading.setProgress(Integer.valueOf(message1.replace("Progress size:", "")).intValue());
-                                    } catch (NumberFormatException e) {
-                                        e.printStackTrace();
+                if (line != null) {
+                    worker.lastTimeGetStream = System.currentTimeMillis();
+                    if (send_to_dialog && listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
+                        String message1;
+                        if (line.contains("Get classes.dex.")) {
+                            message1 = line;
+                            listAppsFragment.frag.runToMain(new Runnable() {
+                                public void run() {
+                                    if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
+                                        listAppsFragment.progress_loading.setMessage(Utils.getText(2131362200));
+                                        listAppsFragment.progress_loading.setIndeterminate(false, listAppsFragment.frag.getContext());
                                     }
                                 }
-                            }
-                        });
-                    }
-                    if (line.startsWith("Size file:")) {
-                        message1 = line;
-                        listAppsFragment.frag.runToMain(new Runnable() {
-                            public void run() {
-                                if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
-                                    listAppsFragment.progress_loading.setMessage(Utils.getText(2131165644));
-                                    try {
-                                        listAppsFragment.progress_loading.setMax(Integer.valueOf(message1.replace("Size file:", "")).intValue());
-                                    } catch (NumberFormatException e) {
-                                        e.printStackTrace();
+                            });
+                        }
+                        if (line.equals("String analysis.")) {
+                            message1 = line;
+                            listAppsFragment.frag.runToMain(new Runnable() {
+                                public void run() {
+                                    if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
+                                        listAppsFragment.progress_loading.setMessage(Utils.getText(2131362201));
+                                        listAppsFragment.progress_loading.setIndeterminate(false, listAppsFragment.frag.getContext());
                                     }
-                                    listAppsFragment.progress_loading.setProgressNumberFormat("%1d/%2d bytes");
                                 }
-                            }
-                        });
-                    }
-                    if (line.startsWith("Analise Results:")) {
-                        message1 = line;
-                        listAppsFragment.frag.runToMain(new Runnable() {
-                            public void run() {
-                                if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
-                                    listAppsFragment.progress_loading.setMessage(Utils.getText(2131165645));
-                                    listAppsFragment.progress_loading.setMax(6);
-                                    listAppsFragment.progress_loading.setProgress(3);
-                                    listAppsFragment.progress_loading.setProgressNumberFormat("%1d/%2d");
+                            });
+                        }
+                        if (line.equals("Parse data for patch.")) {
+                            message1 = line;
+                            listAppsFragment.frag.runToMain(new Runnable() {
+                                public void run() {
+                                    if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
+                                        listAppsFragment.progress_loading.setMessage(Utils.getText(2131362199));
+                                        listAppsFragment.progress_loading.setIndeterminate(false, listAppsFragment.frag.getContext());
+                                    }
                                 }
-                            }
-                        });
-                    }
-                    if (line.startsWith("Create ODEX:")) {
-                        message1 = line;
-                        listAppsFragment.frag.runToMain(new Runnable() {
-                            public void run() {
-                                if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
-                                    listAppsFragment.progress_loading.setMessage(Utils.getText(2131165646));
-                                    listAppsFragment.progress_loading.setProgress(4);
+                            });
+                        }
+                        if (line.startsWith("Progress size:")) {
+                            message1 = line;
+                            listAppsFragment.frag.runToMain(new Runnable() {
+                                public void run() {
+                                    if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
+                                        listAppsFragment.progress_loading.setMessage(Utils.getText(2131362203));
+                                        try {
+                                            listAppsFragment.progress_loading.setProgress(Integer.valueOf(message1.replace("Progress size:", "")).intValue());
+                                        } catch (NumberFormatException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
                                 }
-                            }
-                        });
-                    }
-                    if (line.startsWith("Optional Steps After Patch:")) {
-                        message1 = line;
-                        listAppsFragment.frag.runToMain(new Runnable() {
-                            public void run() {
-                                if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
-                                    listAppsFragment.progress_loading.setMessage(Utils.getText(2131165647));
-                                    listAppsFragment.progress_loading.setProgress(6);
+                            });
+                        }
+                        if (line.startsWith("Size file:")) {
+                            message1 = line;
+                            listAppsFragment.frag.runToMain(new Runnable() {
+                                public void run() {
+                                    if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
+                                        listAppsFragment.progress_loading.setMessage(Utils.getText(2131362203));
+                                        try {
+                                            listAppsFragment.progress_loading.setMax(Integer.valueOf(message1.replace("Size file:", "")).intValue());
+                                        } catch (NumberFormatException e) {
+                                            e.printStackTrace();
+                                        }
+                                        listAppsFragment.progress_loading.setProgressNumberFormat("%1d/%2d bytes");
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        }
+                        if (line.startsWith("Analise Results:")) {
+                            message1 = line;
+                            listAppsFragment.frag.runToMain(new Runnable() {
+                                public void run() {
+                                    if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
+                                        listAppsFragment.progress_loading.setMessage(Utils.getText(2131362204));
+                                        listAppsFragment.progress_loading.setMax(6);
+                                        listAppsFragment.progress_loading.setProgress(3);
+                                        listAppsFragment.progress_loading.setProgressNumberFormat("%1d/%2d");
+                                    }
+                                }
+                            });
+                        }
+                        if (line.startsWith("Create ODEX:")) {
+                            message1 = line;
+                            listAppsFragment.frag.runToMain(new Runnable() {
+                                public void run() {
+                                    if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
+                                        listAppsFragment.progress_loading.setMessage(Utils.getText(2131362205));
+                                        listAppsFragment.progress_loading.setProgress(4);
+                                    }
+                                }
+                            });
+                        }
+                        if (line.startsWith("Optional Steps After Patch:")) {
+                            message1 = line;
+                            listAppsFragment.frag.runToMain(new Runnable() {
+                                public void run() {
+                                    if (listAppsFragment.progress_loading != null && listAppsFragment.progress_loading.isShowing()) {
+                                        listAppsFragment.progress_loading.setMessage(Utils.getText(2131362206));
+                                        listAppsFragment.progress_loading.setProgress(6);
+                                    }
+                                }
+                            });
+                        }
                     }
-                }
-                if (line.contains("com.chelpus.root.utils.custompatch")) {
-                    System.out.println(result);
-                    result = "";
-                }
-                if (line.contains("chelpus done!")) {
+                    if (line.contains("com.chelpus.root.utils.custompatch")) {
+                        System.out.println(result);
+                        result = "";
+                    }
+                    if (line.contains("chelpus done!")) {
+                        break;
+                    } else if (!line.contains("chelpusstart!")) {
+                        result = new StringBuilder(String.valueOf(result)).append(line).append("\n").toString();
+                    }
+                } else {
                     break;
-                } else if (!line.contains("chelpusstart!")) {
-                    result = result + line + "\n";
                 }
             }
         } catch (Exception e) {
@@ -1795,20 +1950,20 @@ public class Utils {
             verify_and_run("mkdir", "-p '" + data + "'");
         }
         try {
-            new File(data1 + "test.txt").createNewFile();
+            new File(new StringBuilder(String.valueOf(data1)).append("test.txt").toString()).createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
         run_all("echo '' >'" + data1 + "test.txt'");
-        if (exists(target1 + "test.txt")) {
-            new File(data1 + "test.txt").delete();
-            if (exists(data1 + "test.txt")) {
+        if (exists(new StringBuilder(String.valueOf(target1)).append("test.txt").toString())) {
+            new File(new StringBuilder(String.valueOf(data1)).append("test.txt").toString()).delete();
+            if (exists(new StringBuilder(String.valueOf(data1)).append("test.txt").toString())) {
                 run_all("rm '" + data1 + "test.txt'");
             }
             return true;
         }
-        new File(data1 + "test.txt").delete();
-        if (!exists(data1 + "test.txt")) {
+        new File(new StringBuilder(String.valueOf(data1)).append("test.txt").toString()).delete();
+        if (!exists(new StringBuilder(String.valueOf(data1)).append("test.txt").toString())) {
             return false;
         }
         run_all("rm '" + data1 + "test.txt'");
@@ -1840,54 +1995,54 @@ public class Utils {
                 verify_and_run("mkdir", "-p '" + data + "'");
             }
             try {
-                new File(data1 + "test.txt").createNewFile();
+                new File(new StringBuilder(String.valueOf(data1)).append("test.txt").toString()).createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
             run_all("echo '' >'" + data1 + "test.txt'");
-            if (exists(target1 + "test.txt")) {
+            if (exists(new StringBuilder(String.valueOf(target1)).append("test.txt").toString())) {
                 System.out.println("LuckyPatcher(Binder): " + target + " exists!");
             } else {
                 run_all("umount '" + target + "'");
                 System.out.println("data: " + data1 + "test.txt");
                 System.out.println("target: " + target1 + "test.txt");
                 try {
-                    new File(data1 + "test.txt").createNewFile();
+                    new File(new StringBuilder(String.valueOf(data1)).append("test.txt").toString()).createNewFile();
                 } catch (IOException e2) {
                     e2.printStackTrace();
                 }
                 run_all("echo '' >'" + data1 + "test.txt'");
-                if (!exists(target1 + "test.txt")) {
+                if (!exists(new StringBuilder(String.valueOf(target1)).append("test.txt").toString())) {
                     new Utils("").cmdRoot("busybox " + commanda + " " + parameters);
                     try {
-                        new File(data1 + "test.txt").createNewFile();
+                        new File(new StringBuilder(String.valueOf(data1)).append("test.txt").toString()).createNewFile();
                     } catch (IOException e22) {
                         e22.printStackTrace();
                     }
                     run_all("echo '' >'" + data1 + "test.txt'");
-                    if (!exists(target1 + "test.txt")) {
+                    if (!exists(new StringBuilder(String.valueOf(target1)).append("test.txt").toString())) {
                         new Utils("").cmdRoot(listAppsFragment.toolfilesdir + "/busybox " + commanda + " " + parameters);
                         new Utils("").cmdRoot("busybox " + commanda + " " + parameters);
                         try {
-                            new File(data1 + "test.txt").createNewFile();
+                            new File(new StringBuilder(String.valueOf(data1)).append("test.txt").toString()).createNewFile();
                         } catch (IOException e222) {
                             e222.printStackTrace();
                         }
                         run_all("echo '' >'" + data1 + "test.txt'");
-                        if (!exists(target1 + "test.txt")) {
+                        if (!exists(new StringBuilder(String.valueOf(target1)).append("test.txt").toString())) {
                             System.out.println("LuckyPatcher(Binder error): bind not created!");
                         }
                     }
                 }
             }
-            if (exists(data1 + "test.txt")) {
-                if (exists(target1 + "test.txt")) {
+            if (exists(new StringBuilder(String.valueOf(data1)).append("test.txt").toString())) {
+                if (exists(new StringBuilder(String.valueOf(target1)).append("test.txt").toString())) {
                     System.out.println("LuckyPatcher(Binder): " + target + " binded!");
                 } else {
                     System.out.println("LuckyPatcher(Binder error): " + target + " not binded!");
                 }
-                new File(data1 + "test.txt").delete();
-                if (exists(data1 + "test.txt")) {
+                new File(new StringBuilder(String.valueOf(data1)).append("test.txt").toString()).delete();
+                if (exists(new StringBuilder(String.valueOf(data1)).append("test.txt").toString())) {
                     run_all("rm '" + data1 + "test.txt'");
                 }
             }
@@ -1896,7 +2051,7 @@ public class Utils {
 
     public static void verify_and_run(String commanda, String parameters) {
         listAppsFragment.errorOutput = "";
-        new Utils("").cmdRoot(commanda + " " + parameters);
+        new Utils("").cmdRoot(new StringBuilder(String.valueOf(commanda)).append(" ").append(parameters).toString());
         if (!listAppsFragment.errorOutput.equals("")) {
             new Utils("").cmdRoot("busybox " + commanda + " " + parameters);
         }
@@ -2086,8 +2241,6 @@ public class Utils {
     }
 
     public static ArrayList<Mount> getMounts() {
-        String[] fields;
-        String line;
         Exception e;
         LineNumberReader lineNumberReader;
         String result = "";
@@ -2124,7 +2277,9 @@ public class Utils {
         ArrayList<Mount> mounts = new ArrayList();
         boolean sys_mounts = false;
         try {
-            for (String line2 : strings) {
+            for (String line : strings) {
+                String[] fields;
+                String line2;
                 fields = line2.replace(" on ", " ").replace(" type ", " ").split("\\s+");
                 if (fields[1].startsWith("/system")) {
                     sys_mounts = true;
@@ -2152,15 +2307,14 @@ public class Utils {
             try {
                 ArrayList<Mount> mounts2 = new ArrayList();
                 while (true) {
+                    line2 = lnr.readLine();
+                    if (line2 == null) {
+                        lnr.close();
+                        return mounts2;
+                    }
                     try {
-                        line2 = lnr.readLine();
-                        if (line2 != null) {
-                            fields = line2.split(" ");
-                            mounts2.add(new Mount(new File(fields[0]), new File(fields[1]), fields[2], fields[3]));
-                        } else {
-                            lnr.close();
-                            return mounts2;
-                        }
+                        fields = line2.split(" ");
+                        mounts2.add(new Mount(new File(fields[0]), new File(fields[1]), fields[2], fields[3]));
                     } catch (Exception e4) {
                         e3 = e4;
                         lineNumberReader = lnr;
@@ -2276,7 +2430,7 @@ public class Utils {
         while (dalvikcachefile.startsWith("@")) {
             dalvikcachefile = dalvikcachefile.replaceFirst("@", "");
         }
-        dalvikcachefile = dalvikcachefile + "@classes.dex";
+        dalvikcachefile = new StringBuilder(String.valueOf(dalvikcachefile)).append("@classes.dex").toString();
         String dalvik = "";
         if (listAppsFragment.startUnderRoot.booleanValue()) {
             try {
@@ -2290,7 +2444,7 @@ public class Utils {
                 e2.printStackTrace();
             }
             if (!dalvik.equals("")) {
-                System.out.println("" + dalvik);
+                System.out.println(dalvik);
                 if (new File(dalvik).exists()) {
                     return new File(dalvik);
                 }
@@ -2321,10 +2475,10 @@ public class Utils {
             while (artcachefile.startsWith("@")) {
                 artcachefile = artcachefile.replaceFirst("@", "");
             }
-            artcachefile = artcachefile + ".oat";
-            if (new File(artcache + artcachefile).exists()) {
+            artcachefile = new StringBuilder(String.valueOf(artcachefile)).append(".oat").toString();
+            if (new File(new StringBuilder(String.valueOf(artcache)).append(artcachefile).toString()).exists()) {
                 System.out.println("\nLuckyPatcher: found dalvik-cache! " + artcache + artcachefile);
-                return new File(artcache + artcachefile);
+                return new File(new StringBuilder(String.valueOf(artcache)).append(artcachefile).toString());
             }
         }
         String[] dirs_for_dalvikcache = new String[]{"/data/dalvik-cache/", "/data/dalvik-cache/arm64/", "/data/dalvik-cache/arm/", "/data/dalvik-cache/x86/", "/data/dalvik-cache/x86_64/", "/sd-ext/data/dalvik-cache/", "/cache/dalvik-cache/", "/sd-ext/data/cache/dalvik-cache/", "/data/cache/dalvik-cache/"};
@@ -2332,13 +2486,13 @@ public class Utils {
         while (dalvikcachefile.startsWith("@")) {
             dalvikcachefile = dalvikcachefile.replaceFirst("@", "");
         }
-        dalvikcachefile = dalvikcachefile + "@classes.dex";
+        dalvikcachefile = new StringBuilder(String.valueOf(dalvikcachefile)).append("@classes.dex").toString();
         System.out.println("dalvikfile: " + dalvikcachefile);
         File foundfiles = null;
         for (String dalvikdir : dirs_for_dalvikcache) {
-            if (new File(dalvikdir + dalvikcachefile).exists()) {
+            if (new File(new StringBuilder(String.valueOf(dalvikdir)).append(dalvikcachefile).toString()).exists()) {
                 System.out.println("\nLuckyPatcher: found dalvik-cache! " + dalvikdir + dalvikcachefile);
-                foundfiles = new File(dalvikdir + dalvikcachefile);
+                foundfiles = new File(new StringBuilder(String.valueOf(dalvikdir)).append(dalvikcachefile).toString());
             }
         }
         if (foundfiles == null) {
@@ -2423,10 +2577,11 @@ public class Utils {
             localFileInputStream.read(odexHeader);
             localFileInputStream.close();
             byte[] magicDex = new byte[]{(byte) 100, (byte) 101, (byte) 120};
-            byte[] magicODex = new byte[]{(byte) 100, (byte) 101, (byte) 121};
+            byte[] bArr = new byte[3];
+            bArr = new byte[]{(byte) 100, (byte) 101, (byte) 121};
             int i = 0;
             while (i < 3) {
-                if (odexHeader[i] == magicDex[i] || odexHeader[i] == magicODex[i]) {
+                if (odexHeader[i] == magicDex[i] || odexHeader[i] == bArr[i]) {
                     i++;
                 } else {
                     System.out.println("The magic value is not the expected value " + new String(odexHeader));
@@ -2436,15 +2591,13 @@ public class Utils {
             return "DALVIK";
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return "UNKNOWN";
         } catch (IOException e2) {
             e2.printStackTrace();
-            return "UNKNOWN";
         } catch (Exception e3) {
             e3.printStackTrace();
             try {
                 System.out.println("Althernative runtime check with java.vm.version");
-                if (Integer.parseInt("" + System.getProperty("java.vm.version").charAt(0)) > 1) {
+                if (Integer.parseInt(System.getProperty("java.vm.version").charAt(0)) > 1) {
                     return "ART";
                 }
                 return "DALVIK";
@@ -2456,482 +2609,242 @@ public class Utils {
                 return "DALVIK";
             }
         }
+        return "UNKNOWN";
     }
 
-    /* JADX WARNING: inconsistent code. */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public static void fixadlerOdex(java.io.File r38, java.lang.String r39) {
-        /*
-        r5 = 8;
-        r10 = new byte[r5];
-        r10 = {100, 101, 121, 10, 48, 51, 53, 0};
-        r33 = new java.io.FileInputStream;	 Catch:{ Exception -> 0x0379 }
-        r0 = r33;
-        r1 = r38;
-        r0.<init>(r1);	 Catch:{ Exception -> 0x0379 }
-        r5 = 40;
-        r0 = new byte[r5];	 Catch:{ Exception -> 0x0379 }
-        r34 = r0;
-        r33.read(r34);	 Catch:{ Exception -> 0x0379 }
-        r33.close();	 Catch:{ Exception -> 0x0379 }
-        r28 = 0;
-    L_0x001e:
-        r5 = 4;
-        r0 = r28;
-        if (r0 >= r5) goto L_0x004c;
-    L_0x0023:
-        r5 = r34[r28];	 Catch:{ Exception -> 0x0379 }
-        r6 = r10[r28];	 Catch:{ Exception -> 0x0379 }
-        if (r5 == r6) goto L_0x0049;
-    L_0x0029:
-        r5 = java.lang.System.out;	 Catch:{ Exception -> 0x0379 }
-        r6 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0379 }
-        r6.<init>();	 Catch:{ Exception -> 0x0379 }
-        r7 = "The magic value is not the expected value ";
-        r6 = r6.append(r7);	 Catch:{ Exception -> 0x0379 }
-        r7 = new java.lang.String;	 Catch:{ Exception -> 0x0379 }
-        r0 = r34;
-        r7.<init>(r0);	 Catch:{ Exception -> 0x0379 }
-        r6 = r6.append(r7);	 Catch:{ Exception -> 0x0379 }
-        r6 = r6.toString();	 Catch:{ Exception -> 0x0379 }
-        r5.println(r6);	 Catch:{ Exception -> 0x0379 }
-    L_0x0048:
-        return;
-    L_0x0049:
-        r28 = r28 + 1;
-        goto L_0x001e;
-    L_0x004c:
-        r13 = java.nio.ByteBuffer.wrap(r34);	 Catch:{ Exception -> 0x036f }
-        r5 = java.nio.ByteOrder.LITTLE_ENDIAN;	 Catch:{ Exception -> 0x036f }
-        r13.order(r5);	 Catch:{ Exception -> 0x036f }
-        r5 = 8;
-        r13.position(r5);	 Catch:{ Exception -> 0x036f }
-        r21 = r13.getInt();	 Catch:{ Exception -> 0x036f }
-        r5 = 12;
-        r13.position(r5);	 Catch:{ Exception -> 0x036f }
-        r20 = r13.getInt();	 Catch:{ Exception -> 0x036f }
-        r5 = 16;
-        r13.position(r5);	 Catch:{ Exception -> 0x036f }
-        r19 = r13.getInt();	 Catch:{ Exception -> 0x036f }
-        r5 = 20;
-        r13.position(r5);	 Catch:{ Exception -> 0x036f }
-        r18 = r13.getInt();	 Catch:{ Exception -> 0x036f }
-        r5 = 24;
-        r13.position(r5);	 Catch:{ Exception -> 0x036f }
-        r12 = r13.getInt();	 Catch:{ Exception -> 0x036f }
-        r5 = 28;
-        r13.position(r5);	 Catch:{ Exception -> 0x036f }
-        r11 = r13.getInt();	 Catch:{ Exception -> 0x036f }
-        r5 = 32;
-        r13.position(r5);	 Catch:{ Exception -> 0x036f }
-        r26 = r13.getInt();	 Catch:{ Exception -> 0x036f }
-        r0 = r21;
-        r1 = r20;
-        r2 = r38;
-        calcChecksumOdexFly(r0, r1, r2);	 Catch:{ Exception -> 0x036f }
-        r5 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.startUnderRoot;	 Catch:{ Exception -> 0x036f }
-        r5 = r5.booleanValue();	 Catch:{ Exception -> 0x036f }
-        if (r5 == 0) goto L_0x037f;
-    L_0x00a5:
-        r5 = 3;
-        r5 = new java.lang.String[r5];	 Catch:{ Exception -> 0x036f }
-        r6 = 0;
-        r7 = "chmod";
-        r5[r6] = r7;	 Catch:{ Exception -> 0x036f }
-        r6 = 1;
-        r7 = "644";
-        r5[r6] = r7;	 Catch:{ Exception -> 0x036f }
-        r6 = 2;
-        r5[r6] = r39;	 Catch:{ Exception -> 0x036f }
-        run_all_no_root(r5);	 Catch:{ Exception -> 0x036f }
-    L_0x00b8:
-        if (r39 == 0) goto L_0x0048;
-    L_0x00ba:
-        r5 = new java.io.File;	 Catch:{ Exception -> 0x036f }
-        r0 = r39;
-        r5.<init>(r0);	 Catch:{ Exception -> 0x036f }
-        r5 = r5.exists();	 Catch:{ Exception -> 0x036f }
-        if (r5 == 0) goto L_0x0048;
-    L_0x00c7:
-        r5 = new java.io.File;	 Catch:{ Exception -> 0x036f }
-        r0 = r39;
-        r5.<init>(r0);	 Catch:{ Exception -> 0x036f }
-        r6 = r5.length();	 Catch:{ Exception -> 0x036f }
-        r8 = 0;
-        r5 = (r6 > r8 ? 1 : (r6 == r8 ? 0 : -1));
-        if (r5 == 0) goto L_0x0048;
-    L_0x00d8:
-        r5 = java.lang.System.out;	 Catch:{ Exception -> 0x01fd }
-        r0 = r39;
-        r5.println(r0);	 Catch:{ Exception -> 0x01fd }
-        r25 = new java.io.FileInputStream;	 Catch:{ Exception -> 0x01fd }
-        r0 = r25;
-        r1 = r39;
-        r0.<init>(r1);	 Catch:{ Exception -> 0x01fd }
-        r37 = new java.util.zip.ZipInputStream;	 Catch:{ Exception -> 0x01fd }
-        r0 = r37;
-        r1 = r25;
-        r0.<init>(r1);	 Catch:{ Exception -> 0x01fd }
-        r36 = 0;
-        r36 = r37.getNextEntry();	 Catch:{ Exception -> 0x01fd }
-    L_0x00f7:
-        if (r36 == 0) goto L_0x01f5;
-    L_0x00f9:
-        r27 = r36.getName();	 Catch:{ Exception -> 0x01fd }
-        r5 = "classes.dex";
-        r0 = r27;
-        r5 = r0.equals(r5);	 Catch:{ Exception -> 0x01fd }
-        if (r5 == 0) goto L_0x03b4;
-    L_0x0107:
-        r35 = 0;
-        r6 = r36.getTime();	 Catch:{ Exception -> 0x0399 }
-        r6 = javaToDosTime(r6);	 Catch:{ Exception -> 0x0399 }
-        r0 = (int) r6;
-        r35 = r0;
-    L_0x0114:
-        r15 = 0;
-        r6 = r36.getCrc();	 Catch:{ Exception -> 0x013d }
-        r15 = (int) r6;	 Catch:{ Exception -> 0x013d }
-        r5 = -1;
-        if (r15 != r5) goto L_0x0142;
-    L_0x011d:
-        r16 = new java.util.zip.CRC32;	 Catch:{ Exception -> 0x013d }
-        r16.<init>();	 Catch:{ Exception -> 0x013d }
-        r16.reset();	 Catch:{ Exception -> 0x013d }
-        r5 = 4096; // 0x1000 float:5.74E-42 double:2.0237E-320;
-        r14 = new byte[r5];	 Catch:{ Exception -> 0x013d }
-    L_0x0129:
-        r0 = r37;
-        r31 = r0.read(r14);	 Catch:{ Exception -> 0x013d }
-        r5 = -1;
-        r0 = r31;
-        if (r0 == r5) goto L_0x03a1;
-    L_0x0134:
-        r5 = 0;
-        r0 = r16;
-        r1 = r31;
-        r0.update(r14, r5, r1);	 Catch:{ Exception -> 0x013d }
-        goto L_0x0129;
-    L_0x013d:
-        r22 = move-exception;
-        r22.printStackTrace();	 Catch:{ Exception -> 0x01fd }
-        r15 = 0;
-    L_0x0142:
-        r5 = new java.io.RandomAccessFile;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r6 = "rw";
-        r0 = r38;
-        r5.<init>(r0, r6);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r4 = r5.getChannel();	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r6 = 0;
-        r8 = r4.size();	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r8 = (int) r8;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r8 = (long) r8;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r24 = r4.map(r5, r6, r8);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        if (r35 == 0) goto L_0x01a7;
-    L_0x015f:
-        r0 = r24;
-        r1 = r19;
-        r0.position(r1);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r0 = r35;
-        r5 = (byte) r0;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r19 + 1;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r35 >> 8;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r19 + 2;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r35 >> 16;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r19 + 3;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r35 >> 24;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-    L_0x01a7:
-        if (r15 == 0) goto L_0x01ef;
-    L_0x01a9:
-        r5 = r19 + 4;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = (byte) r15;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r19 + 5;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r15 >> 8;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r19 + 6;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r15 >> 16;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r19 + 7;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r5 = r15 >> 24;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-    L_0x01ef:
-        r4.close();	 Catch:{ FileNotFoundException -> 0x03a8, IOException -> 0x03ae }
-    L_0x01f2:
-        r37.closeEntry();	 Catch:{ Exception -> 0x01fd }
-    L_0x01f5:
-        r37.close();	 Catch:{ Exception -> 0x01fd }
-        r25.close();	 Catch:{ Exception -> 0x01fd }
-        goto L_0x0048;
-    L_0x01fd:
-        r22 = move-exception;
-        r5 = java.lang.System.out;	 Catch:{ Exception -> 0x036f }
-        r6 = "alternative method";
-        r5.println(r6);	 Catch:{ Exception -> 0x036f }
-        r22.printStackTrace();	 Catch:{ Exception -> 0x036f }
-        r30 = 0;
-        r5 = java.lang.System.out;	 Catch:{ Exception -> 0x0369 }
-        r6 = "start";
-        r5.println(r6);	 Catch:{ Exception -> 0x0369 }
-        r30 = kellinwood.zipio.ZipInput.read(r39);	 Catch:{ Exception -> 0x0369 }
-        r5 = r30.getEntries();	 Catch:{ Exception -> 0x0369 }
-        r5 = r5.values();	 Catch:{ Exception -> 0x0369 }
-        r5 = r5.iterator();	 Catch:{ Exception -> 0x0369 }
-    L_0x0221:
-        r6 = r5.hasNext();	 Catch:{ Exception -> 0x0369 }
-        if (r6 == 0) goto L_0x0048;
-    L_0x0227:
-        r29 = r5.next();	 Catch:{ Exception -> 0x0369 }
-        r29 = (kellinwood.zipio.ZioEntry) r29;	 Catch:{ Exception -> 0x0369 }
-        r6 = r29.getName();	 Catch:{ Exception -> 0x0369 }
-        r7 = "classes.dex";
-        r6 = r6.equals(r7);	 Catch:{ Exception -> 0x0369 }
-        if (r6 == 0) goto L_0x0221;
-    L_0x0239:
-        r35 = 0;
-        r6 = r29.getTime();	 Catch:{ Exception -> 0x03ba }
-        r6 = javaToDosTime(r6);	 Catch:{ Exception -> 0x03ba }
-        r0 = (int) r6;	 Catch:{ Exception -> 0x03ba }
-        r35 = r0;
-        r5 = java.lang.System.out;	 Catch:{ Exception -> 0x03ba }
-        r6 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x03ba }
-        r6.<init>();	 Catch:{ Exception -> 0x03ba }
-        r7 = "Time:";
-        r6 = r6.append(r7);	 Catch:{ Exception -> 0x03ba }
-        r0 = r35;
-        r6 = r6.append(r0);	 Catch:{ Exception -> 0x03ba }
-        r6 = r6.toString();	 Catch:{ Exception -> 0x03ba }
-        r5.println(r6);	 Catch:{ Exception -> 0x03ba }
-    L_0x0260:
-        r15 = 0;
-        r15 = r29.getCrc32();	 Catch:{ Exception -> 0x03c2 }
-        r5 = java.lang.System.out;	 Catch:{ Exception -> 0x03c2 }
-        r6 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x03c2 }
-        r6.<init>();	 Catch:{ Exception -> 0x03c2 }
-        r7 = "CRC32:";
-        r6 = r6.append(r7);	 Catch:{ Exception -> 0x03c2 }
-        r6 = r6.append(r15);	 Catch:{ Exception -> 0x03c2 }
-        r6 = r6.toString();	 Catch:{ Exception -> 0x03c2 }
-        r5.println(r6);	 Catch:{ Exception -> 0x03c2 }
-        r5 = -1;
-        if (r15 != r5) goto L_0x02b4;
-    L_0x0280:
-        r16 = new java.util.zip.CRC32;	 Catch:{ Exception -> 0x03c2 }
-        r16.<init>();	 Catch:{ Exception -> 0x03c2 }
-        r16.reset();	 Catch:{ Exception -> 0x03c2 }
-        r17 = r29.getData();	 Catch:{ Exception -> 0x03c2 }
-        r5 = 0;
-        r0 = r17;
-        r6 = r0.length;	 Catch:{ Exception -> 0x03c2 }
-        r0 = r16;
-        r1 = r17;
-        r0.update(r1, r5, r6);	 Catch:{ Exception -> 0x03c2 }
-        r6 = r16.getValue();	 Catch:{ Exception -> 0x03c2 }
-        r15 = (int) r6;	 Catch:{ Exception -> 0x03c2 }
-        r5 = java.lang.System.out;	 Catch:{ Exception -> 0x03c2 }
-        r6 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x03c2 }
-        r6.<init>();	 Catch:{ Exception -> 0x03c2 }
-        r7 = "CRC32:";
-        r6 = r6.append(r7);	 Catch:{ Exception -> 0x03c2 }
-        r6 = r6.append(r15);	 Catch:{ Exception -> 0x03c2 }
-        r6 = r6.toString();	 Catch:{ Exception -> 0x03c2 }
-        r5.println(r6);	 Catch:{ Exception -> 0x03c2 }
-    L_0x02b4:
-        r5 = new java.io.RandomAccessFile;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r6 = "rw";
-        r0 = r38;
-        r5.<init>(r0, r6);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r4 = r5.getChannel();	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r6 = 0;
-        r8 = r4.size();	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r8 = (int) r8;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r8 = (long) r8;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r24 = r4.map(r5, r6, r8);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        if (r35 == 0) goto L_0x0319;
-    L_0x02d1:
-        r0 = r24;
-        r1 = r19;
-        r0.position(r1);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r0 = r35;
-        r5 = (byte) r0;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r19 + 1;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r35 >> 8;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r19 + 2;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r35 >> 16;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r19 + 3;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r35 >> 24;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-    L_0x0319:
-        if (r15 == 0) goto L_0x0361;
-    L_0x031b:
-        r5 = r19 + 4;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = (byte) r15;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r19 + 5;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r15 >> 8;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r19 + 6;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r15 >> 16;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r19 + 7;
-        r0 = r24;
-        r0.position(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r5 = r15 >> 24;
-        r5 = (byte) r5;	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r0 = r24;
-        r0.put(r5);	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-        r24.force();	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-    L_0x0361:
-        r4.close();	 Catch:{ FileNotFoundException -> 0x03c9, IOException -> 0x03ce }
-    L_0x0364:
-        r30.close();	 Catch:{ Exception -> 0x0369 }
-        goto L_0x0048;
-    L_0x0369:
-        r23 = move-exception;
-        r23.printStackTrace();	 Catch:{ Exception -> 0x036f }
-        goto L_0x0048;
-    L_0x036f:
-        r22 = move-exception;
-        r5 = java.lang.System.out;	 Catch:{ Exception -> 0x0379 }
-        r0 = r22;
-        r5.println(r0);	 Catch:{ Exception -> 0x0379 }
-        goto L_0x0048;
-    L_0x0379:
-        r32 = move-exception;
-        r32.printStackTrace();
-        goto L_0x0048;
-    L_0x037f:
-        r5 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x036f }
-        r5.<init>();	 Catch:{ Exception -> 0x036f }
-        r6 = "chmod 644 ";
-        r5 = r5.append(r6);	 Catch:{ Exception -> 0x036f }
-        r0 = r39;
-        r5 = r5.append(r0);	 Catch:{ Exception -> 0x036f }
-        r5 = r5.toString();	 Catch:{ Exception -> 0x036f }
-        run_all(r5);	 Catch:{ Exception -> 0x036f }
-        goto L_0x00b8;
-    L_0x0399:
-        r22 = move-exception;
-        r22.printStackTrace();	 Catch:{ Exception -> 0x01fd }
-        r35 = 0;
-        goto L_0x0114;
-    L_0x03a1:
-        r6 = r16.getValue();	 Catch:{ Exception -> 0x013d }
-        r15 = (int) r6;
-        goto L_0x0142;
-    L_0x03a8:
-        r22 = move-exception;
-        r22.printStackTrace();	 Catch:{ Exception -> 0x01fd }
-        goto L_0x01f2;
-    L_0x03ae:
-        r22 = move-exception;
-        r22.printStackTrace();	 Catch:{ Exception -> 0x01fd }
-        goto L_0x01f2;
-    L_0x03b4:
-        r36 = r37.getNextEntry();	 Catch:{ Exception -> 0x01fd }
-        goto L_0x00f7;
-    L_0x03ba:
-        r23 = move-exception;
-        r23.printStackTrace();	 Catch:{ Exception -> 0x0369 }
-        r35 = 0;
-        goto L_0x0260;
-    L_0x03c2:
-        r23 = move-exception;
-        r23.printStackTrace();	 Catch:{ Exception -> 0x0369 }
-        r15 = 0;
-        goto L_0x02b4;
-    L_0x03c9:
-        r23 = move-exception;
-        r22.printStackTrace();	 Catch:{ Exception -> 0x0369 }
-        goto L_0x0364;
-    L_0x03ce:
-        r23 = move-exception;
-        r22.printStackTrace();	 Catch:{ Exception -> 0x0369 }
-        goto L_0x0364;
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.chelpus.Utils.fixadlerOdex(java.io.File, java.lang.String):void");
+    public static void fixadlerOdex(File destFile, String apk) {
+        CRC32 crc2;
+        byte[] MAGIC = new byte[8];
+        MAGIC[0] = (byte) 100;
+        MAGIC[1] = (byte) 101;
+        MAGIC[2] = (byte) 121;
+        MAGIC[3] = (byte) 10;
+        MAGIC[4] = (byte) 48;
+        MAGIC[5] = (byte) 51;
+        MAGIC[6] = (byte) 53;
+        try {
+            FileInputStream fileInputStream = new FileInputStream(destFile);
+            byte[] odexHeader = new byte[40];
+            fileInputStream.read(odexHeader);
+            fileInputStream.close();
+            for (int i = 0; i < 4; i++) {
+                if (odexHeader[i] != MAGIC[i]) {
+                    System.out.println("The magic value is not the expected value " + new String(odexHeader));
+                    return;
+                }
+            }
+            try {
+                ByteBuffer buffer = ByteBuffer.wrap(odexHeader);
+                buffer.order(ByteOrder.LITTLE_ENDIAN);
+                buffer.position(8);
+                int dexoffset = buffer.getInt();
+                buffer.position(12);
+                int dexLength = buffer.getInt();
+                buffer.position(16);
+                int depsOffset = buffer.getInt();
+                buffer.position(20);
+                int depsLength = buffer.getInt();
+                buffer.position(24);
+                int auxOffset = buffer.getInt();
+                buffer.position(28);
+                int auxLength = buffer.getInt();
+                buffer.position(32);
+                int flags = buffer.getInt();
+                calcChecksumOdexFly(dexoffset, dexLength, destFile);
+                if (listAppsFragment.startUnderRoot.booleanValue()) {
+                    run_all_no_root("chmod", "644", apk);
+                } else {
+                    run_all("chmod 644 " + apk);
+                }
+                if (apk != null && new File(apk).exists() && new File(apk).length() != 0) {
+                    ZioEntry inEntry;
+                    int time;
+                    int crc;
+                    FileChannel ChannelDex;
+                    MappedByteBuffer fileBytes;
+                    ZipInput input = ZipInput.read(apk);
+                    Iterator it = input.getEntries().values().iterator();
+                    do {
+                        if (it.hasNext()) {
+                            try {
+                                inEntry = (ZioEntry) it.next();
+                            } catch (Exception e) {
+                                System.out.println("alternative method");
+                                e.printStackTrace();
+                                System.out.println("start");
+                                System.out.println(apk);
+                                InputStream fileInputStream2 = new FileInputStream(apk);
+                                ZipInputStream zipInputStream = new ZipInputStream(fileInputStream2);
+                                ZipEntry ze = zipInputStream.getNextEntry();
+                                while (ze != null) {
+                                    try {
+                                        if (ze.getName().equals("classes.dex")) {
+                                            try {
+                                                System.out.println("zeTime:" + ze.getTime());
+                                                time = (int) javaToDosTime(ze.getTime());
+                                            } catch (Exception e1) {
+                                                e1.printStackTrace();
+                                                time = 0;
+                                            }
+                                            try {
+                                                crc = (int) ze.getCrc();
+                                                if (crc == -1) {
+                                                    crc2 = new CRC32();
+                                                    crc2.reset();
+                                                    byte[] buffer2 = new byte[LZMA2Options.DICT_SIZE_MIN];
+                                                    while (true) {
+                                                        int length = zipInputStream.read(buffer2);
+                                                        if (length == -1) {
+                                                            break;
+                                                        }
+                                                        crc2.update(buffer2, 0, length);
+                                                    }
+                                                    crc = (int) crc2.getValue();
+                                                }
+                                            } catch (Exception e12) {
+                                                e12.printStackTrace();
+                                                crc = 0;
+                                            }
+                                            try {
+                                                ChannelDex = new RandomAccessFile(destFile, InternalZipConstants.WRITE_MODE).getChannel();
+                                                fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
+                                                if (time != 0) {
+                                                    fileBytes.position(depsOffset);
+                                                    fileBytes.put((byte) time);
+                                                    fileBytes.force();
+                                                    System.out.println("for file:" + destFile);
+                                                    System.out.println("time0:" + ((byte) time));
+                                                    fileBytes.position(depsOffset + 1);
+                                                    fileBytes.put((byte) (time >> 8));
+                                                    fileBytes.force();
+                                                    System.out.println("time1:" + (((byte) time) >> 8));
+                                                    fileBytes.position(depsOffset + 2);
+                                                    fileBytes.put((byte) (time >> 16));
+                                                    fileBytes.force();
+                                                    System.out.println("time2:" + (((byte) time) >> 16));
+                                                    fileBytes.position(depsOffset + 3);
+                                                    fileBytes.put((byte) (time >> 24));
+                                                    fileBytes.force();
+                                                    System.out.println("time3:" + (((byte) time) >> 24));
+                                                }
+                                                if (crc != 0) {
+                                                    fileBytes.position(depsOffset + 4);
+                                                    fileBytes.put((byte) crc);
+                                                    fileBytes.force();
+                                                    fileBytes.position(depsOffset + 5);
+                                                    fileBytes.put((byte) (crc >> 8));
+                                                    fileBytes.force();
+                                                    fileBytes.position(depsOffset + 6);
+                                                    fileBytes.put((byte) (crc >> 16));
+                                                    fileBytes.force();
+                                                    fileBytes.position(depsOffset + 7);
+                                                    fileBytes.put((byte) (crc >> 24));
+                                                    fileBytes.force();
+                                                }
+                                                ChannelDex.close();
+                                            } catch (FileNotFoundException e13) {
+                                                e13.printStackTrace();
+                                            } catch (IOException e14) {
+                                                e14.printStackTrace();
+                                            }
+                                            zipInputStream.closeEntry();
+                                            zipInputStream.close();
+                                            fileInputStream2.close();
+                                            return;
+                                        }
+                                        ze = zipInputStream.getNextEntry();
+                                    } catch (Exception e122) {
+                                        e122.printStackTrace();
+                                        return;
+                                    }
+                                }
+                                zipInputStream.close();
+                                fileInputStream2.close();
+                                return;
+                            }
+                        }
+                        return;
+                    } while (!inEntry.getName().equals("classes.dex"));
+                    try {
+                        time = (int) javaToDosTime(inEntry.getTime());
+                        System.out.println("Time:" + time);
+                    } catch (Exception e1222) {
+                        e1222.printStackTrace();
+                        time = 0;
+                    }
+                    try {
+                        crc = inEntry.getCrc32();
+                        System.out.println("CRC32:" + crc);
+                        if (crc == -1) {
+                            crc2 = new CRC32();
+                            crc2.reset();
+                            byte[] data = inEntry.getData();
+                            crc2.update(data, 0, data.length);
+                            crc = (int) crc2.getValue();
+                            System.out.println("CRC32:" + crc);
+                        }
+                    } catch (Exception e12222) {
+                        e12222.printStackTrace();
+                        crc = 0;
+                    }
+                    try {
+                        ChannelDex = new RandomAccessFile(destFile, InternalZipConstants.WRITE_MODE).getChannel();
+                        fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
+                        if (time != 0) {
+                            fileBytes.position(depsOffset);
+                            fileBytes.put((byte) time);
+                            fileBytes.force();
+                            fileBytes.position(depsOffset + 1);
+                            fileBytes.put((byte) (time >> 8));
+                            fileBytes.force();
+                            fileBytes.position(depsOffset + 2);
+                            fileBytes.put((byte) (time >> 16));
+                            fileBytes.force();
+                            fileBytes.position(depsOffset + 3);
+                            fileBytes.put((byte) (time >> 24));
+                            fileBytes.force();
+                        }
+                        if (crc != 0) {
+                            fileBytes.position(depsOffset + 4);
+                            fileBytes.put((byte) crc);
+                            fileBytes.force();
+                            fileBytes.position(depsOffset + 5);
+                            fileBytes.put((byte) (crc >> 8));
+                            fileBytes.force();
+                            fileBytes.position(depsOffset + 6);
+                            fileBytes.put((byte) (crc >> 16));
+                            fileBytes.force();
+                            fileBytes.position(depsOffset + 7);
+                            fileBytes.put((byte) (crc >> 24));
+                            fileBytes.force();
+                        }
+                        ChannelDex.close();
+                    } catch (FileNotFoundException e132) {
+                        e132.printStackTrace();
+                    } catch (IOException e142) {
+                        e142.printStackTrace();
+                    }
+                    input.close();
+                }
+            } catch (Exception e2) {
+                System.out.println(e2);
+            }
+        } catch (Exception localException) {
+            localException.printStackTrace();
+        }
     }
 
     public static void fixCRCart(File destFile, ArrayList<File> classesFiles, String apk, String modApp) {
-        int t;
+        int crc;
         ArrayList<Integer> crcArr = new ArrayList(classesFiles.size());
-        byte[] MAGIC = new byte[]{(byte) 100, (byte) 101, (byte) 121, (byte) 10, (byte) 48, (byte) 51, (byte) 53, (byte) 0};
+        byte[] MAGIC = new byte[8];
+        MAGIC[0] = (byte) 100;
+        MAGIC[1] = (byte) 101;
+        MAGIC[2] = (byte) 121;
+        MAGIC[3] = (byte) 10;
+        MAGIC[4] = (byte) 48;
+        MAGIC[5] = (byte) 51;
+        MAGIC[6] = (byte) 53;
         run_all_no_root("chmod", "777", destFile.getAbsolutePath());
         if (apk != null) {
             try {
@@ -2939,93 +2852,95 @@ public class Utils {
                     try {
                         System.out.println(apk);
                         run_all_no_root("chmod", "644", apk);
-                        int crc;
-                        CRC32 crc2;
-                        try {
-                            InputStream fileInputStream = new FileInputStream(apk);
-                            ZipInputStream zipInputStream = new ZipInputStream(fileInputStream);
-                            for (ZipEntry ze = zipInputStream.getNextEntry(); ze != null; ze = zipInputStream.getNextEntry()) {
-                                String haystack = ze.getName();
-                                if (haystack.startsWith("classes")) {
-                                    if (haystack.endsWith(".dex")) {
-                                        t = 0;
-                                        while (t < classesFiles.size()) {
-                                            if (((File) classesFiles.get(t)).getName().equals(haystack)) {
-                                                try {
-                                                    crc = (int) ze.getCrc();
-                                                    if (crc == -1) {
-                                                        crc2 = new CRC32();
-                                                        crc2.reset();
-                                                        byte[] buffer2 = new byte[LZMA2Options.DICT_SIZE_MIN];
-                                                        while (true) {
-                                                            int length = zipInputStream.read(buffer2);
-                                                            if (length == -1) {
-                                                                break;
-                                                            }
-                                                            crc2.update(buffer2, 0, length);
-                                                        }
-                                                        crc = (int) crc2.getValue();
-                                                    }
-                                                } catch (Exception e) {
-                                                    e.printStackTrace();
-                                                    crc = 0;
-                                                }
-                                                crcArr.add(t, Integer.valueOf(crc));
-                                                zipInputStream.closeEntry();
-                                            } else {
-                                                t++;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            zipInputStream.close();
-                            fileInputStream.close();
-                        } catch (Exception e2) {
-                            System.out.println("Start alternative method.");
-                            System.out.println("start");
-                            ZipInput input = ZipInput.read(apk);
-                            for (ZioEntry inEntry : input.getEntries().values()) {
-                                if (inEntry.getName().startsWith("classes") && inEntry.getName().endsWith(".dex")) {
-                                    t = 0;
+                        InputStream fileInputStream = new FileInputStream(apk);
+                        ZipInputStream zipInputStream = new ZipInputStream(fileInputStream);
+                        for (ZipEntry ze = zipInputStream.getNextEntry(); ze != null; ze = zipInputStream.getNextEntry()) {
+                            String haystack = ze.getName();
+                            if (haystack.startsWith("classes")) {
+                                if (haystack.endsWith(".dex")) {
+                                    int t = 0;
                                     while (t < classesFiles.size()) {
-                                        if (((File) classesFiles.get(t)).getName().equals(inEntry.getName())) {
+                                        if (((File) classesFiles.get(t)).getName().equals(haystack)) {
+                                            CRC32 crc2;
                                             try {
-                                                crc = inEntry.getCrc32();
-                                                System.out.println("CRC32:" + crc);
+                                                crc = (int) ze.getCrc();
                                                 if (crc == -1) {
                                                     crc2 = new CRC32();
                                                     crc2.reset();
-                                                    byte[] data = inEntry.getData();
-                                                    crc2.update(data, 0, data.length);
+                                                    byte[] buffer2 = new byte[LZMA2Options.DICT_SIZE_MIN];
+                                                    while (true) {
+                                                        int length = zipInputStream.read(buffer2);
+                                                        if (length == -1) {
+                                                            break;
+                                                        }
+                                                        crc2.update(buffer2, 0, length);
+                                                    }
                                                     crc = (int) crc2.getValue();
-                                                    System.out.println("CRC32:" + crc);
                                                 }
-                                            } catch (Exception e1) {
-                                                try {
-                                                    e1.printStackTrace();
-                                                    crc = 0;
-                                                } catch (Exception e12) {
-                                                    e12.printStackTrace();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                                crc = 0;
+                                            }
+                                            try {
+                                                crcArr.add(t, Integer.valueOf(crc));
+                                                zipInputStream.closeEntry();
+                                            } catch (Exception e2) {
+                                                System.out.println("Start alternative method.");
+                                                System.out.println("start");
+                                                ZipInput input = ZipInput.read(apk);
+                                                for (ZioEntry inEntry : input.getEntries().values()) {
+                                                    if (inEntry.getName().startsWith("classes") && inEntry.getName().endsWith(".dex")) {
+                                                        t = 0;
+                                                        while (t < classesFiles.size()) {
+                                                            if (((File) classesFiles.get(t)).getName().equals(inEntry.getName())) {
+                                                                try {
+                                                                    crc = inEntry.getCrc32();
+                                                                    System.out.println("CRC32:" + crc);
+                                                                    if (crc == -1) {
+                                                                        crc2 = new CRC32();
+                                                                        crc2.reset();
+                                                                        byte[] data = inEntry.getData();
+                                                                        crc2.update(data, 0, data.length);
+                                                                        crc = (int) crc2.getValue();
+                                                                        System.out.println("CRC32:" + crc);
+                                                                    }
+                                                                } catch (Exception e1) {
+                                                                    e1.printStackTrace();
+                                                                    crc = 0;
+                                                                }
+                                                                try {
+                                                                    crcArr.add(t, Integer.valueOf(crc));
+                                                                    input.close();
+                                                                } catch (Exception e12) {
+                                                                    e12.printStackTrace();
+                                                                }
+                                                            } else {
+                                                                t++;
+                                                            }
+                                                        }
+                                                        continue;
+                                                    }
                                                 }
                                             }
-                                            crcArr.add(t, Integer.valueOf(crc));
-                                            input.close();
                                         } else {
                                             t++;
                                         }
                                     }
                                     continue;
+                                } else {
+                                    continue;
                                 }
                             }
                         }
+                        zipInputStream.close();
+                        fileInputStream.close();
                         try {
                             FileChannel ChannelDex = new RandomAccessFile(destFile, InternalZipConstants.WRITE_MODE).getChannel();
                             MappedByteBuffer fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
                             fileBytes.position(LZMA2Options.DICT_SIZE_MIN);
                             int curentPos = -1;
                             byte[] path_apk = modApp.getBytes();
-                            byte[] path_apk_multiclasses = (modApp + ":classes").getBytes();
+                            byte[] path_apk_multiclasses = new StringBuilder(String.valueOf(modApp)).append(":classes").toString().getBytes();
                             byte[] replaceBytes = apk.getBytes();
                             while (fileBytes.hasRemaining()) {
                                 try {
@@ -3048,12 +2963,12 @@ public class Utils {
                                                 while (y < 7) {
                                                     y++;
                                                     prufbyte = fileBytes.get();
-                                                    classesName = classesName + ((char) prufbyte);
+                                                    classesName = new StringBuilder(String.valueOf(classesName)).append((char) prufbyte).toString();
                                                     if (prufbyte == endF[0]) {
                                                         int u = 1;
                                                         prufbyte = fileBytes.get();
                                                         while (u < endF.length && prufbyte == endF[u]) {
-                                                            classesName = classesName + ((char) prufbyte);
+                                                            classesName = new StringBuilder(String.valueOf(classesName)).append((char) prufbyte).toString();
                                                             u++;
                                                             if (u == endF.length) {
                                                                 f = 0;
@@ -3124,7 +3039,6 @@ public class Utils {
                                                 prufbyte = fileBytes.get();
                                             }
                                         }
-                                        continue;
                                     }
                                 } catch (Exception e3) {
                                     e3.printStackTrace();
@@ -3562,7 +3476,7 @@ public class Utils {
     public static int changePackageNameIds(String apk, String packageName, String newPackageName) {
         String pkgNameClasses = "L" + packageName.replaceAll("\\.", InternalZipConstants.ZIP_FILE_SEPARATOR);
         String pkgNameClassesNew = "L" + newPackageName.replaceAll("\\.", InternalZipConstants.ZIP_FILE_SEPARATOR);
-        System.out.println(pkgNameClasses + " " + pkgNameClassesNew);
+        System.out.println(new StringBuilder(String.valueOf(pkgNameClasses)).append(" ").append(pkgNameClassesNew).toString());
         System.out.println("scan: " + apk);
         int result = 0;
         run_all_no_root("chmod", "777", apk);
@@ -3664,20 +3578,20 @@ public class Utils {
                 if (new File(apk).exists() && new File(apk).length() != 0) {
                     try {
                         if (new File(apk).exists()) {
-                            try {
-                                FileChannel ChannelDex = new RandomAccessFile(apk, InternalZipConstants.WRITE_MODE).getChannel();
-                                MappedByteBuffer fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
-                                fileBytes.position(0);
-                                while (fileBytes.hasRemaining()) {
-                                    byte prufbyte;
-                                    int curentPos = fileBytes.position();
-                                    byte curentByte = fileBytes.get();
-                                    if (byteOrig != null && curentByte == byteOrig[0]) {
-                                        i = 1;
-                                        fileBytes.position(curentPos + 1);
-                                        prufbyte = fileBytes.get();
-                                        while (fileBytes.hasRemaining() && i < byteOrig.length && prufbyte == byteOrig[i]) {
-                                            i++;
+                            FileChannel ChannelDex = new RandomAccessFile(apk, InternalZipConstants.WRITE_MODE).getChannel();
+                            MappedByteBuffer fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
+                            fileBytes.position(0);
+                            while (fileBytes.hasRemaining()) {
+                                byte prufbyte;
+                                int curentPos = fileBytes.position();
+                                byte curentByte = fileBytes.get();
+                                if (byteOrig != null && curentByte == byteOrig[0]) {
+                                    i = 1;
+                                    fileBytes.position(curentPos + 1);
+                                    prufbyte = fileBytes.get();
+                                    while (fileBytes.hasRemaining() && i < byteOrig.length && prufbyte == byteOrig[i]) {
+                                        i++;
+                                        try {
                                             if (i == byteOrig.length) {
                                                 System.out.println("change package name to " + new File(apk).getName());
                                                 fileBytes.position(curentPos);
@@ -3688,34 +3602,34 @@ public class Utils {
                                             if (fileBytes.hasRemaining()) {
                                                 prufbyte = fileBytes.get();
                                             }
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
                                         }
-                                        fileBytes.position(curentPos + 1);
-                                    }
-                                    if (bArr != null && curentByte == bArr[0]) {
-                                        i = 1;
-                                        fileBytes.position(curentPos + 1);
-                                        prufbyte = fileBytes.get();
-                                        while (fileBytes.hasRemaining() && i < bArr.length && prufbyte == bArr[i]) {
-                                            i++;
-                                            if (i == bArr.length) {
-                                                System.out.println("change package name to " + new File(apk).getName());
-                                                fileBytes.position(curentPos);
-                                                fileBytes.put(bArr2);
-                                                fileBytes.force();
-                                                result++;
-                                            }
-                                            if (fileBytes.hasRemaining()) {
-                                                prufbyte = fileBytes.get();
-                                            }
-                                        }
-                                        fileBytes.position(curentPos + 1);
                                     }
                                     fileBytes.position(curentPos + 1);
                                 }
-                                ChannelDex.close();
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                if (bArr != null && curentByte == bArr[0]) {
+                                    i = 1;
+                                    fileBytes.position(curentPos + 1);
+                                    prufbyte = fileBytes.get();
+                                    while (fileBytes.hasRemaining() && i < bArr.length && prufbyte == bArr[i]) {
+                                        i++;
+                                        if (i == bArr.length) {
+                                            System.out.println("change package name to " + new File(apk).getName());
+                                            fileBytes.position(curentPos);
+                                            fileBytes.put(bArr2);
+                                            fileBytes.force();
+                                            result++;
+                                        }
+                                        if (fileBytes.hasRemaining()) {
+                                            prufbyte = fileBytes.get();
+                                        }
+                                    }
+                                    fileBytes.position(curentPos + 1);
+                                }
+                                fileBytes.position(curentPos + 1);
                             }
+                            ChannelDex.close();
                         }
                     } catch (Exception e2) {
                         e2.printStackTrace();
@@ -3768,15 +3682,15 @@ public class Utils {
                 if (new File(apk).exists() && new File(apk).length() != 0) {
                     try {
                         if (new File(apk).exists()) {
-                            try {
-                                FileChannel ChannelDex = new RandomAccessFile(apk, InternalZipConstants.WRITE_MODE).getChannel();
-                                MappedByteBuffer fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
-                                fileBytes.position(0);
-                                while (fileBytes.hasRemaining()) {
-                                    int curentPos = fileBytes.position();
-                                    byte curentByte = fileBytes.get();
-                                    j = 0;
-                                    while (j < stringsOrig.length) {
+                            FileChannel ChannelDex = new RandomAccessFile(apk, InternalZipConstants.WRITE_MODE).getChannel();
+                            MappedByteBuffer fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
+                            fileBytes.position(0);
+                            while (fileBytes.hasRemaining()) {
+                                int curentPos = fileBytes.position();
+                                byte curentByte = fileBytes.get();
+                                j = 0;
+                                while (j < stringsOrig.length) {
+                                    try {
                                         byte prufbyte;
                                         if (stringsOrig[j] != null && curentByte == stringsOrig[j][0]) {
                                             i = 1;
@@ -3815,13 +3729,13 @@ public class Utils {
                                             fileBytes.position(curentPos + 1);
                                         }
                                         j++;
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
                                     }
-                                    fileBytes.position(curentPos + 1);
                                 }
-                                ChannelDex.close();
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                fileBytes.position(curentPos + 1);
                             }
+                            ChannelDex.close();
                         }
                     } catch (Exception e2) {
                         e2.printStackTrace();
@@ -4090,10 +4004,10 @@ public class Utils {
             fileBytes.put(signature);
             fileBytes.force();
             ChannelDex.close();
-        } catch (DigestException localDigestException) {
-            throw new RuntimeException(localDigestException);
         } catch (NoSuchAlgorithmException localNoSuchAlgorithmException) {
             throw new RuntimeException(localNoSuchAlgorithmException);
+        } catch (DigestException localDigestException) {
+            throw new RuntimeException(localDigestException);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e2) {
@@ -4162,11 +4076,11 @@ public class Utils {
     }
 
     public static String read_from_file(File file) {
-        RandomAccessFile randomAccessFile;
         Exception e1;
         byte[] result = new byte[((int) file.length())];
         try {
             RandomAccessFile ram = new RandomAccessFile(file, InternalZipConstants.READ_MODE);
+            RandomAccessFile randomAccessFile;
             try {
                 ram.seek(0);
                 ram.read(result);
@@ -4191,7 +4105,7 @@ public class Utils {
         String dir = "";
         for (int i = 0; i < teils.length; i++) {
             if (i != teils.length - 1) {
-                dir = dir + teils[i] + File.separator;
+                dir = new StringBuilder(String.valueOf(dir)).append(teils[i]).append(File.separator).toString();
             }
         }
         return new File(dir);
@@ -4258,9 +4172,7 @@ public class Utils {
                     byte[] readData = new byte[LZMA2Options.DICT_SIZE_MIN];
                     while (true) {
                         int length = ram2.read(readData);
-                        if (length > 0) {
-                            ram.write(readData, 0, length);
-                        } else {
+                        if (length <= 0) {
                             ram.write("#Lucky Patcher block Ads finish#\n\n\n\r\n".getBytes());
                             ram2.close();
                             ram.close();
@@ -4268,6 +4180,7 @@ public class Utils {
                             randomAccessFile = ram;
                             return true;
                         }
+                        ram.write(readData, 0, length);
                     }
                 } catch (IOException io) {
                     io.printStackTrace();
@@ -4352,6 +4265,26 @@ public class Utils {
         }
     }
 
+    public static byte[] getFileBuffer(File file, int lenght) {
+        try {
+            byte[] readData = new byte[lenght];
+            new FileInputStream(file).read(readData);
+            return readData;
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    public static byte[] getRawBuffer(int raw_resource, int lenght) {
+        try {
+            byte[] readData = new byte[lenght];
+            listAppsFragment.getRes().openRawResource(raw_resource).read(readData);
+            return readData;
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
     public static long getRawLength(int raw_resource) {
         try {
             InputStream inputStream = listAppsFragment.getRes().openRawResource(raw_resource);
@@ -4359,12 +4292,11 @@ public class Utils {
             byte[] readData = new byte[8192];
             while (true) {
                 int block = inputStream.read(readData);
-                if (block != -1) {
-                    length += (long) block;
-                } else {
+                if (block == -1) {
                     System.out.println("LuckyPatcher (RAW): length = " + length);
                     return length;
                 }
+                length += (long) block;
             }
         } catch (IOException e) {
             return 0;
@@ -4379,7 +4311,7 @@ public class Utils {
             int i = 0;
             while (i != -1) {
                 i = fis.read(readData);
-                result = result + new String(readData, HttpRequest.CHARSET_UTF8);
+                result = new StringBuilder(String.valueOf(result)).append(new String(readData, HttpRequest.CHARSET_UTF8)).toString();
             }
             fis.close();
             return result;
@@ -4391,18 +4323,17 @@ public class Utils {
     public static void getAssets(String filename, String path) throws IOException {
         new File(path).mkdirs();
         InputStream in = listAppsFragment.getRes().getAssets().open(filename);
-        OutputStream out = new FileOutputStream(path + InternalZipConstants.ZIP_FILE_SEPARATOR + filename);
+        OutputStream out = new FileOutputStream(new StringBuilder(String.valueOf(path)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(filename).toString());
         byte[] buffer = new byte[8192];
         while (true) {
             int read = in.read(buffer);
-            if (read != -1) {
-                out.write(buffer, 0, read);
-            } else {
+            if (read == -1) {
                 in.close();
                 out.flush();
                 out.close();
                 return;
             }
+            out.write(buffer, 0, read);
         }
     }
 
@@ -4535,7 +4466,7 @@ public class Utils {
                     str = "/x86_64";
                 }
                 if (!str.equals("") && new File("/data/dalvik-cache" + str).exists() && new File("/data/dalvik-cache" + str).isDirectory()) {
-                    System.out.println(str + " to dalvik cache found");
+                    System.out.println(new StringBuilder(String.valueOf(str)).append(" to dalvik cache found").toString());
                     System.out.println("check " + getDirs(apk) + "/oat" + str);
                     if (!(new File(getDirs(apk) + "/oat" + str).exists() && new File(getDirs(apk) + "/oat" + str).isDirectory())) {
                         new File(getDirs(apk) + "/oat" + str).mkdirs();
@@ -4618,7 +4549,7 @@ public class Utils {
                 str = "/x86_64";
             }
             if (!str.equals("") && new File("/data/dalvik-cache" + str).exists() && new File("/data/dalvik-cache" + str).isDirectory()) {
-                System.out.println(str + " to dalvik cache found");
+                System.out.println(new StringBuilder(String.valueOf(str)).append(" to dalvik cache found").toString());
                 System.out.println("check " + getDirs(apk) + str);
                 if (!(new File(getDirs(apk) + str).exists() && new File(getDirs(apk) + str).isDirectory())) {
                     new File(getDirs(apk) + str).mkdirs();
@@ -4903,9 +4834,9 @@ public class Utils {
                 pids = new ArrayList();
                 if (proc_lines.length > 1) {
                     for (String line : proc_lines) {
-                        if (line.contains(processName) && !line.contains(processName + ".")) {
+                        if (line.contains(processName) && !line.contains(new StringBuilder(String.valueOf(processName)).append(".").toString())) {
                             try {
-                                pid = (line + "\n").trim().split("\\s+")[0];
+                                pid = new StringBuilder(String.valueOf(line)).append("\n").toString().trim().split("\\s+")[0];
                                 pids.add(pid);
                                 System.out.println("Found pid: " + pid + " for " + processName);
                             } catch (Exception e) {
@@ -4949,9 +4880,9 @@ public class Utils {
             pids = new ArrayList();
             if (proc_lines.length > 1) {
                 for (String line2 : proc_lines) {
-                    if (line2.contains(processName) && !line2.contains(processName + ".")) {
+                    if (line2.contains(processName) && !line2.contains(new StringBuilder(String.valueOf(processName)).append(".").toString())) {
                         try {
-                            pid = (line2 + "\n").trim().split("\\s+")[0];
+                            pid = new StringBuilder(String.valueOf(line2)).append("\n").toString().trim().split("\\s+")[0];
                             pids.add(pid);
                             System.out.println("Found pid: " + pid + " for " + processName);
                         } catch (Exception e3) {
@@ -4975,8 +4906,8 @@ public class Utils {
         return false;
     }
 
-    public static void showSystemWindow(String title, String message, View.OnClickListener YesOnClickListener, View.OnClickListener NoOnClickListener) {
-        final WindowManager manager = (WindowManager) listAppsFragment.getInstance().getSystemService("window");
+    public static void showSystemWindow(String title, String message, OnClickListener YesOnClickListener, OnClickListener NoOnClickListener) {
+        WindowManager manager = (WindowManager) listAppsFragment.getInstance().getSystemService("window");
         LayoutParams layoutParams = new LayoutParams();
         layoutParams.gravity = 17;
         layoutParams.type = 2003;
@@ -4994,20 +4925,12 @@ public class Utils {
         messageView.setText(message);
         yesButton.setOnClickListener(YesOnClickListener);
         noButton.setOnClickListener(NoOnClickListener);
-        yesButton.setOnKeyListener(new OnKeyListener() {
-            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
-                System.out.println("keyCode " + keyCode);
-                if (keyCode == 4) {
-                    manager.removeView(view.getRootView());
-                }
-                return false;
-            }
-        });
+        yesButton.setOnKeyListener(new AnonymousClass11(manager));
         manager.addView(view, layoutParams);
     }
 
     public static void showSystemWindowOk(String title, String message) {
-        final WindowManager manager = (WindowManager) listAppsFragment.getInstance().getSystemService("window");
+        WindowManager manager = (WindowManager) listAppsFragment.getInstance().getSystemService("window");
         LayoutParams layoutParams = new LayoutParams();
         layoutParams.gravity = 17;
         layoutParams.type = 2003;
@@ -5016,26 +4939,14 @@ public class Utils {
         layoutParams.alpha = 1.0f;
         layoutParams.packageName = listAppsFragment.getInstance().getPackageName();
         layoutParams.buttonBrightness = 1.0f;
-        layoutParams.windowAnimations = 2131230725;
+        layoutParams.windowAnimations = 2131427330;
         View view = View.inflate(listAppsFragment.getInstance(), 2130968632, null);
         Button okButton = (Button) view.findViewById(2131558605);
         TextView messageView = (TextView) view.findViewById(2131558604);
         ((TextView) view.findViewById(2131558478)).setText(title);
         messageView.setText(message);
-        okButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                manager.removeView(view.getRootView());
-            }
-        });
-        okButton.setOnKeyListener(new OnKeyListener() {
-            public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
-                System.out.println("keyCode " + keyCode);
-                if (keyCode == 4) {
-                    manager.removeView(view.getRootView());
-                }
-                return false;
-            }
-        });
+        okButton.setOnClickListener(new AnonymousClass12(manager));
+        okButton.setOnKeyListener(new AnonymousClass13(manager));
         manager.addView(view, layoutParams);
     }
 
@@ -5184,6 +5095,7 @@ public class Utils {
             if (files == null || files.length == 0) {
                 System.out.println("LuckyPatcher: 0 packages found in " + sys_folder.getAbsolutePath());
             } else {
+                int i;
                 for (File apkfile : files) {
                     if (apkfile.getAbsolutePath().endsWith(".apk")) {
                         try {
@@ -5199,10 +5111,13 @@ public class Utils {
                 }
                 for (File dir : files) {
                     if (dir.isDirectory()) {
-                        try {
-                            File[] filesDir = dir.listFiles();
-                            if (!(filesDir == null || filesDir.length == 0)) {
-                                for (File file : filesDir) {
+                        File[] filesDir = dir.listFiles();
+                        if (!(filesDir == null || filesDir.length == 0)) {
+                            int length = filesDir.length;
+                            i = 0;
+                            while (i < length) {
+                                try {
+                                    File file = filesDir[i];
                                     if (file.getAbsolutePath().endsWith(".apk")) {
                                         try {
                                             if (pkgName.equals(new FileApkListItem(listAppsFragment.getInstance(), file, false).pkgName)) {
@@ -5215,10 +5130,11 @@ public class Utils {
                                             e2.printStackTrace();
                                         }
                                     }
+                                    i++;
+                                } catch (Exception e22) {
+                                    e22.printStackTrace();
                                 }
                             }
-                        } catch (Exception e22) {
-                            e22.printStackTrace();
                         }
                     }
                 }
@@ -5483,7 +5399,7 @@ public class Utils {
         String apkOdex = getOdexForCreate(apk_file, uid);
         String apkname = new File(apk_file).getName();
         String odexName = changeExtension(apkname, "odex");
-        String oatFile = workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + changeExtension(apkname, "dex");
+        String oatFile = new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(changeExtension(apkname, "dex")).toString();
         try {
             File dalvik_art = getFileDalvikCacheName(apk_file);
             String dalvik_name = dalvik_art.getName();
@@ -5798,7 +5714,7 @@ public class Utils {
         String apkname = new File(apk_file).getName();
         String odexName = changeExtension(apkname, "odex");
         String dexName = changeExtension(apkname, "dex");
-        String oatFile = workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + odexName;
+        String oatFile = new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(odexName).toString();
         DexFile dex = null;
         boolean ART = false;
         if (getCurrentRuntimeValue().contains("ART")) {
@@ -5808,30 +5724,30 @@ public class Utils {
         }
         Iterator it = classesFiles.iterator();
         while (it.hasNext()) {
-            run_all_no_root("chmod", "777", workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + ((File) it.next()).getName());
-            if (((File) it.next()).exists()) {
-                try {
-                    run_all_no_root("chmod", "777", workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + cl.getName());
-                    run_all_no_root("chown", "1000." + uid, workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + cl.getName());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else {
-                if (dex != null) {
-                    try {
-                        dex.close();
-                    } catch (IOException e2) {
-                        e2.printStackTrace();
+            try {
+                run_all_no_root("chmod", "777", new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(((File) it.next()).getName()).toString());
+                if (((File) it.next()).exists()) {
+                    run_all_no_root("chmod", "777", new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(cl.getName()).toString());
+                    run_all_no_root("chown", "1000." + uid, new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(cl.getName()).toString());
+                } else {
+                    if (dex != null) {
+                        try {
+                            dex.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
+                    return 4;
                 }
-                return 4;
+            } catch (Exception e2) {
+                e2.printStackTrace();
             }
         }
-        run_all_no_root("chmod", "777", workingDir + "/AndroidManifest.xml");
-        run_all_no_root("chown", "1000." + uid, workingDir + "/AndroidManifest.xml");
-        new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name).delete();
-        if (new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name).exists()) {
-            run_all_no_root("rm", workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name);
+        run_all_no_root("chmod", "777", new StringBuilder(String.valueOf(workingDir)).append("/AndroidManifest.xml").toString());
+        run_all_no_root("chown", "1000." + uid, new StringBuilder(String.valueOf(workingDir)).append("/AndroidManifest.xml").toString());
+        new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString()).delete();
+        if (new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString()).exists()) {
+            run_all_no_root("rm", new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString());
         }
         File dalvik_art = getFileDalvikCacheName(apk_file);
         String dalvik_name = dalvik_art.getName();
@@ -5914,7 +5830,7 @@ public class Utils {
                                 System.out.println("Error: dont create rebuild apk to /data/tmp/");
                             }
                             System.out.println("try create oat with DexFile2:");
-                            oatFile = workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dalvikFile.getName();
+                            oatFile = new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dalvikFile.getName()).toString();
                             instructions = "";
                             if (dalvik_art.getAbsolutePath().contains("/arm/")) {
                                 instructions = "arm";
@@ -5981,8 +5897,8 @@ public class Utils {
                                     }
                                 } else {
                                     odexFile = dalvikFile.getAbsolutePath();
-                                    if (new File(destinationPatchedOat + ".art").exists()) {
-                                        new File(destinationPatchedOat + ".art").delete();
+                                    if (new File(new StringBuilder(String.valueOf(destinationPatchedOat)).append(".art").toString()).exists()) {
+                                        new File(new StringBuilder(String.valueOf(destinationPatchedOat)).append(".art").toString()).delete();
                                     }
                                     free_space = true;
                                     if (apk_file.startsWith("/system")) {
@@ -6011,8 +5927,8 @@ public class Utils {
                                 }
                             }
                         }
-                    } catch (Exception e3) {
-                        e3.printStackTrace();
+                    } catch (Exception e22) {
+                        e22.printStackTrace();
                     }
                 } else {
                     System.out.println("oat created with dex2oat - length=" + new File(oatFile).length());
@@ -6051,7 +5967,7 @@ public class Utils {
                             }
                             System.out.println("Error: dont create rebuild apk to /data/tmp/");
                             System.out.println("try create oat with DexFile2:");
-                            oatFile = workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dalvikFile.getName();
+                            oatFile = new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dalvikFile.getName()).toString();
                             instructions = "";
                             if (dalvik_art.getAbsolutePath().contains("/arm/")) {
                                 instructions = "arm";
@@ -6113,8 +6029,8 @@ public class Utils {
                                 }
                             } else {
                                 odexFile = dalvikFile.getAbsolutePath();
-                                if (new File(destinationPatchedOat + ".art").exists()) {
-                                    new File(destinationPatchedOat + ".art").delete();
+                                if (new File(new StringBuilder(String.valueOf(destinationPatchedOat)).append(".art").toString()).exists()) {
+                                    new File(new StringBuilder(String.valueOf(destinationPatchedOat)).append(".art").toString()).delete();
                                 }
                                 free_space = true;
                                 if (apk_file.startsWith("/system")) {
@@ -6142,38 +6058,38 @@ public class Utils {
                         }
                     }
                 }
-            } catch (Exception e32) {
-                e32.printStackTrace();
+            } catch (Exception e222) {
+                e222.printStackTrace();
             }
         } else {
-            zip(apk_name, workingDir, classesFiles, workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name);
-            run_all_no_root("chmod", "777", workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name);
-            run_all_no_root("chown", "1000." + uid, workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name);
-            run_all_no_root("chown", "1000:" + uid, workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name);
-            if (new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name).exists() && new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name).length() != 0) {
+            zip(apk_name, workingDir, classesFiles, new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString());
+            run_all_no_root("chmod", "777", new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString());
+            run_all_no_root("chown", "1000." + uid, new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString());
+            run_all_no_root("chown", "1000:" + uid, new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString());
+            if (new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString()).exists() && new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString()).length() != 0) {
                 System.out.println("LuckyPatcher (CustomPatch): foundreworked apk " + workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name);
             }
-            if (new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name).exists() && new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name).length() == 0) {
-                new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name).delete();
+            if (new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString()).exists() && new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString()).length() == 0) {
+                new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString()).delete();
             }
             try {
-                new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dalvikFile.getName()).delete();
-                dex = DexFile.loadDex(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name, workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dalvikFile.getName(), 0);
-            } catch (RuntimeException e4) {
-                e4.printStackTrace();
-            } catch (Exception e322) {
-                e322.printStackTrace();
+                new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dalvikFile.getName()).toString()).delete();
+                dex = DexFile.loadDex(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString(), new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dalvikFile.getName()).toString(), 0);
+            } catch (RuntimeException e3) {
+                e3.printStackTrace();
+            } catch (Exception e2222) {
+                e2222.printStackTrace();
             }
             String dexname = dalvikFile.getName();
             System.out.println(dexname);
-            System.out.println(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname);
-            checkdex = new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname);
+            System.out.println(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dexname).toString());
+            checkdex = new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dexname).toString());
             if (checkdex.exists() && checkdex.length() == 0) {
                 checkdex.delete();
             }
             if (new File(checkdex.getAbsolutePath()).exists()) {
                 fixadlerOdex(checkdex, apk_file);
-                if (dalvikvm_copyFile(listAppsFragment.toolfilesdir, workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname, odexFile)) {
+                if (dalvikvm_copyFile(listAppsFragment.toolfilesdir, new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dexname).toString(), odexFile)) {
                     System.out.println("Free space for odex enougth.");
                     free_space = true;
                 } else {
@@ -6181,8 +6097,7 @@ public class Utils {
                     if (new File(apkOdex).exists()) {
                         run_all_no_root("rm", apkOdex);
                     }
-                    fixadlerOdex(new File(listAppsFragment.toolfilesdir, workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname), apk_file);
-                    if (dalvikvm_copyFile(listAppsFragment.toolfilesdir, workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname, dalvikFile.getAbsolutePath())) {
+                    if (dalvikvm_copyFile(listAppsFragment.toolfilesdir, new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dexname).toString(), dalvikFile.getAbsolutePath())) {
                         odexFile = dalvikFile.getAbsolutePath();
                         free_space = false;
                     } else {
@@ -6196,10 +6111,10 @@ public class Utils {
             }
             if (!(!free_space || ART || new File(apkOdex).exists())) {
                 System.out.println("lackypatch: dexopt-wrapper used!");
-                run_all_no_root("chown", "0.0", workingDir + "/dexopt-wrapper");
-                run_all_no_root("chown", "0:0", workingDir + "/dexopt-wrapper");
-                run_all_no_root("chmod", "777", workingDir + "/dexopt-wrapper");
-                String resu = cmdParam(listAppsFragment.toolfilesdir + "/dexopt-wrapper", workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name, apkOdex);
+                run_all_no_root("chown", "0.0", new StringBuilder(String.valueOf(workingDir)).append("/dexopt-wrapper").toString());
+                run_all_no_root("chown", "0:0", new StringBuilder(String.valueOf(workingDir)).append("/dexopt-wrapper").toString());
+                run_all_no_root("chmod", "777", new StringBuilder(String.valueOf(workingDir)).append("/dexopt-wrapper").toString());
+                String resu = cmdParam(listAppsFragment.toolfilesdir + "/dexopt-wrapper", new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString(), apkOdex);
                 System.out.println(resu);
                 if (!resu.contains("succes") || resu.contains("failed")) {
                     new File(apkOdex).delete();
@@ -6208,13 +6123,13 @@ public class Utils {
                     if (new File(apkOdex).exists()) {
                         run_all_no_root("rm", odexFile);
                     }
-                    run_all_no_root("rm", workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname);
-                    cmdParam(listAppsFragment.toolfilesdir + "/dexopt-wrapper", workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name, workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname);
-                    run_all_no_root("chmod", "777", workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname);
-                    run_all_no_root("chown", "0.0", workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname);
-                    run_all_no_root("chown", "0:0", workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname);
-                    fixadlerOdex(new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname), apk_file);
-                    copyFile(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dexname, odexFile, false, true);
+                    run_all_no_root("rm", new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dexname).toString());
+                    cmdParam(listAppsFragment.toolfilesdir + "/dexopt-wrapper", new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString(), new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dexname).toString());
+                    run_all_no_root("chmod", "777", new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dexname).toString());
+                    run_all_no_root("chown", "0.0", new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dexname).toString());
+                    run_all_no_root("chown", "0:0", new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dexname).toString());
+                    fixadlerOdex(new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dexname).toString()), apk_file);
+                    copyFile(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dexname).toString(), odexFile, false, true);
                 } else {
                     fixadlerOdex(new File(apkOdex), apk_file);
                 }
@@ -6229,17 +6144,17 @@ public class Utils {
             run_all_no_root("chown", "1000." + uid, odexFile);
             run_all_no_root("chown", "1000:" + uid, odexFile);
         }
-        new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dalvikFile.getName()).delete();
-        new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + dalvikFile.getName()).delete();
-        new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name).delete();
-        if (new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name).exists()) {
-            run_all_no_root("rm", workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + apk_name);
+        new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dalvikFile.getName()).toString()).delete();
+        new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(dalvikFile.getName()).toString()).delete();
+        new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString()).delete();
+        if (new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString()).exists()) {
+            run_all_no_root("rm", new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(apk_name).toString());
         }
         if (dex != null) {
             try {
                 dex.close();
-            } catch (IOException e22) {
-                e22.printStackTrace();
+            } catch (IOException e4) {
+                e4.printStackTrace();
             }
         }
         if (!free_space_int) {
@@ -6345,18 +6260,18 @@ public class Utils {
         } else {
             try {
                 dalvik_art.delete();
-                dex = DexFile.loadDex(apk_file, workingDir + "/temp.dex", 0);
+                dex = DexFile.loadDex(apk_file, new StringBuilder(String.valueOf(workingDir)).append("/temp.dex").toString(), 0);
             } catch (RuntimeException e3) {
                 e3.printStackTrace();
             } catch (Exception e22) {
                 e22.printStackTrace();
             }
             try {
-                if (dalvikvm_copyFile(listAppsFragment.toolfilesdir, workingDir + "/temp.dex", dalvik_art.getAbsolutePath())) {
+                if (dalvikvm_copyFile(listAppsFragment.toolfilesdir, new StringBuilder(String.valueOf(workingDir)).append("/temp.dex").toString(), dalvik_art.getAbsolutePath())) {
                     System.out.println("Free space for dex enougth.");
                     free_space = true;
                 }
-                new File(workingDir + "/temp.dex").delete();
+                new File(new StringBuilder(String.valueOf(workingDir)).append("/temp.dex").toString()).delete();
                 if (dalvik_art.exists() && dalvik_art.length() == 0) {
                     dalvik_art.delete();
                 }
@@ -6432,40 +6347,38 @@ public class Utils {
     public static void zip(String apkname, String workingDir, ArrayList<File> classesFiles, String rebuild_apk) {
         FileInputStream fi;
         BufferedInputStream origin;
-        Exception e;
+        int count;
         ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(rebuild_apk, false)));
         byte[] data = new byte[LZMA2Options.DICT_SIZE_MIN];
         Iterator it = classesFiles.iterator();
         BufferedInputStream origin2 = null;
         while (it.hasNext()) {
-            int count;
             try {
                 File cl = (File) it.next();
-                fi = new FileInputStream(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + cl.getName());
+                fi = new FileInputStream(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(cl.getName()).toString());
                 origin = new BufferedInputStream(fi, LZMA2Options.DICT_SIZE_MIN);
+            } catch (Exception e) {
+                Exception e2 = e;
+                origin = origin2;
+            }
+            try {
                 out.putNextEntry(new ZipEntry(cl.getName()));
                 while (true) {
                     count = origin.read(data, 0, LZMA2Options.DICT_SIZE_MIN);
-                    if (count != -1) {
-                        out.write(data, 0, count);
-                    } else {
-                        try {
-                            break;
-                        } catch (Exception e2) {
-                            e = e2;
-                        }
+                    if (count == -1) {
+                        break;
                     }
+                    out.write(data, 0, count);
                 }
                 origin.close();
                 out.closeEntry();
                 fi.close();
                 origin2 = origin;
             } catch (Exception e3) {
-                e = e3;
-                origin = origin2;
+                e2 = e3;
             }
         }
-        fi = new FileInputStream(workingDir + "/AndroidManifest.xml");
+        fi = new FileInputStream(new StringBuilder(String.valueOf(workingDir)).append("/AndroidManifest.xml").toString());
         origin = new BufferedInputStream(fi, LZMA2Options.DICT_SIZE_MIN);
         out.putNextEntry(new ZipEntry("AndroidManifest.xml"));
         while (true) {
@@ -6479,16 +6392,16 @@ public class Utils {
         out.closeEntry();
         out.close();
         fi.close();
-        new File(workingDir + "/AndroidManifest.xml").delete();
+        new File(new StringBuilder(String.valueOf(workingDir)).append("/AndroidManifest.xml").toString()).delete();
         it = classesFiles.iterator();
         while (it.hasNext()) {
-            new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + ((File) it.next()).getName()).delete();
+            new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(((File) it.next()).getName()).toString()).delete();
         }
-        e.printStackTrace();
-        new File(workingDir + "/AndroidManifest.xml").delete();
+        e2.printStackTrace();
+        new File(new StringBuilder(String.valueOf(workingDir)).append("/AndroidManifest.xml").toString()).delete();
         it = classesFiles.iterator();
         while (it.hasNext()) {
-            new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + ((File) it.next()).getName()).delete();
+            new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(((File) it.next()).getName()).toString()).delete();
         }
     }
 
@@ -6555,7 +6468,7 @@ public class Utils {
             it = classesFiles.iterator();
             while (it.hasNext()) {
                 File cl = (File) it.next();
-                FileInputStream fi = new FileInputStream(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + cl.getName());
+                FileInputStream fi = new FileInputStream(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(cl.getName()).toString());
                 BufferedInputStream bufferedInputStream = new BufferedInputStream(fi, LZMA2Options.DICT_SIZE_MIN);
                 zipOutputStream.putNextEntry(new ZipEntry(cl.getName()));
                 while (true) {
@@ -6576,10 +6489,10 @@ public class Utils {
                 new File(createWorkApp).delete();
             }
         }
-        new File(workingDir + "/AndroidManifest.xml").delete();
+        new File(new StringBuilder(String.valueOf(workingDir)).append("/AndroidManifest.xml").toString()).delete();
         it = classesFiles.iterator();
         while (it.hasNext()) {
-            new File(workingDir + InternalZipConstants.ZIP_FILE_SEPARATOR + ((File) it.next()).getName()).delete();
+            new File(new StringBuilder(String.valueOf(workingDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(((File) it.next()).getName()).toString()).delete();
         }
         if (new File(createWorkApp).exists() && new File(createWorkApp).length() != 0) {
             return createWorkApp;
@@ -6594,8 +6507,8 @@ public class Utils {
     }
 
     public static boolean XZDecompress(File file_xz, String decompressDir) {
-        File decFile;
         byte[] buf = new byte[InternalZipConstants.UFT8_NAMES_FLAG];
+        String name = null;
         File dir = new File(decompressDir);
         if (!dir.exists() || dir.isFile()) {
             if (dir.isFile()) {
@@ -6604,13 +6517,14 @@ public class Utils {
             dir.mkdirs();
         }
         if (dir.exists()) {
+            File decFile;
             if (decompressDir.endsWith(InternalZipConstants.ZIP_FILE_SEPARATOR)) {
-                decFile = new File(decompressDir + removeExtension(file_xz.getName()));
+                decFile = new File(new StringBuilder(String.valueOf(decompressDir)).append(removeExtension(file_xz.getName())).toString());
             } else {
-                decFile = new File(decompressDir + InternalZipConstants.ZIP_FILE_SEPARATOR + removeExtension(file_xz.getName()));
+                decFile = new File(new StringBuilder(String.valueOf(decompressDir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(removeExtension(file_xz.getName())).toString());
             }
             try {
-                String name = file_xz.getAbsolutePath();
+                name = file_xz.getAbsolutePath();
                 InputStream in = new XZInputStream(new FileInputStream(file_xz));
                 FileOutputStream out = new FileOutputStream(decFile);
                 while (true) {
@@ -6626,15 +6540,15 @@ public class Utils {
                 decFile.delete();
                 return false;
             } catch (FileNotFoundException e) {
-                System.err.println("XZDec: Cannot open " + null + ": " + e.getMessage());
+                System.err.println("XZDec: Cannot open " + name + ": " + e.getMessage());
                 decFile.delete();
                 return false;
             } catch (EOFException e2) {
-                System.err.println("XZDec: Unexpected end of input on " + null);
+                System.err.println("XZDec: Unexpected end of input on " + name);
                 decFile.delete();
                 return false;
             } catch (IOException e3) {
-                System.err.println("XZDec: Error decompressing from " + null + ": " + e3.getMessage());
+                System.err.println("XZDec: Error decompressing from " + name + ": " + e3.getMessage());
                 decFile.delete();
                 return false;
             }
@@ -6717,7 +6631,7 @@ public class Utils {
             try {
                 settings.put("patch1", true);
                 settings.put("patch2", true);
-                settings.put("patch3", true);
+                settings.put("patch3", false);
                 settings.put("patch4", false);
                 settings.put("hide", false);
                 settings.put("module_on", true);
@@ -6778,7 +6692,7 @@ public class Utils {
             try {
                 settings.put("patch1", true);
                 settings.put("patch2", true);
-                settings.put("patch3", true);
+                settings.put("patch3", false);
                 settings.put("patch4", false);
                 settings.put("hide", false);
                 settings.put("module_on", true);
@@ -6928,104 +6842,103 @@ public class Utils {
         ZipInput input = ZipInput.read(inputZipFilename);
         JarOutputStream output = new JarOutputStream(new FileOutputStream(outputZipFilename));
         for (ZioEntry inEntry : input.getEntries().values()) {
-            try {
-                Iterator it;
-                AddFilesItem file;
-                File fileF;
-                byte[] buffer;
-                FileInputStream data;
-                JarEntry outEntry;
-                int num;
-                JarEntry outEntry2;
-                if (inEntry.getCompression() == (short) 0) {
-                    outEntry2 = new JarEntry(inEntry.getName());
-                    try {
-                        CRC32 crc;
-                        outEntry2.setMethod(0);
-                        boolean mark2 = false;
-                        it = modified_files.iterator();
-                        while (it.hasNext()) {
-                            file = (AddFilesItem) it.next();
-                            if (inEntry.getName().equals(file.fileName.replace(file.basePath, ""))) {
-                                try {
-                                    fileF = new File(file.fileName);
-                                    buffer = new byte[((int) fileF.length())];
-                                    data = new FileInputStream(file.fileName);
-                                    data.read(buffer);
-                                    data.close();
-                                    outEntry2.setCompressedSize(fileF.length());
-                                    outEntry2.setSize(fileF.length());
-                                    crc = new CRC32();
-                                    crc.update(buffer);
-                                    outEntry2.setCrc(crc.getValue());
-                                    outEntry2.setTime(inEntry.getTime());
-                                    mark2 = true;
-                                } catch (Exception e2) {
-                                    System.out.println(e2);
-                                }
-                            }
-                        }
-                        if (!mark2) {
-                            outEntry2.setCompressedSize((long) inEntry.getSize());
-                            outEntry2.setSize((long) inEntry.getSize());
-                            crc = new CRC32();
-                            crc.update(inEntry.getData());
-                            outEntry2.setCrc(crc.getValue());
-                            outEntry2.setTime(inEntry.getTime());
-                        }
-                        outEntry = outEntry2;
-                    } catch (Exception e3) {
-                        e2 = e3;
-                        outEntry = outEntry2;
-                    }
-                } else {
-                    outEntry2 = new JarEntry(inEntry.getName());
-                    outEntry2.setTime(inEntry.getTime());
-                    outEntry2.setMethod(inEntry.getCompression());
-                    outEntry = outEntry2;
-                }
-                boolean mark = false;
+            Iterator it;
+            AddFilesItem file;
+            JarEntry jarEntry;
+            int num;
+            JarEntry outEntry;
+            if (inEntry.getCompression() == (short) 0) {
+                CRC32 crc;
+                outEntry = new JarEntry(inEntry.getName());
+                outEntry.setMethod(0);
+                boolean mark2 = false;
                 it = modified_files.iterator();
                 while (it.hasNext()) {
                     file = (AddFilesItem) it.next();
                     if (inEntry.getName().equals(file.fileName.replace(file.basePath, ""))) {
                         try {
-                            fileF = new File(file.fileName);
-                            buffer = new byte[8192];
-                            data = new FileInputStream(file.fileName);
-                            output.putNextEntry(outEntry);
-                            while (true) {
-                                num = data.read(buffer);
-                                if (num <= 0) {
-                                    break;
-                                }
-                                output.write(buffer, 0, num);
-                            }
-                            output.flush();
+                            File fileF = new File(file.fileName);
+                            byte[] buffer = new byte[((int) fileF.length())];
+                            FileInputStream data = new FileInputStream(file.fileName);
+                            data.read(buffer);
                             data.close();
-                            mark = true;
-                            fileF.delete();
-                            System.out.println("LuckyPatcher (signer): Additional files added! " + file);
-                        } catch (Exception e22) {
+                            outEntry.setCompressedSize(fileF.length());
+                            outEntry.setSize(fileF.length());
+                            crc = new CRC32();
+                            crc.update(buffer);
+                            outEntry.setCrc(crc.getValue());
+                            outEntry.setTime(inEntry.getTime());
+                            mark2 = true;
+                        } catch (Exception e2) {
+                            try {
+                                System.out.println(e2);
+                            } catch (Exception e3) {
+                                e2 = e3;
+                                jarEntry = outEntry;
+                            }
+                        }
+                    }
+                }
+                if (!mark2) {
+                    outEntry.setCompressedSize((long) inEntry.getSize());
+                    outEntry.setSize((long) inEntry.getSize());
+                    crc = new CRC32();
+                    crc.update(inEntry.getData());
+                    outEntry.setCrc(crc.getValue());
+                    outEntry.setTime(inEntry.getTime());
+                    jarEntry = outEntry;
+                }
+                jarEntry = outEntry;
+            } else {
+                outEntry = new JarEntry(inEntry.getName());
+                outEntry.setTime(inEntry.getTime());
+                outEntry.setMethod(inEntry.getCompression());
+                jarEntry = outEntry;
+            }
+            boolean mark = false;
+            it = modified_files.iterator();
+            while (it.hasNext()) {
+                InputStream data2;
+                file = (AddFilesItem) it.next();
+                if (inEntry.getName().equals(file.fileName.replace(file.basePath, ""))) {
+                    try {
+                        fileF = new File(file.fileName);
+                        buffer = new byte[8192];
+                        data2 = new FileInputStream(file.fileName);
+                        output.putNextEntry(jarEntry);
+                        while (true) {
+                            num = data2.read(buffer);
+                            if (num <= 0) {
+                                break;
+                            }
+                            output.write(buffer, 0, num);
+                        }
+                        output.flush();
+                        data2.close();
+                        mark = true;
+                        fileF.delete();
+                        System.out.println("LuckyPatcher (signer): Additional files added! " + file);
+                    } catch (Exception e22) {
+                        try {
                             System.out.println(e22);
+                        } catch (Exception e4) {
+                            e22 = e4;
                         }
                     }
                 }
-                if (!mark) {
-                    output.putNextEntry(outEntry);
-                    InputStream data2 = inEntry.getInputStream();
-                    buffer = new byte[8192];
-                    while (true) {
-                        num = data2.read(buffer);
-                        if (num <= 0) {
-                            break;
-                        }
-                        output.write(buffer, 0, num);
+            }
+            if (!mark) {
+                output.putNextEntry(jarEntry);
+                data2 = inEntry.getInputStream();
+                buffer = new byte[8192];
+                while (true) {
+                    num = data2.read(buffer);
+                    if (num <= 0) {
+                        break;
                     }
-                    output.flush();
+                    output.write(buffer, 0, num);
                 }
-            } catch (Exception e4) {
-                e22 = e4;
+                output.flush();
             }
         }
         output.close();
@@ -7088,53 +7001,9 @@ public class Utils {
         return "";
     }
 
-    public static void market_billing_services(final boolean enable) {
+    public static void market_billing_services(boolean enable) {
         if (listAppsFragment.su) {
-            new Thread(new Runnable() {
-                public void run() {
-                    ArrayList<Components> tmpList = new ArrayList();
-                    PackageInfo info = Utils.getPkgInfo(Common.GOOGLEPLAY_PKG, 516);
-                    boolean found = false;
-                    if (info != null && info.services != null && info.services.length != 0) {
-                        int d = 0;
-                        while (d < info.services.length) {
-                            try {
-                                if (enable) {
-                                    if ((info.services[d].name.endsWith("InAppBillingService") || info.services[d].name.endsWith("MarketBillingService")) && listAppsFragment.getPkgMng().getComponentEnabledSetting(new ComponentName(Common.GOOGLEPLAY_PKG, info.services[d].name)) != 1) {
-                                        new Utils("").cmdRoot("pm enable 'com.android.vending/" + info.services[d].name + "'");
-                                        found = true;
-                                    }
-                                } else if ((info.services[d].name.endsWith("InAppBillingService") || info.services[d].name.endsWith("MarketBillingService")) && listAppsFragment.getPkgMng().getComponentEnabledSetting(new ComponentName(Common.GOOGLEPLAY_PKG, info.services[d].name)) != 2) {
-                                    new Utils("").cmdRoot("pm disable 'com.android.vending/" + info.services[d].name + "'");
-                                    found = true;
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            d++;
-                        }
-                        if (!found && enable) {
-                            new Utils("").cmdRoot("pm enable 'com.android.vending/com.google.android.finsky.billing.iab.InAppBillingService'");
-                            new Utils("").cmdRoot("pm enable 'com.android.vending/com.google.android.finsky.billing.iab.FirstPartyInAppBillingService'");
-                            new Utils("").cmdRoot("pm enable 'com.android.vending/com.google.android.finsky.billing.iab.MarketBillingService'");
-                        }
-                        if (listAppsFragment.frag != null) {
-                            listAppsFragment.frag.runToMain(new Runnable() {
-                                public void run() {
-                                    try {
-                                        if (listAppsFragment.menu_adapt != null) {
-                                            listAppsFragment.removeDialogLP(11);
-                                            listAppsFragment.menu_adapt.notifyDataSetChanged();
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                        }
-                    }
-                }
-            }).start();
+            new Thread(new AnonymousClass15(enable)).start();
         }
     }
 
@@ -7167,51 +7036,9 @@ public class Utils {
         }
     }
 
-    public static void market_licensing_services(final boolean enable) {
+    public static void market_licensing_services(boolean enable) {
         if (listAppsFragment.su) {
-            new Thread(new Runnable() {
-                public void run() {
-                    ArrayList<Components> tmpList = new ArrayList();
-                    PackageInfo info = Utils.getPkgInfo(Common.GOOGLEPLAY_PKG, 516);
-                    boolean found_service = false;
-                    if (info != null && info.services != null && info.services.length != 0) {
-                        int d = 0;
-                        while (d < info.services.length) {
-                            try {
-                                if (enable) {
-                                    if (info.services[d].name.endsWith("LicensingService") && listAppsFragment.getPkgMng().getComponentEnabledSetting(new ComponentName(Common.GOOGLEPLAY_PKG, info.services[d].name)) != 1) {
-                                        found_service = true;
-                                        new Utils("").cmdRoot("pm enable 'com.android.vending/" + info.services[d].name + "'");
-                                    }
-                                } else if (info.services[d].name.endsWith("LicensingService") && listAppsFragment.getPkgMng().getComponentEnabledSetting(new ComponentName(Common.GOOGLEPLAY_PKG, info.services[d].name)) != 2) {
-                                    found_service = true;
-                                    new Utils("").cmdRoot("pm disable 'com.android.vending/" + info.services[d].name + "'");
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            d++;
-                        }
-                        if (!found_service && enable) {
-                            new Utils("").cmdRoot("pm enable 'com.android.vending/com.google.android.finsky.services.LicensingService'");
-                        }
-                        if (listAppsFragment.frag != null) {
-                            listAppsFragment.frag.runToMain(new Runnable() {
-                                public void run() {
-                                    try {
-                                        if (listAppsFragment.menu_adapt != null) {
-                                            listAppsFragment.removeDialogLP(11);
-                                            listAppsFragment.menu_adapt.notifyDataSetChanged();
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                        }
-                    }
-                }
-            }).start();
+            new Thread(new AnonymousClass16(enable)).start();
         }
     }
 
@@ -7257,16 +7084,16 @@ public class Utils {
             String dir_tmp = InternalZipConstants.ZIP_FILE_SEPARATOR;
             for (int i = 0; i < dirs.length; i++) {
                 if (!dirs[i].equals("")) {
-                    dir_tmp = dir_tmp + dirs[i];
+                    dir_tmp = new StringBuilder(String.valueOf(dir_tmp)).append(dirs[i]).toString();
                 }
-                if (dir_tmp.startsWith(startDir) || (dir_tmp + InternalZipConstants.ZIP_FILE_SEPARATOR).startsWith(startDir)) {
+                if (dir_tmp.startsWith(startDir) || new StringBuilder(String.valueOf(dir_tmp)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).toString().startsWith(startDir)) {
                     if (setPermissionForStartDir) {
                         cmdParam("chmod", permissions, dir_tmp);
                     }
                     setPermissionForStartDir = true;
                 }
                 if (!dirs[i].equals("")) {
-                    dir_tmp = dir_tmp + InternalZipConstants.ZIP_FILE_SEPARATOR;
+                    dir_tmp = new StringBuilder(String.valueOf(dir_tmp)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).toString();
                 }
             }
         }
@@ -7278,9 +7105,9 @@ public class Utils {
             String dir_tmp = InternalZipConstants.ZIP_FILE_SEPARATOR;
             for (int i = 0; i < dirs.length; i++) {
                 if (!dirs[i].equals("")) {
-                    dir_tmp = dir_tmp + dirs[i];
+                    dir_tmp = new StringBuilder(String.valueOf(dir_tmp)).append(dirs[i]).toString();
                 }
-                if (dir_tmp.startsWith(startDir) || (dir_tmp + InternalZipConstants.ZIP_FILE_SEPARATOR).startsWith(startDir)) {
+                if (dir_tmp.startsWith(startDir) || new StringBuilder(String.valueOf(dir_tmp)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).toString().startsWith(startDir)) {
                     if (setOwnerForStartDir) {
                         cmdParam("chown", owner, dir_tmp);
                         cmdParam("chown", owner.replace(":", "."), dir_tmp);
@@ -7288,7 +7115,7 @@ public class Utils {
                     setOwnerForStartDir = true;
                 }
                 if (!dirs[i].equals("")) {
-                    dir_tmp = dir_tmp + InternalZipConstants.ZIP_FILE_SEPARATOR;
+                    dir_tmp = new StringBuilder(String.valueOf(dir_tmp)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).toString();
                 }
             }
         }
@@ -7329,108 +7156,104 @@ public class Utils {
         ZipEntry outEntry = null;
         while (true) {
             ZipEntry inEntry = in.getNextEntry();
-            if (inEntry != null) {
-                AddFilesItem file;
-                File fileF;
-                FileInputStream data;
-                int length = files.length;
-                int i = 0;
-                ZipEntry outEntry2 = outEntry;
-                while (i < length) {
-                    file = files[i];
-                    if (inEntry.getName().equals(file.fileName.replace(file.basePath, ""))) {
+            if (inEntry == null) {
+                out.finish();
+                out.close();
+                return;
+            }
+            int length = files.length;
+            int i = 0;
+            ZipEntry outEntry2 = outEntry;
+            while (i < length) {
+                AddFilesItem file = files[i];
+                if (inEntry.getName().equals(file.fileName.replace(file.basePath, ""))) {
+                    try {
+                        outEntry = new ZipEntry(inEntry.getName());
                         try {
-                            outEntry = new ZipEntry(inEntry.getName());
-                            try {
-                                outEntry.setTime(inEntry.getTime());
-                                fileF = new File(file.fileName);
-                                data = new FileInputStream(file.fileName);
-                                byte[] buffer2 = new byte[((int) fileF.length())];
-                                data.read(buffer2);
-                                outEntry.setSize(fileF.length());
-                                crc.update(buffer2);
-                                outEntry.setCrc(crc.getValue());
-                                outEntry.setMethod(inEntry.getMethod());
-                                data.close();
-                                mark2 = true;
-                            } catch (Exception e2) {
-                                e = e2;
-                                System.out.println(e);
-                                i++;
-                                outEntry2 = outEntry;
-                            }
-                        } catch (Exception e3) {
-                            e = e3;
-                            outEntry = outEntry2;
+                            outEntry.setTime(inEntry.getTime());
+                            File fileF = new File(file.fileName);
+                            FileInputStream data = new FileInputStream(file.fileName);
+                            byte[] buffer2 = new byte[((int) fileF.length())];
+                            data.read(buffer2);
+                            outEntry.setSize(fileF.length());
+                            crc.update(buffer2);
+                            outEntry.setCrc(crc.getValue());
+                            outEntry.setMethod(inEntry.getMethod());
+                            data.close();
+                            mark2 = true;
+                        } catch (Exception e2) {
+                            e = e2;
                             System.out.println(e);
                             i++;
                             outEntry2 = outEntry;
                         }
-                    } else {
+                    } catch (Exception e3) {
+                        e = e3;
                         outEntry = outEntry2;
+                        System.out.println(e);
+                        i++;
+                        outEntry2 = outEntry;
                     }
-                    i++;
-                    outEntry2 = outEntry;
-                }
-                if (inEntry.getMethod() == 0) {
-                    if (!mark2) {
-                        outEntry = new ZipEntry(inEntry);
-                        outEntry.setMethod(0);
-                        outEntry.setTime(inEntry.getTime());
-                        outEntry.setCompressedSize(inEntry.getSize());
-                        outEntry.setSize(inEntry.getSize());
-                        out.putNextEntry(outEntry);
-                        crc.reset();
-                    }
-                    outEntry = outEntry2;
                 } else {
-                    if (!mark2) {
-                        outEntry = new JarEntry(inEntry.getName());
-                        out.putNextEntry(outEntry);
-                        outEntry.setTime(inEntry.getTime());
-                    }
                     outEntry = outEntry2;
                 }
-                int num;
-                if (mark2) {
-                    for (AddFilesItem file2 : files) {
-                        if (inEntry.getName().equals(file2.fileName.replace(file2.basePath, ""))) {
-                            try {
-                                fileF = new File(file2.fileName);
-                                data = new FileInputStream(file2.fileName);
-                                out.putNextEntry(outEntry);
-                                while (true) {
-                                    num = data.read(buffer);
-                                    if (num <= 0) {
-                                        break;
-                                    }
-                                    out.write(buffer, 0, num);
-                                }
-                                out.flush();
-                                fileF.delete();
-                                data.close();
-                            } catch (Exception e4) {
-                                System.out.println(e4);
-                            }
-                        }
-                    }
-                    mark2 = false;
-                } else {
-                    while (true) {
-                        num = in.read(buffer);
-                        if (num <= 0) {
-                            break;
-                        }
-                        out.write(buffer, 0, num);
-                        crc.update(buffer, 0, num);
-                    }
-                    out.flush();
-                    outEntry.setCrc(crc.getValue());
+                i++;
+                outEntry2 = outEntry;
+            }
+            if (inEntry.getMethod() == 0) {
+                if (!mark2) {
+                    outEntry = new ZipEntry(inEntry);
+                    outEntry.setMethod(0);
+                    outEntry.setTime(inEntry.getTime());
+                    outEntry.setCompressedSize(inEntry.getSize());
+                    outEntry.setSize(inEntry.getSize());
+                    out.putNextEntry(outEntry);
+                    crc.reset();
                 }
+                outEntry = outEntry2;
             } else {
-                out.finish();
-                out.close();
-                return;
+                if (!mark2) {
+                    outEntry = new JarEntry(inEntry.getName());
+                    out.putNextEntry(outEntry);
+                    outEntry.setTime(inEntry.getTime());
+                }
+                outEntry = outEntry2;
+            }
+            int num;
+            if (mark2) {
+                for (AddFilesItem file2 : files) {
+                    if (inEntry.getName().equals(file2.fileName.replace(file2.basePath, ""))) {
+                        try {
+                            fileF = new File(file2.fileName);
+                            data = new FileInputStream(file2.fileName);
+                            out.putNextEntry(outEntry);
+                            while (true) {
+                                num = data.read(buffer);
+                                if (num <= 0) {
+                                    break;
+                                }
+                                out.write(buffer, 0, num);
+                            }
+                            out.flush();
+                            fileF.delete();
+                            data.close();
+                        } catch (Exception e4) {
+                            System.out.println(e4);
+                        }
+                    }
+                }
+                mark2 = false;
+            } else {
+                while (true) {
+                    num = in.read(buffer);
+                    if (num <= 0) {
+                        break;
+                    }
+                    out.write(buffer, 0, num);
+                    crc.update(buffer, 0, num);
+                }
+                out.flush();
+                outEntry.setCrc(crc.getValue());
             }
         }
     }
@@ -7550,7 +7373,7 @@ public class Utils {
         try {
             listAppsFragment.patchAct.runOnUiThread(new Runnable() {
                 public void run() {
-                    Toast.makeText(listAppsFragment.getInstance(), Utils.getText(2131165689), 1).show();
+                    Toast.makeText(listAppsFragment.getInstance(), Utils.getText(2131362237), 1).show();
                 }
             });
         } catch (Exception e2222222222222) {

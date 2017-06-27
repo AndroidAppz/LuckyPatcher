@@ -304,7 +304,9 @@ public class CipherOutputStream extends BaseOutputStream {
             if (!this.zipParameters.isSourceExternalStream()) {
                 fileAttrs = getFileAttributes(this.sourceFile);
             }
-            this.fileHeader.setExternalFileAttr(new byte[]{(byte) fileAttrs, (byte) 0, (byte) 0, (byte) 0});
+            byte[] externalFileAttrs = new byte[4];
+            externalFileAttrs[0] = (byte) fileAttrs;
+            this.fileHeader.setExternalFileAttr(externalFileAttrs);
             if (this.zipParameters.isSourceExternalStream()) {
                 FileHeader fileHeader = this.fileHeader;
                 boolean z = fileName.endsWith(InternalZipConstants.ZIP_FILE_SEPARATOR) || fileName.endsWith("\\");

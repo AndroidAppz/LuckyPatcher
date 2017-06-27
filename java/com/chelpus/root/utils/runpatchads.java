@@ -95,200 +95,172 @@ public class runpatchads {
         r9 = new java.util.ArrayList;
         r9.<init>();
         filestopatch = r9;
-        r9 = new java.io.File;	 Catch:{ Exception -> 0x009c }
+        r9 = new java.io.File;	 Catch:{ Exception -> 0x0a63 }
         r11 = 3;
-        r11 = r63[r11];	 Catch:{ Exception -> 0x009c }
-        r9.<init>(r11);	 Catch:{ Exception -> 0x009c }
-        r34 = r9.listFiles();	 Catch:{ Exception -> 0x009c }
+        r11 = r63[r11];	 Catch:{ Exception -> 0x0a63 }
+        r9.<init>(r11);	 Catch:{ Exception -> 0x0a63 }
+        r34 = r9.listFiles();	 Catch:{ Exception -> 0x0a63 }
         r0 = r34;
-        r11 = r0.length;	 Catch:{ Exception -> 0x009c }
+        r11 = r0.length;	 Catch:{ Exception -> 0x0a63 }
         r9 = 0;
     L_0x0068:
-        if (r9 >= r11) goto L_0x00a0;
+        if (r9 < r11) goto L_0x0a30;
     L_0x006a:
-        r31 = r34[r9];	 Catch:{ Exception -> 0x009c }
-        r12 = r31.isFile();	 Catch:{ Exception -> 0x009c }
-        if (r12 == 0) goto L_0x0099;
-    L_0x0072:
-        r12 = r31.getName();	 Catch:{ Exception -> 0x009c }
-        r13 = "busybox";
-        r12 = r12.equals(r13);	 Catch:{ Exception -> 0x009c }
-        if (r12 != 0) goto L_0x0099;
-    L_0x007e:
-        r12 = r31.getName();	 Catch:{ Exception -> 0x009c }
-        r13 = "reboot";
-        r12 = r12.equals(r13);	 Catch:{ Exception -> 0x009c }
-        if (r12 != 0) goto L_0x0099;
-    L_0x008a:
-        r12 = r31.getName();	 Catch:{ Exception -> 0x009c }
-        r13 = "dalvikvm";
-        r12 = r12.equals(r13);	 Catch:{ Exception -> 0x009c }
-        if (r12 != 0) goto L_0x0099;
-    L_0x0096:
-        r31.delete();	 Catch:{ Exception -> 0x009c }
-    L_0x0099:
-        r9 = r9 + 1;
-        goto L_0x0068;
-    L_0x009c:
-        r27 = move-exception;
-        r27.printStackTrace();
-    L_0x00a0:
         r9 = 1;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "pattern0";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 != 0) goto L_0x00ae;
-    L_0x00ab:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 != 0) goto L_0x0078;
+    L_0x0075:
         r9 = 0;
-        fileblock = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x00ae:
+        fileblock = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x0078:
         r9 = 1;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "pattern1";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 != 0) goto L_0x00bc;
-    L_0x00b9:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 != 0) goto L_0x0086;
+    L_0x0083:
         r9 = 0;
-        pattern1 = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x00bc:
+        pattern1 = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x0086:
         r9 = 1;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "pattern2";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 != 0) goto L_0x00ca;
-    L_0x00c7:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 != 0) goto L_0x0094;
+    L_0x0091:
         r9 = 0;
-        pattern2 = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x00ca:
+        pattern2 = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x0094:
         r9 = 1;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "pattern3";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 != 0) goto L_0x00d8;
-    L_0x00d5:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 != 0) goto L_0x00a2;
+    L_0x009f:
         r9 = 0;
-        pattern3 = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x00d8:
+        pattern3 = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x00a2:
         r9 = 1;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "pattern4";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 != 0) goto L_0x00e6;
-    L_0x00e3:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 != 0) goto L_0x00b0;
+    L_0x00ad:
         r9 = 0;
-        pattern4 = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x00e6:
+        pattern4 = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x00b0:
         r9 = 1;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "pattern5";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 != 0) goto L_0x00f4;
-    L_0x00f1:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 != 0) goto L_0x00be;
+    L_0x00bb:
         r9 = 0;
-        pattern5 = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x00f4:
+        pattern5 = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x00be:
         r9 = 1;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "pattern6";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 != 0) goto L_0x0102;
-    L_0x00ff:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 != 0) goto L_0x00cc;
+    L_0x00c9:
         r9 = 0;
-        pattern6 = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x0102:
+        pattern6 = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x00cc:
         r9 = 1;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "dependencies";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 != 0) goto L_0x0110;
-    L_0x010d:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 != 0) goto L_0x00da;
+    L_0x00d7:
         r9 = 0;
-        dependencies = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x0110:
+        dependencies = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x00da:
         r9 = 1;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "fulloffline";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 != 0) goto L_0x011e;
-    L_0x011b:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 != 0) goto L_0x00e8;
+    L_0x00e5:
         r9 = 0;
-        full_offline = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x011e:
+        full_offline = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x00e8:
         r9 = 6;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 == 0) goto L_0x0131;
-    L_0x0123:
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 == 0) goto L_0x00fb;
+    L_0x00ed:
         r9 = 6;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "createAPK";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 == 0) goto L_0x0131;
-    L_0x012e:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 == 0) goto L_0x00fb;
+    L_0x00f8:
         r9 = 1;
-        createAPK = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x0131:
+        createAPK = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x00fb:
         r9 = 6;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 == 0) goto L_0x0144;
-    L_0x0136:
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 == 0) goto L_0x010e;
+    L_0x0100:
         r9 = 6;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "ART";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 == 0) goto L_0x0144;
-    L_0x0141:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 == 0) goto L_0x010e;
+    L_0x010b:
         r9 = 1;
-        ART = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x0144:
+        ART = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x010e:
         r9 = 6;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 == 0) goto L_0x014f;
-    L_0x0149:
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 == 0) goto L_0x0119;
+    L_0x0113:
         r9 = 6;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x014f:
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x0119:
         r9 = 7;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 == 0) goto L_0x0172;
-    L_0x0154:
-        r9 = new java.lang.StringBuilder;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        r9.<init>();	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 == 0) goto L_0x0138;
+    L_0x011e:
+        r9 = new java.lang.StringBuilder;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = "1 ";
-        r9 = r9.append(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r9.<init>(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r11 = 7;
-        r11 = r63[r11];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        r9 = r9.append(r11);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        r9 = r9.toString();	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
+        r11 = r63[r11];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        r9 = r9.append(r11);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        r9 = r9.toString();	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
         r9 = 7;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        AdsBlockFile = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x0172:
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        AdsBlockFile = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x0138:
         r9 = 8;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        if (r9 == 0) goto L_0x0a5a;
-    L_0x0178:
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        if (r9 == 0) goto L_0x0a69;
+    L_0x013e:
         r9 = 8;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        uid = r9;	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-    L_0x017e:
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        uid = r9;	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+    L_0x0144:
         r9 = 5;
-        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x129d, Exception -> 0x129a }
+        r9 = r63[r9];	 Catch:{ NullPointerException -> 0x1286, Exception -> 0x1283 }
         r11 = "copyDC";
-        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x129d, Exception -> 0x129a }
-        if (r9 == 0) goto L_0x018c;
-    L_0x0189:
+        r9 = r9.contains(r11);	 Catch:{ NullPointerException -> 0x1286, Exception -> 0x1283 }
+        if (r9 == 0) goto L_0x0152;
+    L_0x014f:
         r9 = 1;
-        copyDC = r9;	 Catch:{ NullPointerException -> 0x129d, Exception -> 0x129a }
-    L_0x018c:
+        copyDC = r9;	 Catch:{ NullPointerException -> 0x1286, Exception -> 0x1283 }
+    L_0x0152:
         r9 = createAPK;
-        if (r9 == 0) goto L_0x0197;
-    L_0x0190:
+        if (r9 == 0) goto L_0x015d;
+    L_0x0156:
         r9 = 0;
         r9 = java.lang.Boolean.valueOf(r9);
         com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.startUnderRoot = r9;
-    L_0x0197:
+    L_0x015d:
         r54 = new java.util.ArrayList;
         r54.<init>();
         r3 = new java.util.ArrayList;
@@ -923,8 +895,8 @@ public class runpatchads {
         r9 = r63[r9];
         r11 = "com.buak.Link2SD";
         r9 = r9.contains(r11);
-        if (r9 != 0) goto L_0x0845;
-    L_0x0820:
+        if (r9 != 0) goto L_0x080b;
+    L_0x07e6:
         r9 = "00 05 2E 6F 64 65 78 00";
         r3.add(r9);
         r9 = "00 05 2E 6F 64 65 79 00";
@@ -939,7 +911,7 @@ public class runpatchads {
         r9 = 1;
         r9 = java.lang.Boolean.valueOf(r9);
         r8.add(r9);
-    L_0x0845:
+    L_0x080b:
         r9 = "00 04 6F 64 65 78 00";
         r3.add(r9);
         r9 = "00 04 6F 64 65 79 00";
@@ -983,8 +955,8 @@ public class runpatchads {
         r9 = java.lang.Boolean.valueOf(r9);
         r8.add(r9);
         r9 = ART;
-        if (r9 != 0) goto L_0x0a64;
-    L_0x08b8:
+        if (r9 != 0) goto L_0x0a73;
+    L_0x087e:
         r9 = "13 ?? 09 00 12 ?? 12 ?? 6E ?? ?? ?? ?? ?? 0C ??";
         r3.add(r9);
         r9 = "12 00 0F 00 12 ?? 12 ?? 6E ?? ?? ?? ?? ?? 0C ??";
@@ -1013,83 +985,55 @@ public class runpatchads {
         r9 = 1;
         r9 = java.lang.Boolean.valueOf(r9);
         r8.add(r9);
-    L_0x0902:
+    L_0x08c8:
         r20 = 0;
         r9 = java.lang.Boolean.valueOf(r20);
         com.chelpus.Utils.convertToPatchItemAuto(r2, r3, r4, r5, r6, r7, r8, r9);
         r9 = fileblock;
-        if (r9 == 0) goto L_0x09b6;
-    L_0x090f:
-        r9 = AdsBlockFile;	 Catch:{ Exception -> 0x0951 }
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ Exception -> 0x0951 }
-        r51 = new java.io.FileInputStream;	 Catch:{ Exception -> 0x0951 }
-        r9 = AdsBlockFile;	 Catch:{ Exception -> 0x0951 }
+        if (r9 == 0) goto L_0x0940;
+    L_0x08d5:
+        r9 = AdsBlockFile;	 Catch:{ Exception -> 0x0adc }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ Exception -> 0x0adc }
+        r51 = new java.io.FileInputStream;	 Catch:{ Exception -> 0x0adc }
+        r9 = AdsBlockFile;	 Catch:{ Exception -> 0x0adc }
         r0 = r51;
-        r0.<init>(r9);	 Catch:{ Exception -> 0x0951 }
-        r53 = new java.io.BufferedReader;	 Catch:{ Exception -> 0x0951 }
-        r9 = new java.io.InputStreamReader;	 Catch:{ Exception -> 0x0951 }
+        r0.<init>(r9);	 Catch:{ Exception -> 0x0adc }
+        r53 = new java.io.BufferedReader;	 Catch:{ Exception -> 0x0adc }
+        r9 = new java.io.InputStreamReader;	 Catch:{ Exception -> 0x0adc }
         r0 = r51;
-        r9.<init>(r0);	 Catch:{ Exception -> 0x0951 }
+        r9.<init>(r0);	 Catch:{ Exception -> 0x0adc }
         r0 = r53;
-        r0.<init>(r9);	 Catch:{ Exception -> 0x0951 }
-        r9 = fileblock;	 Catch:{ Exception -> 0x0951 }
-        if (r9 == 0) goto L_0x0ab0;
-    L_0x092f:
-        r38 = r53.readLine();	 Catch:{ Exception -> 0x0951 }
-        if (r38 == 0) goto L_0x0ab0;
-    L_0x0935:
-        r38 = r38.trim();	 Catch:{ Exception -> 0x0951 }
-        r9 = "";
-        r0 = r38;
-        r9 = r0.equals(r9);	 Catch:{ Exception -> 0x0951 }
-        if (r9 != 0) goto L_0x092f;
-    L_0x0943:
-        r9 = "UTF-8";
-        r0 = r38;
-        r9 = r0.getBytes(r9);	 Catch:{ Exception -> 0x0951 }
-        r0 = r54;
-        r0.add(r9);	 Catch:{ Exception -> 0x0951 }
-        goto L_0x092f;
-    L_0x0951:
-        r27 = move-exception;
-        r27.printStackTrace();
-    L_0x0955:
-        r51 = new java.io.FileInputStream;	 Catch:{ Exception -> 0x0996 }
-        r9 = AdsBlockFile;	 Catch:{ Exception -> 0x0996 }
+        r0.<init>(r9);	 Catch:{ Exception -> 0x0adc }
+        r9 = fileblock;	 Catch:{ Exception -> 0x0adc }
+        if (r9 == 0) goto L_0x08fb;
+    L_0x08f5:
+        r38 = r53.readLine();	 Catch:{ Exception -> 0x0adc }
+        if (r38 != 0) goto L_0x0abf;
+    L_0x08fb:
+        r51.close();	 Catch:{ Exception -> 0x0adc }
+    L_0x08fe:
+        r51 = new java.io.FileInputStream;	 Catch:{ Exception -> 0x0aff }
+        r9 = AdsBlockFile;	 Catch:{ Exception -> 0x0aff }
         r11 = "AdsBlockList.txt";
         r12 = "AdsBlockList_user_edit.txt";
-        r9 = r9.replace(r11, r12);	 Catch:{ Exception -> 0x0996 }
+        r9 = r9.replace(r11, r12);	 Catch:{ Exception -> 0x0aff }
         r0 = r51;
-        r0.<init>(r9);	 Catch:{ Exception -> 0x0996 }
-        r53 = new java.io.BufferedReader;	 Catch:{ Exception -> 0x0996 }
-        r9 = new java.io.InputStreamReader;	 Catch:{ Exception -> 0x0996 }
+        r0.<init>(r9);	 Catch:{ Exception -> 0x0aff }
+        r53 = new java.io.BufferedReader;	 Catch:{ Exception -> 0x0aff }
+        r9 = new java.io.InputStreamReader;	 Catch:{ Exception -> 0x0aff }
         r0 = r51;
-        r9.<init>(r0);	 Catch:{ Exception -> 0x0996 }
+        r9.<init>(r0);	 Catch:{ Exception -> 0x0aff }
         r0 = r53;
-        r0.<init>(r9);	 Catch:{ Exception -> 0x0996 }
-    L_0x0974:
-        r38 = r53.readLine();	 Catch:{ Exception -> 0x0996 }
-        if (r38 == 0) goto L_0x0ab5;
-    L_0x097a:
-        r38 = r38.trim();	 Catch:{ Exception -> 0x0996 }
-        r9 = "";
-        r0 = r38;
-        r9 = r0.equals(r9);	 Catch:{ Exception -> 0x0996 }
-        if (r9 != 0) goto L_0x0974;
-    L_0x0988:
-        r9 = "UTF-8";
-        r0 = r38;
-        r9 = r0.getBytes(r9);	 Catch:{ Exception -> 0x0996 }
-        r0 = r54;
-        r0.add(r9);	 Catch:{ Exception -> 0x0996 }
-        goto L_0x0974;
-    L_0x0996:
-        r27 = move-exception;
-        r27.printStackTrace();
-    L_0x099a:
+        r0.<init>(r9);	 Catch:{ Exception -> 0x0aff }
+    L_0x091d:
+        r38 = r53.readLine();	 Catch:{ Exception -> 0x0aff }
+        if (r38 != 0) goto L_0x0ae2;
+    L_0x0923:
+        r51.close();	 Catch:{ Exception -> 0x0aff }
+    L_0x0926:
         r9 = r54.isEmpty();
-        if (r9 != 0) goto L_0x09b6;
-    L_0x09a0:
+        if (r9 != 0) goto L_0x0940;
+    L_0x092c:
         r9 = r54.size();
         r9 = new byte[r9][];
         sites = r9;
@@ -1097,106 +1041,176 @@ public class runpatchads {
         r0 = r54;
         r9 = r0.toArray(r9);
         r9 = (byte[][]) r9;
-        r9 = (byte[][]) r9;
         sites = r9;
-    L_0x09b6:
-        r9 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.startUnderRoot;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.booleanValue();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x09c6;
-    L_0x09be:
+    L_0x0940:
+        r9 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.startUnderRoot;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.booleanValue();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0950;
+    L_0x0948:
         r9 = 2;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = "RW";
-        com.chelpus.Utils.remount(r9, r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x09c6:
-        r9 = createAPK;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 != 0) goto L_0x0bfc;
-    L_0x09ca:
-        r9 = ART;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 != 0) goto L_0x0bfc;
-    L_0x09ce:
+        com.chelpus.Utils.remount(r9, r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0950:
+        r9 = createAPK;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 != 0) goto L_0x0d44;
+    L_0x0954:
+        r9 = ART;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 != 0) goto L_0x0d44;
+    L_0x0958:
         r9 = 3;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        dir = r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        dir = r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = 2;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        dirapp = r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        clearTemp();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        dirapp = r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        clearTemp();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = 4;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = "not_system";
-        r9 = r9.equals(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x09e9;
-    L_0x09e6:
+        r9 = r9.equals(r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0973;
+    L_0x0970:
         r9 = 0;
-        system = r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x09e9:
+        system = r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0973:
         r9 = 4;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = "system";
-        r9 = r9.equals(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x09f7;
-    L_0x09f4:
+        r9 = r9.equals(r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0981;
+    L_0x097e:
         r9 = 1;
-        system = r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x09f7:
-        r9 = filestopatch;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.clear();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        system = r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0981:
+        r9 = filestopatch;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.clear();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = "CLASSES mode create odex enabled.";
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = 0;
-        r44 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r44 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = 2;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        appdir = r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        appdir = r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = 3;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        sddir = r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        clearTempSD();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r16 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = appdir;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        sddir = r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        clearTempSD();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r16 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = appdir;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r0 = r16;
-        r0.<init>(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r0.<init>(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = "Get classes.dex.";
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = print;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = print;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = "Get classes.dex.";
-        r9.println(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        unzipART(r16);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0a35;
-    L_0x0a2d:
-        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.size();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 != 0) goto L_0x0aba;
-    L_0x0a35:
-        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        throw r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0a3b:
+        r9.println(r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        unzipART(r16);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x09bf;
+    L_0x09b7:
+        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.size();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 != 0) goto L_0x0b05;
+    L_0x09bf:
+        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.<init>();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        throw r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x09c5:
         r39 = move-exception;
         r9 = "Error: Program files are not found!\n\nCheck the location dalvik-cache to solve problems!\n\nDefault: /data/dalvik-cache/*";
         com.chelpus.Utils.sendFromRoot(r9);
-    L_0x0a41:
+    L_0x09cb:
         r9 = filestopatch;
         r9 = r9.iterator();
-    L_0x0a47:
+    L_0x09d1:
         r11 = r9.hasNext();
-        if (r11 == 0) goto L_0x123d;
-    L_0x0a4d:
-        r33 = r9.next();
-        r33 = (java.io.File) r33;
-        com.chelpus.Utils.fixadler(r33);
-        clearTempSD();
-        goto L_0x0a47;
-    L_0x0a5a:
+        if (r11 != 0) goto L_0x1275;
+    L_0x09d7:
+        r9 = createAPK;
+        if (r9 != 0) goto L_0x0a22;
+    L_0x09db:
+        r9 = 3;
+        r9 = r63[r9];
+        r11 = classesFiles;
+        r12 = 2;
+        r12 = r63[r12];
+        r13 = uid;
+        r14 = 2;
+        r14 = r63[r14];
+        r15 = uid;
+        r14 = com.chelpus.Utils.getOdexForCreate(r14, r15);
+        r52 = com.chelpus.Utils.create_ODEX_root(r9, r11, r12, r13, r14);
+        r9 = new java.lang.StringBuilder;
+        r11 = "chelpus_return_";
+        r9.<init>(r11);
+        r0 = r52;
+        r9 = r9.append(r0);
+        r9 = r9.toString();
+        com.chelpus.Utils.sendFromRoot(r9);
+        if (r52 != 0) goto L_0x0a22;
+    L_0x0a08:
+        r9 = ART;
+        if (r9 != 0) goto L_0x0a22;
+    L_0x0a0c:
+        r9 = 1;
+        r9 = r63[r9];
+        r11 = 2;
+        r11 = r63[r11];
+        r12 = 2;
+        r12 = r63[r12];
+        r13 = 1;
+        r12 = com.chelpus.Utils.getPlaceForOdex(r12, r13);
+        r13 = uid;
+        r14 = 3;
+        r14 = r63[r14];
+        com.chelpus.Utils.afterPatch(r9, r11, r12, r13, r14);
+    L_0x0a22:
+        r9 = createAPK;
+        if (r9 != 0) goto L_0x0a29;
+    L_0x0a26:
+        com.chelpus.Utils.exitFromRootJava();
+    L_0x0a29:
+        r0 = r48;
+        r9 = r0.allresult;
+        result = r9;
+        return;
+    L_0x0a30:
+        r31 = r34[r9];	 Catch:{ Exception -> 0x0a63 }
+        r12 = r31.isFile();	 Catch:{ Exception -> 0x0a63 }
+        if (r12 == 0) goto L_0x0a5f;
+    L_0x0a38:
+        r12 = r31.getName();	 Catch:{ Exception -> 0x0a63 }
+        r13 = "busybox";
+        r12 = r12.equals(r13);	 Catch:{ Exception -> 0x0a63 }
+        if (r12 != 0) goto L_0x0a5f;
+    L_0x0a44:
+        r12 = r31.getName();	 Catch:{ Exception -> 0x0a63 }
+        r13 = "reboot";
+        r12 = r12.equals(r13);	 Catch:{ Exception -> 0x0a63 }
+        if (r12 != 0) goto L_0x0a5f;
+    L_0x0a50:
+        r12 = r31.getName();	 Catch:{ Exception -> 0x0a63 }
+        r13 = "dalvikvm";
+        r12 = r12.equals(r13);	 Catch:{ Exception -> 0x0a63 }
+        if (r12 != 0) goto L_0x0a5f;
+    L_0x0a5c:
+        r31.delete();	 Catch:{ Exception -> 0x0a63 }
+    L_0x0a5f:
+        r9 = r9 + 1;
+        goto L_0x0068;
+    L_0x0a63:
+        r27 = move-exception;
+        r27.printStackTrace();
+        goto L_0x006a;
+    L_0x0a69:
         r9 = "fignya";
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ NullPointerException -> 0x0a61, Exception -> 0x12a0 }
-        goto L_0x017e;
-    L_0x0a61:
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ NullPointerException -> 0x0a70, Exception -> 0x1289 }
+        goto L_0x0144;
+    L_0x0a70:
         r9 = move-exception;
-        goto L_0x017e;
-    L_0x0a64:
+        goto L_0x0144;
+    L_0x0a73:
         r9 = "13 ?? 09 00 12 ?? 12 ?? 6E ?? ?? ?? ?? ?? 0C ??";
         r3.add(r9);
         r9 = "12 S0 00 00 12 S0 12 S0 6E ?? ?? ?? ?? ?? 0C ??";
@@ -1225,575 +1239,254 @@ public class runpatchads {
         r9 = 1;
         r9 = java.lang.Boolean.valueOf(r9);
         r8.add(r9);
-        goto L_0x0902;
-    L_0x0ab0:
-        r51.close();	 Catch:{ Exception -> 0x0951 }
-        goto L_0x0955;
-    L_0x0ab5:
-        r51.close();	 Catch:{ Exception -> 0x0996 }
-        goto L_0x099a;
-    L_0x0aba:
-        r9 = filestopatch;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.clear();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.iterator();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0ac5:
-        r11 = r9.hasNext();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r11 == 0) goto L_0x0b02;
-    L_0x0acb:
-        r18 = r9.next();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r18 = (java.io.File) r18;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = r18.exists();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r11 != 0) goto L_0x0afa;
-    L_0x0ad7:
-        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        throw r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0add:
+        goto L_0x08c8;
+    L_0x0abf:
+        r38 = r38.trim();	 Catch:{ Exception -> 0x0adc }
+        r9 = "";
+        r0 = r38;
+        r9 = r0.equals(r9);	 Catch:{ Exception -> 0x0adc }
+        if (r9 != 0) goto L_0x08f5;
+    L_0x0acd:
+        r9 = "UTF-8";
+        r0 = r38;
+        r9 = r0.getBytes(r9);	 Catch:{ Exception -> 0x0adc }
+        r0 = r54;
+        r0.add(r9);	 Catch:{ Exception -> 0x0adc }
+        goto L_0x08f5;
+    L_0x0adc:
         r27 = move-exception;
-        r9 = new java.lang.StringBuilder;
-        r9.<init>();
-        r11 = "Patch Process Exception: ";
-        r9 = r9.append(r11);
-        r11 = r27.toString();
-        r9 = r9.append(r11);
-        r9 = r9.toString();
-        com.chelpus.Utils.sendFromRoot(r9);
-        goto L_0x0a41;
-    L_0x0afa:
-        r11 = filestopatch;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r18;
-        r11.add(r0);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        goto L_0x0ac5;
-    L_0x0b02:
+        r27.printStackTrace();
+        goto L_0x08fe;
+    L_0x0ae2:
+        r38 = r38.trim();	 Catch:{ Exception -> 0x0aff }
+        r9 = "";
+        r0 = r38;
+        r9 = r0.equals(r9);	 Catch:{ Exception -> 0x0aff }
+        if (r9 != 0) goto L_0x091d;
+    L_0x0af0:
+        r9 = "UTF-8";
+        r0 = r38;
+        r9 = r0.getBytes(r9);	 Catch:{ Exception -> 0x0aff }
+        r0 = r54;
+        r0.add(r9);	 Catch:{ Exception -> 0x0aff }
+        goto L_0x091d;
+    L_0x0aff:
+        r27 = move-exception;
+        r27.printStackTrace();
+        goto L_0x0926;
+    L_0x0b05:
+        r9 = filestopatch;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.clear();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.iterator();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0b10:
+        r11 = r9.hasNext();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r11 != 0) goto L_0x0d29;
+    L_0x0b16:
         r9 = 2;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = 1;
-        r41 = com.chelpus.Utils.getPlaceForOdex(r9, r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r40 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r40.<init>(r41);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r40.exists();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0b18;
-    L_0x0b15:
-        r40.delete();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0b18:
-        r40 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r41 = com.chelpus.Utils.getPlaceForOdex(r9, r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r40 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r40.<init>(r41);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r40.exists();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0b2c;
+    L_0x0b29:
+        r40.delete();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0b2c:
+        r40 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = "-1";
         r11 = "-2";
         r0 = r41;
-        r9 = r0.replace(r9, r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r0.replace(r9, r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r0 = r40;
-        r0.<init>(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r40.exists();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0b32;
-    L_0x0b2f:
-        r40.delete();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0b32:
-        r40 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r0.<init>(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r40.exists();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0b46;
+    L_0x0b43:
+        r40.delete();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0b46:
+        r40 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = "-2";
         r11 = "-1";
         r0 = r41;
-        r9 = r0.replace(r9, r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r0.replace(r9, r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r0 = r40;
-        r0.<init>(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r40.exists();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0b4c;
-    L_0x0b49:
-        r40.delete();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0b4c:
-        r9 = filestopatch;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r61 = r9.iterator();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0b52:
-        r9 = r61.hasNext();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0a41;
-    L_0x0b58:
-        r33 = r61.next();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r33 = (java.io.File) r33;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r0.<init>(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r40.exists();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0b60;
+    L_0x0b5d:
+        r40.delete();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0b60:
+        r9 = filestopatch;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r61 = r9.iterator();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0b66:
+        r9 = r61.hasNext();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x09cb;
+    L_0x0b6c:
+        r33 = r61.next();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r33 = (java.io.File) r33;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = "Find string id.";
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r57 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r57.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r57 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r57.<init>();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = "phone";
         r0 = r57;
-        r0.add(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r0.add(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = "Landroid/net/ConnectivityManager;";
         r0 = r57;
-        r0.add(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r0.add(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = "getActiveNetworkInfo";
         r0 = r57;
-        r0.add(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r0.add(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = "String analysis.";
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = print;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = print;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = "String analysis.";
-        r9.println(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r33.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9.println(r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r33.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = 0;
         r0 = r57;
-        r43 = com.chelpus.Utils.getStringIds(r9, r0, r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r43 = com.chelpus.Utils.getStringIds(r9, r0, r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r28 = 0;
         r29 = 0;
         r30 = 0;
         r42 = 1;
-        r19 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r19.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = new com.android.vending.billing.InAppBillingService.LOCK.CommandItem;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r19 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r19.<init>();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = new com.android.vending.billing.InAppBillingService.LOCK.CommandItem;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = "Landroid/net/ConnectivityManager;";
         r12 = "getActiveNetworkInfo";
-        r9.<init>(r11, r12);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9.<init>(r11, r12);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r0 = r19;
-        r0.add(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = r43.iterator();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0bb3:
-        r9 = r11.hasNext();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0d87;
-    L_0x0bb9:
-        r36 = r11.next();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r36 = (com.android.vending.billing.InAppBillingService.LOCK.StringItem) r36;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r19.iterator();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0bc3:
-        r12 = r9.hasNext();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r12 == 0) goto L_0x0cea;
-    L_0x0bc9:
-        r37 = r9.next();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r37 = (com.android.vending.billing.InAppBillingService.LOCK.CommandItem) r37;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r37;
-        r12 = r0.object;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r36;
-        r13 = r0.str;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = r12.equals(r13);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r12 == 0) goto L_0x0be5;
-    L_0x0bdd:
-        r0 = r36;
-        r12 = r0.offset;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r37;
-        r0.Object = r12;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0be5:
-        r0 = r37;
-        r12 = r0.method;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r36;
-        r13 = r0.str;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = r12.equals(r13);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r12 == 0) goto L_0x0bc3;
-    L_0x0bf3:
-        r0 = r36;
-        r12 = r0.offset;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r37;
-        r0.Method = r12;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        goto L_0x0bc3;
-    L_0x0bfc:
-        r9 = createAPK;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0c88;
-    L_0x0c00:
-        r9 = 0;
-        r44 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 2;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        appdir = r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 5;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        sddir = r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        clearTempSD();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r16 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = appdir;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r16;
-        r0.<init>(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        unzipSD(r16);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = sddir;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = r11.append(r12);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = "/Modified/";
-        r11 = r11.append(r12);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r44;
-        r11 = r11.append(r0);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = ".apk";
-        r11 = r11.append(r12);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = r11.toString();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.<init>(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        crkapk = r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = crkapk;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r16;
-        com.chelpus.Utils.copyFile(r0, r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0c57;
-    L_0x0c4f:
-        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.size();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 != 0) goto L_0x0c5d;
-    L_0x0c57:
-        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        throw r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0c5d:
-        r9 = filestopatch;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.clear();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.iterator();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0c68:
-        r11 = r9.hasNext();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r11 == 0) goto L_0x0c88;
-    L_0x0c6e:
-        r18 = r9.next();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r18 = (java.io.File) r18;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = r18.exists();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r11 != 0) goto L_0x0c80;
-    L_0x0c7a:
-        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        throw r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0c80:
-        r11 = filestopatch;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r18;
-        r11.add(r0);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        goto L_0x0c68;
-    L_0x0c88:
-        r9 = ART;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0b4c;
-    L_0x0c8c:
-        r9 = "ART mode create dex enabled.";
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 0;
-        r44 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 2;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        appdir = r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 3;
-        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        sddir = r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        clearTempSD();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r16 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = appdir;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r16;
-        r0.<init>(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        unzipART(r16);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0cb9;
-    L_0x0cb1:
-        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.size();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 != 0) goto L_0x0cbf;
-    L_0x0cb9:
-        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        throw r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0cbf:
-        r9 = filestopatch;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.clear();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.iterator();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0cca:
-        r11 = r9.hasNext();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r11 == 0) goto L_0x0b4c;
-    L_0x0cd0:
-        r18 = r9.next();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r18 = (java.io.File) r18;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = r18.exists();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r11 != 0) goto L_0x0ce2;
-    L_0x0cdc:
-        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        throw r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0ce2:
-        r11 = filestopatch;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r18;
-        r11.add(r0);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        goto L_0x0cca;
-    L_0x0cea:
-        r0 = r36;
-        r9 = r0.str;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = "phone";
-        r9 = r9.equals(r12);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0bb3;
-    L_0x0cf6:
-        r0 = r36;
-        r9 = r0.bits32;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 != 0) goto L_0x0d30;
-    L_0x0cfc:
-        r9 = 0;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 2;
-        r0 = r36;
-        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r14 = 0;
-        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 0;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 3;
-        r0 = r36;
-        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r14 = 1;
-        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 1;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 0;
-        r9.pattern = r12;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0d2c:
-        r28 = 1;
-        goto L_0x0bb3;
-    L_0x0d30:
-        r9 = 0;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 0;
-        r9.pattern = r12;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 1;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 2;
-        r0 = r36;
-        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r14 = 0;
-        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 1;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 3;
-        r0 = r36;
-        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r14 = 1;
-        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 1;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 4;
-        r0 = r36;
-        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r14 = 2;
-        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 1;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 5;
-        r0 = r36;
-        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r14 = 3;
-        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        goto L_0x0d2c;
-    L_0x0d87:
-        if (r28 != 0) goto L_0x0d8d;
-    L_0x0d89:
-        r9 = full_offline;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0e7e;
-    L_0x0d8d:
+        r0.add(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = r43.iterator();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0bc7:
+        r9 = r11.hasNext();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 != 0) goto L_0x0e32;
+    L_0x0bcd:
+        if (r28 != 0) goto L_0x0bd3;
+    L_0x0bcf:
+        r9 = full_offline;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0c42;
+    L_0x0bd3:
         r9 = "Parse data for patch.";
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = print;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = print;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = "Parse data for patch.";
-        r9.println(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r33.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9.println(r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r33.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = 0;
         r12 = 0;
         r0 = r19;
-        com.chelpus.Utils.getMethodsIds(r9, r0, r11, r12);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        com.chelpus.Utils.getMethodsIds(r9, r0, r11, r12);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = 0;
         r0 = r19;
-        r9 = r0.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.CommandItem) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.index_command;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r0.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.CommandItem) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.index_command;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r12 = 0;
-        r9 = r9[r12];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = java.lang.Integer.toHexString(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11.println(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r9[r12];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = java.lang.Integer.toHexString(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11.println(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = 0;
         r0 = r19;
-        r9 = r0.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.CommandItem) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.index_command;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r0.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.CommandItem) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.index_command;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r12 = 1;
-        r9 = r9[r12];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = java.lang.Integer.toHexString(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11.println(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = r19.iterator();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0dd6:
-        r9 = r11.hasNext();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0e5e;
-    L_0x0ddc:
-        r37 = r11.next();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r37 = (com.android.vending.billing.InAppBillingService.LOCK.CommandItem) r37;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r37;
-        r9 = r0.object;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = "Landroid/net/ConnectivityManager;";
-        r9 = r9.equals(r12);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0dd6;
-    L_0x0dee:
-        r0 = r37;
-        r9 = r0.found_index_command;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0e48;
-    L_0x0df4:
-        r9 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = "save to command";
-        r9.println(r12);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 2;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 2;
-        r0 = r37;
-        r13 = r0.index_command;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r14 = 0;
-        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 2;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 3;
-        r0 = r37;
-        r13 = r0.index_command;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r14 = 1;
-        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 3;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 2;
-        r0 = r37;
-        r13 = r0.index_command;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r14 = 0;
-        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 3;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 3;
-        r0 = r37;
-        r13 = r0.index_command;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r14 = 1;
-        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        goto L_0x0dd6;
-    L_0x0e48:
-        r9 = 2;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 0;
-        r9.pattern = r12;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = 3;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = 0;
-        r9.pattern = r12;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        goto L_0x0dd6;
-    L_0x0e5e:
-        if (r28 != 0) goto L_0x0e7e;
-    L_0x0e60:
+        r9 = r9[r12];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = java.lang.Integer.toHexString(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11.println(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = r19.iterator();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0c1c:
+        r9 = r11.hasNext();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 != 0) goto L_0x0f13;
+    L_0x0c22:
+        if (r28 != 0) goto L_0x0c42;
+    L_0x0c24:
         r9 = 0;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = 0;
-        r9.pattern = r11;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9.pattern = r11;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = 1;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = 0;
-        r9.pattern = r11;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9.pattern = r11;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = 2;
-        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = 0;
-        r9.pattern = r11;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0e7e:
-        r9 = r2.size();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = new com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto[r9];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9.pattern = r11;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0c42:
+        r9 = r2.size();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = new com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r45 = r0;
         r60 = 0;
-        r9 = r2.iterator();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0e8c:
-        r11 = r9.hasNext();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r11 == 0) goto L_0x0e9d;
-    L_0x0e92:
-        r37 = r9.next();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r37 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r37;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r45[r60] = r37;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r60 = r60 + 1;
-        goto L_0x0e8c;
-    L_0x0e9d:
+        r9 = r2.iterator();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0c50:
+        r11 = r9.hasNext();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r11 != 0) goto L_0x0f96;
+    L_0x0c56:
         r21 = 0;
-        r9 = fileblock;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        if (r9 == 0) goto L_0x0ebc;
-    L_0x0ea3:
+        r9 = fileblock;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0c75;
+    L_0x0c5c:
         r9 = "String analysis.";
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = print;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = print;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = "String analysis.";
-        r9.println(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r33.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = sites;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9.println(r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r33.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = sites;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r12 = 0;
         r13 = 64;
-        r21 = com.chelpus.Utils.setStringIds(r9, r11, r12, r13);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x0ebc:
-        if (r21 <= 0) goto L_0x0ecd;
-    L_0x0ebe:
-        r21 = r21 + -1;
-        r9 = "Site from AdsBlockList blocked!";
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = print;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = "Site from AdsBlockList blocked!";
-        r9.println(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        goto L_0x0ebc;
-    L_0x0ecd:
-        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r21 = com.chelpus.Utils.setStringIds(r9, r11, r12, r13);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0c75:
+        if (r21 > 0) goto L_0x0fa2;
+    L_0x0c77:
+        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = "Relaced strings:";
-        r9 = r9.append(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = r33.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9.<init>(r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = r33.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r12 = 1;
-        r12 = new java.lang.String[r12];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r12 = new java.lang.String[r12];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r13 = 0;
         r14 = "com.google.android.gms.ads.identifier.service.START";
-        r12[r13] = r14;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r12[r13] = r14;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r13 = 0;
         r14 = 1;
-        r14 = new java.lang.String[r14];	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r14 = new java.lang.String[r14];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r15 = 0;
         r62 = "com.google.android.gms.ads.identifier.service.STAPT";
-        r14[r15] = r62;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = com.chelpus.Utils.replaceStringIds(r11, r12, r13, r14);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.append(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r58 = java.lang.System.currentTimeMillis();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = new java.io.RandomAccessFile;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r14[r15] = r62;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = com.chelpus.Utils.replaceStringIds(r11, r12, r13, r14);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.append(r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r58 = java.lang.System.currentTimeMillis();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = new java.io.RandomAccessFile;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = "rw";
         r0 = r33;
-        r9.<init>(r0, r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r10 = r9.getChannel();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9.<init>(r0, r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r10 = r9.getChannel();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r11 = "Size file:";
-        r9 = r9.append(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = r10.size();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.append(r12);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9.<init>(r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = r10.size();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.append(r12);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r12 = 0;
-        r14 = r10.size();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = (int) r14;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r14 = (long) r9;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r32 = r10.map(r11, r12, r14);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r14 = r10.size();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (int) r14;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r14 = (long) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r32 = r10.map(r11, r12, r14);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r23 = 0;
         r35 = 0;
         r25 = 574; // 0x23e float:8.04E-43 double:2.836E-321;
@@ -1802,480 +1495,779 @@ public class runpatchads {
         r56 = 0;
         r49 = 0;
         r47 = 0;
-    L_0x0f45:
-        r9 = r32.hasRemaining();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r9 == 0) goto L_0x10ab;
-    L_0x0f4b:
-        r9 = createAPK;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r9 != 0) goto L_0x0f78;
-    L_0x0f4f:
-        r9 = r32.position();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9 - r47;
-        r11 = 149999; // 0x249ef float:2.10193E-40 double:7.41094E-319;
-        if (r9 <= r11) goto L_0x0f78;
-    L_0x0f5a:
-        r9 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9.<init>();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = "Progress size:";
-        r9 = r9.append(r11);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = r32.position();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9.append(r11);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9.toString();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r47 = r32.position();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x0f78:
-        r23 = r32.position();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r22 = r32.get();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r49 = 0;
-        r17 = 0;
-    L_0x0f84:
-        r0 = r45;
-        r9 = r0.length;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r17;
-        if (r0 >= r9) goto L_0x1232;
-    L_0x0f8b:
-        r46 = r45[r17];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r32;
-        r1 = r23;
-        r0.position(r1);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r46;
-        r9 = r0.markerTrig;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r9 == 0) goto L_0x10e4;
-    L_0x0f9a:
-        r9 = 2;
-        r0 = r17;
-        if (r0 != r9) goto L_0x10e4;
-    L_0x0f9f:
-        r55 = r55 + 1;
-        r0 = r55;
-        r1 = r25;
-        if (r0 >= r1) goto L_0x11ed;
-    L_0x0fa7:
-        r0 = r46;
-        r9 = r0.origByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = 0;
-        r9 = r9[r11];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r22;
-        if (r0 != r9) goto L_0x10dd;
-    L_0x0fb2:
-        r0 = r46;
-        r9 = r0.repMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = 0;
-        r9 = r9[r11];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r9 != 0) goto L_0x0fc2;
-    L_0x0fbb:
-        r0 = r46;
-        r9 = r0.repByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = 0;
-        r9[r11] = r22;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x0fc2:
-        r35 = 1;
-        r9 = r23 + 1;
-        r0 = r32;
-        r0.position(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r50 = r32.get();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x0fcf:
-        r0 = r46;
-        r9 = r0.origByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r50;
-        if (r0 == r9) goto L_0x1000;
-    L_0x0fd9:
-        r0 = r46;
-        r9 = r0.origMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = 1;
-        if (r9 == r11) goto L_0x1000;
-    L_0x0fe2:
-        r0 = r46;
-        r9 = r0.origMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = 20;
-        if (r9 == r11) goto L_0x1000;
-    L_0x0fec:
-        r0 = r46;
-        r9 = r0.origMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = 21;
-        if (r9 == r11) goto L_0x1000;
-    L_0x0ff6:
-        r0 = r46;
-        r9 = r0.origMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = 23;
-        if (r9 != r11) goto L_0x10dd;
-    L_0x1000:
-        r0 = r46;
-        r9 = r0.repMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r9 != 0) goto L_0x100e;
-    L_0x1008:
-        r0 = r46;
-        r9 = r0.repByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9[r35] = r50;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x100e:
-        r0 = r46;
-        r9 = r0.repMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = 20;
-        if (r9 != r11) goto L_0x1021;
-    L_0x1018:
-        r0 = r46;
-        r9 = r0.repByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = r50 & 15;
-        r11 = (byte) r11;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9[r35] = r11;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x1021:
-        r0 = r46;
-        r9 = r0.repMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = 21;
-        if (r9 != r11) goto L_0x1036;
-    L_0x102b:
-        r0 = r46;
-        r9 = r0.repByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = r50 & 15;
-        r11 = r11 + 16;
-        r11 = (byte) r11;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9[r35] = r11;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x1036:
-        r35 = r35 + 1;
-        r0 = r46;
-        r9 = r0.origByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9.length;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r35;
-        if (r0 != r9) goto L_0x11e7;
-    L_0x1041:
-        r0 = r32;
-        r1 = r23;
-        r0.position(r1);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r46;
-        r9 = r0.repByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r32;
-        r0.put(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r32.force();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r46;
-        r9 = r0.resultText;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = print;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r46;
-        r11 = r0.resultText;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9.println(r11);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = 1;
-        r0 = r46;
-        r0.result = r9;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = 0;
-        r0 = r46;
-        r0.markerTrig = r9;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r2.iterator();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x1072:
-        r11 = r9.hasNext();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r11 == 0) goto L_0x10d4;
-    L_0x1078:
-        r24 = r9.next();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r24 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r24;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r24;
-        r11 = r0.marker;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r46;
-        r12 = r0.marker;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = r11.equals(r12);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r11 == 0) goto L_0x1072;
-    L_0x108c:
-        r11 = 0;
-        r0 = r24;
-        r0.markerTrig = r11;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        goto L_0x1072;
-    L_0x1092:
-        r27 = move-exception;
-        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = "";
-        r9 = r9.append(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r0 = r27;
-        r9 = r9.append(r0);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-    L_0x10ab:
-        r10.close();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r11 = "";
-        r9 = r9.append(r11);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r12 = java.lang.System.currentTimeMillis();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+    L_0x0ce7:
+        r9 = r32.hasRemaining();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r9 != 0) goto L_0x0fb2;
+    L_0x0ced:
+        r10.close();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.<init>();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = java.lang.System.currentTimeMillis();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r12 = r12 - r58;
         r14 = 1000; // 0x3e8 float:1.401E-42 double:4.94E-321;
         r12 = r12 / r14;
-        r9 = r9.append(r12);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
+        r9 = r9.append(r12);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
         r9 = "Analise Results:";
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x0a3b, Exception -> 0x0add }
-        goto L_0x0b52;
-    L_0x10d4:
-        r55 = 0;
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        goto L_0x0b66;
+    L_0x0d10:
+        r27 = move-exception;
+        r9 = new java.lang.StringBuilder;
+        r11 = "Patch Process Exception: ";
+        r9.<init>(r11);
+        r11 = r27.toString();
+        r9 = r9.append(r11);
+        r9 = r9.toString();
+        com.chelpus.Utils.sendFromRoot(r9);
+        goto L_0x09cb;
+    L_0x0d29:
+        r18 = r9.next();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r18 = (java.io.File) r18;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = r18.exists();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r11 != 0) goto L_0x0d3b;
+    L_0x0d35:
+        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.<init>();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        throw r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0d3b:
+        r11 = filestopatch;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r18;
+        r11.add(r0);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        goto L_0x0b10;
+    L_0x0d44:
+        r9 = createAPK;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0db6;
+    L_0x0d48:
+        r9 = 0;
+        r44 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 2;
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        appdir = r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 5;
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        sddir = r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        clearTempSD();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r16 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = appdir;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r16;
+        r0.<init>(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        unzipSD(r16);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = sddir;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = java.lang.String.valueOf(r12);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11.<init>(r12);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = "/Modified/";
+        r11 = r11.append(r12);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r44;
+        r11 = r11.append(r0);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = ".apk";
+        r11 = r11.append(r12);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = r11.toString();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.<init>(r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        crkapk = r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = crkapk;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r16;
+        com.chelpus.Utils.copyFile(r0, r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0d9f;
+    L_0x0d97:
+        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.size();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 != 0) goto L_0x0da5;
+    L_0x0d9f:
+        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.<init>();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        throw r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0da5:
+        r9 = filestopatch;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.clear();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.iterator();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0db0:
+        r11 = r9.hasNext();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r11 != 0) goto L_0x0ded;
+    L_0x0db6:
+        r9 = ART;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0b60;
+    L_0x0dba:
+        r9 = "ART mode create dex enabled.";
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 0;
+        r44 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 2;
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        appdir = r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 3;
+        r9 = r63[r9];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        sddir = r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        clearTempSD();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r16 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = appdir;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r16;
+        r0.<init>(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        unzipART(r16);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0de7;
+    L_0x0ddf:
+        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.size();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 != 0) goto L_0x0e07;
+    L_0x0de7:
+        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.<init>();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        throw r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0ded:
+        r18 = r9.next();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r18 = (java.io.File) r18;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = r18.exists();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r11 != 0) goto L_0x0dff;
+    L_0x0df9:
+        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.<init>();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        throw r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0dff:
+        r11 = filestopatch;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r18;
+        r11.add(r0);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        goto L_0x0db0;
+    L_0x0e07:
+        r9 = filestopatch;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.clear();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = classesFiles;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.iterator();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0e12:
+        r11 = r9.hasNext();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r11 == 0) goto L_0x0b60;
+    L_0x0e18:
+        r18 = r9.next();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r18 = (java.io.File) r18;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = r18.exists();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r11 != 0) goto L_0x0e2a;
+    L_0x0e24:
+        r9 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.<init>();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        throw r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0e2a:
+        r11 = filestopatch;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r18;
+        r11.add(r0);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        goto L_0x0e12;
+    L_0x0e32:
+        r36 = r11.next();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r36 = (com.android.vending.billing.InAppBillingService.LOCK.StringItem) r36;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r19.iterator();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0e3c:
+        r12 = r9.hasNext();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r12 != 0) goto L_0x0e88;
+    L_0x0e42:
+        r0 = r36;
+        r9 = r0.str;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = "phone";
+        r9 = r9.equals(r12);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0bc7;
+    L_0x0e4e:
+        r0 = r36;
+        r9 = r0.bits32;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 != 0) goto L_0x0ebb;
+    L_0x0e54:
+        r9 = 0;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 2;
+        r0 = r36;
+        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r14 = 0;
+        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 0;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 3;
+        r0 = r36;
+        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r14 = 1;
+        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 1;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 0;
+        r9.pattern = r12;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0e84:
+        r28 = 1;
+        goto L_0x0bc7;
+    L_0x0e88:
+        r37 = r9.next();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r37 = (com.android.vending.billing.InAppBillingService.LOCK.CommandItem) r37;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r37;
+        r12 = r0.object;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r36;
+        r13 = r0.str;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = r12.equals(r13);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r12 == 0) goto L_0x0ea4;
+    L_0x0e9c:
+        r0 = r36;
+        r12 = r0.offset;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r37;
+        r0.Object = r12;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+    L_0x0ea4:
+        r0 = r37;
+        r12 = r0.method;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r36;
+        r13 = r0.str;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = r12.equals(r13);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r12 == 0) goto L_0x0e3c;
+    L_0x0eb2:
+        r0 = r36;
+        r12 = r0.offset;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r37;
+        r0.Method = r12;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        goto L_0x0e3c;
+    L_0x0ebb:
+        r9 = 0;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 0;
+        r9.pattern = r12;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 1;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 2;
+        r0 = r36;
+        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r14 = 0;
+        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 1;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 3;
+        r0 = r36;
+        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r14 = 1;
+        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 1;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 4;
+        r0 = r36;
+        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r14 = 2;
+        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 1;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 5;
+        r0 = r36;
+        r13 = r0.offset;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r14 = 3;
+        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        goto L_0x0e84;
+    L_0x0f13:
+        r37 = r11.next();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r37 = (com.android.vending.billing.InAppBillingService.LOCK.CommandItem) r37;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r37;
+        r9 = r0.object;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = "Landroid/net/ConnectivityManager;";
+        r9 = r9.equals(r12);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0c1c;
+    L_0x0f25:
+        r0 = r37;
+        r9 = r0.found_index_command;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        if (r9 == 0) goto L_0x0f80;
+    L_0x0f2b:
+        r9 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = "save to command";
+        r9.println(r12);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 2;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 2;
+        r0 = r37;
+        r13 = r0.index_command;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r14 = 0;
+        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 2;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 3;
+        r0 = r37;
+        r13 = r0.index_command;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r14 = 1;
+        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 3;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 2;
+        r0 = r37;
+        r13 = r0.index_command;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r14 = 0;
+        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 3;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.origByte;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 3;
+        r0 = r37;
+        r13 = r0.index_command;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r14 = 1;
+        r13 = r13[r14];	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9[r12] = r13;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        goto L_0x0c1c;
+    L_0x0f80:
+        r9 = 2;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 0;
+        r9.pattern = r12;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = 3;
+        r9 = r2.get(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r9;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r12 = 0;
+        r9.pattern = r12;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        goto L_0x0c1c;
+    L_0x0f96:
+        r37 = r9.next();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r37 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r37;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r45[r60] = r37;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r60 = r60 + 1;
+        goto L_0x0c50;
+    L_0x0fa2:
+        r21 = r21 + -1;
+        r9 = "Site from AdsBlockList blocked!";
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = print;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r11 = "Site from AdsBlockList blocked!";
+        r9.println(r11);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        goto L_0x0c75;
+    L_0x0fb2:
+        r9 = createAPK;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r9 != 0) goto L_0x0fdb;
+    L_0x0fb6:
+        r9 = r32.position();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9 - r47;
+        r11 = 149999; // 0x249ef float:2.10193E-40 double:7.41094E-319;
+        if (r9 <= r11) goto L_0x0fdb;
+    L_0x0fc1:
+        r9 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = "Progress size:";
+        r9.<init>(r11);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = r32.position();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9.append(r11);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9.toString();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r47 = r32.position();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x0fdb:
+        r23 = r32.position();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r22 = r32.get();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r49 = 0;
+        r17 = 0;
+    L_0x0fe7:
+        r0 = r45;
+        r9 = r0.length;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r17;
+        if (r0 < r9) goto L_0x100e;
+    L_0x0fee:
+        if (r49 != 0) goto L_0x0ce7;
+    L_0x0ff0:
         r9 = r23 + 1;
         r0 = r32;
-        r0.position(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x10dd:
-        r9 = r23 + 1;
+        r0.position(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        goto L_0x0ce7;
+    L_0x0ff9:
+        r27 = move-exception;
+        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9.<init>();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r0 = r27;
+        r9 = r9.append(r0);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ FileNotFoundException -> 0x09c5, Exception -> 0x0d10 }
+        goto L_0x0ced;
+    L_0x100e:
+        r46 = r45[r17];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r0 = r32;
-        r0.position(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x10e4:
+        r1 = r23;
+        r0.position(r1);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r0 = r46;
-        r9 = r0.markerTrig;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r9 != 0) goto L_0x122e;
-    L_0x10ea:
+        r9 = r0.markerTrig;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r9 == 0) goto L_0x108a;
+    L_0x101d:
+        r9 = 2;
+        r0 = r17;
+        if (r0 != r9) goto L_0x108a;
+    L_0x1022:
+        r55 = r55 + 1;
+        r0 = r55;
+        r1 = r25;
+        if (r0 >= r1) goto L_0x119d;
+    L_0x102a:
         r0 = r46;
-        r9 = r0.origByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.origByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r11 = 0;
-        r9 = r9[r11];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r9[r11];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r0 = r22;
-        if (r0 != r9) goto L_0x122e;
-    L_0x10f5:
+        if (r0 != r9) goto L_0x1083;
+    L_0x1035:
         r0 = r46;
-        r9 = r0.pattern;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r9 == 0) goto L_0x122e;
-    L_0x10fb:
-        r0 = r46;
-        r9 = r0.repMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.repMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r11 = 0;
-        r9 = r9[r11];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r9 != 0) goto L_0x110b;
-    L_0x1104:
+        r9 = r9[r11];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r9 != 0) goto L_0x1045;
+    L_0x103e:
         r0 = r46;
-        r9 = r0.repByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.repByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r11 = 0;
-        r9[r11] = r22;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x110b:
+        r9[r11] = r22;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x1045:
         r35 = 1;
         r9 = r23 + 1;
         r0 = r32;
-        r0.position(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r50 = r32.get();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x1118:
+        r0.position(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r50 = r32.get();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x1052:
         r0 = r46;
-        r9 = r0.origByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.origByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r0 = r50;
-        if (r0 == r9) goto L_0x1149;
-    L_0x1122:
+        if (r0 == r9) goto L_0x10fa;
+    L_0x105c:
         r0 = r46;
-        r9 = r0.origMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.origMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r11 = 1;
-        if (r9 == r11) goto L_0x1149;
-    L_0x112b:
+        if (r9 == r11) goto L_0x10fa;
+    L_0x1065:
         r0 = r46;
-        r9 = r0.origMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.origMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r11 = 20;
-        if (r9 == r11) goto L_0x1149;
-    L_0x1135:
+        if (r9 == r11) goto L_0x10fa;
+    L_0x106f:
         r0 = r46;
-        r9 = r0.origMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.origMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r11 = 21;
-        if (r9 == r11) goto L_0x1149;
-    L_0x113f:
+        if (r9 == r11) goto L_0x10fa;
+    L_0x1079:
         r0 = r46;
-        r9 = r0.origMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.origMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r11 = 23;
-        if (r9 != r11) goto L_0x1227;
-    L_0x1149:
+        if (r9 == r11) goto L_0x10fa;
+    L_0x1083:
+        r9 = r23 + 1;
+        r0 = r32;
+        r0.position(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x108a:
         r0 = r46;
-        r9 = r0.repMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r9 != 0) goto L_0x1157;
-    L_0x1151:
+        r9 = r0.markerTrig;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r9 != 0) goto L_0x10f6;
+    L_0x1090:
         r0 = r46;
-        r9 = r0.repByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9[r35] = r50;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x1157:
+        r9 = r0.origByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = 0;
+        r9 = r9[r11];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r22;
+        if (r0 != r9) goto L_0x10f6;
+    L_0x109b:
         r0 = r46;
-        r9 = r0.repMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.pattern;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r9 == 0) goto L_0x10f6;
+    L_0x10a1:
+        r0 = r46;
+        r9 = r0.repMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = 0;
+        r9 = r9[r11];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r9 != 0) goto L_0x10b1;
+    L_0x10aa:
+        r0 = r46;
+        r9 = r0.repByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = 0;
+        r9[r11] = r22;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x10b1:
+        r35 = 1;
+        r9 = r23 + 1;
+        r0 = r32;
+        r0.position(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r50 = r32.get();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x10be:
+        r0 = r46;
+        r9 = r0.origByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r50;
+        if (r0 == r9) goto L_0x11d1;
+    L_0x10c8:
+        r0 = r46;
+        r9 = r0.origMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = 1;
+        if (r9 == r11) goto L_0x11d1;
+    L_0x10d1:
+        r0 = r46;
+        r9 = r0.origMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r11 = 20;
-        if (r9 != r11) goto L_0x116a;
-    L_0x1161:
+        if (r9 == r11) goto L_0x11d1;
+    L_0x10db:
         r0 = r46;
-        r9 = r0.repByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = r50 & 15;
-        r11 = (byte) r11;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9[r35] = r11;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x116a:
-        r0 = r46;
-        r9 = r0.repMask;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9[r35];	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.origMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r11 = 21;
-        if (r9 != r11) goto L_0x117f;
-    L_0x1174:
+        if (r9 == r11) goto L_0x11d1;
+    L_0x10e5:
         r0 = r46;
-        r9 = r0.repByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.origMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = 23;
+        if (r9 == r11) goto L_0x11d1;
+    L_0x10ef:
+        r9 = r23 + 1;
+        r0 = r32;
+        r0.position(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x10f6:
+        r17 = r17 + 1;
+        goto L_0x0fe7;
+    L_0x10fa:
+        r0 = r46;
+        r9 = r0.repMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r9 != 0) goto L_0x1108;
+    L_0x1102:
+        r0 = r46;
+        r9 = r0.repByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9[r35] = r50;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x1108:
+        r0 = r46;
+        r9 = r0.repMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = 20;
+        if (r9 != r11) goto L_0x111b;
+    L_0x1112:
+        r0 = r46;
+        r9 = r0.repByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = r50 & 15;
+        r11 = (byte) r11;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9[r35] = r11;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x111b:
+        r0 = r46;
+        r9 = r0.repMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = 21;
+        if (r9 != r11) goto L_0x1130;
+    L_0x1125:
+        r0 = r46;
+        r9 = r0.repByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r11 = r50 & 15;
         r11 = r11 + 16;
-        r11 = (byte) r11;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9[r35] = r11;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x117f:
+        r11 = (byte) r11;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9[r35] = r11;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x1130:
         r35 = r35 + 1;
         r0 = r46;
-        r9 = r0.origByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r9.length;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.origByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9.length;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r0 = r35;
-        if (r0 != r9) goto L_0x1221;
-    L_0x118a:
+        if (r0 != r9) goto L_0x1197;
+    L_0x113b:
         r0 = r32;
         r1 = r23;
-        r0.position(r1);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r0.position(r1);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r0 = r46;
-        r9 = r0.repByte;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.repByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r0 = r32;
-        r0.put(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r32.force();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r0.put(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r32.force();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r0 = r46;
-        r9 = r0.resultText;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = print;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r9 = r0.resultText;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = print;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r0 = r46;
-        r11 = r0.resultText;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9.println(r11);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
+        r11 = r0.resultText;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9.println(r11);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r9 = 1;
         r0 = r46;
-        r0.result = r9;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r46;
-        r9 = r0.marker;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = "";
-        r9 = r9.equals(r11);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r9 != 0) goto L_0x1227;
-    L_0x11be:
-        r9 = 1;
-        r0 = r46;
-        r0.markerTrig = r9;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r2.iterator();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x11c7:
-        r11 = r9.hasNext();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r11 == 0) goto L_0x1227;
-    L_0x11cd:
-        r24 = r9.next();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r24 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r24;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r24;
-        r11 = r0.marker;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r46;
-        r12 = r0.marker;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = r11.equals(r12);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r11 == 0) goto L_0x11c7;
-    L_0x11e1:
-        r11 = 1;
-        r0 = r24;
-        r0.markerTrig = r11;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        goto L_0x11c7;
-    L_0x11e7:
-        r50 = r32.get();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        goto L_0x0fcf;
-    L_0x11ed:
+        r0.result = r9;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r9 = 0;
         r0 = r46;
-        r0.markerTrig = r9;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r9 = r2.iterator();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x11f6:
-        r11 = r9.hasNext();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r11 == 0) goto L_0x1216;
-    L_0x11fc:
-        r24 = r9.next();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r24 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r24;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r24;
-        r11 = r0.marker;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r0 = r46;
-        r12 = r0.marker;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        r11 = r11.equals(r12);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        if (r11 == 0) goto L_0x11f6;
-    L_0x1210:
-        r11 = 0;
-        r0 = r24;
-        r0.markerTrig = r11;	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        goto L_0x11f6;
-    L_0x1216:
+        r0.markerTrig = r9;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r2.iterator();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x116c:
+        r11 = r9.hasNext();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r11 != 0) goto L_0x117d;
+    L_0x1172:
         r55 = 0;
         r9 = r23 + 1;
         r0 = r32;
-        r0.position(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        goto L_0x10e4;
-    L_0x1221:
-        r50 = r32.get();	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        goto L_0x1118;
-    L_0x1227:
+        r0.position(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        goto L_0x1083;
+    L_0x117d:
+        r24 = r9.next();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r24 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r24;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r24;
+        r11 = r0.marker;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r46;
+        r12 = r0.marker;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = r11.equals(r12);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r11 == 0) goto L_0x116c;
+    L_0x1191:
+        r11 = 0;
+        r0 = r24;
+        r0.markerTrig = r11;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        goto L_0x116c;
+    L_0x1197:
+        r50 = r32.get();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        goto L_0x1052;
+    L_0x119d:
+        r9 = 0;
+        r0 = r46;
+        r0.markerTrig = r9;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r2.iterator();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x11a6:
+        r11 = r9.hasNext();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r11 != 0) goto L_0x11b7;
+    L_0x11ac:
+        r55 = 0;
         r9 = r23 + 1;
         r0 = r32;
-        r0.position(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-    L_0x122e:
-        r17 = r17 + 1;
-        goto L_0x0f84;
-    L_0x1232:
-        if (r49 != 0) goto L_0x0f45;
-    L_0x1234:
-        r9 = r23 + 1;
+        r0.position(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        goto L_0x108a;
+    L_0x11b7:
+        r24 = r9.next();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r24 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r24;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r24;
+        r11 = r0.marker;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r46;
+        r12 = r0.marker;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = r11.equals(r12);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r11 == 0) goto L_0x11a6;
+    L_0x11cb:
+        r11 = 0;
+        r0 = r24;
+        r0.markerTrig = r11;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        goto L_0x11a6;
+    L_0x11d1:
+        r0 = r46;
+        r9 = r0.repMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r9 != 0) goto L_0x11df;
+    L_0x11d9:
+        r0 = r46;
+        r9 = r0.repByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9[r35] = r50;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x11df:
+        r0 = r46;
+        r9 = r0.repMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = 20;
+        if (r9 != r11) goto L_0x11f2;
+    L_0x11e9:
+        r0 = r46;
+        r9 = r0.repByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = r50 & 15;
+        r11 = (byte) r11;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9[r35] = r11;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x11f2:
+        r0 = r46;
+        r9 = r0.repMask;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9[r35];	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = 21;
+        if (r9 != r11) goto L_0x1207;
+    L_0x11fc:
+        r0 = r46;
+        r9 = r0.repByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = r50 & 15;
+        r11 = r11 + 16;
+        r11 = (byte) r11;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9[r35] = r11;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x1207:
+        r35 = r35 + 1;
+        r0 = r46;
+        r9 = r0.origByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r9.length;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r35;
+        if (r0 != r9) goto L_0x126f;
+    L_0x1212:
         r0 = r32;
-        r0.position(r9);	 Catch:{ Exception -> 0x1092, FileNotFoundException -> 0x0a3b }
-        goto L_0x0f45;
-    L_0x123d:
-        r9 = createAPK;
-        if (r9 != 0) goto L_0x128c;
-    L_0x1241:
-        r9 = 3;
-        r9 = r63[r9];
-        r11 = classesFiles;
-        r12 = 2;
-        r12 = r63[r12];
-        r13 = uid;
-        r14 = 2;
-        r14 = r63[r14];
-        r15 = uid;
-        r14 = com.chelpus.Utils.getOdexForCreate(r14, r15);
-        r52 = com.chelpus.Utils.create_ODEX_root(r9, r11, r12, r13, r14);
-        r9 = new java.lang.StringBuilder;
-        r9.<init>();
-        r11 = "chelpus_return_";
-        r9 = r9.append(r11);
-        r0 = r52;
-        r9 = r9.append(r0);
-        r9 = r9.toString();
-        com.chelpus.Utils.sendFromRoot(r9);
-        if (r52 != 0) goto L_0x128c;
-    L_0x1272:
-        r9 = ART;
-        if (r9 != 0) goto L_0x128c;
-    L_0x1276:
+        r1 = r23;
+        r0.position(r1);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r46;
+        r9 = r0.repByte;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r32;
+        r0.put(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r32.force();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r46;
+        r9 = r0.resultText;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        com.chelpus.Utils.sendFromRoot(r9);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = print;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r46;
+        r11 = r0.resultText;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9.println(r11);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
         r9 = 1;
-        r9 = r63[r9];
-        r11 = 2;
-        r11 = r63[r11];
-        r12 = 2;
-        r12 = r63[r12];
-        r13 = 1;
-        r12 = com.chelpus.Utils.getPlaceForOdex(r12, r13);
-        r13 = uid;
-        r14 = 3;
-        r14 = r63[r14];
-        com.chelpus.Utils.afterPatch(r9, r11, r12, r13, r14);
-    L_0x128c:
-        r9 = createAPK;
-        if (r9 != 0) goto L_0x1293;
-    L_0x1290:
-        com.chelpus.Utils.exitFromRootJava();
-    L_0x1293:
-        r0 = r48;
-        r9 = r0.allresult;
-        result = r9;
-        return;
-    L_0x129a:
+        r0 = r46;
+        r0.result = r9;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r46;
+        r9 = r0.marker;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = "";
+        r9 = r9.equals(r11);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r9 != 0) goto L_0x10ef;
+    L_0x1246:
+        r9 = 1;
+        r0 = r46;
+        r0.markerTrig = r9;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r9 = r2.iterator();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+    L_0x124f:
+        r11 = r9.hasNext();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r11 == 0) goto L_0x10ef;
+    L_0x1255:
+        r24 = r9.next();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r24 = (com.android.vending.billing.InAppBillingService.LOCK.PatchesItemAuto) r24;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r24;
+        r11 = r0.marker;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r0 = r46;
+        r12 = r0.marker;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        r11 = r11.equals(r12);	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        if (r11 == 0) goto L_0x124f;
+    L_0x1269:
+        r11 = 1;
+        r0 = r24;
+        r0.markerTrig = r11;	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        goto L_0x124f;
+    L_0x126f:
+        r50 = r32.get();	 Catch:{ Exception -> 0x0ff9, FileNotFoundException -> 0x09c5 }
+        goto L_0x10be;
+    L_0x1275:
+        r33 = r9.next();
+        r33 = (java.io.File) r33;
+        com.chelpus.Utils.fixadler(r33);
+        clearTempSD();
+        goto L_0x09d1;
+    L_0x1283:
         r9 = move-exception;
-        goto L_0x018c;
-    L_0x129d:
+        goto L_0x0152;
+    L_0x1286:
         r9 = move-exception;
-        goto L_0x018c;
-    L_0x12a0:
+        goto L_0x0152;
+    L_0x1289:
         r9 = move-exception;
-        goto L_0x017e;
+        goto L_0x0144;
         */
         throw new UnsupportedOperationException("Method not decompiled: com.chelpus.root.utils.runpatchads.main(java.lang.String[]):void");
     }
@@ -2347,7 +2339,7 @@ public class runpatchads {
                 tempdex.delete();
             }
         } catch (Exception e) {
-            Utils.sendFromRoot("" + e.toString());
+            Utils.sendFromRoot(e.toString());
         }
     }
 
@@ -2489,7 +2481,7 @@ public class runpatchads {
                 tempdex.delete();
             }
         } catch (Exception e) {
-            Utils.sendFromRoot("" + e.toString());
+            Utils.sendFromRoot(e.toString());
         }
     }
 }

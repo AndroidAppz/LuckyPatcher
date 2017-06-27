@@ -135,13 +135,14 @@ final class BT4 extends LZEncoder {
                     ptr1 = pair + 1;
                     currentMatch = this.tree[ptr1];
                     len1 = len;
+                    depth = depth2;
                 } else {
                     this.tree[ptr0] = currentMatch;
                     ptr0 = pair;
                     currentMatch = this.tree[ptr0];
                     len0 = len;
+                    depth = depth2;
                 }
-                depth = depth2;
             }
         }
         this.tree[ptr0] = 0;
@@ -186,13 +187,14 @@ final class BT4 extends LZEncoder {
                     ptr1 = pair + 1;
                     currentMatch = this.tree[ptr1];
                     len1 = len;
+                    depth = depth2;
                 } else {
                     this.tree[ptr0] = currentMatch;
                     ptr0 = pair;
                     currentMatch = this.tree[ptr0];
                     len0 = len;
+                    depth = depth2;
                 }
-                depth = depth2;
             }
         }
         this.tree[ptr0] = 0;

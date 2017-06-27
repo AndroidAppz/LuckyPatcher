@@ -369,13 +369,9 @@ public class InAppBillingFService extends Service {
                         InAppBillingFService.this.skipSetupDone = true;
                         return;
                     }
-                    if (InAppBillingFService.this.mService.isBillingSupported(InAppBillingFService.BILLING_RESPONSE_RESULT_BILLING_UNAVAILABLE, pkgName, InAppBillingFService.ITEM_TYPE_SUBS) == 0) {
-                        System.out.println("Billing service connected.");
-                        InAppBillingFService.this.mSetupDone = true;
-                    } else {
-                        System.out.println("Billing service connected.");
-                        InAppBillingFService.this.mSetupDone = true;
-                    }
+                    response = InAppBillingFService.this.mService.isBillingSupported(InAppBillingFService.BILLING_RESPONSE_RESULT_BILLING_UNAVAILABLE, pkgName, InAppBillingFService.ITEM_TYPE_SUBS);
+                    System.out.println("Billing service connected.");
+                    InAppBillingFService.this.mSetupDone = true;
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }

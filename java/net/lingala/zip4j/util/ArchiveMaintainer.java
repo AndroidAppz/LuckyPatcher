@@ -41,11 +41,9 @@ public class ArchiveMaintainer {
     }
 
     public HashMap initRemoveZipFile(ZipModel zipModel, FileHeader fileHeader, ProgressMonitor progressMonitor) throws ZipException {
-        OutputStream outputStream;
-        File file;
         ZipException e;
-        Throwable th;
         Throwable e2;
+        Throwable th;
         if (fileHeader == null || zipModel == null) {
             throw new ZipException("input parameters is null in maintain zip file, cannot remove file from archive");
         }
@@ -53,6 +51,7 @@ public class ArchiveMaintainer {
         RandomAccessFile inputStream = null;
         String tmpZipFileName = null;
         HashMap retMap = new HashMap();
+        OutputStream outputStream;
         try {
             int indexOfFileHeader = Zip4jUtil.getIndexOfFileHeader(zipModel, fileHeader);
             if (indexOfFileHeader < 0) {
@@ -68,95 +67,66 @@ public class ArchiveMaintainer {
                 }
                 outputStream = new SplitOutputStream(new File(tmpZipFileName));
                 try {
-                    file = new File(zipModel.getZipFile());
-                } catch (ZipException e3) {
-                    e = e3;
+                    File file = new File(zipModel.getZipFile());
                     try {
-                        progressMonitor.endProgressMonitorError(e);
-                        throw e;
-                    } catch (Throwable th2) {
-                        th = th2;
-                        if (inputStream != null) {
-                            try {
-                                inputStream.close();
-                            } catch (IOException e4) {
-                                throw new ZipException("cannot close input stream or output stream when trying to delete a file from zip file");
-                            }
+                        inputStream = createFileHandler(zipModel, InternalZipConstants.READ_MODE);
+                        if (new HeaderReader(inputStream).readLocalFileHeader(fileHeader) == null) {
+                            throw new ZipException("invalid local file header, cannot remove file from archive");
                         }
-                        if (outputStream != null) {
-                            outputStream.close();
+                        long offsetLocalFileHeader = fileHeader.getOffsetLocalHeader();
+                        if (!(fileHeader.getZip64ExtendedInfo() == null || fileHeader.getZip64ExtendedInfo().getOffsetLocalHeader() == -1)) {
+                            offsetLocalFileHeader = fileHeader.getZip64ExtendedInfo().getOffsetLocalHeader();
                         }
-                        if (null != null) {
-                            restoreFileName(zipFile, tmpZipFileName);
+                        long offsetEndOfCompressedFile = -1;
+                        long offsetStartCentralDir = zipModel.getEndCentralDirRecord().getOffsetOfStartOfCentralDir();
+                        if (zipModel.isZip64Format() && zipModel.getZip64EndCentralDirRecord() != null) {
+                            offsetStartCentralDir = zipModel.getZip64EndCentralDirRecord().getOffsetStartCenDirWRTStartDiskNo();
+                        }
+                        ArrayList fileHeaderList = zipModel.getCentralDirectory().getFileHeaders();
+                        if (indexOfFileHeader == fileHeaderList.size() - 1) {
+                            offsetEndOfCompressedFile = offsetStartCentralDir - 1;
                         } else {
-                            new File(tmpZipFileName).delete();
-                        }
-                        throw th;
-                    }
-                } catch (Exception e5) {
-                    e2 = e5;
-                    progressMonitor.endProgressMonitorError(e2);
-                    throw new ZipException(e2);
-                }
-                try {
-                    inputStream = createFileHandler(zipModel, InternalZipConstants.READ_MODE);
-                    if (new HeaderReader(inputStream).readLocalFileHeader(fileHeader) == null) {
-                        throw new ZipException("invalid local file header, cannot remove file from archive");
-                    }
-                    long offsetLocalFileHeader = fileHeader.getOffsetLocalHeader();
-                    if (!(fileHeader.getZip64ExtendedInfo() == null || fileHeader.getZip64ExtendedInfo().getOffsetLocalHeader() == -1)) {
-                        offsetLocalFileHeader = fileHeader.getZip64ExtendedInfo().getOffsetLocalHeader();
-                    }
-                    long offsetEndOfCompressedFile = -1;
-                    long offsetStartCentralDir = zipModel.getEndCentralDirRecord().getOffsetOfStartOfCentralDir();
-                    if (zipModel.isZip64Format() && zipModel.getZip64EndCentralDirRecord() != null) {
-                        offsetStartCentralDir = zipModel.getZip64EndCentralDirRecord().getOffsetStartCenDirWRTStartDiskNo();
-                    }
-                    ArrayList fileHeaderList = zipModel.getCentralDirectory().getFileHeaders();
-                    if (indexOfFileHeader == fileHeaderList.size() - 1) {
-                        offsetEndOfCompressedFile = offsetStartCentralDir - 1;
-                    } else {
-                        FileHeader nextFileHeader = (FileHeader) fileHeaderList.get(indexOfFileHeader + 1);
-                        if (nextFileHeader != null) {
-                            offsetEndOfCompressedFile = nextFileHeader.getOffsetLocalHeader() - 1;
-                            if (!(nextFileHeader.getZip64ExtendedInfo() == null || nextFileHeader.getZip64ExtendedInfo().getOffsetLocalHeader() == -1)) {
-                                offsetEndOfCompressedFile = nextFileHeader.getZip64ExtendedInfo().getOffsetLocalHeader() - 1;
+                            FileHeader nextFileHeader = (FileHeader) fileHeaderList.get(indexOfFileHeader + 1);
+                            if (nextFileHeader != null) {
+                                offsetEndOfCompressedFile = nextFileHeader.getOffsetLocalHeader() - 1;
+                                if (!(nextFileHeader.getZip64ExtendedInfo() == null || nextFileHeader.getZip64ExtendedInfo().getOffsetLocalHeader() == -1)) {
+                                    offsetEndOfCompressedFile = nextFileHeader.getZip64ExtendedInfo().getOffsetLocalHeader() - 1;
+                                }
                             }
                         }
-                    }
-                    if (offsetLocalFileHeader < 0 || offsetEndOfCompressedFile < 0) {
-                        throw new ZipException("invalid offset for start and end of local file, cannot remove file");
-                    }
-                    if (indexOfFileHeader == 0) {
-                        if (zipModel.getCentralDirectory().getFileHeaders().size() > 1) {
+                        if (offsetLocalFileHeader < 0 || offsetEndOfCompressedFile < 0) {
+                            throw new ZipException("invalid offset for start and end of local file, cannot remove file");
+                        }
+                        if (indexOfFileHeader == 0) {
+                            if (zipModel.getCentralDirectory().getFileHeaders().size() > 1) {
+                                copyFile(inputStream, outputStream, 1 + offsetEndOfCompressedFile, offsetStartCentralDir, progressMonitor);
+                            }
+                        } else if (indexOfFileHeader == fileHeaderList.size() - 1) {
+                            copyFile(inputStream, outputStream, 0, offsetLocalFileHeader, progressMonitor);
+                        } else {
+                            copyFile(inputStream, outputStream, 0, offsetLocalFileHeader, progressMonitor);
                             copyFile(inputStream, outputStream, 1 + offsetEndOfCompressedFile, offsetStartCentralDir, progressMonitor);
                         }
-                    } else if (indexOfFileHeader == fileHeaderList.size() - 1) {
-                        copyFile(inputStream, outputStream, 0, offsetLocalFileHeader, progressMonitor);
-                    } else {
-                        copyFile(inputStream, outputStream, 0, offsetLocalFileHeader, progressMonitor);
-                        copyFile(inputStream, outputStream, 1 + offsetEndOfCompressedFile, offsetStartCentralDir, progressMonitor);
-                    }
-                    if (progressMonitor.isCancelAllTasks()) {
-                        progressMonitor.setResult(3);
-                        progressMonitor.setState(0);
-                        retMap = null;
-                        if (inputStream != null) {
-                            try {
-                                inputStream.close();
-                            } catch (IOException e6) {
-                                throw new ZipException("cannot close input stream or output stream when trying to delete a file from zip file");
+                        if (progressMonitor.isCancelAllTasks()) {
+                            progressMonitor.setResult(3);
+                            progressMonitor.setState(0);
+                            if (inputStream != null) {
+                                try {
+                                    inputStream.close();
+                                } catch (IOException e3) {
+                                    throw new ZipException("cannot close input stream or output stream when trying to delete a file from zip file");
+                                }
                             }
+                            if (outputStream != null) {
+                                outputStream.close();
+                            }
+                            if (null != null) {
+                                restoreFileName(file, tmpZipFileName);
+                            } else {
+                                new File(tmpZipFileName).delete();
+                            }
+                            return null;
                         }
-                        if (outputStream != null) {
-                            outputStream.close();
-                        }
-                        if (null != null) {
-                            restoreFileName(file, tmpZipFileName);
-                        } else {
-                            new File(tmpZipFileName).delete();
-                        }
-                    } else {
                         zipModel.getEndCentralDirRecord().setOffsetOfStartOfCentralDir(((SplitOutputStream) outputStream).getFilePointer());
                         zipModel.getEndCentralDirRecord().setTotNoOfEntriesInCentralDir(zipModel.getEndCentralDirRecord().getTotNoOfEntriesInCentralDir() - 1);
                         zipModel.getEndCentralDirRecord().setTotNoOfEntriesInCentralDirOnThisDisk(zipModel.getEndCentralDirRecord().getTotNoOfEntriesInCentralDirOnThisDisk() - 1);
@@ -175,7 +145,7 @@ public class ArchiveMaintainer {
                         if (inputStream != null) {
                             try {
                                 inputStream.close();
-                            } catch (IOException e7) {
+                            } catch (IOException e4) {
                                 throw new ZipException("cannot close input stream or output stream when trying to delete a file from zip file");
                             }
                         }
@@ -184,36 +154,48 @@ public class ArchiveMaintainer {
                         }
                         if (true) {
                             restoreFileName(file, tmpZipFileName);
+                            return retMap;
+                        }
+                        new File(tmpZipFileName).delete();
+                        return retMap;
+                    } catch (ZipException e5) {
+                        e = e5;
+                        zipFile = file;
+                    } catch (Exception e6) {
+                        e2 = e6;
+                        zipFile = file;
+                    } catch (Throwable th2) {
+                        th = th2;
+                        zipFile = file;
+                    }
+                } catch (ZipException e7) {
+                    e = e7;
+                    try {
+                        progressMonitor.endProgressMonitorError(e);
+                        throw e;
+                    } catch (Throwable th3) {
+                        th = th3;
+                        if (inputStream != null) {
+                            try {
+                                inputStream.close();
+                            } catch (IOException e8) {
+                                throw new ZipException("cannot close input stream or output stream when trying to delete a file from zip file");
+                            }
+                        }
+                        if (outputStream != null) {
+                            outputStream.close();
+                        }
+                        if (null != null) {
+                            restoreFileName(zipFile, tmpZipFileName);
                         } else {
                             new File(tmpZipFileName).delete();
                         }
+                        throw th;
                     }
-                    return retMap;
-                } catch (ZipException e8) {
-                    e = e8;
-                    zipFile = file;
-                    progressMonitor.endProgressMonitorError(e);
-                    throw e;
                 } catch (Exception e9) {
                     e2 = e9;
-                    zipFile = file;
                     progressMonitor.endProgressMonitorError(e2);
                     throw new ZipException(e2);
-                } catch (Throwable th3) {
-                    th = th3;
-                    zipFile = file;
-                    if (inputStream != null) {
-                        inputStream.close();
-                    }
-                    if (outputStream != null) {
-                        outputStream.close();
-                    }
-                    if (null != null) {
-                        restoreFileName(zipFile, tmpZipFileName);
-                    } else {
-                        new File(tmpZipFileName).delete();
-                    }
-                    throw th;
                 }
             }
         } catch (Throwable e1) {
@@ -221,28 +203,12 @@ public class ArchiveMaintainer {
         } catch (ZipException e10) {
             e = e10;
             outputStream = null;
-            progressMonitor.endProgressMonitorError(e);
-            throw e;
         } catch (Exception e11) {
             e2 = e11;
             outputStream = null;
-            progressMonitor.endProgressMonitorError(e2);
-            throw new ZipException(e2);
         } catch (Throwable th4) {
             th = th4;
             outputStream = null;
-            if (inputStream != null) {
-                inputStream.close();
-            }
-            if (outputStream != null) {
-                outputStream.close();
-            }
-            if (null != null) {
-                new File(tmpZipFileName).delete();
-            } else {
-                restoreFileName(zipFile, tmpZipFileName);
-            }
-            throw th;
         }
     }
 
@@ -348,88 +314,88 @@ public class ArchiveMaintainer {
             ArrayList fileSizeList = new ArrayList();
             long totBytesWritten = 0;
             boolean splitSigRemoved = false;
-            try {
-                int totNoOfSplitFiles = zipModel.getEndCentralDirRecord().getNoOfThisDisk();
-                if (totNoOfSplitFiles <= 0) {
-                    throw new ZipException("corrupt zip model, archive not a split zip file");
+            int totNoOfSplitFiles = zipModel.getEndCentralDirRecord().getNoOfThisDisk();
+            if (totNoOfSplitFiles <= 0) {
+                throw new ZipException("corrupt zip model, archive not a split zip file");
+            }
+            outputStream = prepareOutputStreamForMerge(outputZipFile);
+            for (int i = 0; i <= totNoOfSplitFiles; i++) {
+                inputStream = createSplitZipFileHandler(zipModel, i);
+                int start = 0;
+                Long end = new Long(inputStream.length());
+                if (i == 0 && zipModel.getCentralDirectory() != null && zipModel.getCentralDirectory().getFileHeaders() != null && zipModel.getCentralDirectory().getFileHeaders().size() > 0) {
+                    byte[] buff = new byte[4];
+                    inputStream.seek(0);
+                    inputStream.read(buff);
+                    if (((long) Raw.readIntLittleEndian(buff, 0)) == InternalZipConstants.SPLITSIG) {
+                        start = 4;
+                        splitSigRemoved = true;
+                    }
                 }
-                outputStream = prepareOutputStreamForMerge(outputZipFile);
-                for (int i = 0; i <= totNoOfSplitFiles; i++) {
-                    inputStream = createSplitZipFileHandler(zipModel, i);
-                    int start = 0;
-                    Long end = new Long(inputStream.length());
-                    if (i == 0 && zipModel.getCentralDirectory() != null && zipModel.getCentralDirectory().getFileHeaders() != null && zipModel.getCentralDirectory().getFileHeaders().size() > 0) {
-                        byte[] buff = new byte[4];
-                        inputStream.seek(0);
-                        inputStream.read(buff);
-                        if (((long) Raw.readIntLittleEndian(buff, 0)) == InternalZipConstants.SPLITSIG) {
-                            start = 4;
-                            splitSigRemoved = true;
+                if (i == totNoOfSplitFiles) {
+                    end = new Long(zipModel.getEndCentralDirRecord().getOffsetOfStartOfCentralDir());
+                }
+                copyFile(inputStream, outputStream, (long) start, end.longValue(), progressMonitor);
+                totBytesWritten += end.longValue() - ((long) start);
+                if (progressMonitor.isCancelAllTasks()) {
+                    progressMonitor.setResult(3);
+                    progressMonitor.setState(0);
+                    if (outputStream != null) {
+                        try {
+                            outputStream.close();
+                        } catch (IOException e2) {
                         }
                     }
-                    if (i == totNoOfSplitFiles) {
-                        end = new Long(zipModel.getEndCentralDirRecord().getOffsetOfStartOfCentralDir());
-                    }
-                    copyFile(inputStream, outputStream, (long) start, end.longValue(), progressMonitor);
-                    totBytesWritten += end.longValue() - ((long) start);
-                    if (progressMonitor.isCancelAllTasks()) {
-                        progressMonitor.setResult(3);
-                        progressMonitor.setState(0);
-                        if (outputStream != null) {
-                            try {
-                                outputStream.close();
-                            } catch (IOException e2) {
-                            }
+                    if (inputStream != null) {
+                        try {
+                            inputStream.close();
+                            return;
+                        } catch (IOException e3) {
+                            return;
                         }
-                        if (inputStream != null) {
-                            try {
-                                inputStream.close();
-                                return;
-                            } catch (IOException e3) {
-                                return;
-                            }
-                        }
-                        return;
                     }
+                    return;
+                }
+                try {
                     fileSizeList.add(end);
                     inputStream.close();
-                }
-                ZipModel newZipModel = (ZipModel) zipModel.clone();
-                newZipModel.getEndCentralDirRecord().setOffsetOfStartOfCentralDir(totBytesWritten);
-                updateSplitZipModel(newZipModel, fileSizeList, splitSigRemoved);
-                new HeaderWriter().finalizeZipFileWithoutValidations(newZipModel, outputStream);
-                progressMonitor.endProgressMonitorSuccess();
-                if (outputStream != null) {
-                    try {
-                        outputStream.close();
-                    } catch (IOException e4) {
+                } catch (IOException e4) {
+                } catch (Throwable e5) {
+                    progressMonitor.endProgressMonitorError(e5);
+                    throw new ZipException(e5);
+                } catch (Throwable e52) {
+                    progressMonitor.endProgressMonitorError(e52);
+                    throw new ZipException(e52);
+                } catch (Throwable th) {
+                    if (outputStream != null) {
+                        try {
+                            outputStream.close();
+                        } catch (IOException e6) {
+                        }
+                    }
+                    if (inputStream != null) {
+                        try {
+                            inputStream.close();
+                        } catch (IOException e7) {
+                        }
                     }
                 }
-                if (inputStream != null) {
-                    try {
-                        inputStream.close();
-                    } catch (IOException e5) {
-                    }
+            }
+            ZipModel newZipModel = (ZipModel) zipModel.clone();
+            newZipModel.getEndCentralDirRecord().setOffsetOfStartOfCentralDir(totBytesWritten);
+            updateSplitZipModel(newZipModel, fileSizeList, splitSigRemoved);
+            new HeaderWriter().finalizeZipFileWithoutValidations(newZipModel, outputStream);
+            progressMonitor.endProgressMonitorSuccess();
+            if (outputStream != null) {
+                try {
+                    outputStream.close();
+                } catch (IOException e8) {
                 }
-            } catch (IOException e6) {
-            } catch (Throwable e7) {
-                progressMonitor.endProgressMonitorError(e7);
-                throw new ZipException(e7);
-            } catch (Throwable e72) {
-                progressMonitor.endProgressMonitorError(e72);
-                throw new ZipException(e72);
-            } catch (Throwable th) {
-                if (outputStream != null) {
-                    try {
-                        outputStream.close();
-                    } catch (IOException e8) {
-                    }
-                }
-                if (inputStream != null) {
-                    try {
-                        inputStream.close();
-                    } catch (IOException e9) {
-                    }
+            }
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e9) {
                 }
             }
         } else {

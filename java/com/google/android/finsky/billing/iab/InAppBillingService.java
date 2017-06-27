@@ -369,13 +369,9 @@ public class InAppBillingService extends Service {
                         InAppBillingService.this.skipSetupDone = true;
                         return;
                     }
-                    if (InAppBillingService.this.mService.isBillingSupported(InAppBillingService.BILLING_RESPONSE_RESULT_BILLING_UNAVAILABLE, pkgName, InAppBillingService.ITEM_TYPE_SUBS) == 0) {
-                        System.out.println("Billing service connected.");
-                        InAppBillingService.this.mSetupDone = true;
-                    } else {
-                        System.out.println("Billing service connected.");
-                        InAppBillingService.this.mSetupDone = true;
-                    }
+                    response = InAppBillingService.this.mService.isBillingSupported(InAppBillingService.BILLING_RESPONSE_RESULT_BILLING_UNAVAILABLE, pkgName, InAppBillingService.ITEM_TYPE_SUBS);
+                    System.out.println("Billing service connected.");
+                    InAppBillingService.this.mSetupDone = true;
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }

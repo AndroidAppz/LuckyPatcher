@@ -46,7 +46,7 @@ public class BuyMarketActivity extends Activity {
             }
             Intent v2 = new Intent("com.android.vending.billing.IN_APP_NOTIFY");
             v2.setPackage(this.packageName);
-            v2.putExtra("notification_id", "" + Utils.getRandom(1000000000000000000L, Util.VLI_MAX));
+            v2.putExtra("notification_id", Utils.getRandom(1000000000000000000L, Util.VLI_MAX));
             sendBroadcast(v2);
             finish();
         }
@@ -59,8 +59,8 @@ public class BuyMarketActivity extends Activity {
         this.check2 = (CheckBox) findViewById(2131558480);
         this.check3 = (CheckBox) findViewById(2131558481);
         TextView text2 = (TextView) findViewById(2131558468);
-        text2.setText(Utils.getText(2131165231));
-        text2.append("\n" + Utils.getText(2131165232));
+        text2.setText(Utils.getText(2131361830));
+        text2.append("\n" + Utils.getText(2131361831));
         this.check.setChecked(false);
         this.check2.setChecked(false);
         this.check3.setChecked(false);
@@ -90,7 +90,7 @@ public class BuyMarketActivity extends Activity {
                 }
                 Intent v2 = new Intent("com.android.vending.billing.IN_APP_NOTIFY");
                 v2.setPackage(BuyMarketActivity.this.packageName);
-                v2.putExtra("notification_id", "" + Utils.getRandom(1000000000000000000L, Util.VLI_MAX));
+                v2.putExtra("notification_id", Utils.getRandom(1000000000000000000L, Util.VLI_MAX));
                 BuyMarketActivity.this.sendBroadcast(v2);
                 BuyMarketActivity.this.finish();
             }

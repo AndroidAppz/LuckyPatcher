@@ -55,18 +55,6 @@ public abstract class RequestProcessor {
 
     public abstract InetAddress resolve(String str);
 
-    static /* synthetic */ int access$008() {
-        int i = processorsCount;
-        processorsCount = i + 1;
-        return i;
-    }
-
-    static /* synthetic */ int access$010() {
-        int i = processorsCount;
-        processorsCount = i - 1;
-        return i;
-    }
-
     public RequestProcessor() throws IOException {
         this.t = null;
         this.alive = false;
@@ -87,58 +75,61 @@ public abstract class RequestProcessor {
             public void run() {
                 /*
                 r40 = this;
-                com.mba.proxylight.RequestProcessor.access$008();
-            L_0x0003:
+                r36 = com.mba.proxylight.RequestProcessor.processorsCount;
+                r36 = r36 + 1;
+                com.mba.proxylight.RequestProcessor.processorsCount = r36;
+            L_0x0009:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r37 = r0;
-                monitor-enter(r37);	 Catch:{ all -> 0x0167 }
+                monitor-enter(r37);	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x019d }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0182 }
                 r36 = r0;
                 r38 = 1;
                 r0 = r36;
                 r1 = r38;
-                r0.alive = r1;	 Catch:{ all -> 0x019d }
+                r0.alive = r1;	 Catch:{ all -> 0x0182 }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x019d }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0182 }
                 r36 = r0;
-                r36 = r36.selector;	 Catch:{ all -> 0x019d }
-                if (r36 != 0) goto L_0x0040;
-            L_0x0025:
+                r36 = r36.selector;	 Catch:{ all -> 0x0182 }
+                if (r36 != 0) goto L_0x0046;
+            L_0x002b:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x019d }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0182 }
                 r36 = r0;
-                r36 = r36.shutdown;	 Catch:{ all -> 0x019d }
-                if (r36 != 0) goto L_0x0040;
-            L_0x0031:
+                r36 = r36.shutdown;	 Catch:{ all -> 0x0182 }
+                if (r36 != 0) goto L_0x0046;
+            L_0x0037:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ InterruptedException -> 0x0082 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ InterruptedException -> 0x008a }
                 r36 = r0;
                 r38 = 20000; // 0x4e20 float:2.8026E-41 double:9.8813E-320;
                 r0 = r36;
                 r1 = r38;
-                r0.wait(r1);	 Catch:{ InterruptedException -> 0x0082 }
-            L_0x0040:
+                r0.wait(r1);	 Catch:{ InterruptedException -> 0x008a }
+            L_0x0046:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x019d }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0182 }
                 r36 = r0;
-                r36 = r36.shutdown;	 Catch:{ all -> 0x019d }
-                if (r36 == 0) goto L_0x00c8;
-            L_0x004c:
-                monitor-exit(r37);	 Catch:{ all -> 0x019d }
+                r36 = r36.shutdown;	 Catch:{ all -> 0x0182 }
+                if (r36 == 0) goto L_0x00d2;
+            L_0x0052:
+                monitor-exit(r37);	 Catch:{ all -> 0x0182 }
                 r0 = r40;
                 r0 = com.mba.proxylight.RequestProcessor.this;
                 r36 = r0;
                 r36.closeAll();
-                com.mba.proxylight.RequestProcessor.access$010();
+                r36 = com.mba.proxylight.RequestProcessor.processorsCount;
+                r36 = r36 + -1;
+                com.mba.proxylight.RequestProcessor.processorsCount = r36;
                 r0 = r40;
                 r0 = com.mba.proxylight.RequestProcessor.this;
                 r36 = r0;
                 r37 = new java.lang.StringBuilder;
-                r37.<init>();
                 r38 = "Fin du processor ";
-                r37 = r37.append(r38);
+                r37.<init>(r38);
                 r0 = r40;
                 r0 = com.mba.proxylight.RequestProcessor.this;
                 r38 = r0;
@@ -147,30 +138,31 @@ public abstract class RequestProcessor {
                 r37 = r37.toString();
                 r38 = 0;
                 r36.error(r37, r38);
-            L_0x0081:
+            L_0x0089:
                 return;
-            L_0x0082:
+            L_0x008a:
                 r8 = move-exception;
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x019d }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0182 }
                 r36 = r0;
                 r38 = 0;
                 r0 = r36;
                 r1 = r38;
-                r0.error(r1, r8);	 Catch:{ all -> 0x019d }
-                monitor-exit(r37);	 Catch:{ all -> 0x019d }
+                r0.error(r1, r8);	 Catch:{ all -> 0x0182 }
+                monitor-exit(r37);	 Catch:{ all -> 0x0182 }
                 r0 = r40;
                 r0 = com.mba.proxylight.RequestProcessor.this;
                 r36 = r0;
                 r36.closeAll();
-                com.mba.proxylight.RequestProcessor.access$010();
+                r36 = com.mba.proxylight.RequestProcessor.processorsCount;
+                r36 = r36 + -1;
+                com.mba.proxylight.RequestProcessor.processorsCount = r36;
                 r0 = r40;
                 r0 = com.mba.proxylight.RequestProcessor.this;
                 r36 = r0;
                 r37 = new java.lang.StringBuilder;
-                r37.<init>();
                 r38 = "Fin du processor ";
-                r37 = r37.append(r38);
+                r37.<init>(r38);
                 r0 = r40;
                 r0 = com.mba.proxylight.RequestProcessor.this;
                 r38 = r0;
@@ -179,90 +171,75 @@ public abstract class RequestProcessor {
                 r37 = r37.toString();
                 r38 = 0;
                 r36.error(r37, r38);
-                goto L_0x0081;
-            L_0x00c8:
-                monitor-exit(r37);	 Catch:{ all -> 0x019d }
+                goto L_0x0089;
+            L_0x00d2:
+                monitor-exit(r37);	 Catch:{ all -> 0x0182 }
                 r26 = 0;
                 r7 = 0;
-                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.STATUS_LINE;	 Catch:{ Exception -> 0x033c }
-            L_0x00ce:
+                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.STATUS_LINE;	 Catch:{ Exception -> 0x02c5 }
+            L_0x00d8:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36 = r36.selector;	 Catch:{ Exception -> 0x033c }
-                if (r36 == 0) goto L_0x00f9;
-            L_0x00da:
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
-                r36 = r0;
-                r36 = r36.selector;	 Catch:{ Exception -> 0x033c }
-                r38 = 5000; // 0x1388 float:7.006E-42 double:2.4703E-320;
-                r0 = r36;
-                r1 = r38;
-                r0.select(r1);	 Catch:{ Exception -> 0x033c }
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
-                r36 = r0;
-                r36 = r36.inSocket;	 Catch:{ Exception -> 0x033c }
-                if (r36 != 0) goto L_0x01a0;
-            L_0x00f9:
-                r36 = java.lang.System.out;	 Catch:{ all -> 0x0167 }
-                r37 = new java.lang.StringBuilder;	 Catch:{ all -> 0x0167 }
-                r37.<init>();	 Catch:{ all -> 0x0167 }
+                r36 = r36.selector;	 Catch:{ Exception -> 0x02c5 }
+                if (r36 != 0) goto L_0x0185;
+            L_0x00e4:
+                r36 = java.lang.System.out;	 Catch:{ all -> 0x014a }
+                r37 = new java.lang.StringBuilder;	 Catch:{ all -> 0x014a }
                 r38 = "inData:";
-                r37 = r37.append(r38);	 Catch:{ all -> 0x0167 }
+                r37.<init>(r38);	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r38 = r0;
-                r38 = r38.inData;	 Catch:{ all -> 0x0167 }
-                r37 = r37.append(r38);	 Catch:{ all -> 0x0167 }
-                r37 = r37.toString();	 Catch:{ all -> 0x0167 }
-                r36.println(r37);	 Catch:{ all -> 0x0167 }
+                r38 = r38.inData;	 Catch:{ all -> 0x014a }
+                r37 = r37.append(r38);	 Catch:{ all -> 0x014a }
+                r37 = r37.toString();	 Catch:{ all -> 0x014a }
+                r36.println(r37);	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r36 = r0;
                 r37 = "";
-                r36.inData = r37;	 Catch:{ all -> 0x0167 }
-                r36 = java.lang.System.out;	 Catch:{ all -> 0x0167 }
-                r37 = new java.lang.StringBuilder;	 Catch:{ all -> 0x0167 }
-                r37.<init>();	 Catch:{ all -> 0x0167 }
+                r36.inData = r37;	 Catch:{ all -> 0x014a }
+                r36 = java.lang.System.out;	 Catch:{ all -> 0x014a }
+                r37 = new java.lang.StringBuilder;	 Catch:{ all -> 0x014a }
                 r38 = "outData:";
-                r37 = r37.append(r38);	 Catch:{ all -> 0x0167 }
+                r37.<init>(r38);	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r38 = r0;
-                r38 = r38.outData;	 Catch:{ all -> 0x0167 }
-                r37 = r37.append(r38);	 Catch:{ all -> 0x0167 }
-                r37 = r37.toString();	 Catch:{ all -> 0x0167 }
-                r36.println(r37);	 Catch:{ all -> 0x0167 }
+                r38 = r38.outData;	 Catch:{ all -> 0x014a }
+                r37 = r37.append(r38);	 Catch:{ all -> 0x014a }
+                r37 = r37.toString();	 Catch:{ all -> 0x014a }
+                r36.println(r37);	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r36 = r0;
                 r37 = "";
-                r36.outData = r37;	 Catch:{ all -> 0x0167 }
+                r36.outData = r37;	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r36 = r0;
-                r36.closeAll();	 Catch:{ all -> 0x0167 }
+                r36.closeAll();	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r36 = r0;
-                r36.recycle();	 Catch:{ all -> 0x0167 }
-                goto L_0x0003;
-            L_0x0167:
+                r36.recycle();	 Catch:{ all -> 0x014a }
+                goto L_0x0009;
+            L_0x014a:
                 r36 = move-exception;
                 r0 = r40;
                 r0 = com.mba.proxylight.RequestProcessor.this;
                 r37 = r0;
                 r37.closeAll();
-                com.mba.proxylight.RequestProcessor.access$010();
+                r37 = com.mba.proxylight.RequestProcessor.processorsCount;
+                r37 = r37 + -1;
+                com.mba.proxylight.RequestProcessor.processorsCount = r37;
                 r0 = r40;
                 r0 = com.mba.proxylight.RequestProcessor.this;
                 r37 = r0;
                 r38 = new java.lang.StringBuilder;
-                r38.<init>();
                 r39 = "Fin du processor ";
-                r38 = r38.append(r39);
+                r38.<init>(r39);
                 r0 = r40;
                 r0 = com.mba.proxylight.RequestProcessor.this;
                 r39 = r0;
@@ -272,771 +249,778 @@ public abstract class RequestProcessor {
                 r39 = 0;
                 r37.error(r38, r39);
                 throw r36;
-            L_0x019d:
+            L_0x0182:
                 r36 = move-exception;
-                monitor-exit(r37);	 Catch:{ all -> 0x019d }
-                throw r36;	 Catch:{ all -> 0x0167 }
-            L_0x01a0:
-                r22 = java.lang.System.currentTimeMillis();	 Catch:{ Exception -> 0x033c }
+                monitor-exit(r37);	 Catch:{ all -> 0x0182 }
+                throw r36;	 Catch:{ all -> 0x014a }
+            L_0x0185:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36 = r36.selector;	 Catch:{ Exception -> 0x033c }
-                r36 = r36.selectedKeys();	 Catch:{ Exception -> 0x033c }
-                r36 = r36.size();	 Catch:{ Exception -> 0x033c }
-                if (r36 != 0) goto L_0x027c;
-            L_0x01b8:
-                r36 = com.mba.proxylight.RequestProcessor.SOCKET_TIMEOUT;	 Catch:{ Exception -> 0x033c }
+                r36 = r36.selector;	 Catch:{ Exception -> 0x02c5 }
+                r38 = 5000; // 0x1388 float:7.006E-42 double:2.4703E-320;
+                r0 = r36;
+                r1 = r38;
+                r0.select(r1);	 Catch:{ Exception -> 0x02c5 }
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
+                r36 = r0;
+                r36 = r36.inSocket;	 Catch:{ Exception -> 0x02c5 }
+                if (r36 == 0) goto L_0x00e4;
+            L_0x01a4:
+                r22 = java.lang.System.currentTimeMillis();	 Catch:{ Exception -> 0x02c5 }
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
+                r36 = r0;
+                r36 = r36.selector;	 Catch:{ Exception -> 0x02c5 }
+                r36 = r36.selectedKeys();	 Catch:{ Exception -> 0x02c5 }
+                r36 = r36.size();	 Catch:{ Exception -> 0x02c5 }
+                if (r36 != 0) goto L_0x01ff;
+            L_0x01bc:
+                r36 = com.mba.proxylight.RequestProcessor.SOCKET_TIMEOUT;	 Catch:{ Exception -> 0x02c5 }
                 r20 = r22 - r36;
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36 = r36.outSockets;	 Catch:{ Exception -> 0x033c }
-                r36 = r36.entrySet();	 Catch:{ Exception -> 0x033c }
-                r12 = r36.iterator();	 Catch:{ Exception -> 0x033c }
-            L_0x01d0:
-                r36 = r12.hasNext();	 Catch:{ Exception -> 0x033c }
-                if (r36 == 0) goto L_0x0257;
-            L_0x01d6:
-                r9 = r12.next();	 Catch:{ Exception -> 0x033c }
-                r9 = (java.util.Map.Entry) r9;	 Catch:{ Exception -> 0x033c }
-                r32 = r9.getValue();	 Catch:{ Exception -> 0x033c }
-                r32 = (com.mba.proxylight.Socket) r32;	 Catch:{ Exception -> 0x033c }
-                r0 = r32;
-                r0 = r0.lastRead;	 Catch:{ Exception -> 0x033c }
+                r36 = r36.outSockets;	 Catch:{ Exception -> 0x02c5 }
+                r36 = r36.entrySet();	 Catch:{ Exception -> 0x02c5 }
+                r12 = r36.iterator();	 Catch:{ Exception -> 0x02c5 }
+            L_0x01d4:
+                r36 = r12.hasNext();	 Catch:{ Exception -> 0x02c5 }
+                if (r36 != 0) goto L_0x033b;
+            L_0x01da:
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r0 = r32;
-                r0 = r0.lastWrite;	 Catch:{ Exception -> 0x033c }
-                r38 = r0;
-                r18 = java.lang.Math.max(r36, r38);	 Catch:{ Exception -> 0x033c }
-                r36 = (r18 > r20 ? 1 : (r18 == r20 ? 0 : -1));
-                if (r36 >= 0) goto L_0x01d0;
-            L_0x01f6:
+                r36 = r36.outSockets;	 Catch:{ Exception -> 0x02c5 }
+                r36 = r36.size();	 Catch:{ Exception -> 0x02c5 }
+                if (r36 != 0) goto L_0x01f3;
+            L_0x01ea:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
-                r37 = r0;
-                r36 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x033c }
-                r36.<init>();	 Catch:{ Exception -> 0x033c }
-                r38 = "processeur ";
-                r0 = r36;
-                r1 = r38;
-                r36 = r0.append(r1);	 Catch:{ Exception -> 0x033c }
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
-                r38 = r0;
-                r38 = r38.processorIdx;	 Catch:{ Exception -> 0x033c }
-                r0 = r36;
-                r1 = r38;
-                r36 = r0.append(r1);	 Catch:{ Exception -> 0x033c }
-                r38 = " : Fermeture pour inactivite de la socket vers ";
-                r0 = r36;
-                r1 = r38;
-                r38 = r0.append(r1);	 Catch:{ Exception -> 0x033c }
-                r36 = r9.getKey();	 Catch:{ Exception -> 0x033c }
-                r36 = (java.lang.String) r36;	 Catch:{ Exception -> 0x033c }
-                r0 = r38;
-                r1 = r36;
-                r36 = r0.append(r1);	 Catch:{ Exception -> 0x033c }
-                r36 = r36.toString();	 Catch:{ Exception -> 0x033c }
-                r0 = r37;
-                r1 = r36;
-                r0.debug(r1);	 Catch:{ Exception -> 0x033c }
-                if (r26 == 0) goto L_0x03ba;
-            L_0x0242:
-                r36 = "CONNECT";
-                r37 = r26.getMethod();	 Catch:{ Exception -> 0x033c }
-                r36 = r36.equals(r37);	 Catch:{ Exception -> 0x033c }
-                if (r36 == 0) goto L_0x03ba;
-            L_0x024e:
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36.closeAll();	 Catch:{ Exception -> 0x033c }
-            L_0x0257:
+                r36.closeAll();	 Catch:{ Exception -> 0x02c5 }
+            L_0x01f3:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36 = r36.outSockets;	 Catch:{ Exception -> 0x033c }
-                r36 = r36.size();	 Catch:{ Exception -> 0x033c }
-                if (r36 != 0) goto L_0x0270;
-            L_0x0267:
+                r36 = r36.inSocket;	 Catch:{ Exception -> 0x02c5 }
+                if (r36 == 0) goto L_0x00e4;
+            L_0x01ff:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36.closeAll();	 Catch:{ Exception -> 0x033c }
-            L_0x0270:
+                r36 = r36.selector;	 Catch:{ Exception -> 0x02c5 }
+                r36 = r36.selectedKeys();	 Catch:{ Exception -> 0x02c5 }
+                r29 = r36.iterator();	 Catch:{ Exception -> 0x02c5 }
+            L_0x0211:
+                r36 = r29.hasNext();	 Catch:{ Exception -> 0x02c5 }
+                if (r36 == 0) goto L_0x00d8;
+            L_0x0217:
+                r16 = r29.next();	 Catch:{ Exception -> 0x02c5 }
+                r16 = (java.nio.channels.SelectionKey) r16;	 Catch:{ Exception -> 0x02c5 }
+                r29.remove();	 Catch:{ Exception -> 0x02c5 }
+                r36 = r16.isValid();	 Catch:{ Exception -> 0x02c5 }
+                if (r36 == 0) goto L_0x0211;
+            L_0x0226:
+                r36 = r16.isReadable();	 Catch:{ Exception -> 0x02c5 }
+                if (r36 == 0) goto L_0x0211;
+            L_0x022c:
+                r33 = r16.attachment();	 Catch:{ Exception -> 0x02c5 }
+                r33 = (com.mba.proxylight.Socket) r33;	 Catch:{ Exception -> 0x02c5 }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36 = r36.inSocket;	 Catch:{ Exception -> 0x033c }
-                if (r36 == 0) goto L_0x00f9;
-            L_0x027c:
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
-                r36 = r0;
-                r36 = r36.selector;	 Catch:{ Exception -> 0x033c }
-                r36 = r36.selectedKeys();	 Catch:{ Exception -> 0x033c }
-                r29 = r36.iterator();	 Catch:{ Exception -> 0x033c }
-            L_0x028e:
-                r36 = r29.hasNext();	 Catch:{ Exception -> 0x033c }
-                if (r36 == 0) goto L_0x00ce;
-            L_0x0294:
-                r16 = r29.next();	 Catch:{ Exception -> 0x033c }
-                r16 = (java.nio.channels.SelectionKey) r16;	 Catch:{ Exception -> 0x033c }
-                r29.remove();	 Catch:{ Exception -> 0x033c }
-                r36 = r16.isValid();	 Catch:{ Exception -> 0x033c }
-                if (r36 == 0) goto L_0x028e;
-            L_0x02a3:
-                r36 = r16.isReadable();	 Catch:{ Exception -> 0x033c }
-                if (r36 == 0) goto L_0x028e;
-            L_0x02a9:
-                r33 = r16.attachment();	 Catch:{ Exception -> 0x033c }
-                r33 = (com.mba.proxylight.Socket) r33;	 Catch:{ Exception -> 0x033c }
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
-                r36 = r0;
-                r36 = r36.inSocket;	 Catch:{ Exception -> 0x033c }
+                r36 = r36.inSocket;	 Catch:{ Exception -> 0x02c5 }
                 r0 = r33;
                 r1 = r36;
-                if (r0 != r1) goto L_0x07b1;
-            L_0x02bf:
+                if (r0 != r1) goto L_0x07a4;
+            L_0x0242:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36 = r36.readBuffer;	 Catch:{ Exception -> 0x033c }
-                r36.clear();	 Catch:{ Exception -> 0x033c }
+                r36 = r36.readBuffer;	 Catch:{ Exception -> 0x02c5 }
+                r36.clear();	 Catch:{ Exception -> 0x02c5 }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r37 = r0;
-                r37 = r37.inSocket;	 Catch:{ Exception -> 0x033c }
+                r37 = r37.inSocket;	 Catch:{ Exception -> 0x02c5 }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r38 = r0;
-                r38 = r38.readBuffer;	 Catch:{ Exception -> 0x033c }
+                r38 = r38.readBuffer;	 Catch:{ Exception -> 0x02c5 }
                 r0 = r36;
                 r1 = r37;
                 r2 = r38;
                 r3 = r22;
-                r17 = r0.read(r1, r2, r3);	 Catch:{ Exception -> 0x033c }
+                r17 = r0.read(r1, r2, r3);	 Catch:{ Exception -> 0x02c5 }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r37 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x033c }
-                r37.<init>();	 Catch:{ Exception -> 0x033c }
+                r37 = r36.inData;	 Catch:{ Exception -> 0x02c5 }
+                r38 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x02c5 }
+                r37 = java.lang.String.valueOf(r37);	 Catch:{ Exception -> 0x02c5 }
+                r0 = r38;
+                r1 = r37;
+                r0.<init>(r1);	 Catch:{ Exception -> 0x02c5 }
+                r37 = new java.lang.String;	 Catch:{ Exception -> 0x02c5 }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
-                r38 = r0;
-                r38 = r38.inData;	 Catch:{ Exception -> 0x033c }
-                r37 = r37.append(r38);	 Catch:{ Exception -> 0x033c }
-                r38 = new java.lang.String;	 Catch:{ Exception -> 0x033c }
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r39 = r0;
-                r39 = r39.readBuffer;	 Catch:{ Exception -> 0x033c }
-                r39 = r39.array();	 Catch:{ Exception -> 0x033c }
-                r38.<init>(r39);	 Catch:{ Exception -> 0x033c }
-                r37 = r37.append(r38);	 Catch:{ Exception -> 0x033c }
-                r37 = r37.toString();	 Catch:{ Exception -> 0x033c }
-                r36.inData = r37;	 Catch:{ Exception -> 0x033c }
+                r39 = r39.readBuffer;	 Catch:{ Exception -> 0x02c5 }
+                r39 = r39.array();	 Catch:{ Exception -> 0x02c5 }
+                r0 = r37;
+                r1 = r39;
+                r0.<init>(r1);	 Catch:{ Exception -> 0x02c5 }
+                r0 = r38;
+                r1 = r37;
+                r37 = r0.append(r1);	 Catch:{ Exception -> 0x02c5 }
+                r37 = r37.toString();	 Catch:{ Exception -> 0x02c5 }
+                r36.inData = r37;	 Catch:{ Exception -> 0x02c5 }
                 r36 = -1;
                 r0 = r17;
                 r1 = r36;
-                if (r0 != r1) goto L_0x0463;
-            L_0x0331:
+                if (r0 != r1) goto L_0x045a;
+            L_0x02ba:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36.closeAll();	 Catch:{ Exception -> 0x033c }
-                goto L_0x00ce;
-            L_0x033c:
+                r36.closeAll();	 Catch:{ Exception -> 0x02c5 }
+                goto L_0x00d8;
+            L_0x02c5:
                 r8 = move-exception;
-            L_0x033d:
+            L_0x02c6:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x03e3 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x03ba }
                 r36 = r0;
                 r37 = 0;
                 r0 = r36;
                 r1 = r37;
-                r0.error(r1, r8);	 Catch:{ all -> 0x03e3 }
-                r36 = java.lang.System.out;	 Catch:{ all -> 0x0167 }
-                r37 = new java.lang.StringBuilder;	 Catch:{ all -> 0x0167 }
-                r37.<init>();	 Catch:{ all -> 0x0167 }
+                r0.error(r1, r8);	 Catch:{ all -> 0x03ba }
+                r36 = java.lang.System.out;	 Catch:{ all -> 0x014a }
+                r37 = new java.lang.StringBuilder;	 Catch:{ all -> 0x014a }
                 r38 = "inData:";
-                r37 = r37.append(r38);	 Catch:{ all -> 0x0167 }
+                r37.<init>(r38);	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r38 = r0;
-                r38 = r38.inData;	 Catch:{ all -> 0x0167 }
-                r37 = r37.append(r38);	 Catch:{ all -> 0x0167 }
-                r37 = r37.toString();	 Catch:{ all -> 0x0167 }
-                r36.println(r37);	 Catch:{ all -> 0x0167 }
+                r38 = r38.inData;	 Catch:{ all -> 0x014a }
+                r37 = r37.append(r38);	 Catch:{ all -> 0x014a }
+                r37 = r37.toString();	 Catch:{ all -> 0x014a }
+                r36.println(r37);	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r36 = r0;
                 r37 = "";
-                r36.inData = r37;	 Catch:{ all -> 0x0167 }
-                r36 = java.lang.System.out;	 Catch:{ all -> 0x0167 }
-                r37 = new java.lang.StringBuilder;	 Catch:{ all -> 0x0167 }
-                r37.<init>();	 Catch:{ all -> 0x0167 }
+                r36.inData = r37;	 Catch:{ all -> 0x014a }
+                r36 = java.lang.System.out;	 Catch:{ all -> 0x014a }
+                r37 = new java.lang.StringBuilder;	 Catch:{ all -> 0x014a }
                 r38 = "outData:";
-                r37 = r37.append(r38);	 Catch:{ all -> 0x0167 }
+                r37.<init>(r38);	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r38 = r0;
-                r38 = r38.outData;	 Catch:{ all -> 0x0167 }
-                r37 = r37.append(r38);	 Catch:{ all -> 0x0167 }
-                r37 = r37.toString();	 Catch:{ all -> 0x0167 }
-                r36.println(r37);	 Catch:{ all -> 0x0167 }
+                r38 = r38.outData;	 Catch:{ all -> 0x014a }
+                r37 = r37.append(r38);	 Catch:{ all -> 0x014a }
+                r37 = r37.toString();	 Catch:{ all -> 0x014a }
+                r36.println(r37);	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r36 = r0;
                 r37 = "";
-                r36.outData = r37;	 Catch:{ all -> 0x0167 }
+                r36.outData = r37;	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r36 = r0;
-                r36.closeAll();	 Catch:{ all -> 0x0167 }
+                r36.closeAll();	 Catch:{ all -> 0x014a }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
                 r36 = r0;
-                r36.recycle();	 Catch:{ all -> 0x0167 }
-                goto L_0x0003;
-            L_0x03ba:
-                r12.remove();	 Catch:{ Exception -> 0x033c }
+                r36.recycle();	 Catch:{ all -> 0x014a }
+                goto L_0x0009;
+            L_0x033b:
+                r9 = r12.next();	 Catch:{ Exception -> 0x02c5 }
+                r9 = (java.util.Map.Entry) r9;	 Catch:{ Exception -> 0x02c5 }
+                r32 = r9.getValue();	 Catch:{ Exception -> 0x02c5 }
+                r32 = (com.mba.proxylight.Socket) r32;	 Catch:{ Exception -> 0x02c5 }
                 r0 = r32;
-                r0 = r0.socket;	 Catch:{ Exception -> 0x0451 }
+                r0 = r0.lastRead;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36.close();	 Catch:{ Exception -> 0x0451 }
-            L_0x03c6:
+                r0 = r32;
+                r0 = r0.lastWrite;	 Catch:{ Exception -> 0x02c5 }
+                r38 = r0;
+                r18 = java.lang.Math.max(r36, r38);	 Catch:{ Exception -> 0x02c5 }
+                r36 = (r18 > r20 ? 1 : (r18 == r20 ? 0 : -1));
+                if (r36 >= 0) goto L_0x01d4;
+            L_0x035b:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
+                r37 = r0;
+                r36 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x02c5 }
+                r38 = "processeur ";
+                r0 = r36;
+                r1 = r38;
+                r0.<init>(r1);	 Catch:{ Exception -> 0x02c5 }
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
+                r38 = r0;
+                r38 = r38.processorIdx;	 Catch:{ Exception -> 0x02c5 }
+                r0 = r36;
+                r1 = r38;
+                r36 = r0.append(r1);	 Catch:{ Exception -> 0x02c5 }
+                r38 = " : Fermeture pour inactivite de la socket vers ";
+                r0 = r36;
+                r1 = r38;
+                r38 = r0.append(r1);	 Catch:{ Exception -> 0x02c5 }
+                r36 = r9.getKey();	 Catch:{ Exception -> 0x02c5 }
+                r36 = (java.lang.String) r36;	 Catch:{ Exception -> 0x02c5 }
+                r0 = r38;
+                r1 = r36;
+                r36 = r0.append(r1);	 Catch:{ Exception -> 0x02c5 }
+                r36 = r36.toString();	 Catch:{ Exception -> 0x02c5 }
+                r0 = r37;
+                r1 = r36;
+                r0.debug(r1);	 Catch:{ Exception -> 0x02c5 }
+                if (r26 == 0) goto L_0x0420;
+            L_0x03a3:
+                r36 = "CONNECT";
+                r37 = r26.getMethod();	 Catch:{ Exception -> 0x02c5 }
+                r36 = r36.equals(r37);	 Catch:{ Exception -> 0x02c5 }
+                if (r36 == 0) goto L_0x0420;
+            L_0x03af:
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36 = r36.currentOutSocket;	 Catch:{ Exception -> 0x033c }
+                r36.closeAll();	 Catch:{ Exception -> 0x02c5 }
+                goto L_0x01da;
+            L_0x03ba:
+                r36 = move-exception;
+                r37 = java.lang.System.out;	 Catch:{ all -> 0x014a }
+                r38 = new java.lang.StringBuilder;	 Catch:{ all -> 0x014a }
+                r39 = "inData:";
+                r38.<init>(r39);	 Catch:{ all -> 0x014a }
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
+                r39 = r0;
+                r39 = r39.inData;	 Catch:{ all -> 0x014a }
+                r38 = r38.append(r39);	 Catch:{ all -> 0x014a }
+                r38 = r38.toString();	 Catch:{ all -> 0x014a }
+                r37.println(r38);	 Catch:{ all -> 0x014a }
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
+                r37 = r0;
+                r38 = "";
+                r37.inData = r38;	 Catch:{ all -> 0x014a }
+                r37 = java.lang.System.out;	 Catch:{ all -> 0x014a }
+                r38 = new java.lang.StringBuilder;	 Catch:{ all -> 0x014a }
+                r39 = "outData:";
+                r38.<init>(r39);	 Catch:{ all -> 0x014a }
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
+                r39 = r0;
+                r39 = r39.outData;	 Catch:{ all -> 0x014a }
+                r38 = r38.append(r39);	 Catch:{ all -> 0x014a }
+                r38 = r38.toString();	 Catch:{ all -> 0x014a }
+                r37.println(r38);	 Catch:{ all -> 0x014a }
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
+                r37 = r0;
+                r38 = "";
+                r37.outData = r38;	 Catch:{ all -> 0x014a }
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
+                r37 = r0;
+                r37.closeAll();	 Catch:{ all -> 0x014a }
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x014a }
+                r37 = r0;
+                r37.recycle();	 Catch:{ all -> 0x014a }
+                throw r36;	 Catch:{ all -> 0x014a }
+            L_0x0420:
+                r12.remove();	 Catch:{ Exception -> 0x02c5 }
+                r0 = r32;
+                r0 = r0.socket;	 Catch:{ Exception -> 0x0449 }
+                r36 = r0;
+                r36.close();	 Catch:{ Exception -> 0x0449 }
+            L_0x042c:
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
+                r36 = r0;
+                r36 = r36.currentOutSocket;	 Catch:{ Exception -> 0x02c5 }
                 r0 = r32;
                 r1 = r36;
-                if (r0 != r1) goto L_0x01d0;
-            L_0x03d6:
+                if (r0 != r1) goto L_0x01d4;
+            L_0x043c:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
                 r37 = 0;
-                r36.currentOutSocket = r37;	 Catch:{ Exception -> 0x033c }
-                goto L_0x01d0;
-            L_0x03e3:
-                r36 = move-exception;
-                r37 = java.lang.System.out;	 Catch:{ all -> 0x0167 }
-                r38 = new java.lang.StringBuilder;	 Catch:{ all -> 0x0167 }
-                r38.<init>();	 Catch:{ all -> 0x0167 }
-                r39 = "inData:";
-                r38 = r38.append(r39);	 Catch:{ all -> 0x0167 }
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
-                r39 = r0;
-                r39 = r39.inData;	 Catch:{ all -> 0x0167 }
-                r38 = r38.append(r39);	 Catch:{ all -> 0x0167 }
-                r38 = r38.toString();	 Catch:{ all -> 0x0167 }
-                r37.println(r38);	 Catch:{ all -> 0x0167 }
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
-                r37 = r0;
-                r38 = "";
-                r37.inData = r38;	 Catch:{ all -> 0x0167 }
-                r37 = java.lang.System.out;	 Catch:{ all -> 0x0167 }
-                r38 = new java.lang.StringBuilder;	 Catch:{ all -> 0x0167 }
-                r38.<init>();	 Catch:{ all -> 0x0167 }
-                r39 = "outData:";
-                r38 = r38.append(r39);	 Catch:{ all -> 0x0167 }
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
-                r39 = r0;
-                r39 = r39.outData;	 Catch:{ all -> 0x0167 }
-                r38 = r38.append(r39);	 Catch:{ all -> 0x0167 }
-                r38 = r38.toString();	 Catch:{ all -> 0x0167 }
-                r37.println(r38);	 Catch:{ all -> 0x0167 }
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
-                r37 = r0;
-                r38 = "";
-                r37.outData = r38;	 Catch:{ all -> 0x0167 }
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
-                r37 = r0;
-                r37.closeAll();	 Catch:{ all -> 0x0167 }
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ all -> 0x0167 }
-                r37 = r0;
-                r37.recycle();	 Catch:{ all -> 0x0167 }
-                throw r36;	 Catch:{ all -> 0x0167 }
-            L_0x0451:
+                r36.currentOutSocket = r37;	 Catch:{ Exception -> 0x02c5 }
+                goto L_0x01d4;
+            L_0x0449:
                 r10 = move-exception;
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
                 r37 = "";
                 r0 = r36;
                 r1 = r37;
-                r0.error(r1, r10);	 Catch:{ Exception -> 0x033c }
-                goto L_0x03c6;
-            L_0x0463:
-                if (r17 <= 0) goto L_0x028e;
-            L_0x0465:
+                r0.error(r1, r10);	 Catch:{ Exception -> 0x02c5 }
+                goto L_0x042c;
+            L_0x045a:
+                if (r17 <= 0) goto L_0x0211;
+            L_0x045c:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36 = r36.readBuffer;	 Catch:{ Exception -> 0x033c }
-                r36.flip();	 Catch:{ Exception -> 0x033c }
+                r36 = r36.readBuffer;	 Catch:{ Exception -> 0x02c5 }
+                r36.flip();	 Catch:{ Exception -> 0x02c5 }
                 r27 = r26;
-            L_0x0474:
+            L_0x046b:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
-                r36 = r36.readBuffer;	 Catch:{ Exception -> 0x04ef }
-                r36 = r36.remaining();	 Catch:{ Exception -> 0x04ef }
-                if (r36 <= 0) goto L_0x0823;
-            L_0x0484:
-                r36 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.STATUS_LINE;	 Catch:{ Exception -> 0x04ef }
+                r36 = r36.readBuffer;	 Catch:{ Exception -> 0x04ea }
+                r36 = r36.remaining();	 Catch:{ Exception -> 0x04ea }
+                if (r36 > 0) goto L_0x047f;
+            L_0x047b:
+                r26 = r27;
+                goto L_0x0211;
+            L_0x047f:
+                r36 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.STATUS_LINE;	 Catch:{ Exception -> 0x04ea }
                 r0 = r34;
                 r1 = r36;
-                if (r0 != r1) goto L_0x04b3;
-            L_0x048c:
+                if (r0 != r1) goto L_0x04ae;
+            L_0x0487:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r37 = r0;
-                r37 = r37.readBuffer;	 Catch:{ Exception -> 0x04ef }
-                r28 = r36.readNext(r37);	 Catch:{ Exception -> 0x04ef }
-                if (r28 == 0) goto L_0x081f;
-            L_0x04a2:
-                r26 = new com.mba.proxylight.Request;	 Catch:{ Exception -> 0x04ef }
-                r26.<init>();	 Catch:{ Exception -> 0x04ef }
+                r37 = r37.readBuffer;	 Catch:{ Exception -> 0x04ea }
+                r28 = r36.readNext(r37);	 Catch:{ Exception -> 0x04ea }
+                if (r28 == 0) goto L_0x046b;
+            L_0x049d:
+                r26 = new com.mba.proxylight.Request;	 Catch:{ Exception -> 0x04ea }
+                r26.<init>();	 Catch:{ Exception -> 0x04ea }
                 r0 = r26;
                 r1 = r28;
-                r0.setStatusline(r1);	 Catch:{ Exception -> 0x033c }
-                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.REQUEST_HEADERS;	 Catch:{ Exception -> 0x033c }
-            L_0x04b0:
+                r0.setStatusline(r1);	 Catch:{ Exception -> 0x02c5 }
+                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.REQUEST_HEADERS;	 Catch:{ Exception -> 0x02c5 }
                 r27 = r26;
-                goto L_0x0474;
-            L_0x04b3:
-                r36 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.REQUEST_HEADERS;	 Catch:{ Exception -> 0x04ef }
+                goto L_0x046b;
+            L_0x04ae:
+                r36 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.REQUEST_HEADERS;	 Catch:{ Exception -> 0x04ea }
                 r0 = r34;
                 r1 = r36;
-                if (r0 != r1) goto L_0x0747;
-            L_0x04bb:
+                if (r0 != r1) goto L_0x073a;
+            L_0x04b6:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r37 = r0;
-                r37 = r37.readBuffer;	 Catch:{ Exception -> 0x04ef }
-                r28 = r36.readNext(r37);	 Catch:{ Exception -> 0x04ef }
-                if (r28 == 0) goto L_0x0474;
-            L_0x04d1:
-                r36 = r28.length();	 Catch:{ Exception -> 0x04ef }
-                if (r36 != 0) goto L_0x0742;
-            L_0x04d7:
+                r37 = r37.readBuffer;	 Catch:{ Exception -> 0x04ea }
+                r28 = r36.readNext(r37);	 Catch:{ Exception -> 0x04ea }
+                if (r28 == 0) goto L_0x046b;
+            L_0x04cc:
+                r36 = r28.length();	 Catch:{ Exception -> 0x04ea }
+                if (r36 != 0) goto L_0x0735;
+            L_0x04d2:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
                 r0 = r36;
                 r1 = r27;
-                r36 = r0.filterRequest(r1);	 Catch:{ Exception -> 0x04ef }
-                if (r36 == 0) goto L_0x04f4;
-            L_0x04e7:
-                r36 = new java.lang.Exception;	 Catch:{ Exception -> 0x04ef }
+                r36 = r0.filterRequest(r1);	 Catch:{ Exception -> 0x04ea }
+                if (r36 == 0) goto L_0x04ef;
+            L_0x04e2:
+                r36 = new java.lang.Exception;	 Catch:{ Exception -> 0x04ea }
                 r37 = "Requete interdite.";
-                r36.<init>(r37);	 Catch:{ Exception -> 0x04ef }
-                throw r36;	 Catch:{ Exception -> 0x04ef }
-            L_0x04ef:
+                r36.<init>(r37);	 Catch:{ Exception -> 0x04ea }
+                throw r36;	 Catch:{ Exception -> 0x04ea }
+            L_0x04ea:
                 r8 = move-exception;
                 r26 = r27;
-                goto L_0x033d;
-            L_0x04f4:
+                goto L_0x02c6;
+            L_0x04ef:
                 r36 = "GET";
-                r37 = r27.getMethod();	 Catch:{ Exception -> 0x04ef }
-                r14 = r36.equals(r37);	 Catch:{ Exception -> 0x04ef }
-                if (r14 != 0) goto L_0x0541;
-            L_0x0500:
+                r37 = r27.getMethod();	 Catch:{ Exception -> 0x04ea }
+                r14 = r36.equals(r37);	 Catch:{ Exception -> 0x04ea }
+                if (r14 != 0) goto L_0x0538;
+            L_0x04fb:
                 r36 = "POST";
-                r37 = r27.getMethod();	 Catch:{ Exception -> 0x04ef }
-                r36 = r36.equals(r37);	 Catch:{ Exception -> 0x04ef }
-                if (r36 == 0) goto L_0x0541;
-            L_0x050c:
+                r37 = r27.getMethod();	 Catch:{ Exception -> 0x04ea }
+                r36 = r36.equals(r37);	 Catch:{ Exception -> 0x04ea }
+                if (r36 == 0) goto L_0x0538;
+            L_0x0507:
                 r15 = 1;
-            L_0x050d:
-                if (r14 != 0) goto L_0x0543;
-            L_0x050f:
-                if (r15 != 0) goto L_0x0543;
-            L_0x0511:
+            L_0x0508:
+                if (r14 != 0) goto L_0x053a;
+            L_0x050a:
+                if (r15 != 0) goto L_0x053a;
+            L_0x050c:
                 r36 = "CONNECT";
-                r37 = r27.getMethod();	 Catch:{ Exception -> 0x04ef }
-                r36 = r36.equals(r37);	 Catch:{ Exception -> 0x04ef }
-                if (r36 == 0) goto L_0x0543;
-            L_0x051d:
+                r37 = r27.getMethod();	 Catch:{ Exception -> 0x04ea }
+                r36 = r36.equals(r37);	 Catch:{ Exception -> 0x04ea }
+                if (r36 == 0) goto L_0x053a;
+            L_0x0518:
                 r13 = 1;
-            L_0x051e:
-                if (r14 != 0) goto L_0x0545;
-            L_0x0520:
-                if (r15 != 0) goto L_0x0545;
-            L_0x0522:
-                if (r13 != 0) goto L_0x0545;
-            L_0x0524:
-                r36 = new java.lang.RuntimeException;	 Catch:{ Exception -> 0x04ef }
-                r37 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x04ef }
-                r37.<init>();	 Catch:{ Exception -> 0x04ef }
+            L_0x0519:
+                if (r14 != 0) goto L_0x053c;
+            L_0x051b:
+                if (r15 != 0) goto L_0x053c;
+            L_0x051d:
+                if (r13 != 0) goto L_0x053c;
+            L_0x051f:
+                r36 = new java.lang.RuntimeException;	 Catch:{ Exception -> 0x04ea }
+                r37 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x04ea }
                 r38 = "Unknown method : ";
-                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ef }
-                r38 = r27.getMethod();	 Catch:{ Exception -> 0x04ef }
-                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ef }
-                r37 = r37.toString();	 Catch:{ Exception -> 0x04ef }
-                r36.<init>(r37);	 Catch:{ Exception -> 0x04ef }
-                throw r36;	 Catch:{ Exception -> 0x04ef }
-            L_0x0541:
+                r37.<init>(r38);	 Catch:{ Exception -> 0x04ea }
+                r38 = r27.getMethod();	 Catch:{ Exception -> 0x04ea }
+                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ea }
+                r37 = r37.toString();	 Catch:{ Exception -> 0x04ea }
+                r36.<init>(r37);	 Catch:{ Exception -> 0x04ea }
+                throw r36;	 Catch:{ Exception -> 0x04ea }
+            L_0x0538:
                 r15 = 0;
-                goto L_0x050d;
-            L_0x0543:
+                goto L_0x0508;
+            L_0x053a:
                 r13 = 0;
-                goto L_0x051e;
-            L_0x0545:
-                r36 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x04ef }
-                r36.<init>();	 Catch:{ Exception -> 0x04ef }
-                r37 = r27.getHost();	 Catch:{ Exception -> 0x04ef }
-                r36 = r36.append(r37);	 Catch:{ Exception -> 0x04ef }
+                goto L_0x0519;
+            L_0x053c:
+                r36 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x04ea }
+                r37 = r27.getHost();	 Catch:{ Exception -> 0x04ea }
+                r37 = java.lang.String.valueOf(r37);	 Catch:{ Exception -> 0x04ea }
+                r36.<init>(r37);	 Catch:{ Exception -> 0x04ea }
                 r37 = ":";
-                r36 = r36.append(r37);	 Catch:{ Exception -> 0x04ef }
-                r37 = r27.getPort();	 Catch:{ Exception -> 0x04ef }
-                r36 = r36.append(r37);	 Catch:{ Exception -> 0x04ef }
-                r24 = r36.toString();	 Catch:{ Exception -> 0x04ef }
+                r36 = r36.append(r37);	 Catch:{ Exception -> 0x04ea }
+                r37 = r27.getPort();	 Catch:{ Exception -> 0x04ea }
+                r36 = r36.append(r37);	 Catch:{ Exception -> 0x04ea }
+                r24 = r36.toString();	 Catch:{ Exception -> 0x04ea }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
-                r36 = r36.outSockets;	 Catch:{ Exception -> 0x04ef }
+                r36 = r36.outSockets;	 Catch:{ Exception -> 0x04ea }
                 r0 = r36;
                 r1 = r24;
-                r25 = r0.get(r1);	 Catch:{ Exception -> 0x04ef }
-                r25 = (com.mba.proxylight.Socket) r25;	 Catch:{ Exception -> 0x04ef }
-                if (r25 != 0) goto L_0x0644;
-            L_0x057a:
-                r25 = new com.mba.proxylight.Socket;	 Catch:{ Exception -> 0x04ef }
-                r25.<init>();	 Catch:{ Exception -> 0x04ef }
-                r36 = java.nio.channels.SocketChannel.open();	 Catch:{ Exception -> 0x04ef }
+                r25 = r0.get(r1);	 Catch:{ Exception -> 0x04ea }
+                r25 = (com.mba.proxylight.Socket) r25;	 Catch:{ Exception -> 0x04ea }
+                if (r25 != 0) goto L_0x0637;
+            L_0x0571:
+                r25 = new com.mba.proxylight.Socket;	 Catch:{ Exception -> 0x04ea }
+                r25.<init>();	 Catch:{ Exception -> 0x04ea }
+                r36 = java.nio.channels.SocketChannel.open();	 Catch:{ Exception -> 0x04ea }
                 r0 = r36;
                 r1 = r25;
-                r1.socket = r0;	 Catch:{ Exception -> 0x04ef }
+                r1.socket = r0;	 Catch:{ Exception -> 0x04ea }
                 r0 = r25;
-                r0 = r0.socket;	 Catch:{ Exception -> 0x04ef }
+                r0 = r0.socket;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
                 r37 = 0;
-                r36.configureBlocking(r37);	 Catch:{ Exception -> 0x04ef }
+                r36.configureBlocking(r37);	 Catch:{ Exception -> 0x04ea }
                 r0 = r25;
-                r0 = r0.socket;	 Catch:{ Exception -> 0x04ef }
+                r0 = r0.socket;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
-                r37 = new java.net.InetSocketAddress;	 Catch:{ Exception -> 0x04ef }
+                r37 = new java.net.InetSocketAddress;	 Catch:{ Exception -> 0x04ea }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r38 = r0;
-                r39 = r27.getHost();	 Catch:{ Exception -> 0x04ef }
-                r38 = r38.resolve(r39);	 Catch:{ Exception -> 0x04ef }
-                r39 = r27.getPort();	 Catch:{ Exception -> 0x04ef }
-                r37.<init>(r38, r39);	 Catch:{ Exception -> 0x04ef }
-                r36 = r36.connect(r37);	 Catch:{ Exception -> 0x04ef }
-                if (r36 != 0) goto L_0x05c8;
-            L_0x05b7:
+                r39 = r27.getHost();	 Catch:{ Exception -> 0x04ea }
+                r38 = r38.resolve(r39);	 Catch:{ Exception -> 0x04ea }
+                r39 = r27.getPort();	 Catch:{ Exception -> 0x04ea }
+                r37.<init>(r38, r39);	 Catch:{ Exception -> 0x04ea }
+                r36 = r36.connect(r37);	 Catch:{ Exception -> 0x04ea }
+                if (r36 != 0) goto L_0x05bf;
+            L_0x05ae:
                 r36 = 50;
-                java.lang.Thread.sleep(r36);	 Catch:{ Exception -> 0x04ef }
+                java.lang.Thread.sleep(r36);	 Catch:{ Exception -> 0x04ea }
                 r0 = r25;
-                r0 = r0.socket;	 Catch:{ Exception -> 0x04ef }
+                r0 = r0.socket;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
-                r36 = r36.finishConnect();	 Catch:{ Exception -> 0x04ef }
-                if (r36 == 0) goto L_0x05b7;
-            L_0x05c8:
+                r36 = r36.finishConnect();	 Catch:{ Exception -> 0x04ea }
+                if (r36 == 0) goto L_0x05ae;
+            L_0x05bf:
                 r0 = r25;
-                r0 = r0.socket;	 Catch:{ Exception -> 0x04ef }
+                r0 = r0.socket;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r37 = r0;
-                r37 = r37.selector;	 Catch:{ Exception -> 0x04ef }
+                r37 = r37.selector;	 Catch:{ Exception -> 0x04ea }
                 r38 = 1;
                 r0 = r36;
                 r1 = r37;
                 r2 = r38;
                 r3 = r25;
-                r0.register(r1, r2, r3);	 Catch:{ Exception -> 0x04ef }
+                r0.register(r1, r2, r3);	 Catch:{ Exception -> 0x04ea }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
-                r36 = r36.outSockets;	 Catch:{ Exception -> 0x04ef }
+                r36 = r36.outSockets;	 Catch:{ Exception -> 0x04ea }
                 r0 = r36;
                 r1 = r24;
                 r2 = r25;
-                r0.put(r1, r2);	 Catch:{ Exception -> 0x04ef }
+                r0.put(r1, r2);	 Catch:{ Exception -> 0x04ea }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
-                r37 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x04ef }
-                r37.<init>();	 Catch:{ Exception -> 0x04ef }
+                r37 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x04ea }
                 r38 = "Ajout d'une socket vers ";
-                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ef }
+                r37.<init>(r38);	 Catch:{ Exception -> 0x04ea }
                 r0 = r37;
                 r1 = r24;
-                r37 = r0.append(r1);	 Catch:{ Exception -> 0x04ef }
+                r37 = r0.append(r1);	 Catch:{ Exception -> 0x04ea }
                 r38 = " sur le processeur ";
-                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ef }
+                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ea }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r38 = r0;
-                r38 = r38.processorIdx;	 Catch:{ Exception -> 0x04ef }
-                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ef }
+                r38 = r38.processorIdx;	 Catch:{ Exception -> 0x04ea }
+                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ea }
                 r38 = ". Socket count=";
-                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ef }
+                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ea }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r38 = r0;
-                r38 = r38.outSockets;	 Catch:{ Exception -> 0x04ef }
-                r38 = r38.size();	 Catch:{ Exception -> 0x04ef }
-                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ef }
-                r37 = r37.toString();	 Catch:{ Exception -> 0x04ef }
-                r36.debug(r37);	 Catch:{ Exception -> 0x04ef }
-            L_0x0644:
+                r38 = r38.outSockets;	 Catch:{ Exception -> 0x04ea }
+                r38 = r38.size();	 Catch:{ Exception -> 0x04ea }
+                r37 = r37.append(r38);	 Catch:{ Exception -> 0x04ea }
+                r37 = r37.toString();	 Catch:{ Exception -> 0x04ea }
+                r36.debug(r37);	 Catch:{ Exception -> 0x04ea }
+            L_0x0637:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
                 r0 = r36;
                 r1 = r25;
-                r0.currentOutSocket = r1;	 Catch:{ Exception -> 0x04ef }
-                if (r13 == 0) goto L_0x0678;
-            L_0x0653:
-                r36 = com.mba.proxylight.RequestProcessor.CONNECT_OK;	 Catch:{ Exception -> 0x04ef }
-                r6 = java.nio.ByteBuffer.wrap(r36);	 Catch:{ Exception -> 0x04ef }
+                r0.currentOutSocket = r1;	 Catch:{ Exception -> 0x04ea }
+                if (r13 == 0) goto L_0x066b;
+            L_0x0646:
+                r36 = com.mba.proxylight.RequestProcessor.CONNECT_OK;	 Catch:{ Exception -> 0x04ea }
+                r6 = java.nio.ByteBuffer.wrap(r36);	 Catch:{ Exception -> 0x04ea }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r37 = r0;
-                r37 = r37.inSocket;	 Catch:{ Exception -> 0x04ef }
+                r37 = r37.inSocket;	 Catch:{ Exception -> 0x04ea }
                 r0 = r36;
                 r1 = r37;
                 r2 = r22;
-                r0.write(r1, r6, r2);	 Catch:{ Exception -> 0x04ef }
-                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.TRANSFER;	 Catch:{ Exception -> 0x04ef }
-                goto L_0x0474;
-            L_0x0678:
-                r36 = new java.lang.StringBuffer;	 Catch:{ Exception -> 0x04ef }
-                r37 = r27.getMethod();	 Catch:{ Exception -> 0x04ef }
-                r36.<init>(r37);	 Catch:{ Exception -> 0x04ef }
+                r0.write(r1, r6, r2);	 Catch:{ Exception -> 0x04ea }
+                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.TRANSFER;	 Catch:{ Exception -> 0x04ea }
+                goto L_0x046b;
+            L_0x066b:
+                r36 = new java.lang.StringBuffer;	 Catch:{ Exception -> 0x04ea }
+                r37 = r27.getMethod();	 Catch:{ Exception -> 0x04ea }
+                r36.<init>(r37);	 Catch:{ Exception -> 0x04ea }
                 r37 = " ";
-                r30 = r36.append(r37);	 Catch:{ Exception -> 0x04ef }
-                r35 = r27.getUrl();	 Catch:{ Exception -> 0x04ef }
+                r30 = r36.append(r37);	 Catch:{ Exception -> 0x04ea }
+                r35 = r27.getUrl();	 Catch:{ Exception -> 0x04ea }
                 r36 = "/";
-                r36 = r35.startsWith(r36);	 Catch:{ Exception -> 0x04ef }
-                if (r36 != 0) goto L_0x069f;
-            L_0x0693:
+                r36 = r35.startsWith(r36);	 Catch:{ Exception -> 0x04ea }
+                if (r36 != 0) goto L_0x0692;
+            L_0x0686:
                 r36 = 47;
                 r37 = 8;
-                r36 = r35.indexOf(r36, r37);	 Catch:{ Exception -> 0x04ef }
-                r35 = r35.substring(r36);	 Catch:{ Exception -> 0x04ef }
-            L_0x069f:
+                r36 = r35.indexOf(r36, r37);	 Catch:{ Exception -> 0x04ea }
+                r35 = r35.substring(r36);	 Catch:{ Exception -> 0x04ea }
+            L_0x0692:
                 r0 = r30;
                 r1 = r35;
-                r36 = r0.append(r1);	 Catch:{ Exception -> 0x04ef }
+                r36 = r0.append(r1);	 Catch:{ Exception -> 0x04ea }
                 r37 = " ";
-                r36 = r36.append(r37);	 Catch:{ Exception -> 0x04ef }
-                r37 = r27.getProtocol();	 Catch:{ Exception -> 0x04ef }
-                r36 = r36.append(r37);	 Catch:{ Exception -> 0x04ef }
+                r36 = r36.append(r37);	 Catch:{ Exception -> 0x04ea }
+                r37 = r27.getProtocol();	 Catch:{ Exception -> 0x04ea }
+                r36 = r36.append(r37);	 Catch:{ Exception -> 0x04ea }
                 r37 = "\r\n";
-                r36.append(r37);	 Catch:{ Exception -> 0x04ef }
-                r36 = r27.getHeaders();	 Catch:{ Exception -> 0x04ef }
-                r36 = r36.entrySet();	 Catch:{ Exception -> 0x04ef }
-                r37 = r36.iterator();	 Catch:{ Exception -> 0x04ef }
-            L_0x06c6:
-                r36 = r37.hasNext();	 Catch:{ Exception -> 0x04ef }
-                if (r36 == 0) goto L_0x0702;
-            L_0x06cc:
-                r11 = r37.next();	 Catch:{ Exception -> 0x04ef }
-                r11 = (java.util.Map.Entry) r11;	 Catch:{ Exception -> 0x04ef }
-                r36 = r11.getKey();	 Catch:{ Exception -> 0x04ef }
-                r36 = (java.lang.String) r36;	 Catch:{ Exception -> 0x04ef }
-                r0 = r30;
-                r1 = r36;
-                r36 = r0.append(r1);	 Catch:{ Exception -> 0x04ef }
-                r38 = ": ";
-                r0 = r36;
-                r1 = r38;
-                r38 = r0.append(r1);	 Catch:{ Exception -> 0x04ef }
-                r36 = r11.getValue();	 Catch:{ Exception -> 0x04ef }
-                r36 = (java.lang.String) r36;	 Catch:{ Exception -> 0x04ef }
-                r0 = r38;
-                r1 = r36;
-                r36 = r0.append(r1);	 Catch:{ Exception -> 0x04ef }
-                r38 = "\r\n";
-                r0 = r36;
-                r1 = r38;
-                r0.append(r1);	 Catch:{ Exception -> 0x04ef }
-                goto L_0x06c6;
-            L_0x0702:
+                r36.append(r37);	 Catch:{ Exception -> 0x04ea }
+                r36 = r27.getHeaders();	 Catch:{ Exception -> 0x04ea }
+                r36 = r36.entrySet();	 Catch:{ Exception -> 0x04ea }
+                r37 = r36.iterator();	 Catch:{ Exception -> 0x04ea }
+            L_0x06b9:
+                r36 = r37.hasNext();	 Catch:{ Exception -> 0x04ea }
+                if (r36 != 0) goto L_0x06fc;
+            L_0x06bf:
                 r36 = "\r\n";
                 r0 = r30;
                 r1 = r36;
-                r0.append(r1);	 Catch:{ Exception -> 0x04ef }
-                r36 = r30.toString();	 Catch:{ Exception -> 0x04ef }
-                r31 = r36.getBytes();	 Catch:{ Exception -> 0x04ef }
-                r6 = java.nio.ByteBuffer.wrap(r31);	 Catch:{ Exception -> 0x04ef }
+                r0.append(r1);	 Catch:{ Exception -> 0x04ea }
+                r36 = r30.toString();	 Catch:{ Exception -> 0x04ea }
+                r31 = r36.getBytes();	 Catch:{ Exception -> 0x04ea }
+                r6 = java.nio.ByteBuffer.wrap(r31);	 Catch:{ Exception -> 0x04ea }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
                 r0 = r36;
                 r1 = r25;
                 r2 = r22;
-                r0.write(r1, r6, r2);	 Catch:{ Exception -> 0x04ef }
+                r0.write(r1, r6, r2);	 Catch:{ Exception -> 0x04ea }
                 r7 = 0;
-                if (r15 == 0) goto L_0x0739;
-            L_0x0729:
-                r36 = r27.getHeaders();	 Catch:{ Exception -> 0x04ef }
+                if (r15 == 0) goto L_0x06f6;
+            L_0x06e6:
+                r36 = r27.getHeaders();	 Catch:{ Exception -> 0x04ea }
                 r37 = "Content-Length";
-                r36 = r36.get(r37);	 Catch:{ Exception -> 0x04ef }
-                r36 = (java.lang.String) r36;	 Catch:{ Exception -> 0x04ef }
-                r7 = java.lang.Integer.parseInt(r36);	 Catch:{ Exception -> 0x04ef }
-            L_0x0739:
-                if (r7 != 0) goto L_0x073f;
-            L_0x073b:
-                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.STATUS_LINE;	 Catch:{ Exception -> 0x04ef }
-            L_0x073d:
-                goto L_0x0474;
-            L_0x073f:
-                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.REQUEST_CONTENT;	 Catch:{ Exception -> 0x04ef }
-                goto L_0x073d;
-            L_0x0742:
-                r27.addHeader(r28);	 Catch:{ Exception -> 0x04ef }
-                goto L_0x0474;
-            L_0x0747:
-                r36 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.REQUEST_CONTENT;	 Catch:{ Exception -> 0x04ef }
-                r0 = r34;
+                r36 = r36.get(r37);	 Catch:{ Exception -> 0x04ea }
+                r36 = (java.lang.String) r36;	 Catch:{ Exception -> 0x04ea }
+                r7 = java.lang.Integer.parseInt(r36);	 Catch:{ Exception -> 0x04ea }
+            L_0x06f6:
+                if (r7 != 0) goto L_0x0732;
+            L_0x06f8:
+                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.STATUS_LINE;	 Catch:{ Exception -> 0x04ea }
+            L_0x06fa:
+                goto L_0x046b;
+            L_0x06fc:
+                r11 = r37.next();	 Catch:{ Exception -> 0x04ea }
+                r11 = (java.util.Map.Entry) r11;	 Catch:{ Exception -> 0x04ea }
+                r36 = r11.getKey();	 Catch:{ Exception -> 0x04ea }
+                r36 = (java.lang.String) r36;	 Catch:{ Exception -> 0x04ea }
+                r0 = r30;
                 r1 = r36;
-                if (r0 != r1) goto L_0x0782;
-            L_0x074f:
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
-                r36 = r0;
-                r36 = r36.readBuffer;	 Catch:{ Exception -> 0x04ef }
-                r36 = r36.remaining();	 Catch:{ Exception -> 0x04ef }
-                r7 = r7 - r36;
-                if (r7 > 0) goto L_0x0763;
-            L_0x0761:
-                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.STATUS_LINE;	 Catch:{ Exception -> 0x04ef }
-            L_0x0763:
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
-                r36 = r0;
-                r36 = r36.currentOutSocket;	 Catch:{ Exception -> 0x04ef }
+                r36 = r0.append(r1);	 Catch:{ Exception -> 0x04ea }
+                r38 = ": ";
                 r0 = r36;
-                r0 = r0.socket;	 Catch:{ Exception -> 0x04ef }
-                r36 = r0;
-                r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
-                r37 = r0;
-                r37 = r37.readBuffer;	 Catch:{ Exception -> 0x04ef }
-                r36.write(r37);	 Catch:{ Exception -> 0x04ef }
-                goto L_0x0474;
-            L_0x0782:
-                r36 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.TRANSFER;	 Catch:{ Exception -> 0x04ef }
+                r1 = r38;
+                r38 = r0.append(r1);	 Catch:{ Exception -> 0x04ea }
+                r36 = r11.getValue();	 Catch:{ Exception -> 0x04ea }
+                r36 = (java.lang.String) r36;	 Catch:{ Exception -> 0x04ea }
+                r0 = r38;
+                r1 = r36;
+                r36 = r0.append(r1);	 Catch:{ Exception -> 0x04ea }
+                r38 = "\r\n";
+                r0 = r36;
+                r1 = r38;
+                r0.append(r1);	 Catch:{ Exception -> 0x04ea }
+                goto L_0x06b9;
+            L_0x0732:
+                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.REQUEST_CONTENT;	 Catch:{ Exception -> 0x04ea }
+                goto L_0x06fa;
+            L_0x0735:
+                r27.addHeader(r28);	 Catch:{ Exception -> 0x04ea }
+                goto L_0x046b;
+            L_0x073a:
+                r36 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.REQUEST_CONTENT;	 Catch:{ Exception -> 0x04ea }
                 r0 = r34;
                 r1 = r36;
-                if (r0 != r1) goto L_0x0474;
-            L_0x078a:
+                if (r0 != r1) goto L_0x0775;
+            L_0x0742:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
+                r36 = r0;
+                r36 = r36.readBuffer;	 Catch:{ Exception -> 0x04ea }
+                r36 = r36.remaining();	 Catch:{ Exception -> 0x04ea }
+                r7 = r7 - r36;
+                if (r7 > 0) goto L_0x0756;
+            L_0x0754:
+                r34 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.STATUS_LINE;	 Catch:{ Exception -> 0x04ea }
+            L_0x0756:
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
+                r36 = r0;
+                r36 = r36.currentOutSocket;	 Catch:{ Exception -> 0x04ea }
+                r0 = r36;
+                r0 = r0.socket;	 Catch:{ Exception -> 0x04ea }
                 r36 = r0;
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r37 = r0;
-                r37 = r37.currentOutSocket;	 Catch:{ Exception -> 0x04ef }
+                r37 = r37.readBuffer;	 Catch:{ Exception -> 0x04ea }
+                r36.write(r37);	 Catch:{ Exception -> 0x04ea }
+                goto L_0x046b;
+            L_0x0775:
+                r36 = com.mba.proxylight.RequestProcessor.REQUEST_STEP.TRANSFER;	 Catch:{ Exception -> 0x04ea }
+                r0 = r34;
+                r1 = r36;
+                if (r0 != r1) goto L_0x046b;
+            L_0x077d:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ef }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
+                r36 = r0;
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
+                r37 = r0;
+                r37 = r37.currentOutSocket;	 Catch:{ Exception -> 0x04ea }
+                r0 = r40;
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x04ea }
                 r38 = r0;
-                r38 = r38.readBuffer;	 Catch:{ Exception -> 0x04ef }
+                r38 = r38.readBuffer;	 Catch:{ Exception -> 0x04ea }
                 r0 = r36;
                 r1 = r37;
                 r2 = r38;
                 r3 = r22;
-                r0.write(r1, r2, r3);	 Catch:{ Exception -> 0x04ef }
-                goto L_0x0474;
-            L_0x07b1:
+                r0.write(r1, r2, r3);	 Catch:{ Exception -> 0x04ea }
+                goto L_0x046b;
+            L_0x07a4:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36 = r36.currentOutSocket;	 Catch:{ Exception -> 0x033c }
+                r36 = r36.currentOutSocket;	 Catch:{ Exception -> 0x02c5 }
                 r0 = r33;
                 r1 = r36;
-                if (r0 == r1) goto L_0x07d0;
-            L_0x07c1:
+                if (r0 == r1) goto L_0x07c3;
+            L_0x07b4:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
                 r0 = r36;
                 r1 = r33;
-                r0.closeOutSocket(r1);	 Catch:{ Exception -> 0x033c }
-                goto L_0x028e;
-            L_0x07d0:
+                r0.closeOutSocket(r1);	 Catch:{ Exception -> 0x02c5 }
+                goto L_0x0211;
+            L_0x07c3:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r37 = r0;
-                r37 = r37.inSocket;	 Catch:{ Exception -> 0x033c }
+                r37 = r37.inSocket;	 Catch:{ Exception -> 0x02c5 }
                 r0 = r36;
                 r1 = r33;
                 r2 = r37;
                 r3 = r22;
-                r36 = r0.transfer(r1, r2, r3);	 Catch:{ Exception -> 0x033c }
-                if (r36 != 0) goto L_0x028e;
-            L_0x07ee:
+                r36 = r0.transfer(r1, r2, r3);	 Catch:{ Exception -> 0x02c5 }
+                if (r36 != 0) goto L_0x0211;
+            L_0x07e1:
                 r36 = "CONNECT";
-                r37 = r26.getMethod();	 Catch:{ Exception -> 0x033c }
-                r36 = r36.equals(r37);	 Catch:{ Exception -> 0x033c }
-                if (r36 == 0) goto L_0x0805;
-            L_0x07fa:
+                r37 = r26.getMethod();	 Catch:{ Exception -> 0x02c5 }
+                r36 = r36.equals(r37);	 Catch:{ Exception -> 0x02c5 }
+                if (r36 == 0) goto L_0x07f8;
+            L_0x07ed:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
-                r36.closeAll();	 Catch:{ Exception -> 0x033c }
-                goto L_0x00ce;
-            L_0x0805:
+                r36.closeAll();	 Catch:{ Exception -> 0x02c5 }
+                goto L_0x00d8;
+            L_0x07f8:
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
                 r0 = r36;
                 r1 = r33;
-                r0.closeOutSocket(r1);	 Catch:{ Exception -> 0x033c }
+                r0.closeOutSocket(r1);	 Catch:{ Exception -> 0x02c5 }
                 r0 = r40;
-                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x033c }
+                r0 = com.mba.proxylight.RequestProcessor.this;	 Catch:{ Exception -> 0x02c5 }
                 r36 = r0;
                 r37 = 0;
-                r36.currentOutSocket = r37;	 Catch:{ Exception -> 0x033c }
-                goto L_0x00ce;
-            L_0x081f:
-                r26 = r27;
-                goto L_0x04b0;
-            L_0x0823:
-                r26 = r27;
-                goto L_0x028e;
+                r36.currentOutSocket = r37;	 Catch:{ Exception -> 0x02c5 }
+                goto L_0x00d8;
                 */
                 throw new UnsupportedOperationException("Method not decompiled: com.mba.proxylight.RequestProcessor.1.run():void");
             }
         });
         Thread thread = this.t;
-        StringBuilder append = new StringBuilder().append("ProxyLight processor - ");
+        StringBuilder stringBuilder = new StringBuilder("ProxyLight processor - ");
         int i = processorsCpt;
         processorsCpt = i + 1;
         this.processorIdx = i;
-        thread.setName(append.append(i).toString());
+        thread.setName(stringBuilder.append(i).toString());
         this.t.setDaemon(true);
         this.t.start();
         while (!isAlive()) {

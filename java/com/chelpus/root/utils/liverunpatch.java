@@ -1,337 +1,139 @@
 package com.chelpus.root.utils;
 
+import com.chelpus.Utils;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.RandomAccessFile;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileChannel.MapMode;
+import net.lingala.zip4j.util.InternalZipConstants;
+
 public class liverunpatch {
     private static String dalvikDexIn = "/data/dalvik-cache/data@app@zamenitetodelo-1.apk@classes.dex";
 
-    /* JADX WARNING: inconsistent code. */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public static void main(java.lang.String[] r30) {
-        /*
-        r3 = new com.chelpus.root.utils.liverunpatch$1;
-        r3.<init>();
-        com.chelpus.Utils.startRootJava(r3);
-        r3 = 1;
-        r3 = r30[r3];
-        r4 = " ";
-        r24 = r3.split(r4);
-        r3 = 2;
-        r3 = r30[r3];
-        r4 = " ";
-        r28 = r3.split(r4);
-        r0 = r24;
-        r3 = r0.length;
-        r8 = new byte[r3];
-        r0 = r28;
-        r3 = r0.length;
-        r9 = new byte[r3];
-        r0 = r24;
-        r3 = r0.length;
-        r0 = new byte[r3];
-        r23 = r0;
-        r0 = r28;
-        r3 = r0.length;
-        r0 = new byte[r3];
-        r27 = r0;
-        r15 = 0;
-        r0 = r27;
-        r3 = r0.length;
-        r0 = r23;
-        r4 = r0.length;
-        if (r3 != r4) goto L_0x0259;
-    L_0x003b:
-        r3 = r8.length;
-        r4 = r9.length;
-        if (r3 != r4) goto L_0x0259;
-    L_0x003f:
-        r3 = r9.length;
-        r4 = 3;
-        if (r3 <= r4) goto L_0x0259;
-    L_0x0043:
-        r3 = r8.length;
-        r4 = 3;
-        if (r3 <= r4) goto L_0x0259;
-    L_0x0047:
-        r29 = 0;
-    L_0x0049:
-        r0 = r24;
-        r3 = r0.length;
-        r0 = r29;
-        if (r0 >= r3) goto L_0x00e0;
-    L_0x0050:
-        r3 = r24[r29];
-        r4 = "*";
-        r3 = r3.contains(r4);
-        if (r3 == 0) goto L_0x0069;
-    L_0x005a:
-        r3 = r24[r29];
-        r4 = "**";
-        r3 = r3.contains(r4);
-        if (r3 != 0) goto L_0x0069;
-    L_0x0064:
-        r15 = 1;
-        r3 = "00";
-        r24[r29] = r3;
-    L_0x0069:
-        r3 = r28[r29];
-        r4 = "*";
-        r3 = r3.contains(r4);
-        if (r3 == 0) goto L_0x0082;
-    L_0x0073:
-        r3 = r28[r29];
-        r4 = "**";
-        r3 = r3.contains(r4);
-        if (r3 != 0) goto L_0x0082;
-    L_0x007d:
-        r15 = 1;
-        r3 = "00";
-        r28[r29] = r3;
-    L_0x0082:
-        r3 = r24[r29];
-        r4 = "**";
-        r3 = r3.contains(r4);
-        if (r3 != 0) goto L_0x0096;
-    L_0x008c:
-        r3 = r24[r29];
-        r4 = "??";
-        r3 = r3.contains(r4);
-        if (r3 == 0) goto L_0x00d8;
-    L_0x0096:
-        r3 = "00";
-        r24[r29] = r3;
-        r3 = 1;
-        r23[r29] = r3;
-    L_0x009d:
-        r3 = r24[r29];
-        r4 = 16;
-        r3 = java.lang.Integer.valueOf(r3, r4);
-        r3 = r3.byteValue();
-        r8[r29] = r3;
-        r3 = r28[r29];
-        r4 = "**";
-        r3 = r3.contains(r4);
-        if (r3 != 0) goto L_0x00bf;
-    L_0x00b5:
-        r3 = r28[r29];
-        r4 = "??";
-        r3 = r3.contains(r4);
-        if (r3 == 0) goto L_0x00dc;
-    L_0x00bf:
-        r3 = "00";
-        r28[r29] = r3;
-        r3 = 0;
-        r27[r29] = r3;
-    L_0x00c6:
-        r3 = r28[r29];
-        r4 = 16;
-        r3 = java.lang.Integer.valueOf(r3, r4);
-        r3 = r3.byteValue();
-        r9[r29] = r3;
-        r29 = r29 + 1;
-        goto L_0x0049;
-    L_0x00d8:
-        r3 = 0;
-        r23[r29] = r3;
-        goto L_0x009d;
-    L_0x00dc:
-        r3 = 1;
-        r27[r29] = r3;
-        goto L_0x00c6;
-    L_0x00e0:
-        if (r15 != 0) goto L_0x0250;
-    L_0x00e2:
-        r3 = dalvikDexIn;
-        r4 = "zamenitetodelo";
-        r5 = 0;
-        r5 = r30[r5];
-        r12 = r3.replace(r4, r5);
-        r20 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r0 = r20;
-        r0.<init>(r12);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3 = r20.exists();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        if (r3 != 0) goto L_0x0109;
-    L_0x00fa:
-        r20 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3 = "-1";
-        r4 = "-2";
-        r3 = r12.replace(r3, r4);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r0 = r20;
-        r0.<init>(r3);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-    L_0x0109:
-        r21 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3 = "-1";
-        r4 = "";
-        r3 = r12.replace(r3, r4);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r0 = r21;
-        r0.<init>(r3);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3 = r20.exists();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        if (r3 == 0) goto L_0x0120;
-    L_0x011e:
-        r21 = r20;
-    L_0x0120:
-        r3 = "data@app";
-        r4 = "mnt@asec";
-        r13 = r12.replace(r3, r4);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3 = ".apk@classes.dex";
-        r4 = "@pkg.apk@classes.dex";
-        r13 = r13.replace(r3, r4);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r20 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r0 = r20;
-        r0.<init>(r13);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3 = r20.exists();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        if (r3 == 0) goto L_0x013f;
-    L_0x013d:
-        r21 = r20;
-    L_0x013f:
-        r20 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3 = "-1";
-        r4 = "-2";
-        r3 = r13.replace(r3, r4);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r0 = r20;
-        r0.<init>(r3);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3 = r20.exists();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        if (r3 == 0) goto L_0x0156;
-    L_0x0154:
-        r21 = r20;
-    L_0x0156:
-        r20 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3 = "-1";
-        r4 = "";
-        r3 = r13.replace(r3, r4);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r0 = r20;
-        r0.<init>(r3);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3 = r20.exists();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        if (r3 == 0) goto L_0x016d;
-    L_0x016b:
-        r21 = r20;
-    L_0x016d:
-        r3 = r21.exists();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        if (r3 != 0) goto L_0x0185;
-    L_0x0173:
-        r3 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3.<init>();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        throw r3;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-    L_0x0179:
-        r22 = move-exception;
-        r3 = java.lang.System.out;
-        r4 = "Error: Program files are not found!\n\nCheck the location dalvik-cache to solve problems!\n\nDefault: /data/dalvik-cache/*";
-        r3.println(r4);
-    L_0x0181:
-        com.chelpus.Utils.exitFromRootJava();
-        return;
-    L_0x0185:
-        r3 = new java.io.RandomAccessFile;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r4 = "rw";
-        r0 = r21;
-        r3.<init>(r0, r4);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r2 = r3.getChannel();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r4 = 0;
-        r6 = r2.size();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r6 = (int) r6;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r6 = (long) r6;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r16 = r2.map(r3, r4, r6);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r25 = 0;
-        r18 = 0;
-    L_0x01a4:
-        r3 = r16.hasRemaining();	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        if (r3 == 0) goto L_0x023f;
-    L_0x01aa:
-        r11 = r16.position();	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r10 = r16.get();	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r3 = 0;
-        r3 = r8[r3];	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        if (r10 != r3) goto L_0x0215;
-    L_0x01b7:
-        r3 = 0;
-        r3 = r27[r3];	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        if (r3 != 0) goto L_0x01bf;
-    L_0x01bc:
-        r3 = 0;
-        r9[r3] = r10;	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-    L_0x01bf:
-        r17 = 1;
-        r3 = r11 + 1;
-        r0 = r16;
-        r0.position(r3);	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r26 = r16.get();	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-    L_0x01cc:
-        r3 = r8[r17];	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r0 = r26;
-        if (r0 == r3) goto L_0x01d7;
-    L_0x01d2:
-        r3 = r23[r17];	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r4 = 1;
-        if (r3 != r4) goto L_0x0215;
-    L_0x01d7:
-        r3 = r27[r17];	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        if (r3 != 0) goto L_0x01dd;
-    L_0x01db:
-        r9[r17] = r26;	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-    L_0x01dd:
-        r17 = r17 + 1;
-        r3 = r8.length;	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r0 = r17;
-        if (r0 != r3) goto L_0x0221;
-    L_0x01e4:
-        r0 = r16;
-        r0.position(r11);	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r0 = r16;
-        r0.put(r9);	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r16.force();	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r3 = java.lang.System.out;	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r4 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r4.<init>();	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r5 = "Offset in file:";
-        r4 = r4.append(r5);	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r5 = java.lang.Integer.toHexString(r11);	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r4 = r4.append(r5);	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r5 = " - Patch done!\n";
-        r4 = r4.append(r5);	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r4 = r4.toString();	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r3.println(r4);	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r25 = 1;
-    L_0x0215:
-        r3 = r11 + 1;
-        r0 = r16;
-        r0.position(r3);	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        r4 = 1;
-        r18 = r18 + r4;
-        goto L_0x01a4;
-    L_0x0221:
-        r26 = r16.get();	 Catch:{ Exception -> 0x0226, FileNotFoundException -> 0x0179 }
-        goto L_0x01cc;
-    L_0x0226:
-        r14 = move-exception;
-        r3 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r4 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r4.<init>();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r5 = "";
-        r4 = r4.append(r5);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r4 = r4.append(r14);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r4 = r4.toString();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r3.println(r4);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-    L_0x023f:
-        r2.close();	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        if (r25 != 0) goto L_0x0181;
-    L_0x0244:
-        r3 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        r4 = "Error: Pattern not found!\nor patch is already applied?!\n";
-        r3.println(r4);	 Catch:{ FileNotFoundException -> 0x0179, Exception -> 0x024d }
-        goto L_0x0181;
-    L_0x024d:
-        r3 = move-exception;
-        goto L_0x0181;
-    L_0x0250:
-        r3 = java.lang.System.out;
-        r4 = "Error: Pattern not valid!\n\nPattern can not be \"*4\" or \"A*\", etc.\n\n It can only be ** ";
-        r3.println(r4);
-        goto L_0x0181;
-    L_0x0259:
-        r3 = java.lang.System.out;
-        r4 = "Error: Original & Replace hex-string not valid!\n\nOriginal.hex.length != Replacmant.hex.length.\nOR\nLength of hex-string < 4";
-        r3.println(r4);
-        goto L_0x0181;
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.chelpus.root.utils.liverunpatch.main(java.lang.String[]):void");
+    public static void main(String[] paramArrayOfString) {
+        Utils.startRootJava(new Object() {
+        });
+        String[] orhex = paramArrayOfString[1].split(" ");
+        String[] rephex = paramArrayOfString[2].split(" ");
+        byte[] byteOrig = new byte[orhex.length];
+        byte[] byteReplace = new byte[rephex.length];
+        byte[] mask = new byte[orhex.length];
+        byte[] rep_mask = new byte[rephex.length];
+        boolean error = false;
+        if (rep_mask.length != mask.length || byteOrig.length != byteReplace.length || byteReplace.length <= 3 || byteOrig.length <= 3) {
+            System.out.println("Error: Original & Replace hex-string not valid!\n\nOriginal.hex.length != Replacmant.hex.length.\nOR\nLength of hex-string < 4");
+        } else {
+            int t = 0;
+            while (t < orhex.length) {
+                if (orhex[t].contains("*") && !orhex[t].contains("**")) {
+                    error = true;
+                    orhex[t] = "00";
+                }
+                if (rephex[t].contains("*") && !rephex[t].contains("**")) {
+                    error = true;
+                    rephex[t] = "00";
+                }
+                if (orhex[t].contains("**") || orhex[t].contains("??")) {
+                    orhex[t] = "00";
+                    mask[t] = (byte) 1;
+                } else {
+                    mask[t] = (byte) 0;
+                }
+                byteOrig[t] = Integer.valueOf(orhex[t], 16).byteValue();
+                if (rephex[t].contains("**") || rephex[t].contains("??")) {
+                    rephex[t] = "00";
+                    rep_mask[t] = (byte) 0;
+                } else {
+                    rep_mask[t] = (byte) 1;
+                }
+                byteReplace[t] = Integer.valueOf(rephex[t], 16).byteValue();
+                t++;
+            }
+            if (error) {
+                System.out.println("Error: Pattern not valid!\n\nPattern can not be \"*4\" or \"A*\", etc.\n\n It can only be ** ");
+            } else {
+                String dalvikDex = dalvikDexIn.replace("zamenitetodelo", paramArrayOfString[0]);
+                try {
+                    File localFile2;
+                    File file = new File(dalvikDex);
+                    if (!file.exists()) {
+                        file = new File(dalvikDex.replace("-1", "-2"));
+                    }
+                    file = new File(dalvikDex.replace("-1", ""));
+                    if (localFile1.exists()) {
+                        localFile2 = localFile1;
+                    }
+                    String dalvikDexTemp = dalvikDex.replace("data@app", "mnt@asec").replace(".apk@classes.dex", "@pkg.apk@classes.dex");
+                    file = new File(dalvikDexTemp);
+                    if (file.exists()) {
+                        localFile2 = file;
+                    }
+                    file = new File(dalvikDexTemp.replace("-1", "-2"));
+                    if (file.exists()) {
+                        localFile2 = file;
+                    }
+                    file = new File(dalvikDexTemp.replace("-1", ""));
+                    if (file.exists()) {
+                        localFile2 = file;
+                    }
+                    if (localFile2.exists()) {
+                        FileChannel ChannelDex = new RandomAccessFile(localFile2, InternalZipConstants.WRITE_MODE).getChannel();
+                        MappedByteBuffer fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
+                        boolean patch = false;
+                        long j = 0;
+                        while (fileBytes.hasRemaining()) {
+                            try {
+                                int curentPos = fileBytes.position();
+                                byte curentByte = fileBytes.get();
+                                if (curentByte == byteOrig[0]) {
+                                    if (rep_mask[0] == (byte) 0) {
+                                        byteReplace[0] = curentByte;
+                                    }
+                                    int i = 1;
+                                    fileBytes.position(curentPos + 1);
+                                    byte prufbyte = fileBytes.get();
+                                    while (true) {
+                                        if (prufbyte != byteOrig[i] && mask[i] != (byte) 1) {
+                                            break;
+                                        }
+                                        if (rep_mask[i] == (byte) 0) {
+                                            byteReplace[i] = prufbyte;
+                                        }
+                                        i++;
+                                        if (i == byteOrig.length) {
+                                            break;
+                                        }
+                                        prufbyte = fileBytes.get();
+                                    }
+                                    fileBytes.position(curentPos);
+                                    fileBytes.put(byteReplace);
+                                    fileBytes.force();
+                                    System.out.println("Offset in file:" + Integer.toHexString(curentPos) + " - Patch done!\n");
+                                    patch = true;
+                                }
+                                fileBytes.position(curentPos + 1);
+                                j++;
+                            } catch (Exception e) {
+                                System.out.println(e);
+                            } catch (FileNotFoundException e2) {
+                                System.out.println("Error: Program files are not found!\n\nCheck the location dalvik-cache to solve problems!\n\nDefault: /data/dalvik-cache/*");
+                            }
+                        }
+                        ChannelDex.close();
+                        if (!patch) {
+                            System.out.println("Error: Pattern not found!\nor patch is already applied?!\n");
+                        }
+                    } else {
+                        throw new FileNotFoundException();
+                    }
+                } catch (FileNotFoundException e22) {
+                    System.out.println("Error: Program files are not found!\n\nCheck the location dalvik-cache to solve problems!\n\nDefault: /data/dalvik-cache/*");
+                } catch (Exception e3) {
+                }
+            }
+        }
+        Utils.exitFromRootJava();
     }
 }

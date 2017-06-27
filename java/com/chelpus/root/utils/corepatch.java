@@ -22,7 +22,7 @@ import net.lingala.zip4j.util.InternalZipConstants;
 import org.tukaani.xz.LZMA2Options;
 
 public class corepatch {
-    public static final byte[] MAGIC = new byte[]{(byte) 100, (byte) 101, (byte) 121, (byte) 10, (byte) 48, (byte) 51, (byte) 53, (byte) 0};
+    public static final byte[] MAGIC;
     public static int adler;
     public static byte[] byteOrig10 = null;
     public static byte[] byteOrig11 = null;
@@ -114,14 +114,19 @@ public class corepatch {
     public static byte[] byteOrig_patch2_arm64_2 = null;
     public static byte[] byteOrig_patch2_arm_1 = null;
     public static byte[] byteOrig_patch2_x86 = null;
+    public static byte[] byteOrig_patch2_x86_2 = null;
     public static byte[] byteOrig_patch2_x86_64 = null;
     public static byte[] byteOrig_patch3_arm = null;
     public static byte[] byteOrig_patch3_arm64 = null;
+    public static byte[] byteOrig_patch3_arm64_2 = null;
+    public static byte[] byteOrig_patch3_arm_2 = null;
     public static byte[] byteOrig_patch3_x86 = null;
     public static byte[] byteOrig_patch3cm_arm = null;
     public static byte[] byteOrig_patch3cm_arm64 = null;
+    public static byte[] byteOrig_patch3cm_arm64_2 = null;
     public static byte[] byteOrig_patch3p_arm = null;
     public static byte[] byteOrig_patch3p_arm64 = null;
+    public static byte[] byteOrig_patch3p_arm_2 = null;
     public static byte[] byteOrig_patch3p_x86 = null;
     public static byte[] byteReplace10 = null;
     public static byte[] byteReplace11 = null;
@@ -213,14 +218,19 @@ public class corepatch {
     public static byte[] byteReplace_patch2_arm64_2 = null;
     public static byte[] byteReplace_patch2_arm_1 = null;
     public static byte[] byteReplace_patch2_x86 = null;
+    public static byte[] byteReplace_patch2_x86_2 = null;
     public static byte[] byteReplace_patch2_x86_64 = null;
     public static byte[] byteReplace_patch3_arm = null;
     public static byte[] byteReplace_patch3_arm64 = null;
+    public static byte[] byteReplace_patch3_arm64_2 = null;
+    public static byte[] byteReplace_patch3_arm_2 = null;
     public static byte[] byteReplace_patch3_x86 = null;
     public static byte[] byteReplace_patch3cm_arm = null;
     public static byte[] byteReplace_patch3cm_arm64 = null;
+    public static byte[] byteReplace_patch3cm_arm64_2 = null;
     public static byte[] byteReplace_patch3p_arm = null;
     public static byte[] byteReplace_patch3p_arm64 = null;
+    public static byte[] byteReplace_patch3p_arm_2 = null;
     public static byte[] byteReplace_patch3p_x86 = null;
     public static MappedByteBuffer fileBytes = null;
     public static byte[] lastByteReplace = null;
@@ -314,14 +324,19 @@ public class corepatch {
     public static byte[] mask_patch2_arm64_2 = null;
     public static byte[] mask_patch2_arm_1 = null;
     public static byte[] mask_patch2_x86 = null;
+    public static byte[] mask_patch2_x86_2 = null;
     public static byte[] mask_patch2_x86_64 = null;
     public static byte[] mask_patch3_arm = null;
     public static byte[] mask_patch3_arm64 = null;
+    public static byte[] mask_patch3_arm64_2 = null;
+    public static byte[] mask_patch3_arm_2 = null;
     public static byte[] mask_patch3_x86 = null;
     public static byte[] mask_patch3cm_arm = null;
     public static byte[] mask_patch3cm_arm64 = null;
+    public static byte[] mask_patch3cm_arm64_2 = null;
     public static byte[] mask_patch3p_arm = null;
     public static byte[] mask_patch3p_arm64 = null;
+    public static byte[] mask_patch3p_arm_2 = null;
     public static byte[] mask_patch3p_x86 = null;
     public static boolean not_found_bytes_for_patch = false;
     public static boolean onlyDalvik = false;
@@ -420,16 +435,44 @@ public class corepatch {
     public static byte[] rep_mask_patch2_arm64_2 = null;
     public static byte[] rep_mask_patch2_arm_1 = null;
     public static byte[] rep_mask_patch2_x86 = null;
+    public static byte[] rep_mask_patch2_x86_2 = null;
     public static byte[] rep_mask_patch2_x86_64 = null;
     public static byte[] rep_mask_patch3_arm = null;
     public static byte[] rep_mask_patch3_arm64 = null;
+    public static byte[] rep_mask_patch3_arm64_2 = null;
+    public static byte[] rep_mask_patch3_arm_2 = null;
     public static byte[] rep_mask_patch3_x86 = null;
     public static byte[] rep_mask_patch3cm_arm = null;
     public static byte[] rep_mask_patch3cm_arm64 = null;
+    public static byte[] rep_mask_patch3cm_arm64_2 = null;
     public static byte[] rep_mask_patch3p_arm = null;
     public static byte[] rep_mask_patch3p_arm64 = null;
+    public static byte[] rep_mask_patch3p_arm_2 = null;
     public static byte[] rep_mask_patch3p_x86 = null;
     public static String toolfilesdir = "";
+
+    class AnonymousClass4 extends ArrayList<String> {
+        AnonymousClass4(boolean z, boolean z2, boolean z3) {
+            if (z) {
+                add("boolean java.security.MessageDigest.isEqual(byte[], byte[])");
+            }
+            if (!z2 && z3) {
+                add("boolean com.android.org.conscrypt.OpenSSLSignature.engineVerify(byte[])");
+            }
+        }
+    }
+
+    static {
+        byte[] bArr = new byte[8];
+        bArr[0] = (byte) 100;
+        bArr[1] = (byte) 101;
+        bArr[2] = (byte) 121;
+        bArr[3] = (byte) 10;
+        bArr[4] = (byte) 48;
+        bArr[5] = (byte) 51;
+        bArr[6] = (byte) 53;
+        MAGIC = bArr;
+    }
 
     /* JADX WARNING: inconsistent code. */
     /* Code decompiled incorrectly, please refer to instructions dump. */
@@ -444,38 +487,38 @@ public class corepatch {
         r62 = 0;
         r33 = 0;
         r34 = 0;
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0227 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0872 }
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x0227 }
-        r7.println(r8);	 Catch:{ Exception -> 0x0227 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0227 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x0872 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0872 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0872 }
         r8 = 1;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x0227 }
-        r7.println(r8);	 Catch:{ Exception -> 0x0227 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0227 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x0872 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0872 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0872 }
         r8 = 2;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x0227 }
-        r7.println(r8);	 Catch:{ Exception -> 0x0227 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0227 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x0872 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0872 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0872 }
         r8 = 3;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x0227 }
-        r7.println(r8);	 Catch:{ Exception -> 0x0227 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0227 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x0872 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0872 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0872 }
         r8 = 4;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x0227 }
-        r7.println(r8);	 Catch:{ Exception -> 0x0227 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x0872 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0872 }
         r7 = 4;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x0227 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0872 }
         if (r7 == 0) goto L_0x004e;
     L_0x0040:
         r7 = 4;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x0227 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0872 }
         r8 = "OnlyDalvik";
-        r7 = r7.equals(r8);	 Catch:{ Exception -> 0x0227 }
+        r7 = r7.equals(r8);	 Catch:{ Exception -> 0x0872 }
         if (r7 == 0) goto L_0x004e;
     L_0x004b:
         r7 = 1;
-        onlyDalvik = r7;	 Catch:{ Exception -> 0x0227 }
+        onlyDalvik = r7;	 Catch:{ Exception -> 0x0872 }
     L_0x004e:
         r7 = 3;
         r7 = r71[r7];
@@ -661,19 +704,19 @@ public class corepatch {
         r7 = r71[r7];
         r8 = "all";
         r7 = r7.contains(r8);
-        if (r7 == 0) goto L_0x2c5f;
+        if (r7 == 0) goto L_0x086e;
     L_0x0190:
         r42 = new java.util.ArrayList;
         r42.<init>();
         r42.clear();
         if (r11 != 0) goto L_0x019c;
     L_0x019a:
-        if (r18 == 0) goto L_0x10eb;
+        if (r18 == 0) goto L_0x0402;
     L_0x019c:
         r54 = new java.util.ArrayList;
         r54.<init>();
         r7 = onlyDalvik;
-        if (r7 != 0) goto L_0x022d;
+        if (r7 != 0) goto L_0x0897;
     L_0x01a5:
         r7 = 16;
         r0 = new java.lang.String[r7];
@@ -730,111 +773,18 @@ public class corepatch {
         r8 = r0.length;
         r7 = 0;
     L_0x0207:
-        if (r7 >= r8) goto L_0x02af;
+        if (r7 < r8) goto L_0x0878;
     L_0x0209:
-        r55 = r56[r7];
-        r9 = new java.io.File;
-        r0 = r55;
-        r9.<init>(r0);
-        r9 = r9.exists();
-        if (r9 == 0) goto L_0x0224;
-    L_0x0218:
-        r9 = new java.io.File;
-        r0 = r55;
-        r9.<init>(r0);
-        r0 = r54;
-        r0.add(r9);
-    L_0x0224:
-        r7 = r7 + 1;
-        goto L_0x0207;
-    L_0x0227:
-        r38 = move-exception;
-        r38.printStackTrace();
-        goto L_0x004e;
-    L_0x022d:
-        r7 = 16;
-        r0 = new java.lang.String[r7];
-        r56 = r0;
-        r7 = 0;
-        r8 = "/data/dalvik-cache/x86/system@framework@boot.oat";
-        r56[r7] = r8;
-        r7 = 1;
-        r8 = "/data/dalvik-cache/x86_64/system@framework@boot.oat";
-        r56[r7] = r8;
-        r7 = 2;
-        r8 = "/data/dalvik-cache/arm64/system@framework@boot.oat";
-        r56[r7] = r8;
-        r7 = 3;
-        r8 = "/data/dalvik-cache/arm/system@framework@boot.oat";
-        r56[r7] = r8;
-        r7 = 4;
-        r8 = "/data/dalvik-cache/oat/x86/system@framework@boot.oat";
-        r56[r7] = r8;
-        r7 = 5;
-        r8 = "/data/dalvik-cache/oat/x86_64/system@framework@boot.oat";
-        r56[r7] = r8;
-        r7 = 6;
-        r8 = "/data/dalvik-cache/oat/arm64/system@framework@boot.oat";
-        r56[r7] = r8;
-        r7 = 7;
-        r8 = "/data/dalvik-cache/oat/arm/system@framework@boot.oat";
-        r56[r7] = r8;
-        r7 = 8;
-        r8 = "/data/dalvik-cache/x86/system@framework@boot-conscrypt.oat";
-        r56[r7] = r8;
-        r7 = 9;
-        r8 = "/data/dalvik-cache/x86_64/system@framework@boot-conscrypt.oat";
-        r56[r7] = r8;
-        r7 = 10;
-        r8 = "/data/dalvik-cache/arm64/system@framework@boot-conscrypt.oat";
-        r56[r7] = r8;
-        r7 = 11;
-        r8 = "/data/dalvik-cache/arm/system@framework@boot-conscrypt.oat";
-        r56[r7] = r8;
-        r7 = 12;
-        r8 = "/data/dalvik-cache/oat/x86/system@framework@boot-conscrypt.oat";
-        r56[r7] = r8;
-        r7 = 13;
-        r8 = "/data/dalvik-cache/oat/x86_64/system@framework@boot-conscrypt.oat";
-        r56[r7] = r8;
-        r7 = 14;
-        r8 = "/data/dalvik-cache/oat/arm64/system@framework@boot-conscrypt.oat";
-        r56[r7] = r8;
-        r7 = 15;
-        r8 = "/data/dalvik-cache/oat/arm/system@framework@boot-conscrypt.oat";
-        r56[r7] = r8;
-        r0 = r56;
-        r8 = r0.length;
-        r7 = 0;
-    L_0x028f:
-        if (r7 >= r8) goto L_0x02af;
-    L_0x0291:
-        r55 = r56[r7];
-        r9 = new java.io.File;
-        r0 = r55;
-        r9.<init>(r0);
-        r9 = r9.exists();
-        if (r9 == 0) goto L_0x02ac;
-    L_0x02a0:
-        r9 = new java.io.File;
-        r0 = r55;
-        r9.<init>(r0);
-        r0 = r54;
-        r0.add(r9);
-    L_0x02ac:
-        r7 = r7 + 1;
-        goto L_0x028f;
-    L_0x02af:
         r7 = java.lang.System.out;
         r8 = "check cache";
         r7.println(r8);
         r7 = r54.size();
-        if (r7 <= 0) goto L_0x02d9;
-    L_0x02bc:
+        if (r7 <= 0) goto L_0x0233;
+    L_0x0216:
         r7 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.api;
         r8 = 24;
-        if (r7 < r8) goto L_0x02d9;
-    L_0x02c2:
+        if (r7 < r8) goto L_0x0233;
+    L_0x021c:
         r7 = "/system";
         r8 = "RW";
         com.chelpus.Utils.remount(r7, r8);
@@ -845,18 +795,18 @@ public class corepatch {
         r1 = r71;
         r2 = r18;
         patchWithOatDumpP12(r0, r1, r11, r2);
-    L_0x02d9:
+    L_0x0233:
         r7 = r54.size();
-        if (r7 <= 0) goto L_0x0a86;
-    L_0x02df:
+        if (r7 <= 0) goto L_0x0353;
+    L_0x0239:
         r7 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.api;
         r8 = 21;
-        if (r7 < r8) goto L_0x0a86;
-    L_0x02e5:
+        if (r7 < r8) goto L_0x0353;
+    L_0x023f:
         r7 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.api;
         r8 = 23;
-        if (r7 > r8) goto L_0x0a86;
-    L_0x02eb:
+        if (r7 > r8) goto L_0x0353;
+    L_0x0245:
         r7 = java.lang.System.out;
         r8 = "found cache";
         r7.println(r8);
@@ -865,883 +815,50 @@ public class corepatch {
         r1 = r71;
         r2 = r18;
         patchWithOatDumpP12(r0, r1, r11, r2);
-        if (r11 == 0) goto L_0x0303;
-    L_0x02ff:
+        if (r11 == 0) goto L_0x025d;
+    L_0x0259:
         r7 = patchOat1;
-        if (r7 == 0) goto L_0x0309;
-    L_0x0303:
-        if (r18 == 0) goto L_0x09a7;
-    L_0x0305:
+        if (r7 == 0) goto L_0x0263;
+    L_0x025d:
+        if (r18 == 0) goto L_0x0278;
+    L_0x025f:
         r7 = patchOat2;
-        if (r7 != 0) goto L_0x09a7;
-    L_0x0309:
+        if (r7 != 0) goto L_0x0278;
+    L_0x0263:
         r7 = patchOat1;
-        if (r7 == 0) goto L_0x030e;
-    L_0x030d:
+        if (r7 == 0) goto L_0x0268;
+    L_0x0267:
         r11 = 0;
-    L_0x030e:
+    L_0x0268:
         r7 = patchOat2;
-        if (r7 == 0) goto L_0x0314;
-    L_0x0312:
+        if (r7 == 0) goto L_0x026e;
+    L_0x026c:
         r18 = 0;
-    L_0x0314:
+    L_0x026e:
         r19 = r54.iterator();
-    L_0x0318:
+    L_0x0272:
         r7 = r19.hasNext();
-        if (r7 == 0) goto L_0x09a7;
-    L_0x031e:
-        r39 = r19.next();
-        r39 = (java.io.File) r39;
-        r30 = r30 + 1;
-        r7 = java.lang.System.out;
-        r8 = new java.lang.StringBuilder;
-        r8.<init>();
-        r9 = "oat file for patch:";
-        r8 = r8.append(r9);
-        r9 = r39.getAbsolutePath();
-        r8 = r8.append(r9);
-        r8 = r8.toString();
-        r7.println(r8);
-        r4 = 0;
-        r70 = 0;
-        r57 = 0;
-        r58 = 0;
-        r59 = 0;
-        r68 = java.lang.System.currentTimeMillis();	 Catch:{ IOException -> 0x097c }
-        r7 = new java.io.RandomAccessFile;	 Catch:{ IOException -> 0x097c }
-        r8 = "rw";
-        r0 = r39;
-        r7.<init>(r0, r8);	 Catch:{ IOException -> 0x097c }
-        r4 = r7.getChannel();	 Catch:{ IOException -> 0x097c }
-        r5 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ IOException -> 0x097c }
-        r6 = 0;
-        r8 = r4.size();	 Catch:{ IOException -> 0x097c }
-        r8 = (int) r8;	 Catch:{ IOException -> 0x097c }
-        r8 = (long) r8;	 Catch:{ IOException -> 0x097c }
-        r7 = r4.map(r5, r6, r8);	 Catch:{ IOException -> 0x097c }
-        fileBytes = r7;	 Catch:{ IOException -> 0x097c }
-        r7 = fileBytes;	 Catch:{ IOException -> 0x097c }
-        r8 = 4120; // 0x1018 float:5.773E-42 double:2.0356E-320;
-        r7.position(r8);	 Catch:{ IOException -> 0x097c }
-        r7 = fileBytes;	 Catch:{ IOException -> 0x097c }
-        r7 = r7.get();	 Catch:{ IOException -> 0x097c }
-        r8 = fileBytes;	 Catch:{ IOException -> 0x097c }
-        r8 = r8.get();	 Catch:{ IOException -> 0x097c }
-        r9 = fileBytes;	 Catch:{ IOException -> 0x097c }
-        r9 = r9.get();	 Catch:{ IOException -> 0x097c }
-        r10 = fileBytes;	 Catch:{ IOException -> 0x097c }
-        r10 = r10.get();	 Catch:{ IOException -> 0x097c }
-        r63 = com.chelpus.Utils.convertFourBytesToInt(r7, r8, r9, r10);	 Catch:{ IOException -> 0x097c }
-        r7 = java.lang.System.out;	 Catch:{ IOException -> 0x097c }
-        r8 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x097c }
-        r8.<init>();	 Catch:{ IOException -> 0x097c }
-        r9 = "Start position:";
-        r8 = r8.append(r9);	 Catch:{ IOException -> 0x097c }
-        r0 = r63;
-        r8 = r8.append(r0);	 Catch:{ IOException -> 0x097c }
-        r8 = r8.toString();	 Catch:{ IOException -> 0x097c }
-        r7.println(r8);	 Catch:{ IOException -> 0x097c }
-        r7 = fileBytes;	 Catch:{ IOException -> 0x097c }
-        r0 = r63;
-        r7.position(r0);	 Catch:{ IOException -> 0x097c }
-        r67 = 0;
-    L_0x03b2:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x098b }
-        r7 = r7.hasRemaining();	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0959;
-    L_0x03ba:
-        if (r67 != 0) goto L_0x0959;
-    L_0x03bc:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x098b }
-        r5 = r7.position();	 Catch:{ Exception -> 0x098b }
-        r7 = fileBytes;	 Catch:{ Exception -> 0x098b }
-        r6 = r7.get();	 Catch:{ Exception -> 0x098b }
-        r7 = byteOrigOatUpd1;	 Catch:{ Exception -> 0x098b }
-        r8 = maskOatUpd1;	 Catch:{ Exception -> 0x098b }
-        r9 = byteReplaceOatUpd1;	 Catch:{ Exception -> 0x098b }
-        r10 = rep_maskOatUpd1;	 Catch:{ Exception -> 0x098b }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x041b;
-    L_0x03d6:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0400;
-    L_0x03e1:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0400:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0412;
-    L_0x040b:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0412:
-        r7 = 1;
-        patchOatUpd1 = r7;	 Catch:{ Exception -> 0x098b }
-        r70 = 1;
-        r57 = 1;
-        r58 = 1;
-    L_0x041b:
-        r7 = byteOrigOatUpd2;	 Catch:{ Exception -> 0x098b }
-        r8 = maskOatUpd2;	 Catch:{ Exception -> 0x098b }
-        r9 = byteReplaceOatUpd2;	 Catch:{ Exception -> 0x098b }
-        r10 = rep_maskOatUpd2;	 Catch:{ Exception -> 0x098b }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x046e;
-    L_0x0429:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0453;
-    L_0x0434:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0453:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0465;
-    L_0x045e:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0465:
-        r7 = 1;
-        patchOatUpd1 = r7;	 Catch:{ Exception -> 0x098b }
-        r70 = 1;
-        r57 = 1;
-        r58 = 1;
-    L_0x046e:
-        r7 = byteOrigOat1;	 Catch:{ Exception -> 0x098b }
-        r8 = maskOat1;	 Catch:{ Exception -> 0x098b }
-        r9 = byteReplaceOat1;	 Catch:{ Exception -> 0x098b }
-        r10 = rep_maskOat1;	 Catch:{ Exception -> 0x098b }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x04bd;
-    L_0x047c:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x04a6;
-    L_0x0487:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core11 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x04a6:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x04b8;
-    L_0x04b1:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core11 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x04b8:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x098b }
-        r57 = 1;
-    L_0x04bd:
-        r7 = byteOrigOatUpd4;	 Catch:{ Exception -> 0x098b }
-        r8 = maskOatUpd4;	 Catch:{ Exception -> 0x098b }
-        r9 = byteReplaceOatUpd4;	 Catch:{ Exception -> 0x098b }
-        r10 = rep_maskOatUpd4;	 Catch:{ Exception -> 0x098b }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0510;
-    L_0x04cb:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x04f5;
-    L_0x04d6:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x04f5:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0507;
-    L_0x0500:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0507:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x098b }
-        r57 = 1;
-        r58 = 1;
-        r70 = 1;
-    L_0x0510:
-        r7 = byteOrigOatUpd4_1;	 Catch:{ Exception -> 0x098b }
-        r8 = maskOatUpd4_1;	 Catch:{ Exception -> 0x098b }
-        r9 = byteReplaceOatUpd4_1;	 Catch:{ Exception -> 0x098b }
-        r10 = rep_maskOatUpd4_1;	 Catch:{ Exception -> 0x098b }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0563;
-    L_0x051e:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0548;
-    L_0x0529:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0548:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x055a;
-    L_0x0553:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x055a:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x098b }
-        r57 = 1;
-        r58 = 1;
-        r70 = 1;
-    L_0x0563:
-        r7 = byteOrigOatUpd5;	 Catch:{ Exception -> 0x098b }
-        r8 = maskOatUpd5;	 Catch:{ Exception -> 0x098b }
-        r9 = byteReplaceOatUpd5;	 Catch:{ Exception -> 0x098b }
-        r10 = rep_maskOatUpd5;	 Catch:{ Exception -> 0x098b }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x05b6;
-    L_0x0571:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x059b;
-    L_0x057c:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x059b:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x05ad;
-    L_0x05a6:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x05ad:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x098b }
-        r70 = 1;
-        r57 = 1;
-        r58 = 1;
-    L_0x05b6:
-        r7 = byteOrigOatUpd5_1;	 Catch:{ Exception -> 0x098b }
-        r8 = maskOatUpd5_1;	 Catch:{ Exception -> 0x098b }
-        r9 = byteReplaceOatUpd5_1;	 Catch:{ Exception -> 0x098b }
-        r10 = rep_maskOatUpd5_1;	 Catch:{ Exception -> 0x098b }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0609;
-    L_0x05c4:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x05ee;
-    L_0x05cf:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x05ee:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0600;
-    L_0x05f9:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0600:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x098b }
-        r70 = 1;
-        r57 = 1;
-        r58 = 1;
-    L_0x0609:
-        r7 = byteOrigOat4;	 Catch:{ Exception -> 0x098b }
-        r8 = maskOat4;	 Catch:{ Exception -> 0x098b }
-        r9 = byteReplaceOat4;	 Catch:{ Exception -> 0x098b }
-        r10 = rep_maskOat4;	 Catch:{ Exception -> 0x098b }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0658;
-    L_0x0617:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0641;
-    L_0x0622:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core11 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0641:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0653;
-    L_0x064c:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core11 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0653:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x098b }
-        r57 = 1;
-    L_0x0658:
-        r7 = byteOrigOat2;	 Catch:{ Exception -> 0x098b }
-        r8 = maskOat2;	 Catch:{ Exception -> 0x098b }
-        r9 = byteReplaceOat2;	 Catch:{ Exception -> 0x098b }
-        r10 = rep_maskOat2;	 Catch:{ Exception -> 0x098b }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x06a7;
-    L_0x0666:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0690;
-    L_0x0671:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core12 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0690:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x06a2;
-    L_0x069b:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core12 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x06a2:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x098b }
-        r58 = 1;
-    L_0x06a7:
-        r7 = byteOrigOat5;	 Catch:{ Exception -> 0x098b }
-        r8 = maskOat5;	 Catch:{ Exception -> 0x098b }
-        r9 = byteReplaceOat5;	 Catch:{ Exception -> 0x098b }
-        r10 = rep_maskOat5;	 Catch:{ Exception -> 0x098b }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x06f6;
-    L_0x06b5:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x06df;
-    L_0x06c0:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core12 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x06df:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x06f1;
-    L_0x06ea:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core12 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x06f1:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x098b }
-        r58 = 1;
-    L_0x06f6:
-        r14 = byteOrigOat3;	 Catch:{ Exception -> 0x098b }
-        r15 = maskOat3;	 Catch:{ Exception -> 0x098b }
-        r16 = byteReplaceOat3;	 Catch:{ Exception -> 0x098b }
-        r17 = rep_maskOat3;	 Catch:{ Exception -> 0x098b }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0747;
-    L_0x0706:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0730;
-    L_0x0711:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0730:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0742;
-    L_0x073b:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0742:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x098b }
-        r59 = 1;
-    L_0x0747:
-        r14 = byteOrigOat3_1;	 Catch:{ Exception -> 0x098b }
-        r15 = maskOat3_1;	 Catch:{ Exception -> 0x098b }
-        r16 = byteReplaceOat3_1;	 Catch:{ Exception -> 0x098b }
-        r17 = rep_maskOat3_1;	 Catch:{ Exception -> 0x098b }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0798;
-    L_0x0757:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0781;
-    L_0x0762:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0781:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0793;
-    L_0x078c:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0793:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x098b }
-        r59 = 1;
-    L_0x0798:
-        r14 = byteOrigOat3_2;	 Catch:{ Exception -> 0x098b }
-        r15 = maskOat3_2;	 Catch:{ Exception -> 0x098b }
-        r16 = byteReplaceOat3_2;	 Catch:{ Exception -> 0x098b }
-        r17 = rep_maskOat3_2;	 Catch:{ Exception -> 0x098b }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x07e9;
-    L_0x07a8:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x07d2;
-    L_0x07b3:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x07d2:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x07e4;
-    L_0x07dd:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x07e4:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x098b }
-        r59 = 1;
-    L_0x07e9:
-        r14 = byteOrigOat6;	 Catch:{ Exception -> 0x098b }
-        r15 = maskOat6;	 Catch:{ Exception -> 0x098b }
-        r16 = byteReplaceOat6;	 Catch:{ Exception -> 0x098b }
-        r17 = rep_maskOat6;	 Catch:{ Exception -> 0x098b }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x083a;
-    L_0x07f9:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0823;
-    L_0x0804:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0823:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0835;
-    L_0x082e:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0835:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x098b }
-        r59 = 1;
-    L_0x083a:
-        r14 = byteOrigOat6_1;	 Catch:{ Exception -> 0x098b }
-        r15 = maskOat6_1;	 Catch:{ Exception -> 0x098b }
-        r16 = byteReplaceOat6_1;	 Catch:{ Exception -> 0x098b }
-        r17 = rep_maskOat6_1;	 Catch:{ Exception -> 0x098b }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x088b;
-    L_0x084a:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0874;
-    L_0x0855:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0874:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0886;
-    L_0x087f:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0886:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x098b }
-        r59 = 1;
-    L_0x088b:
-        r14 = byteOrigOat7;	 Catch:{ Exception -> 0x098b }
-        r15 = maskOat7;	 Catch:{ Exception -> 0x098b }
-        r16 = byteReplaceOat7;	 Catch:{ Exception -> 0x098b }
-        r17 = rep_maskOat7;	 Catch:{ Exception -> 0x098b }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x08dc;
-    L_0x089b:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x08c5;
-    L_0x08a6:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x08c5:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x08d7;
-    L_0x08d0:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x08d7:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x098b }
-        r59 = 1;
-    L_0x08dc:
-        r14 = byteOrigOat7_1;	 Catch:{ Exception -> 0x098b }
-        r15 = maskOat7_1;	 Catch:{ Exception -> 0x098b }
-        r16 = byteReplaceOat7_1;	 Catch:{ Exception -> 0x098b }
-        r17 = rep_maskOat7_1;	 Catch:{ Exception -> 0x098b }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x092d;
-    L_0x08ec:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0916;
-    L_0x08f7:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x098b }
-        r8.<init>();	 Catch:{ Exception -> 0x098b }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x098b }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x098b }
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0916:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x098b }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x098b }
-        if (r7 == 0) goto L_0x0928;
-    L_0x0921:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x098b }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x098b }
-    L_0x0928:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x098b }
-        r59 = 1;
-    L_0x092d:
-        if (r11 == 0) goto L_0x0935;
-    L_0x092f:
-        if (r18 == 0) goto L_0x0935;
-    L_0x0931:
-        if (r70 == 0) goto L_0x0935;
-    L_0x0933:
-        if (r59 != 0) goto L_0x0957;
-    L_0x0935:
-        if (r11 == 0) goto L_0x0941;
-    L_0x0937:
-        if (r18 == 0) goto L_0x0941;
-    L_0x0939:
-        if (r70 == 0) goto L_0x0941;
-    L_0x093b:
-        if (r57 == 0) goto L_0x0941;
-    L_0x093d:
-        if (r58 == 0) goto L_0x0941;
-    L_0x093f:
-        if (r59 != 0) goto L_0x0957;
-    L_0x0941:
-        if (r11 == 0) goto L_0x0947;
-    L_0x0943:
-        if (r18 != 0) goto L_0x0947;
-    L_0x0945:
-        if (r70 != 0) goto L_0x0957;
-    L_0x0947:
-        if (r11 == 0) goto L_0x0951;
-    L_0x0949:
-        if (r18 != 0) goto L_0x0951;
-    L_0x094b:
-        if (r70 == 0) goto L_0x0951;
-    L_0x094d:
-        if (r57 == 0) goto L_0x0951;
-    L_0x094f:
-        if (r58 != 0) goto L_0x0957;
-    L_0x0951:
-        if (r11 != 0) goto L_0x0982;
-    L_0x0953:
-        if (r18 == 0) goto L_0x0982;
-    L_0x0955:
-        if (r59 == 0) goto L_0x0982;
-    L_0x0957:
-        r67 = 1;
-    L_0x0959:
-        r4.close();	 Catch:{ IOException -> 0x097c }
-        r7 = java.lang.System.out;	 Catch:{ IOException -> 0x097c }
-        r8 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x097c }
-        r8.<init>();	 Catch:{ IOException -> 0x097c }
-        r9 = "time=";
-        r8 = r8.append(r9);	 Catch:{ IOException -> 0x097c }
-        r12 = java.lang.System.currentTimeMillis();	 Catch:{ IOException -> 0x097c }
-        r12 = r12 - r68;
-        r8 = r8.append(r12);	 Catch:{ IOException -> 0x097c }
-        r8 = r8.toString();	 Catch:{ IOException -> 0x097c }
-        r7.println(r8);	 Catch:{ IOException -> 0x097c }
-        goto L_0x0318;
-    L_0x097c:
-        r38 = move-exception;
-        r38.printStackTrace();
-        goto L_0x0318;
-    L_0x0982:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x098b }
-        r8 = r5 + 1;
-        r7.position(r8);	 Catch:{ Exception -> 0x098b }
-        goto L_0x03b2;
-    L_0x098b:
-        r38 = move-exception;
-        r7 = java.lang.System.out;	 Catch:{ IOException -> 0x097c }
-        r8 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x097c }
-        r8.<init>();	 Catch:{ IOException -> 0x097c }
-        r9 = "";
-        r8 = r8.append(r9);	 Catch:{ IOException -> 0x097c }
-        r0 = r38;
-        r8 = r8.append(r0);	 Catch:{ IOException -> 0x097c }
-        r8 = r8.toString();	 Catch:{ IOException -> 0x097c }
-        r7.println(r8);	 Catch:{ IOException -> 0x097c }
-        goto L_0x0959;
-    L_0x09a7:
+        if (r7 != 0) goto L_0x0919;
+    L_0x0278:
         r7 = patchOatUpd1;
-        if (r7 != 0) goto L_0x09b7;
-    L_0x09ab:
+        if (r7 != 0) goto L_0x0288;
+    L_0x027c:
         r7 = patchOat1;
-        if (r7 != 0) goto L_0x09b7;
-    L_0x09af:
+        if (r7 != 0) goto L_0x0288;
+    L_0x0280:
         r7 = patchOat2;
-        if (r7 != 0) goto L_0x09b7;
-    L_0x09b3:
+        if (r7 != 0) goto L_0x0288;
+    L_0x0284:
         r7 = patchOat3;
-        if (r7 == 0) goto L_0x0a86;
-    L_0x09b7:
+        if (r7 == 0) goto L_0x0353;
+    L_0x0288:
         r7 = r54.size();
         r0 = r30;
-        if (r0 != r7) goto L_0x0a86;
-    L_0x09bf:
+        if (r0 != r7) goto L_0x0353;
+    L_0x0290:
         r7 = onlyDalvik;
-        if (r7 != 0) goto L_0x0a63;
-    L_0x09c3:
+        if (r7 != 0) goto L_0x0334;
+    L_0x0294:
         r7 = new java.io.File;
         r8 = "/data/dalvik-cache/arm/system@framework@boot.oat";
         r7.<init>(r8);
@@ -1806,12 +923,11 @@ public class corepatch {
         r8 = "/data/dalvik-cache/oat/x86_64/system@framework@boot.art";
         r7.<init>(r8);
         r7.delete();
-    L_0x0a63:
+    L_0x0334:
         r7 = java.lang.System.out;
         r8 = new java.lang.StringBuilder;
-        r8.<init>();
         r9 = "patched cache ";
-        r8 = r8.append(r9);
+        r8.<init>(r9);
         r9 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.toolfilesdir;
         r8 = r8.append(r9);
         r9 = "/reboot";
@@ -1819,890 +935,94 @@ public class corepatch {
         r8 = r8.toString();
         r7.println(r8);
         com.chelpus.Utils.reboot();
-    L_0x0a86:
+    L_0x0353:
         r49 = 0;
         r7 = 4;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "framework";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x1079;
-    L_0x0a93:
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x0f4f;
+    L_0x0360:
         r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "core.jar";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 != 0) goto L_0x0aa9;
-    L_0x0a9e:
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 != 0) goto L_0x0376;
+    L_0x036b:
         r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "core-libart.jar";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x0afd;
-    L_0x0aa9:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x03ca;
+    L_0x0376:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = 1;
-        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = com.chelpus.Utils.classes_test(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x0afd;
-    L_0x0ab7:
-        r64 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = com.chelpus.Utils.classes_test(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x03ca;
+    L_0x0384:
+        r64 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r64;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = com.chelpus.Utils.getDirs(r64);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = r7.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = com.chelpus.Utils.getDirs(r64);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = r7.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r64;
-        unzip(r0, r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r26 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.<init>();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = com.chelpus.Utils.getDirs(r64);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r8.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = r7.append(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        unzip(r0, r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r26 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = com.chelpus.Utils.getDirs(r64);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r8.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = java.lang.String.valueOf(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "/classes.dex";
-        r7 = r7.append(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = r7.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r7.append(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = r7.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r26;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = r26.exists();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x0afd;
-    L_0x0af6:
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = r26.exists();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x03ca;
+    L_0x03c3:
         r0 = r42;
         r1 = r26;
-        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-    L_0x0afd:
+        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+    L_0x03ca:
         r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "core.odex";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 != 0) goto L_0x0b1e;
-    L_0x0b08:
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 != 0) goto L_0x03eb;
+    L_0x03d5:
         r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "core-libart.odex";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 != 0) goto L_0x0b1e;
-    L_0x0b13:
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 != 0) goto L_0x03eb;
+    L_0x03e0:
         r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "boot.oat";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x0b2b;
-    L_0x0b1e:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x03f8;
+    L_0x03eb:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = 1;
-        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r42;
-        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-    L_0x0b2b:
-        r19 = r42.iterator();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-    L_0x0b2f:
-        r7 = r19.hasNext();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x10eb;
-    L_0x0b35:
-        r45 = r19.next();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r45 = (java.io.File) r45;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r49 = r45;
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8.<init>();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = "file for patch: ";
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = " size:";
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r12 = r49.length();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r8.append(r12);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = new java.io.RandomAccessFile;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = "rw";
-        r0 = r49;
-        r7.<init>(r0, r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r4 = r7.getChannel();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r14 = 0;
-        r8 = r4.size();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = (int) r8;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r0 = (long) r7;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r16 = r0;
-        r12 = r4;
-        r7 = r12.map(r13, r14, r16);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        fileBytes = r7;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r60 = 0;
-        r7 = r49.getName();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = "boot.oat";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 != 0) goto L_0x212b;
-    L_0x0b95:
-        r44 = new java.util.ArrayList;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r44.<init>();	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r0 = r44;
-        r1 = r49;
-        r0.add(r1);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r0 = r44;
-        r1 = r71;
-        r2 = r18;
-        patchWithOatDumpP12(r0, r1, r11, r2);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r11 == 0) goto L_0x0bb0;
-    L_0x0bac:
-        r7 = patchOat1;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0bb6;
-    L_0x0bb0:
-        if (r18 == 0) goto L_0x2015;
-    L_0x0bb2:
-        r7 = patchOat2;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 != 0) goto L_0x2015;
-    L_0x0bb6:
-        r7 = patchOat1;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0bbb;
-    L_0x0bba:
-        r11 = 0;
-    L_0x0bbb:
-        r7 = patchOat2;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0bc1;
-    L_0x0bbf:
-        r18 = 0;
-    L_0x0bc1:
-        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r14 = 0;
-        r8 = r4.size();	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = (int) r8;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r0 = (long) r7;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r16 = r0;
-        r12 = r4;
-        r7 = r12.map(r13, r14, r16);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        fileBytes = r7;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r50 = 0;
-    L_0x0bd6:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = r7.hasRemaining();	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2015;
-    L_0x0bde:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r5 = r7.position();	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = fileBytes;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r6 = r7.get();	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = byteOrig2;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask2;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace2;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask2;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0c1e;
-    L_0x0bf8:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0c0a;
-    L_0x0c03:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0c0a:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0c1c;
-    L_0x0c15:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0c1c:
-        r60 = 1;
-    L_0x0c1e:
-        r7 = byteOrig3;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask2;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace3;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask2;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0c52;
-    L_0x0c2c:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0c3e;
-    L_0x0c37:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0c3e:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0c50;
-    L_0x0c49:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0c50:
-        r60 = 1;
-    L_0x0c52:
-        r14 = byteOrig4;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r15 = mask4;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplace4;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r17 = rep_mask4;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0c88;
-    L_0x0c62:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0c74;
-    L_0x0c6d:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core unsigned install patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0c74:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0c86;
-    L_0x0c7f:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core unsigned install restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0c86:
-        r60 = 1;
-    L_0x0c88:
-        r14 = byteOrig5;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r15 = mask5;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplace5;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r17 = rep_mask5;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0cbe;
-    L_0x0c98:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0caa;
-    L_0x0ca3:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core unsigned install patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0caa:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0cbc;
-    L_0x0cb5:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core unsigned install restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0cbc:
-        r60 = 1;
-    L_0x0cbe:
-        r7 = byteOrig6;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask6;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace6;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask6;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0cf2;
-    L_0x0ccc:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0cde;
-    L_0x0cd7:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0cde:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0cf0;
-    L_0x0ce9:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0cf0:
-        r60 = 1;
-    L_0x0cf2:
-        r7 = byteOrig7;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask7;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace7;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask7;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0d26;
-    L_0x0d00:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0d12;
-    L_0x0d0b:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0d12:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0d24;
-    L_0x0d1d:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0d24:
-        r60 = 1;
-    L_0x0d26:
-        r7 = byteOrig8;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask8;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace8;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask8;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0d5a;
-    L_0x0d34:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0d46;
-    L_0x0d3f:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0d46:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0d58;
-    L_0x0d51:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0d58:
-        r60 = 1;
-    L_0x0d5a:
-        r7 = byteOrig9;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask9;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace9;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask9;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0d8e;
-    L_0x0d68:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0d7a;
-    L_0x0d73:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0d7a:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0d8c;
-    L_0x0d85:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0d8c:
-        r60 = 1;
-    L_0x0d8e:
-        r7 = byteOrig10;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask10;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace10;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask10;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0dc2;
-    L_0x0d9c:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0dae;
-    L_0x0da7:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0dae:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0dc0;
-    L_0x0db9:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0dc0:
-        r60 = 1;
-    L_0x0dc2:
-        r7 = byteOrig11;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask11;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace11;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask11;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0df6;
-    L_0x0dd0:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0de2;
-    L_0x0ddb:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0de2:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0df4;
-    L_0x0ded:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0df4:
-        r60 = 1;
-    L_0x0df6:
-        r14 = byteOrig12;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r15 = mask12;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplace12;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r17 = rep_mask12;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0e2c;
-    L_0x0e06:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0e18;
-    L_0x0e11:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core unsigned install patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0e18:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0e2a;
-    L_0x0e23:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core unsigned install restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0e2a:
-        r60 = 1;
-    L_0x0e2c:
-        r14 = byteOrig13;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r15 = mask13;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplace13;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r17 = rep_mask13;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0e62;
-    L_0x0e3c:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0e4e;
-    L_0x0e47:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core unsigned install patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0e4e:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0e60;
-    L_0x0e59:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core unsigned install restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0e60:
-        r60 = 1;
-    L_0x0e62:
-        r14 = byteOrig20;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r15 = mask20;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplace20;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r17 = rep_mask20;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0e98;
-    L_0x0e72:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0e84;
-    L_0x0e7d:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core unsigned install patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0e84:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0e96;
-    L_0x0e8f:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core unsigned install restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0e96:
-        r60 = 1;
-    L_0x0e98:
-        r7 = byteOrig21;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask21;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace21;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask21;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0ecc;
-    L_0x0ea6:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0eb8;
-    L_0x0eb1:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0eb8:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0eca;
-    L_0x0ec3:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0eca:
-        r60 = 1;
-    L_0x0ecc:
-        r7 = byteOrig22;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask22;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace22;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask22;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0f00;
-    L_0x0eda:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0eec;
-    L_0x0ee5:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0eec:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0efe;
-    L_0x0ef7:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0efe:
-        r60 = 1;
-    L_0x0f00:
-        r7 = byteOrig14;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask14;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace14;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask14;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0f34;
-    L_0x0f0e:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0f20;
-    L_0x0f19:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0f20:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0f32;
-    L_0x0f2b:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0f32:
-        r60 = 1;
-    L_0x0f34:
-        r7 = byteOrig15;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask15;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace15;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask15;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0f68;
-    L_0x0f42:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0f54;
-    L_0x0f4d:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0f54:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0f66;
-    L_0x0f5f:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0f66:
-        r60 = 1;
-    L_0x0f68:
-        r7 = byteOrig16;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask16;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace16;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask16;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0f9c;
-    L_0x0f76:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0f88;
-    L_0x0f81:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0f88:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0f9a;
-    L_0x0f93:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0f9a:
-        r60 = 1;
-    L_0x0f9c:
-        r7 = byteOrig17;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask17;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace17;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask17;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0fd0;
-    L_0x0faa:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0fbc;
-    L_0x0fb5:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0fbc:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0fce;
-    L_0x0fc7:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0fce:
-        r60 = 1;
-    L_0x0fd0:
-        r7 = byteOrig18;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask18;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace18;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask18;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x1004;
-    L_0x0fde:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x0ff0;
-    L_0x0fe9:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x0ff0:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x1002;
-    L_0x0ffb:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x1002:
-        r60 = 1;
-    L_0x1004:
-        r7 = byteOrig19;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask19;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace19;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask19;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x1038;
-    L_0x1012:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x1024;
-    L_0x101d:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x1024:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x1036;
-    L_0x102f:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x1036:
-        r60 = 1;
-    L_0x1038:
-        r7 = byteOrig23;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = mask23;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplace23;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r10 = rep_mask23;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x106c;
-    L_0x1046:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x1058;
-    L_0x1051:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x1058:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x106a;
-    L_0x1063:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = "Core 2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-    L_0x106a:
-        r60 = 1;
-    L_0x106c:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = r5 + 1;
-        r7.position(r8);	 Catch:{ Exception -> 0x1ffa, FileNotFoundException -> 0x10e3 }
-        r8 = 1;
-        r50 = r50 + r8;
-        goto L_0x0bd6;
-    L_0x1079:
-        r7 = 4;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = "ART";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x1f08;
-    L_0x1084:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = "/system/framework/core-libart.odex";
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = r7.exists();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x10ae;
-    L_0x1091:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = "/system/framework/core-libart.odex";
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r7.length();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r12 = 0;
-        r7 = (r8 > r12 ? 1 : (r8 == r12 ? 0 : -1));
-        if (r7 == 0) goto L_0x10ae;
-    L_0x10a2:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = "/system/framework/core-libart.odex";
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r0 = r42;
-        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-    L_0x10ae:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = "/system/framework/core-libart.jar";
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = com.chelpus.Utils.classes_test(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x0b2b;
-    L_0x10bb:
-        r64 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = "/system/framework/core-libart.jar";
-        r0 = r64;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = "/data/app";
-        r0 = r64;
-        unzip(r0, r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r26 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = "/data/app/classes.dex";
-        r0 = r26;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = r26.exists();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x0b2b;
-    L_0x10da:
-        r0 = r42;
-        r1 = r26;
-        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        goto L_0x0b2b;
-    L_0x10e3:
-        r53 = move-exception;
-    L_0x10e4:
-        r7 = java.lang.System.out;
-        r8 = "Error: core.odex not found!\n\nPlease Odex core.jar and try again!";
-        r7.println(r8);
-    L_0x10eb:
-        if (r25 != 0) goto L_0x10ef;
-    L_0x10ed:
-        if (r62 == 0) goto L_0x2c5f;
-    L_0x10ef:
+        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+    L_0x03f8:
+        r19 = r42.iterator();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+    L_0x03fc:
+        r7 = r19.hasNext();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 != 0) goto L_0x10ac;
+    L_0x0402:
+        if (r25 != 0) goto L_0x0406;
+    L_0x0404:
+        if (r62 == 0) goto L_0x086e;
+    L_0x0406:
         r7 = java.lang.System.out;
         r8 = "Start patch for services.jar";
         r7.println(r8);
@@ -2710,153 +1030,152 @@ public class corepatch {
         r66 = "";
         r40 = "";
         r7 = onlyDalvik;
-        if (r7 != 0) goto L_0x29e8;
-    L_0x1100:
+        if (r7 != 0) goto L_0x1f88;
+    L_0x0417:
         r66 = "/system/framework";
         r40 = "/services.odex";
         r7 = new java.io.File;
         r8 = "/system/framework/arm/services.odex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x1113;
-    L_0x1111:
+        if (r7 == 0) goto L_0x042a;
+    L_0x0428:
         r47 = "/arm";
-    L_0x1113:
+    L_0x042a:
         r7 = new java.io.File;
         r8 = "/system/framework/arm64/services.odex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x1122;
-    L_0x1120:
+        if (r7 == 0) goto L_0x0439;
+    L_0x0437:
         r47 = "/arm64";
-    L_0x1122:
+    L_0x0439:
         r7 = new java.io.File;
         r8 = "/system/framework/x86/services.odex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x1131;
-    L_0x112f:
+        if (r7 == 0) goto L_0x0448;
+    L_0x0446:
         r47 = "/x86";
-    L_0x1131:
+    L_0x0448:
         r7 = new java.io.File;
         r8 = "/system/framework/x86_64/services.odex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x1140;
-    L_0x113e:
+        if (r7 == 0) goto L_0x0457;
+    L_0x0455:
         r47 = "/x86_64";
-    L_0x1140:
+    L_0x0457:
         r7 = new java.io.File;
         r8 = "/system/framework/arm/services.odex.xz";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x114f;
-    L_0x114d:
+        if (r7 == 0) goto L_0x0466;
+    L_0x0464:
         r47 = "/arm";
-    L_0x114f:
+    L_0x0466:
         r7 = new java.io.File;
         r8 = "/system/framework/arm64/services.odex.xz";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x115e;
-    L_0x115c:
+        if (r7 == 0) goto L_0x0475;
+    L_0x0473:
         r47 = "/arm64";
-    L_0x115e:
+    L_0x0475:
         r7 = new java.io.File;
         r8 = "/system/framework/x86/services.odex.xz";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x116d;
-    L_0x116b:
+        if (r7 == 0) goto L_0x0484;
+    L_0x0482:
         r47 = "/x86";
-    L_0x116d:
+    L_0x0484:
         r7 = new java.io.File;
         r8 = "/system/framework/x86_64/services.odex.xz";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x117c;
-    L_0x117a:
+        if (r7 == 0) goto L_0x0493;
+    L_0x0491:
         r47 = "/x86_64";
-    L_0x117c:
+    L_0x0493:
         r7 = new java.io.File;
         r8 = "/system/framework/oat/arm/services.odex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x118b;
-    L_0x1189:
+        if (r7 == 0) goto L_0x04a2;
+    L_0x04a0:
         r47 = "/oat/arm";
-    L_0x118b:
+    L_0x04a2:
         r7 = new java.io.File;
         r8 = "/system/framework/oat/arm64/services.odex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x119a;
-    L_0x1198:
+        if (r7 == 0) goto L_0x04b1;
+    L_0x04af:
         r47 = "/oat/arm64";
-    L_0x119a:
+    L_0x04b1:
         r7 = new java.io.File;
         r8 = "/system/framework/oat/x86/services.odex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x11a9;
-    L_0x11a7:
+        if (r7 == 0) goto L_0x04c0;
+    L_0x04be:
         r47 = "/oat/x86";
-    L_0x11a9:
+    L_0x04c0:
         r7 = new java.io.File;
         r8 = "/system/framework/oat/x86_64/services.odex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x11b8;
-    L_0x11b6:
+        if (r7 == 0) goto L_0x04cf;
+    L_0x04cd:
         r47 = "/oat/x86_64";
-    L_0x11b8:
+    L_0x04cf:
         r7 = new java.io.File;
         r8 = "/system/framework/oat/arm/services.odex.xz";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x11c7;
-    L_0x11c5:
+        if (r7 == 0) goto L_0x04de;
+    L_0x04dc:
         r47 = "/oat/arm";
-    L_0x11c7:
+    L_0x04de:
         r7 = new java.io.File;
         r8 = "/system/framework/oat/arm64/services.odex.xz";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x11d6;
-    L_0x11d4:
+        if (r7 == 0) goto L_0x04ed;
+    L_0x04eb:
         r47 = "/oat/arm64";
-    L_0x11d6:
+    L_0x04ed:
         r7 = new java.io.File;
         r8 = "/system/framework/oat/x86/services.odex.xz";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x11e5;
-    L_0x11e3:
+        if (r7 == 0) goto L_0x04fc;
+    L_0x04fa:
         r47 = "/oat/x86";
-    L_0x11e5:
+    L_0x04fc:
         r7 = new java.io.File;
         r8 = "/system/framework/oat/x86_64/services.odex.xz";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x11f4;
-    L_0x11f2:
+        if (r7 == 0) goto L_0x050b;
+    L_0x0509:
         r47 = "/oat/x86_64";
-    L_0x11f4:
+    L_0x050b:
         r7 = "";
         r0 = r47;
         r7 = r0.equals(r7);
-        if (r7 != 0) goto L_0x132d;
-    L_0x11fe:
+        if (r7 != 0) goto L_0x0638;
+    L_0x0515:
         r7 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.api;
         r8 = 24;
-        if (r7 < r8) goto L_0x132d;
-    L_0x1204:
+        if (r7 < r8) goto L_0x0638;
+    L_0x051b:
         r4 = 0;
         r43 = new java.io.File;
         r7 = new java.lang.StringBuilder;
-        r7.<init>();
-        r0 = r66;
-        r7 = r7.append(r0);
+        r8 = java.lang.String.valueOf(r66);
+        r7.<init>(r8);
         r0 = r47;
         r7 = r7.append(r0);
         r0 = r40;
@@ -2867,9 +1186,8 @@ public class corepatch {
         r46 = 1;
         r7 = new java.io.File;
         r8 = new java.lang.StringBuilder;
-        r8.<init>();
-        r0 = r66;
-        r8 = r8.append(r0);
+        r9 = java.lang.String.valueOf(r66);
+        r8.<init>(r9);
         r0 = r47;
         r8 = r8.append(r0);
         r9 = "/services.odex.xz";
@@ -2877,16 +1195,15 @@ public class corepatch {
         r8 = r8.toString();
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x12bd;
-    L_0x124f:
+        if (r7 == 0) goto L_0x05c8;
+    L_0x0562:
         r7 = java.lang.System.out;
         r8 = "try unpack services.odex.xz";
         r7.println(r8);
         r7 = new java.io.File;
         r8 = new java.lang.StringBuilder;
-        r8.<init>();
-        r0 = r66;
-        r8 = r8.append(r0);
+        r9 = java.lang.String.valueOf(r66);
+        r8.<init>(r9);
         r0 = r47;
         r8 = r8.append(r0);
         r9 = "/services.odex.xz";
@@ -2894,21 +1211,19 @@ public class corepatch {
         r8 = r8.toString();
         r7.<init>(r8);
         r8 = new java.lang.StringBuilder;
-        r8.<init>();
         r9 = "/system/framework";
-        r8 = r8.append(r9);
+        r8.<init>(r9);
         r0 = r47;
         r8 = r8.append(r0);
         r8 = r8.toString();
         r7 = com.chelpus.Utils.XZDecompress(r7, r8);
-        if (r7 != 0) goto L_0x2a82;
-    L_0x1291:
+        if (r7 != 0) goto L_0x2022;
+    L_0x059e:
         r46 = 0;
         r7 = new java.io.File;
         r8 = new java.lang.StringBuilder;
-        r8.<init>();
-        r0 = r66;
-        r8 = r8.append(r0);
+        r9 = java.lang.String.valueOf(r66);
+        r8.<init>(r9);
         r0 = r47;
         r8 = r8.append(r0);
         r0 = r40;
@@ -2919,28 +1234,28 @@ public class corepatch {
         r7 = java.lang.System.out;
         r8 = "not enought space for unpack services.odex.xz";
         r7.println(r8);
-    L_0x12bd:
-        if (r46 == 0) goto L_0x2b0e;
-    L_0x12bf:
-        if (r25 == 0) goto L_0x2b0e;
-    L_0x12c1:
+    L_0x05c8:
+        if (r46 == 0) goto L_0x20a8;
+    L_0x05ca:
+        if (r25 == 0) goto L_0x20a8;
+    L_0x05cc:
         r0 = r43;
         r1 = r71;
         r2 = r25;
         patchWithOatDumpP3(r0, r1, r2);
-    L_0x12ca:
+    L_0x05d5:
         r7 = patchOat1;
-        if (r7 != 0) goto L_0x12d6;
-    L_0x12ce:
+        if (r7 != 0) goto L_0x05e1;
+    L_0x05d9:
         r7 = patchOat2;
-        if (r7 != 0) goto L_0x12d6;
-    L_0x12d2:
+        if (r7 != 0) goto L_0x05e1;
+    L_0x05dd:
         r7 = patchOat6;
-        if (r7 == 0) goto L_0x132d;
-    L_0x12d6:
+        if (r7 == 0) goto L_0x0638;
+    L_0x05e1:
         r7 = onlyDalvik;
-        if (r7 != 0) goto L_0x132a;
-    L_0x12da:
+        if (r7 != 0) goto L_0x0635;
+    L_0x05e5:
         r7 = new java.io.File;
         r8 = "/data/dalvik-cache/arm/system@framework@services.jar@classes.dex";
         r7.<init>(r8);
@@ -2973,28 +1288,27 @@ public class corepatch {
         r8 = "/data/dalvik-cache/x86_64/system@framework@services.jar@classes.art";
         r7.<init>(r8);
         r7.delete();
-    L_0x132a:
+    L_0x0635:
         com.chelpus.Utils.reboot();
-    L_0x132d:
+    L_0x0638:
         r7 = "";
         r0 = r47;
         r7 = r0.equals(r7);
-        if (r7 != 0) goto L_0x1bcb;
-    L_0x1337:
+        if (r7 != 0) goto L_0x07e0;
+    L_0x0642:
         r7 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.api;
         r8 = 21;
-        if (r7 < r8) goto L_0x1bcb;
-    L_0x133d:
+        if (r7 < r8) goto L_0x07e0;
+    L_0x0648:
         r7 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.api;
         r8 = 23;
-        if (r7 > r8) goto L_0x1bcb;
-    L_0x1343:
+        if (r7 > r8) goto L_0x07e0;
+    L_0x064e:
         r4 = 0;
         r43 = new java.io.File;
         r7 = new java.lang.StringBuilder;
-        r7.<init>();
-        r0 = r66;
-        r7 = r7.append(r0);
+        r8 = java.lang.String.valueOf(r66);
+        r7.<init>(r8);
         r0 = r47;
         r7 = r7.append(r0);
         r0 = r40;
@@ -3005,9 +1319,8 @@ public class corepatch {
         r46 = 1;
         r7 = new java.io.File;
         r8 = new java.lang.StringBuilder;
-        r8.<init>();
-        r0 = r66;
-        r8 = r8.append(r0);
+        r9 = java.lang.String.valueOf(r66);
+        r8.<init>(r9);
         r0 = r47;
         r8 = r8.append(r0);
         r9 = "/services.odex.xz";
@@ -3015,16 +1328,15 @@ public class corepatch {
         r8 = r8.toString();
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x13fc;
-    L_0x138e:
+        if (r7 == 0) goto L_0x06fb;
+    L_0x0695:
         r7 = java.lang.System.out;
         r8 = "try unpack services.odex.xz";
         r7.println(r8);
         r7 = new java.io.File;
         r8 = new java.lang.StringBuilder;
-        r8.<init>();
-        r0 = r66;
-        r8 = r8.append(r0);
+        r9 = java.lang.String.valueOf(r66);
+        r8.<init>(r9);
         r0 = r47;
         r8 = r8.append(r0);
         r9 = "/services.odex.xz";
@@ -3032,21 +1344,19 @@ public class corepatch {
         r8 = r8.toString();
         r7.<init>(r8);
         r8 = new java.lang.StringBuilder;
-        r8.<init>();
         r9 = "/system/framework";
-        r8 = r8.append(r9);
+        r8.<init>(r9);
         r0 = r47;
         r8 = r8.append(r0);
         r8 = r8.toString();
         r7 = com.chelpus.Utils.XZDecompress(r7, r8);
-        if (r7 != 0) goto L_0x2b17;
-    L_0x13d0:
+        if (r7 != 0) goto L_0x20b1;
+    L_0x06d1:
         r46 = 0;
         r7 = new java.io.File;
         r8 = new java.lang.StringBuilder;
-        r8.<init>();
-        r0 = r66;
-        r8 = r8.append(r0);
+        r9 = java.lang.String.valueOf(r66);
+        r8.<init>(r9);
         r0 = r47;
         r8 = r8.append(r0);
         r0 = r40;
@@ -3057,1061 +1367,79 @@ public class corepatch {
         r7 = java.lang.System.out;
         r8 = "not enought space for unpack services.odex.xz";
         r7.println(r8);
-    L_0x13fc:
-        if (r46 == 0) goto L_0x2bcf;
-    L_0x13fe:
+    L_0x06fb:
+        if (r46 == 0) goto L_0x2845;
+    L_0x06fd:
         r0 = r43;
         r1 = r71;
         r2 = r25;
         patchWithOatDumpP3(r0, r1, r2);
         r7 = patchOat1;
-        if (r7 != 0) goto L_0x140d;
-    L_0x140b:
-        if (r25 != 0) goto L_0x1413;
-    L_0x140d:
+        if (r7 != 0) goto L_0x070c;
+    L_0x070a:
+        if (r25 != 0) goto L_0x0712;
+    L_0x070c:
         r7 = patchOat2;
-        if (r7 != 0) goto L_0x1b68;
-    L_0x1411:
-        if (r25 == 0) goto L_0x1b68;
-    L_0x1413:
-        r7 = new java.io.RandomAccessFile;	 Catch:{ IOException -> 0x2bc9 }
+        if (r7 != 0) goto L_0x077d;
+    L_0x0710:
+        if (r25 == 0) goto L_0x077d;
+    L_0x0712:
+        r7 = new java.io.RandomAccessFile;	 Catch:{ IOException -> 0x2836 }
         r8 = "rw";
         r0 = r43;
-        r7.<init>(r0, r8);	 Catch:{ IOException -> 0x2bc9 }
-        r4 = r7.getChannel();	 Catch:{ IOException -> 0x2bc9 }
-        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ IOException -> 0x2bc9 }
+        r7.<init>(r0, r8);	 Catch:{ IOException -> 0x2836 }
+        r4 = r7.getChannel();	 Catch:{ IOException -> 0x2836 }
+        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ IOException -> 0x2836 }
         r14 = 0;
-        r8 = r4.size();	 Catch:{ IOException -> 0x2bc9 }
-        r7 = (int) r8;	 Catch:{ IOException -> 0x2bc9 }
-        r0 = (long) r7;	 Catch:{ IOException -> 0x2bc9 }
+        r8 = r4.size();	 Catch:{ IOException -> 0x2836 }
+        r7 = (int) r8;	 Catch:{ IOException -> 0x2836 }
+        r0 = (long) r7;	 Catch:{ IOException -> 0x2836 }
         r16 = r0;
         r12 = r4;
-        r7 = r12.map(r13, r14, r16);	 Catch:{ IOException -> 0x2bc9 }
-        fileBytes = r7;	 Catch:{ IOException -> 0x2bc9 }
-        r7 = fileBytes;	 Catch:{ IOException -> 0x2bc9 }
+        r7 = r12.map(r13, r14, r16);	 Catch:{ IOException -> 0x2836 }
+        fileBytes = r7;	 Catch:{ IOException -> 0x2836 }
+        r7 = fileBytes;	 Catch:{ IOException -> 0x2836 }
         r8 = 4120; // 0x1018 float:5.773E-42 double:2.0356E-320;
-        r7.position(r8);	 Catch:{ IOException -> 0x2bc9 }
-        r7 = fileBytes;	 Catch:{ IOException -> 0x2bc9 }
-        r7 = r7.get();	 Catch:{ IOException -> 0x2bc9 }
-        r8 = fileBytes;	 Catch:{ IOException -> 0x2bc9 }
-        r8 = r8.get();	 Catch:{ IOException -> 0x2bc9 }
-        r9 = fileBytes;	 Catch:{ IOException -> 0x2bc9 }
-        r9 = r9.get();	 Catch:{ IOException -> 0x2bc9 }
-        r10 = fileBytes;	 Catch:{ IOException -> 0x2bc9 }
-        r10 = r10.get();	 Catch:{ IOException -> 0x2bc9 }
-        r63 = com.chelpus.Utils.convertFourBytesToInt(r7, r8, r9, r10);	 Catch:{ IOException -> 0x2bc9 }
-        r7 = java.lang.System.out;	 Catch:{ IOException -> 0x2bc9 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x2bc9 }
-        r8.<init>();	 Catch:{ IOException -> 0x2bc9 }
+        r7.position(r8);	 Catch:{ IOException -> 0x2836 }
+        r7 = fileBytes;	 Catch:{ IOException -> 0x2836 }
+        r7 = r7.get();	 Catch:{ IOException -> 0x2836 }
+        r8 = fileBytes;	 Catch:{ IOException -> 0x2836 }
+        r8 = r8.get();	 Catch:{ IOException -> 0x2836 }
+        r9 = fileBytes;	 Catch:{ IOException -> 0x2836 }
+        r9 = r9.get();	 Catch:{ IOException -> 0x2836 }
+        r10 = fileBytes;	 Catch:{ IOException -> 0x2836 }
+        r10 = r10.get();	 Catch:{ IOException -> 0x2836 }
+        r63 = com.chelpus.Utils.convertFourBytesToInt(r7, r8, r9, r10);	 Catch:{ IOException -> 0x2836 }
+        r7 = java.lang.System.out;	 Catch:{ IOException -> 0x2836 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x2836 }
         r9 = "Start position:";
-        r8 = r8.append(r9);	 Catch:{ IOException -> 0x2bc9 }
+        r8.<init>(r9);	 Catch:{ IOException -> 0x2836 }
         r0 = r63;
-        r8 = r8.append(r0);	 Catch:{ IOException -> 0x2bc9 }
-        r8 = r8.toString();	 Catch:{ IOException -> 0x2bc9 }
-        r7.println(r8);	 Catch:{ IOException -> 0x2bc9 }
-        r7 = fileBytes;	 Catch:{ IOException -> 0x2bc9 }
+        r8 = r8.append(r0);	 Catch:{ IOException -> 0x2836 }
+        r8 = r8.toString();	 Catch:{ IOException -> 0x2836 }
+        r7.println(r8);	 Catch:{ IOException -> 0x2836 }
+        r7 = fileBytes;	 Catch:{ IOException -> 0x2836 }
         r0 = r63;
-        r7.position(r0);	 Catch:{ IOException -> 0x2bc9 }
-    L_0x1477:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x2bac }
-        r7 = r7.hasRemaining();	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1b65;
-    L_0x147f:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x2bac }
-        r5 = r7.position();	 Catch:{ Exception -> 0x2bac }
-        r7 = fileBytes;	 Catch:{ Exception -> 0x2bac }
-        r6 = r7.get();	 Catch:{ Exception -> 0x2bac }
-        r21 = byteOrigSOat1;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat1;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat1;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat1;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x14c4;
-    L_0x149d:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x14af;
-    L_0x14a8:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x14af:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x14c1;
-    L_0x14ba:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x14c1:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x14c4:
-        r21 = byteOrigSOat1_1;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat1_1;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat1_1;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat1_1;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x14fd;
-    L_0x14d6:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x14e8;
-    L_0x14e1:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x14e8:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x14fa;
-    L_0x14f3:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x14fa:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x14fd:
-        r21 = byteOrigSOat1_2;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat1_2;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat1_2;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat1_2;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1536;
-    L_0x150f:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1521;
-    L_0x151a:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1521:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1533;
-    L_0x152c:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1533:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1536:
-        r21 = byteOrigSOat2;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat2;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat2;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat2;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x156f;
-    L_0x1548:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x155a;
-    L_0x1553:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x155a:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x156c;
-    L_0x1565:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x156c:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x156f:
-        r21 = byteOrigSOat6_2;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat6_2;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat6_2;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat6_2;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x15a8;
-    L_0x1581:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1593;
-    L_0x158c:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1593:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x15a5;
-    L_0x159e:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x15a5:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x15a8:
-        r21 = byteOrigSOat6_3;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat6_3;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat6_3;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat6_3;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x15e1;
-    L_0x15ba:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x15cc;
-    L_0x15c5:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x15cc:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x15de;
-    L_0x15d7:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x15de:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x15e1:
-        r21 = byteOrigSOat6_4;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat6_4;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat6_4;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat6_4;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x161a;
-    L_0x15f3:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1605;
-    L_0x15fe:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1605:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1617;
-    L_0x1610:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1617:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x161a:
-        r21 = byteOrigSOat6_5;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat6_5;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat6_5;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat6_5;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1653;
-    L_0x162c:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x163e;
-    L_0x1637:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x163e:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1650;
-    L_0x1649:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1650:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1653:
-        r21 = byteOrigSOat3;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat3;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat3;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat3;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x168c;
-    L_0x1665:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1677;
-    L_0x1670:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1677:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1689;
-    L_0x1682:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1689:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x168c:
-        r21 = byteOrigSOat6;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat6;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat6;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat6;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x16c5;
-    L_0x169e:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x16b0;
-    L_0x16a9:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x16b0:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x16c2;
-    L_0x16bb:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x16c2:
-        r7 = 1;
-        patchOat6 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x16c5:
-        r21 = byteOrigSOat7;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat7;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat7;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat7;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x16fe;
-    L_0x16d7:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x16e9;
-    L_0x16e2:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x16e9:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x16fb;
-    L_0x16f4:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x16fb:
-        r7 = 1;
-        patchOat6 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x16fe:
-        r21 = byteOrigSOat7_2;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat7_2;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat7_2;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat7_2;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1737;
-    L_0x1710:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1722;
-    L_0x171b:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1722:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1734;
-    L_0x172d:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1734:
-        r7 = 1;
-        patchOat6 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1737:
-        r21 = byteOrigSOat4;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat4;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat4;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat4;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1770;
-    L_0x1749:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x175b;
-    L_0x1754:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x175b:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x176d;
-    L_0x1766:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x176d:
-        r7 = 1;
-        patchOat6 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1770:
-        r21 = byteOrigSOat5;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat5;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat5;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat5;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x17a9;
-    L_0x1782:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1794;
-    L_0x178d:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1794:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x17a6;
-    L_0x179f:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x17a6:
-        r7 = 1;
-        patchOat6 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x17a9:
-        r21 = byteOrigSOat5_1;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat5_1;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat5_1;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat5_1;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x17e2;
-    L_0x17bb:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x17cd;
-    L_0x17c6:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x17cd:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x17df;
-    L_0x17d8:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!FixForCM\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x17df:
-        r7 = 1;
-        patchOat6 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x17e2:
-        r21 = byteOrigSOat8;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat8;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat8;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat8;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x181b;
-    L_0x17f4:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1806;
-    L_0x17ff:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1806:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1818;
-    L_0x1811:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1818:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x181b:
-        r21 = byteOrigSOat8_1;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat8_1;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat8_1;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat8_1;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1854;
-    L_0x182d:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x183f;
-    L_0x1838:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x183f:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1851;
-    L_0x184a:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1851:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1854:
-        r21 = byteOrigSOat8_2;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat8_2;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat8_2;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat8_2;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x188d;
-    L_0x1866:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1878;
-    L_0x1871:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1878:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x188a;
-    L_0x1883:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x188a:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x188d:
-        r21 = byteOrigSOat9;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat9;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat9;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat9;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x18c6;
-    L_0x189f:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x18b1;
-    L_0x18aa:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x18b1:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x18c3;
-    L_0x18bc:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x18c3:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x18c6:
-        r21 = byteOrigSOat9_1;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat9_1;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat9_1;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat9_1;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x18ff;
-    L_0x18d8:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x18ea;
-    L_0x18e3:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x18ea:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x18fc;
-    L_0x18f5:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x18fc:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x18ff:
-        r21 = byteOrigSOat9_3;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat9_3;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat9_3;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat9_3;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1938;
-    L_0x1911:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1923;
-    L_0x191c:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1923:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1935;
-    L_0x192e:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1935:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1938:
-        r21 = byteOrigSOat9_2;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat9_2;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat9_2;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat9_2;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1971;
-    L_0x194a:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x195c;
-    L_0x1955:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x195c:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x196e;
-    L_0x1967:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x196e:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1971:
-        r21 = byteOrigSOat12;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat12;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat12;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat12;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x19aa;
-    L_0x1983:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1995;
-    L_0x198e:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1995:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x19a7;
-    L_0x19a0:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x19a7:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x19aa:
-        r21 = byteOrigSOat12_1;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat12_1;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat12_1;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat12_1;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x19e3;
-    L_0x19bc:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x19ce;
-    L_0x19c7:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x19ce:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x19e0;
-    L_0x19d9:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!InstallLocationPolice\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x19e0:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x19e3:
-        r21 = byteOrigSOat10;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat10;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat10;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat10;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1a1c;
-    L_0x19f5:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1a07;
-    L_0x1a00:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1a07:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1a19;
-    L_0x1a12:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1a19:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1a1c:
-        r21 = byteOrigSOat10_1;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat10_1;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat10_1;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat10_1;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1a55;
-    L_0x1a2e:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1a40;
-    L_0x1a39:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1a40:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1a52;
-    L_0x1a4b:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1a52:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1a55:
-        r21 = byteOrigSOat11;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat11;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat11;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat11;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1a8e;
-    L_0x1a67:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1a79;
-    L_0x1a72:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1a79:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1a8b;
-    L_0x1a84:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1a8b:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1a8e:
-        r21 = byteOrigSOat11_1;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat11_1;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat11_1;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat11_1;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1ac7;
-    L_0x1aa0:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1ab2;
-    L_0x1aab:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1ab2:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1ac4;
-    L_0x1abd:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1ac4:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1ac7:
-        r21 = byteOrigSOat11_2;	 Catch:{ Exception -> 0x2bac }
-        r22 = maskSOat11_2;	 Catch:{ Exception -> 0x2bac }
-        r23 = byteReplaceSOat11_2;	 Catch:{ Exception -> 0x2bac }
-        r24 = rep_maskSOat11_2;	 Catch:{ Exception -> 0x2bac }
-        r19 = r5;
-        r20 = r6;
-        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1b00;
-    L_0x1ad9:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1aeb;
-    L_0x1ae4:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1aeb:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2bac }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x1afd;
-    L_0x1af6:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2bac }
-        r8 = "Core4 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2bac }
-    L_0x1afd:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2bac }
-    L_0x1b00:
-        if (r25 == 0) goto L_0x2ba3;
-    L_0x1b02:
-        r7 = patchOat1;	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x2ba3;
-    L_0x1b06:
-        r7 = patchOat2;	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x2ba3;
-    L_0x1b0a:
-        r7 = patchOat6;	 Catch:{ Exception -> 0x2bac }
-        if (r7 == 0) goto L_0x2ba3;
-    L_0x1b0e:
-        r7 = onlyDalvik;	 Catch:{ Exception -> 0x2bac }
-        if (r7 != 0) goto L_0x1b62;
-    L_0x1b12:
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2bac }
-        r8 = "/data/dalvik-cache/arm/system@framework@services.jar@classes.dex";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2bac }
-        r7.delete();	 Catch:{ Exception -> 0x2bac }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2bac }
-        r8 = "/data/dalvik-cache/arm/system@framework@services.jar@classes.art";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2bac }
-        r7.delete();	 Catch:{ Exception -> 0x2bac }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2bac }
-        r8 = "/data/dalvik-cache/arm64/system@framework@services.jar@classes.dex";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2bac }
-        r7.delete();	 Catch:{ Exception -> 0x2bac }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2bac }
-        r8 = "/data/dalvik-cache/arm64/system@framework@services.jar@classes.art";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2bac }
-        r7.delete();	 Catch:{ Exception -> 0x2bac }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2bac }
-        r8 = "/data/dalvik-cache/x86/system@framework@services.jar@classes.dex";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2bac }
-        r7.delete();	 Catch:{ Exception -> 0x2bac }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2bac }
-        r8 = "/data/dalvik-cache/x86/system@framework@services.jar@classes.art";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2bac }
-        r7.delete();	 Catch:{ Exception -> 0x2bac }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2bac }
-        r8 = "/data/dalvik-cache/x86_64/system@framework@services.jar@classes.dex";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2bac }
-        r7.delete();	 Catch:{ Exception -> 0x2bac }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2bac }
-        r8 = "/data/dalvik-cache/x86_64/system@framework@services.jar@classes.art";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2bac }
-        r7.delete();	 Catch:{ Exception -> 0x2bac }
-    L_0x1b62:
-        com.chelpus.Utils.reboot();	 Catch:{ Exception -> 0x2bac }
-    L_0x1b65:
-        r4.close();	 Catch:{ IOException -> 0x2bc9 }
-    L_0x1b68:
+        r7.position(r0);	 Catch:{ IOException -> 0x2836 }
+    L_0x0772:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x281f }
+        r7 = r7.hasRemaining();	 Catch:{ Exception -> 0x281f }
+        if (r7 != 0) goto L_0x2137;
+    L_0x077a:
+        r4.close();	 Catch:{ IOException -> 0x2836 }
+    L_0x077d:
         r7 = patchOat1;
-        if (r7 != 0) goto L_0x1b74;
-    L_0x1b6c:
+        if (r7 != 0) goto L_0x0789;
+    L_0x0781:
         r7 = patchOat2;
-        if (r7 != 0) goto L_0x1b74;
-    L_0x1b70:
+        if (r7 != 0) goto L_0x0789;
+    L_0x0785:
         r7 = patchOat6;
-        if (r7 == 0) goto L_0x1bcb;
-    L_0x1b74:
+        if (r7 == 0) goto L_0x07e0;
+    L_0x0789:
         r7 = onlyDalvik;
-        if (r7 != 0) goto L_0x1bc8;
-    L_0x1b78:
+        if (r7 != 0) goto L_0x07dd;
+    L_0x078d:
         r7 = new java.io.File;
         r8 = "/data/dalvik-cache/arm/system@framework@services.jar@classes.dex";
         r7.<init>(r8);
@@ -4144,1900 +1472,3213 @@ public class corepatch {
         r8 = "/data/dalvik-cache/x86_64/system@framework@services.jar@classes.art";
         r7.<init>(r8);
         r7.delete();
-    L_0x1bc8:
+    L_0x07dd:
         com.chelpus.Utils.reboot();
-    L_0x1bcb:
+    L_0x07e0:
         r49 = 0;
         r7 = 4;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "framework";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r7 == 0) goto L_0x2bd8;
-    L_0x1bd8:
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r7 == 0) goto L_0x284e;
+    L_0x07ed:
         r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "services.jar";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r7 == 0) goto L_0x1c37;
-    L_0x1be3:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r7 == 0) goto L_0x084c;
+    L_0x07f8:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = 1;
-        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = com.chelpus.Utils.classes_test(r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r7 == 0) goto L_0x1c37;
-    L_0x1bf1:
-        r64 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = com.chelpus.Utils.classes_test(r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r7 == 0) goto L_0x084c;
+    L_0x0806:
+        r64 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r64;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = com.chelpus.Utils.getDirs(r64);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = r7.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = com.chelpus.Utils.getDirs(r64);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = r7.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r64;
-        unzip(r0, r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r26 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7.<init>();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = com.chelpus.Utils.getDirs(r64);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = r8.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = r7.append(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        unzip(r0, r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r26 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = com.chelpus.Utils.getDirs(r64);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = r8.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = java.lang.String.valueOf(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "/classes.dex";
-        r7 = r7.append(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = r7.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7 = r7.append(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = r7.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r26;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = r26.exists();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r7 == 0) goto L_0x1c37;
-    L_0x1c30:
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = r26.exists();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r7 == 0) goto L_0x084c;
+    L_0x0845:
         r0 = r42;
         r1 = r26;
-        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x1c37:
+        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x084c:
         r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "services.odex";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r7 == 0) goto L_0x1c4f;
-    L_0x1c42:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r7 == 0) goto L_0x0864;
+    L_0x0857:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = 1;
-        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r42;
-        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x1c4f:
-        r7 = r42.iterator();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x1c53:
-        r8 = r7.hasNext();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x2c5f;
-    L_0x1c59:
-        r45 = r7.next();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r45 = (java.io.File) r45;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r10 = "Start patch for ";
-        r9 = r9.append(r10);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r10 = r45.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = r9.append(r10);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r49 = r45;
-        r48 = 0;
-        r8 = com.chelpus.Utils.isELFfiles(r49);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x1c87;
-    L_0x1c85:
-        r48 = 1;
-    L_0x1c87:
-        r8 = new java.io.RandomAccessFile;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = "rw";
-        r0 = r49;
-        r8.<init>(r0, r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r4 = r8.getChannel();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r14 = 0;
-        r8 = r4.size();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = (int) r8;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r0 = (long) r8;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r16 = r0;
-        r12 = r4;
-        r8 = r12.map(r13, r14, r16);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        fileBytes = r8;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r61 = 0;
-        r31 = 0;
-        r32 = 0;
-        if (r48 != 0) goto L_0x2e64;
-    L_0x1caf:
-        r8 = 0;
-        lastByteReplace = r8;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = 0;
-        lastPatchPosition = r8;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r50 = 0;
-    L_0x1cb7:
-        r8 = fileBytes;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r8 = r8.hasRemaining();	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2d87;
-    L_0x1cbf:
-        r8 = fileBytes;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r5 = r8.position();	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r8 = fileBytes;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r6 = r8.get();	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r21 = byteOrigS2;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r22 = maskS2;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceS2;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskS2;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1d03;
-    L_0x1cdd:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1cef;
-    L_0x1ce8:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1cef:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1d01;
-    L_0x1cfa:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1d01:
-        r61 = 1;
-    L_0x1d03:
-        r21 = byteOrigS5;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r22 = maskS5;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceS5;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskS5;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1d3b;
-    L_0x1d15:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1d27;
-    L_0x1d20:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1d27:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1d39;
-    L_0x1d32:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1d39:
-        r61 = 1;
-    L_0x1d3b:
-        r21 = byteOrigS14;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r22 = maskS14;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceS14;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskS14;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1d73;
-    L_0x1d4d:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1d5f;
-    L_0x1d58:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1d5f:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1d71;
-    L_0x1d6a:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1d71:
-        r61 = 1;
-    L_0x1d73:
-        r21 = byteOrigS6;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r22 = maskS6;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceS6;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskS6;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1dab;
-    L_0x1d85:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1d97;
-    L_0x1d90:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!checkUpgradeKeySetLP\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1d97:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1da9;
-    L_0x1da2:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!checkUpgradeKeySetLP\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1da9:
-        r61 = 1;
-    L_0x1dab:
-        r21 = byteOrigS7;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r22 = maskS7;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceS7;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskS7;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1de3;
-    L_0x1dbd:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1dcf;
-    L_0x1dc8:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\nCM12";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1dcf:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1de1;
-    L_0x1dda:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\nCM12";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1de1:
-        r61 = 1;
-    L_0x1de3:
-        r21 = byteOrigS7_1;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r22 = maskS7_1;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceS7_1;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskS7_1;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1e1b;
-    L_0x1df5:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1e07;
-    L_0x1e00:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\nCM12";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1e07:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1e19;
-    L_0x1e12:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\nCM12";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1e19:
-        r61 = 1;
-    L_0x1e1b:
-        r21 = byteOrigS3;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r22 = maskS3;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceS3;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskS3;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1e53;
-    L_0x1e2d:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1e3f;
-    L_0x1e38:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\nCM11";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1e3f:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1e51;
-    L_0x1e4a:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\nCM11";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1e51:
-        r61 = 1;
-    L_0x1e53:
-        r21 = byteOrigS4;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r22 = maskS4;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceS4;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskS4;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1e8b;
-    L_0x1e65:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1e77;
-    L_0x1e70:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 policy patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1e77:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1e89;
-    L_0x1e82:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 policy restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1e89:
-        r61 = 1;
-    L_0x1e8b:
-        r21 = byteOrigS13;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r22 = maskS13;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceS13;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskS13;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1ec3;
-    L_0x1e9d:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1eaf;
-    L_0x1ea8:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 policy patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1eaf:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1ec1;
-    L_0x1eba:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 policy restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1ec1:
-        r61 = 1;
-    L_0x1ec3:
-        r21 = byteOrigS13_1;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r22 = maskS13_1;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceS13_1;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskS13_1;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1efb;
-    L_0x1ed5:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1ee7;
-    L_0x1ee0:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 policy patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1ee7:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x1ef9;
-    L_0x1ef2:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 policy restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-    L_0x1ef9:
-        r61 = 1;
-    L_0x1efb:
-        r8 = fileBytes;	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r9 = r5 + 1;
-        r8.position(r9);	 Catch:{ Exception -> 0x2d69, FileNotFoundException -> 0x2c57 }
-        r8 = 1;
-        r50 = r50 + r8;
-        goto L_0x1cb7;
-    L_0x1f08:
-        r7 = onlyDalvik;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x1f4d;
-    L_0x1f0c:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8.<init>();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = "OnlyDalvik: add for patch ";
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = 1;
-        r9 = r71[r9];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r52 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r0 = r52;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = r52.exists();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        if (r7 != 0) goto L_0x1f42;
-    L_0x1f37:
-        r7 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        r7.<init>();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        throw r7;	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-    L_0x1f3d:
-        r53 = move-exception;
-        r49 = r52;
-        goto L_0x10e4;
-    L_0x1f42:
-        r0 = r42;
-        r1 = r52;
-        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        r49 = r52;
-        goto L_0x0b2b;
-    L_0x1f4d:
-        r52 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r0 = r52;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = r52.exists();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        if (r7 != 0) goto L_0x1f84;
-    L_0x1f5d:
-        r7 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        r7.<init>();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        throw r7;	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-    L_0x1f63:
+        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x0864:
+        r7 = r42.iterator();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x0868:
+        r8 = r7.hasNext();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 != 0) goto L_0x29ce;
+    L_0x086e:
+        com.chelpus.Utils.exitFromRootJava();
+        return;
+    L_0x0872:
         r38 = move-exception;
-        r49 = r52;
-    L_0x1f66:
+        r38.printStackTrace();
+        goto L_0x004e;
+    L_0x0878:
+        r55 = r56[r7];
+        r9 = new java.io.File;
+        r0 = r55;
+        r9.<init>(r0);
+        r9 = r9.exists();
+        if (r9 == 0) goto L_0x0893;
+    L_0x0887:
+        r9 = new java.io.File;
+        r0 = r55;
+        r9.<init>(r0);
+        r0 = r54;
+        r0.add(r9);
+    L_0x0893:
+        r7 = r7 + 1;
+        goto L_0x0207;
+    L_0x0897:
+        r7 = 16;
+        r0 = new java.lang.String[r7];
+        r56 = r0;
+        r7 = 0;
+        r8 = "/data/dalvik-cache/x86/system@framework@boot.oat";
+        r56[r7] = r8;
+        r7 = 1;
+        r8 = "/data/dalvik-cache/x86_64/system@framework@boot.oat";
+        r56[r7] = r8;
+        r7 = 2;
+        r8 = "/data/dalvik-cache/arm64/system@framework@boot.oat";
+        r56[r7] = r8;
+        r7 = 3;
+        r8 = "/data/dalvik-cache/arm/system@framework@boot.oat";
+        r56[r7] = r8;
+        r7 = 4;
+        r8 = "/data/dalvik-cache/oat/x86/system@framework@boot.oat";
+        r56[r7] = r8;
+        r7 = 5;
+        r8 = "/data/dalvik-cache/oat/x86_64/system@framework@boot.oat";
+        r56[r7] = r8;
+        r7 = 6;
+        r8 = "/data/dalvik-cache/oat/arm64/system@framework@boot.oat";
+        r56[r7] = r8;
+        r7 = 7;
+        r8 = "/data/dalvik-cache/oat/arm/system@framework@boot.oat";
+        r56[r7] = r8;
+        r7 = 8;
+        r8 = "/data/dalvik-cache/x86/system@framework@boot-conscrypt.oat";
+        r56[r7] = r8;
+        r7 = 9;
+        r8 = "/data/dalvik-cache/x86_64/system@framework@boot-conscrypt.oat";
+        r56[r7] = r8;
+        r7 = 10;
+        r8 = "/data/dalvik-cache/arm64/system@framework@boot-conscrypt.oat";
+        r56[r7] = r8;
+        r7 = 11;
+        r8 = "/data/dalvik-cache/arm/system@framework@boot-conscrypt.oat";
+        r56[r7] = r8;
+        r7 = 12;
+        r8 = "/data/dalvik-cache/oat/x86/system@framework@boot-conscrypt.oat";
+        r56[r7] = r8;
+        r7 = 13;
+        r8 = "/data/dalvik-cache/oat/x86_64/system@framework@boot-conscrypt.oat";
+        r56[r7] = r8;
+        r7 = 14;
+        r8 = "/data/dalvik-cache/oat/arm64/system@framework@boot-conscrypt.oat";
+        r56[r7] = r8;
+        r7 = 15;
+        r8 = "/data/dalvik-cache/oat/arm/system@framework@boot-conscrypt.oat";
+        r56[r7] = r8;
+        r0 = r56;
+        r8 = r0.length;
+        r7 = 0;
+    L_0x08f9:
+        if (r7 >= r8) goto L_0x0209;
+    L_0x08fb:
+        r55 = r56[r7];
+        r9 = new java.io.File;
+        r0 = r55;
+        r9.<init>(r0);
+        r9 = r9.exists();
+        if (r9 == 0) goto L_0x0916;
+    L_0x090a:
+        r9 = new java.io.File;
+        r0 = r55;
+        r9.<init>(r0);
+        r0 = r54;
+        r0.add(r9);
+    L_0x0916:
+        r7 = r7 + 1;
+        goto L_0x08f9;
+    L_0x0919:
+        r39 = r19.next();
+        r39 = (java.io.File) r39;
+        r30 = r30 + 1;
         r7 = java.lang.System.out;
         r8 = new java.lang.StringBuilder;
-        r8.<init>();
-        r9 = "Exception e";
+        r9 = "oat file for patch:";
+        r8.<init>(r9);
+        r9 = r39.getAbsolutePath();
         r8 = r8.append(r9);
+        r8 = r8.toString();
+        r7.println(r8);
+        r4 = 0;
+        r70 = 0;
+        r57 = 0;
+        r58 = 0;
+        r59 = 0;
+        r68 = java.lang.System.currentTimeMillis();	 Catch:{ IOException -> 0x09ce }
+        r7 = new java.io.RandomAccessFile;	 Catch:{ IOException -> 0x09ce }
+        r8 = "rw";
+        r0 = r39;
+        r7.<init>(r0, r8);	 Catch:{ IOException -> 0x09ce }
+        r4 = r7.getChannel();	 Catch:{ IOException -> 0x09ce }
+        r5 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ IOException -> 0x09ce }
+        r6 = 0;
+        r8 = r4.size();	 Catch:{ IOException -> 0x09ce }
+        r8 = (int) r8;	 Catch:{ IOException -> 0x09ce }
+        r8 = (long) r8;	 Catch:{ IOException -> 0x09ce }
+        r7 = r4.map(r5, r6, r8);	 Catch:{ IOException -> 0x09ce }
+        fileBytes = r7;	 Catch:{ IOException -> 0x09ce }
+        r7 = fileBytes;	 Catch:{ IOException -> 0x09ce }
+        r8 = 4120; // 0x1018 float:5.773E-42 double:2.0356E-320;
+        r7.position(r8);	 Catch:{ IOException -> 0x09ce }
+        r7 = fileBytes;	 Catch:{ IOException -> 0x09ce }
+        r7 = r7.get();	 Catch:{ IOException -> 0x09ce }
+        r8 = fileBytes;	 Catch:{ IOException -> 0x09ce }
+        r8 = r8.get();	 Catch:{ IOException -> 0x09ce }
+        r9 = fileBytes;	 Catch:{ IOException -> 0x09ce }
+        r9 = r9.get();	 Catch:{ IOException -> 0x09ce }
+        r10 = fileBytes;	 Catch:{ IOException -> 0x09ce }
+        r10 = r10.get();	 Catch:{ IOException -> 0x09ce }
+        r63 = com.chelpus.Utils.convertFourBytesToInt(r7, r8, r9, r10);	 Catch:{ IOException -> 0x09ce }
+        r7 = java.lang.System.out;	 Catch:{ IOException -> 0x09ce }
+        r8 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x09ce }
+        r9 = "Start position:";
+        r8.<init>(r9);	 Catch:{ IOException -> 0x09ce }
+        r0 = r63;
+        r8 = r8.append(r0);	 Catch:{ IOException -> 0x09ce }
+        r8 = r8.toString();	 Catch:{ IOException -> 0x09ce }
+        r7.println(r8);	 Catch:{ IOException -> 0x09ce }
+        r7 = fileBytes;	 Catch:{ IOException -> 0x09ce }
+        r0 = r63;
+        r7.position(r0);	 Catch:{ IOException -> 0x09ce }
+        r67 = 0;
+    L_0x09a5:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x0f38 }
+        r7 = r7.hasRemaining();	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x09af;
+    L_0x09ad:
+        if (r67 == 0) goto L_0x09d4;
+    L_0x09af:
+        r4.close();	 Catch:{ IOException -> 0x09ce }
+        r7 = java.lang.System.out;	 Catch:{ IOException -> 0x09ce }
+        r8 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x09ce }
+        r9 = "time=";
+        r8.<init>(r9);	 Catch:{ IOException -> 0x09ce }
+        r12 = java.lang.System.currentTimeMillis();	 Catch:{ IOException -> 0x09ce }
+        r12 = r12 - r68;
+        r8 = r8.append(r12);	 Catch:{ IOException -> 0x09ce }
+        r8 = r8.toString();	 Catch:{ IOException -> 0x09ce }
+        r7.println(r8);	 Catch:{ IOException -> 0x09ce }
+        goto L_0x0272;
+    L_0x09ce:
+        r38 = move-exception;
+        r38.printStackTrace();
+        goto L_0x0272;
+    L_0x09d4:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x0f38 }
+        r5 = r7.position();	 Catch:{ Exception -> 0x0f38 }
+        r7 = fileBytes;	 Catch:{ Exception -> 0x0f38 }
+        r6 = r7.get();	 Catch:{ Exception -> 0x0f38 }
+        r7 = byteOrigOatUpd1;	 Catch:{ Exception -> 0x0f38 }
+        r8 = maskOatUpd1;	 Catch:{ Exception -> 0x0f38 }
+        r9 = byteReplaceOatUpd1;	 Catch:{ Exception -> 0x0f38 }
+        r10 = rep_maskOatUpd1;	 Catch:{ Exception -> 0x0f38 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0a2f;
+    L_0x09ee:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0a14;
+    L_0x09f9:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0a14:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0a26;
+    L_0x0a1f:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0a26:
+        r7 = 1;
+        patchOatUpd1 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r70 = 1;
+        r57 = 1;
+        r58 = 1;
+    L_0x0a2f:
+        r7 = byteOrigOatUpd2;	 Catch:{ Exception -> 0x0f38 }
+        r8 = maskOatUpd2;	 Catch:{ Exception -> 0x0f38 }
+        r9 = byteReplaceOatUpd2;	 Catch:{ Exception -> 0x0f38 }
+        r10 = rep_maskOatUpd2;	 Catch:{ Exception -> 0x0f38 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0a7e;
+    L_0x0a3d:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0a63;
+    L_0x0a48:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0a63:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0a75;
+    L_0x0a6e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0a75:
+        r7 = 1;
+        patchOatUpd1 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r70 = 1;
+        r57 = 1;
+        r58 = 1;
+    L_0x0a7e:
+        r7 = byteOrigOat1;	 Catch:{ Exception -> 0x0f38 }
+        r8 = maskOat1;	 Catch:{ Exception -> 0x0f38 }
+        r9 = byteReplaceOat1;	 Catch:{ Exception -> 0x0f38 }
+        r10 = rep_maskOat1;	 Catch:{ Exception -> 0x0f38 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0ac9;
+    L_0x0a8c:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0ab2;
+    L_0x0a97:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core11 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0ab2:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0ac4;
+    L_0x0abd:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core11 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0ac4:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r57 = 1;
+    L_0x0ac9:
+        r7 = byteOrigOatUpd4;	 Catch:{ Exception -> 0x0f38 }
+        r8 = maskOatUpd4;	 Catch:{ Exception -> 0x0f38 }
+        r9 = byteReplaceOatUpd4;	 Catch:{ Exception -> 0x0f38 }
+        r10 = rep_maskOatUpd4;	 Catch:{ Exception -> 0x0f38 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0b18;
+    L_0x0ad7:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0afd;
+    L_0x0ae2:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0afd:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0b0f;
+    L_0x0b08:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0b0f:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r57 = 1;
+        r58 = 1;
+        r70 = 1;
+    L_0x0b18:
+        r7 = byteOrigOatUpd4_1;	 Catch:{ Exception -> 0x0f38 }
+        r8 = maskOatUpd4_1;	 Catch:{ Exception -> 0x0f38 }
+        r9 = byteReplaceOatUpd4_1;	 Catch:{ Exception -> 0x0f38 }
+        r10 = rep_maskOatUpd4_1;	 Catch:{ Exception -> 0x0f38 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0b67;
+    L_0x0b26:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0b4c;
+    L_0x0b31:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0b4c:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0b5e;
+    L_0x0b57:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0b5e:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r57 = 1;
+        r58 = 1;
+        r70 = 1;
+    L_0x0b67:
+        r7 = byteOrigOatUpd5;	 Catch:{ Exception -> 0x0f38 }
+        r8 = maskOatUpd5;	 Catch:{ Exception -> 0x0f38 }
+        r9 = byteReplaceOatUpd5;	 Catch:{ Exception -> 0x0f38 }
+        r10 = rep_maskOatUpd5;	 Catch:{ Exception -> 0x0f38 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0bb6;
+    L_0x0b75:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0b9b;
+    L_0x0b80:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0b9b:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0bad;
+    L_0x0ba6:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0bad:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r70 = 1;
+        r57 = 1;
+        r58 = 1;
+    L_0x0bb6:
+        r7 = byteOrigOatUpd5_1;	 Catch:{ Exception -> 0x0f38 }
+        r8 = maskOatUpd5_1;	 Catch:{ Exception -> 0x0f38 }
+        r9 = byteReplaceOatUpd5_1;	 Catch:{ Exception -> 0x0f38 }
+        r10 = rep_maskOatUpd5_1;	 Catch:{ Exception -> 0x0f38 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0c05;
+    L_0x0bc4:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0bea;
+    L_0x0bcf:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0bea:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0bfc;
+    L_0x0bf5:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0bfc:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r70 = 1;
+        r57 = 1;
+        r58 = 1;
+    L_0x0c05:
+        r7 = byteOrigOat4;	 Catch:{ Exception -> 0x0f38 }
+        r8 = maskOat4;	 Catch:{ Exception -> 0x0f38 }
+        r9 = byteReplaceOat4;	 Catch:{ Exception -> 0x0f38 }
+        r10 = rep_maskOat4;	 Catch:{ Exception -> 0x0f38 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0c50;
+    L_0x0c13:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0c39;
+    L_0x0c1e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core11 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0c39:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0c4b;
+    L_0x0c44:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core11 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0c4b:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r57 = 1;
+    L_0x0c50:
+        r7 = byteOrigOat2;	 Catch:{ Exception -> 0x0f38 }
+        r8 = maskOat2;	 Catch:{ Exception -> 0x0f38 }
+        r9 = byteReplaceOat2;	 Catch:{ Exception -> 0x0f38 }
+        r10 = rep_maskOat2;	 Catch:{ Exception -> 0x0f38 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0c9b;
+    L_0x0c5e:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0c84;
+    L_0x0c69:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core12 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0c84:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0c96;
+    L_0x0c8f:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core12 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0c96:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r58 = 1;
+    L_0x0c9b:
+        r7 = byteOrigOat5;	 Catch:{ Exception -> 0x0f38 }
+        r8 = maskOat5;	 Catch:{ Exception -> 0x0f38 }
+        r9 = byteReplaceOat5;	 Catch:{ Exception -> 0x0f38 }
+        r10 = rep_maskOat5;	 Catch:{ Exception -> 0x0f38 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0ce6;
+    L_0x0ca9:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0ccf;
+    L_0x0cb4:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core12 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0ccf:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0ce1;
+    L_0x0cda:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core12 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0ce1:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r58 = 1;
+    L_0x0ce6:
+        r14 = byteOrigOat3;	 Catch:{ Exception -> 0x0f38 }
+        r15 = maskOat3;	 Catch:{ Exception -> 0x0f38 }
+        r16 = byteReplaceOat3;	 Catch:{ Exception -> 0x0f38 }
+        r17 = rep_maskOat3;	 Catch:{ Exception -> 0x0f38 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0d33;
+    L_0x0cf6:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0d1c;
+    L_0x0d01:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0d1c:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0d2e;
+    L_0x0d27:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0d2e:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r59 = 1;
+    L_0x0d33:
+        r14 = byteOrigOat3_1;	 Catch:{ Exception -> 0x0f38 }
+        r15 = maskOat3_1;	 Catch:{ Exception -> 0x0f38 }
+        r16 = byteReplaceOat3_1;	 Catch:{ Exception -> 0x0f38 }
+        r17 = rep_maskOat3_1;	 Catch:{ Exception -> 0x0f38 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0d80;
+    L_0x0d43:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0d69;
+    L_0x0d4e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0d69:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0d7b;
+    L_0x0d74:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0d7b:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r59 = 1;
+    L_0x0d80:
+        r14 = byteOrigOat3_2;	 Catch:{ Exception -> 0x0f38 }
+        r15 = maskOat3_2;	 Catch:{ Exception -> 0x0f38 }
+        r16 = byteReplaceOat3_2;	 Catch:{ Exception -> 0x0f38 }
+        r17 = rep_maskOat3_2;	 Catch:{ Exception -> 0x0f38 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0dcd;
+    L_0x0d90:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0db6;
+    L_0x0d9b:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0db6:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0dc8;
+    L_0x0dc1:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0dc8:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r59 = 1;
+    L_0x0dcd:
+        r14 = byteOrigOat6;	 Catch:{ Exception -> 0x0f38 }
+        r15 = maskOat6;	 Catch:{ Exception -> 0x0f38 }
+        r16 = byteReplaceOat6;	 Catch:{ Exception -> 0x0f38 }
+        r17 = rep_maskOat6;	 Catch:{ Exception -> 0x0f38 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0e1a;
+    L_0x0ddd:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0e03;
+    L_0x0de8:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0e03:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0e15;
+    L_0x0e0e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0e15:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r59 = 1;
+    L_0x0e1a:
+        r14 = byteOrigOat6_1;	 Catch:{ Exception -> 0x0f38 }
+        r15 = maskOat6_1;	 Catch:{ Exception -> 0x0f38 }
+        r16 = byteReplaceOat6_1;	 Catch:{ Exception -> 0x0f38 }
+        r17 = rep_maskOat6_1;	 Catch:{ Exception -> 0x0f38 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0e67;
+    L_0x0e2a:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0e50;
+    L_0x0e35:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0e50:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0e62;
+    L_0x0e5b:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0e62:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r59 = 1;
+    L_0x0e67:
+        r14 = byteOrigOat7;	 Catch:{ Exception -> 0x0f38 }
+        r15 = maskOat7;	 Catch:{ Exception -> 0x0f38 }
+        r16 = byteReplaceOat7;	 Catch:{ Exception -> 0x0f38 }
+        r17 = rep_maskOat7;	 Catch:{ Exception -> 0x0f38 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0eb4;
+    L_0x0e77:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0e9d;
+    L_0x0e82:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0e9d:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0eaf;
+    L_0x0ea8:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0eaf:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r59 = 1;
+    L_0x0eb4:
+        r14 = byteOrigOat7_1;	 Catch:{ Exception -> 0x0f38 }
+        r15 = maskOat7_1;	 Catch:{ Exception -> 0x0f38 }
+        r16 = byteReplaceOat7_1;	 Catch:{ Exception -> 0x0f38 }
+        r17 = rep_maskOat7_1;	 Catch:{ Exception -> 0x0f38 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0f01;
+    L_0x0ec4:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0eea;
+    L_0x0ecf:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0f38 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x0f38 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x0f38 }
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0eea:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x0f38 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x0f38 }
+        if (r7 == 0) goto L_0x0efc;
+    L_0x0ef5:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x0f38 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x0f38 }
+    L_0x0efc:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x0f38 }
+        r59 = 1;
+    L_0x0f01:
+        if (r11 == 0) goto L_0x0f09;
+    L_0x0f03:
+        if (r18 == 0) goto L_0x0f09;
+    L_0x0f05:
+        if (r70 == 0) goto L_0x0f09;
+    L_0x0f07:
+        if (r59 != 0) goto L_0x0f2b;
+    L_0x0f09:
+        if (r11 == 0) goto L_0x0f15;
+    L_0x0f0b:
+        if (r18 == 0) goto L_0x0f15;
+    L_0x0f0d:
+        if (r70 == 0) goto L_0x0f15;
+    L_0x0f0f:
+        if (r57 == 0) goto L_0x0f15;
+    L_0x0f11:
+        if (r58 == 0) goto L_0x0f15;
+    L_0x0f13:
+        if (r59 != 0) goto L_0x0f2b;
+    L_0x0f15:
+        if (r11 == 0) goto L_0x0f1b;
+    L_0x0f17:
+        if (r18 != 0) goto L_0x0f1b;
+    L_0x0f19:
+        if (r70 != 0) goto L_0x0f2b;
+    L_0x0f1b:
+        if (r11 == 0) goto L_0x0f25;
+    L_0x0f1d:
+        if (r18 != 0) goto L_0x0f25;
+    L_0x0f1f:
+        if (r70 == 0) goto L_0x0f25;
+    L_0x0f21:
+        if (r57 == 0) goto L_0x0f25;
+    L_0x0f23:
+        if (r58 != 0) goto L_0x0f2b;
+    L_0x0f25:
+        if (r11 != 0) goto L_0x0f2f;
+    L_0x0f27:
+        if (r18 == 0) goto L_0x0f2f;
+    L_0x0f29:
+        if (r59 == 0) goto L_0x0f2f;
+    L_0x0f2b:
+        r67 = 1;
+        goto L_0x09af;
+    L_0x0f2f:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x0f38 }
+        r8 = r5 + 1;
+        r7.position(r8);	 Catch:{ Exception -> 0x0f38 }
+        goto L_0x09a5;
+    L_0x0f38:
+        r38 = move-exception;
+        r7 = java.lang.System.out;	 Catch:{ IOException -> 0x09ce }
+        r8 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x09ce }
+        r8.<init>();	 Catch:{ IOException -> 0x09ce }
+        r0 = r38;
+        r8 = r8.append(r0);	 Catch:{ IOException -> 0x09ce }
+        r8 = r8.toString();	 Catch:{ IOException -> 0x09ce }
+        r7.println(r8);	 Catch:{ IOException -> 0x09ce }
+        goto L_0x09af;
+    L_0x0f4f:
+        r7 = 4;
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = "ART";
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x0fc3;
+    L_0x0f5a:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = "/system/framework/core-libart.odex";
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = r7.exists();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x0f84;
+    L_0x0f67:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = "/system/framework/core-libart.odex";
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r7.length();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r12 = 0;
+        r7 = (r8 > r12 ? 1 : (r8 == r12 ? 0 : -1));
+        if (r7 == 0) goto L_0x0f84;
+    L_0x0f78:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = "/system/framework/core-libart.odex";
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r0 = r42;
+        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+    L_0x0f84:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = "/system/framework/core-libart.jar";
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = com.chelpus.Utils.classes_test(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x03f8;
+    L_0x0f91:
+        r64 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = "/system/framework/core-libart.jar";
+        r0 = r64;
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = "/data/app";
+        r0 = r64;
+        unzip(r0, r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r26 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = "/data/app/classes.dex";
+        r0 = r26;
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = r26.exists();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x03f8;
+    L_0x0fb0:
+        r0 = r42;
+        r1 = r26;
+        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x03f8;
+    L_0x0fb9:
+        r53 = move-exception;
+    L_0x0fba:
+        r7 = java.lang.System.out;
+        r8 = "Error: core.odex not found!\n\nPlease Odex core.jar and try again!";
+        r7.println(r8);
+        goto L_0x0402;
+    L_0x0fc3:
+        r7 = onlyDalvik;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x1003;
+    L_0x0fc7:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r9 = "OnlyDalvik: add for patch ";
+        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r9 = 1;
+        r9 = r71[r9];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r52 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = 1;
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r0 = r52;
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = r52.exists();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        if (r7 != 0) goto L_0x0ff8;
+    L_0x0fee:
+        r7 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        r7.<init>();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        throw r7;	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+    L_0x0ff4:
+        r53 = move-exception;
+        r49 = r52;
+        goto L_0x0fba;
+    L_0x0ff8:
+        r0 = r42;
+        r1 = r52;
+        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        r49 = r52;
+        goto L_0x03f8;
+    L_0x1003:
+        r52 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = 1;
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r0 = r52;
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = r52.exists();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        if (r7 != 0) goto L_0x1036;
+    L_0x1013:
+        r7 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        r7.<init>();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        throw r7;	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+    L_0x1019:
+        r38 = move-exception;
+        r49 = r52;
+    L_0x101c:
+        r7 = java.lang.System.out;
+        r8 = new java.lang.StringBuilder;
+        r9 = "Exception e";
+        r8.<init>(r9);
         r9 = r38.toString();
         r8 = r8.append(r9);
         r8 = r8.toString();
         r7.println(r8);
-        goto L_0x10eb;
-    L_0x1f84:
-        r7 = r52.toString();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
+        goto L_0x0402;
+    L_0x1036:
+        r7 = r52.toString();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
         r8 = "system@framework@core.jar@classes.dex";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        if (r7 == 0) goto L_0x1fac;
-    L_0x1f90:
-        r28 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        if (r7 == 0) goto L_0x105e;
+    L_0x1042:
+        r28 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
         r7 = "/system/framework/core.odex";
         r0 = r28;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        r7 = r28.exists();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        if (r7 == 0) goto L_0x1fac;
-    L_0x1f9f:
-        r8 = r28.length();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        r7 = r28.exists();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        if (r7 == 0) goto L_0x105e;
+    L_0x1051:
+        r8 = r28.length();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
         r12 = 0;
         r7 = (r8 > r12 ? 1 : (r8 == r12 ? 0 : -1));
-        if (r7 != 0) goto L_0x1fac;
-    L_0x1fa9:
-        r28.delete();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-    L_0x1fac:
+        if (r7 != 0) goto L_0x105e;
+    L_0x105b:
+        r28.delete();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+    L_0x105e:
         r0 = r42;
         r1 = r52;
-        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        r7 = r52.toString();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
+        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        r7 = r52.toString();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
         r8 = "/system/framework/core.odex";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        if (r7 == 0) goto L_0x1ff6;
-    L_0x1fbf:
-        r7 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.api;	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        if (r7 == 0) goto L_0x10a8;
+    L_0x1071:
+        r7 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.api;	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
         r8 = 20;
-        if (r7 >= r8) goto L_0x1ff6;
-    L_0x1fc5:
-        r7 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.runtime;	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
+        if (r7 >= r8) goto L_0x10a8;
+    L_0x1077:
+        r7 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.runtime;	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
         r8 = "ART";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        if (r7 != 0) goto L_0x1ff6;
-    L_0x1fcf:
-        r28 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        if (r7 != 0) goto L_0x10a8;
+    L_0x1081:
+        r28 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
         r7 = "/system/framework/core-libart.odex";
         r0 = r28;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        r7 = r28.exists();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-        if (r7 == 0) goto L_0x1ff6;
-    L_0x1fde:
-        r8 = r28.length();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        r7 = r28.exists();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+        if (r7 == 0) goto L_0x10a8;
+    L_0x1090:
+        r8 = r28.length();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
         r12 = 0;
         r7 = (r8 > r12 ? 1 : (r8 == r12 ? 0 : -1));
-        if (r7 != 0) goto L_0x1fef;
-    L_0x1fe8:
-        r28.delete();	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
+        if (r7 != 0) goto L_0x10a1;
+    L_0x109a:
+        r28.delete();	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
         r49 = r52;
-        goto L_0x0b2b;
-    L_0x1fef:
+        goto L_0x03f8;
+    L_0x10a1:
         r0 = r42;
         r1 = r28;
-        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x1f3d, Exception -> 0x1f63 }
-    L_0x1ff6:
+        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x0ff4, Exception -> 0x1019 }
+    L_0x10a8:
         r49 = r52;
-        goto L_0x0b2b;
-    L_0x1ffa:
-        r38 = move-exception;
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8.<init>();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = "";
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r0 = r38;
-        r8 = r8.append(r0);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-    L_0x2015:
-        r4.close();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        goto L_0x03f8;
+    L_0x10ac:
+        r45 = r19.next();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r45 = (java.io.File) r45;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r49 = r45;
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r9 = "file for patch: ";
+        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r9 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r9 = " size:";
+        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r12 = r49.length();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r8.append(r12);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = new java.io.RandomAccessFile;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = "rw";
+        r0 = r49;
+        r7.<init>(r0, r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r4 = r7.getChannel();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r14 = 0;
+        r8 = r4.size();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = (int) r8;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r0 = (long) r7;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r16 = r0;
+        r12 = r4;
+        r7 = r12.map(r13, r14, r16);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        fileBytes = r7;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r60 = 0;
+        r7 = r49.getName();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = "boot.oat";
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 != 0) goto L_0x1719;
+    L_0x1108:
+        r44 = new java.util.ArrayList;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r44.<init>();	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r0 = r44;
+        r1 = r49;
+        r0.add(r1);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r0 = r44;
+        r1 = r71;
+        r2 = r18;
+        patchWithOatDumpP12(r0, r1, r11, r2);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r11 == 0) goto L_0x1123;
+    L_0x111f:
+        r7 = patchOat1;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1129;
+    L_0x1123:
+        if (r18 == 0) goto L_0x1151;
+    L_0x1125:
+        r7 = patchOat2;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 != 0) goto L_0x1151;
+    L_0x1129:
+        r7 = patchOat1;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x112e;
+    L_0x112d:
+        r11 = 0;
+    L_0x112e:
+        r7 = patchOat2;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1134;
+    L_0x1132:
+        r18 = 0;
+    L_0x1134:
+        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r14 = 0;
+        r8 = r4.size();	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = (int) r8;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r0 = (long) r7;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r16 = r0;
+        r12 = r4;
+        r7 = r12.map(r13, r14, r16);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        fileBytes = r7;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r50 = 0;
+    L_0x1149:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = r7.hasRemaining();	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 != 0) goto L_0x1267;
+    L_0x1151:
+        r4.close();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r7 = 4;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "framework";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x273b;
-    L_0x2023:
-        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x1cdb;
+    L_0x115f:
+        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "/classes.dex";
-        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x209e;
-    L_0x202f:
+        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x11da;
+    L_0x116b:
         r7 = 0;
-        not_found_bytes_for_patch = r7;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        com.chelpus.Utils.fixadler(r49);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r60 == 0) goto L_0x2736;
-    L_0x2037:
+        not_found_bytes_for_patch = r7;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        com.chelpus.Utils.fixadler(r49);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r60 == 0) goto L_0x1cd6;
+    L_0x1173:
         r7 = 1;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = ".jar";
         r9 = "-patched.jar";
-        r37 = r7.replace(r8, r9);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r37 = r7.replace(r8, r9);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r7 = 1;
-        r65 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r65 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r37;
-        r7.<init>(r0);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.delete();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r41 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r41.<init>();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.<init>(r0);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.delete();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r41 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r41.<init>();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "add files";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = new com.android.vending.billing.InAppBillingService.LOCK.AddFilesItem;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r10 = com.chelpus.Utils.getDirs(r49);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r10 = r10.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = r9.append(r10);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = new com.android.vending.billing.InAppBillingService.LOCK.AddFilesItem;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r10 = com.chelpus.Utils.getDirs(r49);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r10 = r10.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r10 = java.lang.String.valueOf(r10);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r9.<init>(r10);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r10 = "/";
-        r9 = r9.append(r10);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.<init>(r8, r9);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r9 = r9.append(r10);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.<init>(r8, r9);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r41;
-        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r65;
         r1 = r37;
         r2 = r41;
-        com.chelpus.Utils.addFilesToZip(r0, r1, r2);	 Catch:{ Exception -> 0x2726, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2726, FileNotFoundException -> 0x10e3 }
+        com.chelpus.Utils.addFilesToZip(r0, r1, r2);	 Catch:{ Exception -> 0x1cc6, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1cc6, FileNotFoundException -> 0x0fb9 }
         r8 = "add files finish";
-        r7.println(r8);	 Catch:{ Exception -> 0x2726, FileNotFoundException -> 0x10e3 }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2726, FileNotFoundException -> 0x10e3 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1cc6, FileNotFoundException -> 0x0fb9 }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1cc6, FileNotFoundException -> 0x0fb9 }
         r0 = r65;
-        r7.<init>(r0);	 Catch:{ Exception -> 0x2726, FileNotFoundException -> 0x10e3 }
-        r7.delete();	 Catch:{ Exception -> 0x2726, FileNotFoundException -> 0x10e3 }
-    L_0x209e:
-        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.<init>(r0);	 Catch:{ Exception -> 0x1cc6, FileNotFoundException -> 0x0fb9 }
+        r7.delete();	 Catch:{ Exception -> 0x1cc6, FileNotFoundException -> 0x0fb9 }
+    L_0x11da:
+        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "/core.odex";
-        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 != 0) goto L_0x20b6;
-    L_0x20aa:
-        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 != 0) goto L_0x11f2;
+    L_0x11e6:
+        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "/core-libart.odex";
-        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x2102;
-    L_0x20b6:
+        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x123e;
+    L_0x11f2:
         r7 = 0;
         r0 = r49;
-        com.chelpus.Utils.fixadlerOdex(r0, r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r60 == 0) goto L_0x2102;
-    L_0x20be:
-        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        com.chelpus.Utils.fixadlerOdex(r0, r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r60 == 0) goto L_0x123e;
+    L_0x11fa:
+        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "/core.odex";
-        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x20e0;
-    L_0x20ca:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x121c;
+    L_0x1206:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r9 = "/core.odex";
         r10 = "/core-patched.odex";
-        r8 = r8.replace(r9, r10);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r8 = r8.replace(r9, r10);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r49;
-        r0.renameTo(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-    L_0x20e0:
-        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r0.renameTo(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+    L_0x121c:
+        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "/core-libart.odex";
-        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x2102;
-    L_0x20ec:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x123e;
+    L_0x1228:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r9 = "/core-libart.odex";
         r10 = "/core-libart-patched.odex";
-        r8 = r8.replace(r9, r10);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r8 = r8.replace(r9, r10);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r49;
-        r0.renameTo(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-    L_0x2102:
-        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r0.renameTo(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+    L_0x123e:
+        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "/boot.oat";
-        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x0b2f;
-    L_0x210e:
-        if (r60 == 0) goto L_0x0b2f;
-    L_0x2110:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x03fc;
+    L_0x124a:
+        if (r60 == 0) goto L_0x03fc;
+    L_0x124c:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r9 = "/boot.oat";
         r10 = "/boot-patched.oat";
-        r8 = r8.replace(r9, r10);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r8 = r8.replace(r9, r10);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r49;
-        r0.renameTo(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        goto L_0x0b2f;
-    L_0x2128:
+        r0.renameTo(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x03fc;
+    L_0x1264:
         r38 = move-exception;
-        goto L_0x1f66;
-    L_0x212b:
-        r7 = fileBytes;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = 4120; // 0x1018 float:5.773E-42 double:2.0356E-320;
-        r7.position(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = fileBytes;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = r7.get();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r8.get();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = fileBytes;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = r9.get();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r10 = fileBytes;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r10 = r10.get();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r63 = com.chelpus.Utils.convertFourBytesToInt(r7, r8, r9, r10);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8.<init>();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = "Start position:";
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r0 = r63;
-        r8 = r8.append(r0);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = fileBytes;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r0 = r63;
-        r7.position(r0);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-    L_0x216f:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = r7.hasRemaining();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2015;
-    L_0x2177:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r5 = r7.position();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = fileBytes;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r6 = r7.get();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = byteOrigOatUpd1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = maskOatUpd1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplaceOatUpd1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r10 = rep_maskOatUpd1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x21d2;
-    L_0x2191:
+        goto L_0x101c;
+    L_0x1267:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r5 = r7.position();	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = fileBytes;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r6 = r7.get();	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = byteOrig2;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask2;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace2;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask2;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x12a7;
+    L_0x1281:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x21bb;
-    L_0x219c:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x21bb:
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1293;
+    L_0x128c:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1293:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x21cd;
-    L_0x21c6:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x21cd:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x12a5;
+    L_0x129e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x12a5:
         r60 = 1;
-    L_0x21d2:
-        r7 = byteOrigOatUpd2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = maskOatUpd2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplaceOatUpd2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r10 = rep_maskOatUpd2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2221;
-    L_0x21e0:
+    L_0x12a7:
+        r7 = byteOrig3;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask2;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace3;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask2;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x12db;
+    L_0x12b5:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x220a;
-    L_0x21eb:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x220a:
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x12c7;
+    L_0x12c0:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x12c7:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x221c;
-    L_0x2215:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x221c:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x12d9;
+    L_0x12d2:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x12d9:
         r60 = 1;
-    L_0x2221:
-        r7 = byteOrigOat1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = maskOat1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplaceOat1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r10 = rep_maskOat1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2270;
-    L_0x222f:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2259;
-    L_0x223a:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core11 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2259:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x226b;
-    L_0x2264:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core11 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x226b:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r60 = 1;
-    L_0x2270:
-        r7 = byteOrigOatUpd4;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = maskOatUpd4;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplaceOatUpd4;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r10 = rep_maskOatUpd4;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x22bf;
-    L_0x227e:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x22a8;
-    L_0x2289:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x22a8:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x22ba;
-    L_0x22b3:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x22ba:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r60 = 1;
-    L_0x22bf:
-        r7 = byteOrigOatUpd4_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = maskOatUpd4_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplaceOatUpd4_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r10 = rep_maskOatUpd4_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x230e;
-    L_0x22cd:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x22f7;
-    L_0x22d8:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x22f7:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2309;
-    L_0x2302:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2309:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r60 = 1;
-    L_0x230e:
-        r7 = byteOrigOatUpd5;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = maskOatUpd5;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplaceOatUpd5;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r10 = rep_maskOatUpd5;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x235d;
-    L_0x231c:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2346;
-    L_0x2327:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2346:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2358;
-    L_0x2351:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2358:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r60 = 1;
-    L_0x235d:
-        r7 = byteOrigOatUpd5_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = maskOatUpd5_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplaceOatUpd5_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r10 = rep_maskOatUpd5_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x23ac;
-    L_0x236b:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2395;
-    L_0x2376:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2395:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x23a7;
-    L_0x23a0:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core1uni restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x23a7:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r60 = 1;
-    L_0x23ac:
-        r7 = byteOrigOat4;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = maskOat4;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplaceOat4;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r10 = rep_maskOat4;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x23fb;
-    L_0x23ba:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x23e4;
-    L_0x23c5:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core11 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x23e4:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x23f6;
-    L_0x23ef:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core11 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x23f6:
-        r7 = 1;
-        patchOat1 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r60 = 1;
-    L_0x23fb:
-        r7 = byteOrigOat2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = maskOat2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplaceOat2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r10 = rep_maskOat2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x244a;
-    L_0x2409:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2433;
-    L_0x2414:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core12 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2433:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2445;
-    L_0x243e:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core12 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2445:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r60 = 1;
-    L_0x244a:
-        r7 = byteOrigOat5;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = maskOat5;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = byteReplaceOat5;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r10 = rep_maskOat5;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2499;
-    L_0x2458:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2482;
-    L_0x2463:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core12 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2482:
-        r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2494;
-    L_0x248d:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core12 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2494:
-        r7 = 1;
-        patchOat2 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r60 = 1;
-    L_0x2499:
-        r14 = byteOrigOat3;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r15 = maskOat3;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplaceOat3;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r17 = rep_maskOat3;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+    L_0x12db:
+        r14 = byteOrig4;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r15 = mask4;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplace4;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_mask4;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r12 = r5;
         r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x24ea;
-    L_0x24a9:
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1311;
+    L_0x12eb:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x24d3;
-    L_0x24b4:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x24d3:
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x12fd;
+    L_0x12f6:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core unsigned install patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x12fd:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x24e5;
-    L_0x24de:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x24e5:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x130f;
+    L_0x1308:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core unsigned install restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x130f:
         r60 = 1;
-    L_0x24ea:
-        r14 = byteOrigOat3_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r15 = maskOat3_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplaceOat3_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r17 = rep_maskOat3_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+    L_0x1311:
+        r14 = byteOrig5;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r15 = mask5;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplace5;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_mask5;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r12 = r5;
         r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x253b;
-    L_0x24fa:
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1347;
+    L_0x1321:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2524;
-    L_0x2505:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2524:
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1333;
+    L_0x132c:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core unsigned install patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1333:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2536;
-    L_0x252f:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2536:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1345;
+    L_0x133e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core unsigned install restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1345:
         r60 = 1;
-    L_0x253b:
-        r14 = byteOrigOat3_2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r15 = maskOat3_2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplaceOat3_2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r17 = rep_maskOat3_2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+    L_0x1347:
+        r7 = byteOrig6;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask6;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace6;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask6;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x137b;
+    L_0x1355:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1367;
+    L_0x1360:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1367:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1379;
+    L_0x1372:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1379:
+        r60 = 1;
+    L_0x137b:
+        r7 = byteOrig7;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask7;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace7;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask7;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x13af;
+    L_0x1389:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x139b;
+    L_0x1394:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x139b:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x13ad;
+    L_0x13a6:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x13ad:
+        r60 = 1;
+    L_0x13af:
+        r7 = byteOrig8;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask8;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace8;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask8;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x13e3;
+    L_0x13bd:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x13cf;
+    L_0x13c8:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x13cf:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x13e1;
+    L_0x13da:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x13e1:
+        r60 = 1;
+    L_0x13e3:
+        r7 = byteOrig9;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask9;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace9;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask9;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1417;
+    L_0x13f1:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1403;
+    L_0x13fc:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1403:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1415;
+    L_0x140e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1415:
+        r60 = 1;
+    L_0x1417:
+        r7 = byteOrig10;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask10;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace10;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask10;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x144b;
+    L_0x1425:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1437;
+    L_0x1430:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1437:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1449;
+    L_0x1442:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1449:
+        r60 = 1;
+    L_0x144b:
+        r7 = byteOrig11;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask11;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace11;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask11;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x147f;
+    L_0x1459:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x146b;
+    L_0x1464:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x146b:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x147d;
+    L_0x1476:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x147d:
+        r60 = 1;
+    L_0x147f:
+        r14 = byteOrig12;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r15 = mask12;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplace12;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_mask12;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r12 = r5;
         r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x258c;
-    L_0x254b:
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x14b5;
+    L_0x148f:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2575;
-    L_0x2556:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2575:
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x14a1;
+    L_0x149a:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core unsigned install patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x14a1:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2587;
-    L_0x2580:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2587:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x14b3;
+    L_0x14ac:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core unsigned install restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x14b3:
         r60 = 1;
-    L_0x258c:
-        r14 = byteOrigOat6;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r15 = maskOat6;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplaceOat6;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r17 = rep_maskOat6;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+    L_0x14b5:
+        r14 = byteOrig13;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r15 = mask13;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplace13;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_mask13;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r12 = r5;
         r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x25dd;
-    L_0x259c:
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x14eb;
+    L_0x14c5:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x25c6;
-    L_0x25a7:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x25c6:
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x14d7;
+    L_0x14d0:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core unsigned install patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x14d7:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x25d8;
-    L_0x25d1:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x25d8:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x14e9;
+    L_0x14e2:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core unsigned install restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x14e9:
         r60 = 1;
-    L_0x25dd:
-        r14 = byteOrigOat6_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r15 = maskOat6_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplaceOat6_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r17 = rep_maskOat6_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+    L_0x14eb:
+        r14 = byteOrig20;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r15 = mask20;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplace20;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_mask20;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r12 = r5;
         r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x262e;
-    L_0x25ed:
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1521;
+    L_0x14fb:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2617;
-    L_0x25f8:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2617:
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x150d;
+    L_0x1506:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core unsigned install patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x150d:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2629;
-    L_0x2622:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2629:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x151f;
+    L_0x1518:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core unsigned install restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x151f:
         r60 = 1;
-    L_0x262e:
-        r14 = byteOrigOat7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r15 = maskOat7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplaceOat7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r17 = rep_maskOat7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x267f;
-    L_0x263e:
+    L_0x1521:
+        r7 = byteOrig21;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask21;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace21;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask21;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1555;
+    L_0x152f:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2668;
-    L_0x2649:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x2668:
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1541;
+    L_0x153a:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1541:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x267a;
-    L_0x2673:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x267a:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1553;
+    L_0x154c:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1553:
         r60 = 1;
-    L_0x267f:
-        r14 = byteOrigOat7_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r15 = maskOat7_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r16 = byteReplaceOat7_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r17 = rep_maskOat7_1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r12 = r5;
-        r13 = r6;
-        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x26d0;
-    L_0x268f:
+    L_0x1555:
+        r7 = byteOrig22;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask22;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace22;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask22;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1589;
+    L_0x1563:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "patch";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x26b9;
-    L_0x269a:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 patched!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8.<init>();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r9 = "position:";
-        r8 = r8.append(r9);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.append(r5);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = r8.toString();	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x26b9:
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1575;
+    L_0x156e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1575:
         r7 = 0;
-        r7 = r71[r7];	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = "restore";
-        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x26cb;
-    L_0x26c4:
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r8 = "Oat Core2 restored!\n";
-        r7.println(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-    L_0x26cb:
-        r7 = 1;
-        patchOat3 = r7;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1587;
+    L_0x1580:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1587:
         r60 = 1;
-    L_0x26d0:
-        if (r11 == 0) goto L_0x26e4;
-    L_0x26d2:
-        r7 = patchOatUpd1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        r7 = r7 & r18;
-        if (r7 == 0) goto L_0x26e4;
-    L_0x26d8:
-        r7 = patchOat1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x26e4;
-    L_0x26dc:
-        r7 = patchOat2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x26e4;
-    L_0x26e0:
-        r7 = patchOat3;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 != 0) goto L_0x26fc;
-    L_0x26e4:
-        if (r11 == 0) goto L_0x26f4;
-    L_0x26e6:
-        if (r18 != 0) goto L_0x26f4;
-    L_0x26e8:
-        r7 = patchOatUpd1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x26f4;
-    L_0x26ec:
-        r7 = patchOat1;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x26f4;
-    L_0x26f0:
-        r7 = patchOat2;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 != 0) goto L_0x26fc;
-    L_0x26f4:
-        if (r11 != 0) goto L_0x2700;
-    L_0x26f6:
-        if (r18 == 0) goto L_0x2700;
-    L_0x26f8:
-        r7 = patchOat3;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x2700;
-    L_0x26fc:
+    L_0x1589:
+        r7 = byteOrig14;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask14;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace14;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask14;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x15bd;
+    L_0x1597:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x15a9;
+    L_0x15a2:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x15a9:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x15bb;
+    L_0x15b4:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x15bb:
         r60 = 1;
-        goto L_0x2015;
-    L_0x2700:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
+    L_0x15bd:
+        r7 = byteOrig15;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask15;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace15;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask15;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x15f1;
+    L_0x15cb:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x15dd;
+    L_0x15d6:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x15dd:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x15ef;
+    L_0x15e8:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x15ef:
+        r60 = 1;
+    L_0x15f1:
+        r7 = byteOrig16;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask16;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace16;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask16;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1625;
+    L_0x15ff:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1611;
+    L_0x160a:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1611:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1623;
+    L_0x161c:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1623:
+        r60 = 1;
+    L_0x1625:
+        r7 = byteOrig17;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask17;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace17;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask17;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1659;
+    L_0x1633:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1645;
+    L_0x163e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1645:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1657;
+    L_0x1650:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1657:
+        r60 = 1;
+    L_0x1659:
+        r7 = byteOrig18;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask18;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace18;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask18;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x168d;
+    L_0x1667:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1679;
+    L_0x1672:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x1679:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x168b;
+    L_0x1684:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x168b:
+        r60 = 1;
+    L_0x168d:
+        r7 = byteOrig19;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask19;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace19;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask19;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x16c1;
+    L_0x169b:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x16ad;
+    L_0x16a6:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x16ad:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x16bf;
+    L_0x16b8:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x16bf:
+        r60 = 1;
+    L_0x16c1:
+        r7 = byteOrig23;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = mask23;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplace23;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_mask23;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x16f5;
+    L_0x16cf:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x16e1;
+    L_0x16da:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x16e1:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x16f3;
+    L_0x16ec:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = "Core 2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+    L_0x16f3:
+        r60 = 1;
+    L_0x16f5:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
         r8 = r5 + 1;
-        r7.position(r8);	 Catch:{ Exception -> 0x2709, FileNotFoundException -> 0x10e3 }
-        goto L_0x216f;
-    L_0x2709:
+        r7.position(r8);	 Catch:{ Exception -> 0x1702, FileNotFoundException -> 0x0fb9 }
+        r8 = 1;
+        r50 = r50 + r8;
+        goto L_0x1149;
+    L_0x1702:
         r38 = move-exception;
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8.<init>();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r9 = "";
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8.<init>();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r38;
-        r8 = r8.append(r0);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        goto L_0x2015;
-    L_0x2726:
-        r38 = move-exception;
-        r38.printStackTrace();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r0 = r37;
-        r7.<init>(r0);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.delete();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        goto L_0x209e;
-    L_0x2736:
+        r8 = r8.append(r0);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x1151;
+    L_0x1719:
+        r7 = fileBytes;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = 4120; // 0x1018 float:5.773E-42 double:2.0356E-320;
+        r7.position(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = fileBytes;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = r7.get();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r8.get();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r9 = fileBytes;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r9 = r9.get();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r10 = fileBytes;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r10 = r10.get();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r63 = com.chelpus.Utils.convertFourBytesToInt(r7, r8, r9, r10);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r9 = "Start position:";
+        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r0 = r63;
+        r8 = r8.append(r0);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = fileBytes;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r0 = r63;
+        r7.position(r0);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+    L_0x1759:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = r7.hasRemaining();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1151;
+    L_0x1761:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r5 = r7.position();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = fileBytes;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r6 = r7.get();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = byteOrigOatUpd1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = maskOatUpd1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplaceOatUpd1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_maskOatUpd1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x17b8;
+    L_0x177b:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x17a1;
+    L_0x1786:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x17a1:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x17b3;
+    L_0x17ac:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x17b3:
         r7 = 1;
-        not_found_bytes_for_patch = r7;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        goto L_0x209e;
-    L_0x273b:
-        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        patchOat1 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x17b8:
+        r7 = byteOrigOatUpd2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = maskOatUpd2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplaceOatUpd2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_maskOatUpd2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1803;
+    L_0x17c6:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x17ec;
+    L_0x17d1:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x17ec:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x17fe;
+    L_0x17f7:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x17fe:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x1803:
+        r7 = byteOrigOat1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = maskOat1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplaceOat1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_maskOat1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x184e;
+    L_0x1811:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1837;
+    L_0x181c:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core11 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1837:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1849;
+    L_0x1842:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core11 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1849:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x184e:
+        r7 = byteOrigOatUpd4;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = maskOatUpd4;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplaceOatUpd4;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_maskOatUpd4;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1899;
+    L_0x185c:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1882;
+    L_0x1867:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1882:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1894;
+    L_0x188d:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1894:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x1899:
+        r7 = byteOrigOatUpd4_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = maskOatUpd4_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplaceOatUpd4_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_maskOatUpd4_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x18e4;
+    L_0x18a7:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x18cd;
+    L_0x18b2:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x18cd:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x18df;
+    L_0x18d8:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x18df:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x18e4:
+        r7 = byteOrigOatUpd5;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = maskOatUpd5;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplaceOatUpd5;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_maskOatUpd5;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x192f;
+    L_0x18f2:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1918;
+    L_0x18fd:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1918:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x192a;
+    L_0x1923:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x192a:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x192f:
+        r7 = byteOrigOatUpd5_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = maskOatUpd5_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplaceOatUpd5_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_maskOatUpd5_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x197a;
+    L_0x193d:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1963;
+    L_0x1948:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1963:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1975;
+    L_0x196e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core1uni restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1975:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x197a:
+        r7 = byteOrigOat4;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = maskOat4;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplaceOat4;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_maskOat4;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x19c5;
+    L_0x1988:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x19ae;
+    L_0x1993:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core11 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x19ae:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x19c0;
+    L_0x19b9:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core11 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x19c0:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x19c5:
+        r7 = byteOrigOat2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = maskOat2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplaceOat2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_maskOat2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1a10;
+    L_0x19d3:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x19f9;
+    L_0x19de:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core12 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x19f9:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1a0b;
+    L_0x1a04:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core12 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1a0b:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x1a10:
+        r7 = byteOrigOat5;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = maskOat5;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = byteReplaceOat5;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r10 = rep_maskOat5;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = applyPatch(r5, r6, r7, r8, r9, r10, r11);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1a5b;
+    L_0x1a1e:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1a44;
+    L_0x1a29:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core12 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1a44:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1a56;
+    L_0x1a4f:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core12 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1a56:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x1a5b:
+        r14 = byteOrigOat3;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r15 = maskOat3;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplaceOat3;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_maskOat3;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1aa8;
+    L_0x1a6b:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1a91;
+    L_0x1a76:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1a91:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1aa3;
+    L_0x1a9c:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1aa3:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x1aa8:
+        r14 = byteOrigOat3_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r15 = maskOat3_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplaceOat3_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_maskOat3_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1af5;
+    L_0x1ab8:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1ade;
+    L_0x1ac3:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1ade:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1af0;
+    L_0x1ae9:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1af0:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x1af5:
+        r14 = byteOrigOat3_2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r15 = maskOat3_2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplaceOat3_2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_maskOat3_2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1b42;
+    L_0x1b05:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1b2b;
+    L_0x1b10:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1b2b:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1b3d;
+    L_0x1b36:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1b3d:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x1b42:
+        r14 = byteOrigOat6;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r15 = maskOat6;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplaceOat6;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_maskOat6;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1b8f;
+    L_0x1b52:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1b78;
+    L_0x1b5d:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1b78:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1b8a;
+    L_0x1b83:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1b8a:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x1b8f:
+        r14 = byteOrigOat6_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r15 = maskOat6_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplaceOat6_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_maskOat6_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1bdc;
+    L_0x1b9f:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1bc5;
+    L_0x1baa:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1bc5:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1bd7;
+    L_0x1bd0:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1bd7:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x1bdc:
+        r14 = byteOrigOat7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r15 = maskOat7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplaceOat7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_maskOat7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1c29;
+    L_0x1bec:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1c12;
+    L_0x1bf7:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1c12:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1c24;
+    L_0x1c1d:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1c24:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x1c29:
+        r14 = byteOrigOat7_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r15 = maskOat7_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r16 = byteReplaceOat7_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r17 = rep_maskOat7_1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r12 = r5;
+        r13 = r6;
+        r7 = applyPatch(r12, r13, r14, r15, r16, r17, r18);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1c76;
+    L_0x1c39:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1c5f;
+    L_0x1c44:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r9 = "position:";
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.append(r5);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r8.toString();	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1c5f:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1c71;
+    L_0x1c6a:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = "Oat Core2 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+    L_0x1c71:
+        r7 = 1;
+        patchOat3 = r7;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r60 = 1;
+    L_0x1c76:
+        if (r11 == 0) goto L_0x1c8a;
+    L_0x1c78:
+        r7 = patchOatUpd1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r7 = r7 & r18;
+        if (r7 == 0) goto L_0x1c8a;
+    L_0x1c7e:
+        r7 = patchOat1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1c8a;
+    L_0x1c82:
+        r7 = patchOat2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1c8a;
+    L_0x1c86:
+        r7 = patchOat3;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 != 0) goto L_0x1ca2;
+    L_0x1c8a:
+        if (r11 == 0) goto L_0x1c9a;
+    L_0x1c8c:
+        if (r18 != 0) goto L_0x1c9a;
+    L_0x1c8e:
+        r7 = patchOatUpd1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1c9a;
+    L_0x1c92:
+        r7 = patchOat1;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1c9a;
+    L_0x1c96:
+        r7 = patchOat2;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 != 0) goto L_0x1ca2;
+    L_0x1c9a:
+        if (r11 != 0) goto L_0x1ca6;
+    L_0x1c9c:
+        if (r18 == 0) goto L_0x1ca6;
+    L_0x1c9e:
+        r7 = patchOat3;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1ca6;
+    L_0x1ca2:
+        r60 = 1;
+        goto L_0x1151;
+    L_0x1ca6:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        r8 = r5 + 1;
+        r7.position(r8);	 Catch:{ Exception -> 0x1caf, FileNotFoundException -> 0x0fb9 }
+        goto L_0x1759;
+    L_0x1caf:
+        r38 = move-exception;
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8.<init>();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r0 = r38;
+        r8 = r8.append(r0);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x1151;
+    L_0x1cc6:
+        r38 = move-exception;
+        r38.printStackTrace();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r0 = r37;
+        r7.<init>(r0);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.delete();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x11da;
+    L_0x1cd6:
+        r7 = 1;
+        not_found_bytes_for_patch = r7;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x11da;
+    L_0x1cdb:
+        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "/classes.dex";
-        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x2909;
-    L_0x2747:
-        com.chelpus.Utils.fixadler(r49);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-    L_0x274a:
+        r7 = r7.endsWith(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x1ea9;
+    L_0x1ce7:
+        com.chelpus.Utils.fixadler(r49);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+    L_0x1cea:
         r7 = 4;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "ART";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x293b;
-    L_0x2755:
-        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x1edb;
+    L_0x1cf5:
+        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "/classes.dex";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x0b2f;
-    L_0x2761:
-        if (r60 == 0) goto L_0x0b2f;
-    L_0x2763:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x03fc;
+    L_0x1d01:
+        if (r60 == 0) goto L_0x03fc;
+    L_0x1d03:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "start";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r37 = "/system/framework/core-libart.backup";
         r65 = "/system/framework/core-libart.jar";
         r7 = 1;
         r8 = 0;
         r0 = r65;
         r1 = r37;
-        r7 = com.chelpus.Utils.copyFile(r0, r1, r7, r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x2928;
-    L_0x277a:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = com.chelpus.Utils.copyFile(r0, r1, r7, r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x1ec8;
+    L_0x1d1a:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "good space";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r37;
-        r7.<init>(r0);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.delete();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r41 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r41.<init>();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.<init>(r0);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.delete();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r41 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r41.<init>();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "add files";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = new com.android.vending.billing.InAppBillingService.LOCK.AddFilesItem;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = new com.android.vending.billing.InAppBillingService.LOCK.AddFilesItem;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "/data/app/classes.dex";
         r9 = "/data/app/";
-        r7.<init>(r8, r9);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.<init>(r8, r9);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r41;
-        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r7 = "/system/framework/core-libart.jar";
         r8 = "/system/framework/core-libart.backup";
         r0 = r41;
-        com.chelpus.Utils.addFilesToZip(r7, r8, r0);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        com.chelpus.Utils.addFilesToZip(r7, r8, r0);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "add files finish";
-        r7.println(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7.println(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r7 = 3;
-        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 0;
         r9 = "chmod";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 1;
         r9 = "0644";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 2;
         r9 = "/system/framework/core-libart.backup";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r7 = 3;
-        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 0;
         r9 = "chown";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 1;
         r9 = "0:0";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 2;
         r9 = "/system/framework/core-libart.backup";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r7 = 3;
-        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 0;
         r9 = "chmod";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 1;
         r9 = "0.0";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 2;
         r9 = "/system/framework/core-libart.backup";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r7 = 2;
-        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 0;
         r9 = "rm";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 1;
         r9 = "/system/framework/core-libart.jar";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/system/framework/core-libart.jar";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = r7.exists();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x281b;
-    L_0x2811:
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = r7.exists();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1dbb;
+    L_0x1db1:
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/system/framework/core-libart.jar";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7.delete();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-    L_0x281b:
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7.delete();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+    L_0x1dbb:
         r7 = 3;
-        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 0;
         r9 = "mv";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 1;
         r9 = "/system/framework/core.backup";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 2;
         r9 = "/system/framework/core-libart.jar";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/system/framework/core-libart.jar";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = r7.exists();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        if (r7 != 0) goto L_0x284e;
-    L_0x283d:
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = r7.exists();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        if (r7 != 0) goto L_0x1dee;
+    L_0x1ddd:
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/system/framework/core-libart.backup";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r9 = "/system/framework/core-libart.jar";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7.renameTo(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-    L_0x284e:
+        r8.<init>(r9);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7.renameTo(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+    L_0x1dee:
         r7 = 3;
-        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 0;
         r9 = "chmod";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 1;
         r9 = "0644";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 2;
         r9 = "/system/framework/core-libart.jar";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r7 = 3;
-        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 0;
         r9 = "chown";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 1;
         r9 = "0:0";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 2;
         r9 = "/system/framework/core-libart.jar";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r7 = 3;
-        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 0;
         r9 = "chmod";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 1;
         r9 = "0.0";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 2;
         r9 = "/system/framework/core-libart.jar";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r7 = "/system/framework/core-libart.jar";
-        r36 = com.chelpus.Utils.getFileDalvikCache(r7);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        if (r36 == 0) goto L_0x28b0;
-    L_0x2895:
+        r36 = com.chelpus.Utils.getFileDalvikCache(r7);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        if (r36 == 0) goto L_0x1e50;
+    L_0x1e35:
         r7 = 2;
-        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7 = new java.lang.String[r7];	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 0;
         r9 = "rm";
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = 1;
-        r9 = r36.getAbsolutePath();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7[r8] = r9;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = r36.exists();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        if (r7 == 0) goto L_0x28b0;
-    L_0x28ad:
-        r36.delete();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-    L_0x28b0:
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r9 = r36.getAbsolutePath();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7[r8] = r9;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = r36.exists();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        if (r7 == 0) goto L_0x1e50;
+    L_0x1e4d:
+        r36.delete();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+    L_0x1e50:
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/data/dalvik-cache/arm/system@framework@arm@boot.oat";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7.delete();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7.delete();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/data/dalvik-cache/arm/system@framework@arm@boot.art";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7.delete();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7.delete();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/data/dalvik-cache/arm64/system@framework@arm@boot.oat";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7.delete();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7.delete();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/data/dalvik-cache/arm64/system@framework@arm@boot.art";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7.delete();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7.delete();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/data/dalvik-cache/x86/system@framework@arm@boot.oat";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7.delete();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7.delete();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/data/dalvik-cache/x86/system@framework@arm@boot.art";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7.delete();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7.delete();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/data/dalvik-cache/x86_64/system@framework@arm@boot.oat";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7.delete();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7 = new java.io.File;	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7.delete();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
         r8 = "/data/dalvik-cache/x86_64/system@framework@arm@boot.art";
-        r7.<init>(r8);	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-        r7.delete();	 Catch:{ Exception -> 0x2912, FileNotFoundException -> 0x10e3 }
-    L_0x2900:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.<init>(r8);	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+        r7.delete();	 Catch:{ Exception -> 0x1eb2, FileNotFoundException -> 0x0fb9 }
+    L_0x1ea0:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "finish";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        goto L_0x0b2f;
-    L_0x2909:
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x03fc;
+    L_0x1ea9:
         r7 = "/system/framework/core.jar";
         r0 = r49;
-        com.chelpus.Utils.fixadlerOdex(r0, r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        goto L_0x274a;
-    L_0x2912:
+        com.chelpus.Utils.fixadlerOdex(r0, r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x1cea;
+    L_0x1eb2:
         r38 = move-exception;
-        r38.printStackTrace();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r38.printStackTrace();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "LuckyPatcher: odex not equal lenght patched! Not enougth space in /system/!";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "/system/framework/core.backup";
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.delete();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        goto L_0x2900;
-    L_0x2928:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.delete();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x1ea0;
+    L_0x1ec8:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r0 = r37;
-        r7.<init>(r0);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7.delete();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.<init>(r0);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7.delete();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "LuckyPatcher: odex not equal lenght patched! Not enougth space in /system/!";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        goto L_0x0b2f;
-    L_0x293b:
-        r7 = onlyDalvik;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 != 0) goto L_0x0b2f;
-    L_0x293f:
-        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x03fc;
+    L_0x1edb:
+        r7 = onlyDalvik;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 != 0) goto L_0x03fc;
+    L_0x1edf:
+        r7 = r49.toString();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "system@framework@core.jar@classes.dex";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x29a8;
-    L_0x294b:
-        if (r60 == 0) goto L_0x29a8;
-    L_0x294d:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x1f48;
+    L_0x1eeb:
+        if (r60 == 0) goto L_0x1f48;
+    L_0x1eed:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "LuckyPatcher: dalvik-cache patched! ";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r29 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r29 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r7 = "/system/framework/core.patched";
         r0 = r29;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r37 = "/system/framework/core.patched";
-        r65 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r65 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r7 = 1;
         r8 = 0;
         r0 = r65;
         r1 = r37;
-        r7 = com.chelpus.Utils.copyFile(r0, r1, r7, r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x29d6;
-    L_0x296f:
+        r7 = com.chelpus.Utils.copyFile(r0, r1, r7, r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x1f76;
+    L_0x1f0f:
         r7 = 3;
-        r7 = new java.lang.String[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = new java.lang.String[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = 0;
         r9 = "chmod";
-        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = 1;
         r9 = "0644";
-        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = 2;
-        r7[r8] = r37;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7[r8] = r37;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r7 = 3;
-        r7 = new java.lang.String[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = new java.lang.String[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = 0;
         r9 = "chown";
-        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = 1;
         r9 = "0.0";
-        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = 2;
-        r7[r8] = r37;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7[r8] = r37;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r7 = 3;
-        r7 = new java.lang.String[r7];	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7 = new java.lang.String[r7];	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = 0;
         r9 = "chown";
-        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = 1;
         r9 = "0:0";
-        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7[r8] = r9;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = 2;
-        r7[r8] = r37;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-    L_0x29a8:
-        r27 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7[r8] = r37;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        com.chelpus.Utils.run_all_no_root(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+    L_0x1f48:
+        r27 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r7 = "/system/framework/core.patched";
         r0 = r27;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = r27.exists();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x29be;
-    L_0x29b7:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = r27.exists();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x1f5e;
+    L_0x1f57:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "LuckyPatcher: root found core.patched! ";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-    L_0x29be:
-        r27 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+    L_0x1f5e:
+        r27 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r7 = "/system/framework/core.odex";
         r0 = r27;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = r27.exists();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        if (r7 == 0) goto L_0x0b2f;
-    L_0x29cd:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = r27.exists();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        if (r7 == 0) goto L_0x03fc;
+    L_0x1f6d:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "LuckyPatcher: root found core.odex! ";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        goto L_0x0b2f;
-    L_0x29d6:
-        r29.delete();	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x03fc;
+    L_0x1f76:
+        r29.delete();	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "LuckyPatcher: not space to system for odex core.jar! ";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
         r8 = "LuckyPatcher: odex not equal lenght patched! Not enougth space in /system/!";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x10e3, Exception -> 0x2128 }
-        goto L_0x29a8;
-    L_0x29e8:
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x0fb9, Exception -> 0x1264 }
+        goto L_0x1f48;
+    L_0x1f88:
         r7 = new java.io.File;
         r8 = "/data/dalvik-cache/arm/system@framework@services.jar@classes.dex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x29fb;
-    L_0x29f5:
+        if (r7 == 0) goto L_0x1f9b;
+    L_0x1f95:
         r66 = "/data/dalvik-cache";
         r47 = "/arm";
         r40 = "/system@framework@services.jar@classes.dex";
-    L_0x29fb:
+    L_0x1f9b:
         r7 = new java.io.File;
         r8 = "/data/dalvik-cache/arm64/system@framework@services.jar@classes.dex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x2a0e;
-    L_0x2a08:
+        if (r7 == 0) goto L_0x1fae;
+    L_0x1fa8:
         r66 = "/data/dalvik-cache";
         r47 = "/arm64";
         r40 = "/system@framework@services.jar@classes.dex";
-    L_0x2a0e:
+    L_0x1fae:
         r7 = new java.io.File;
         r8 = "/data/dalvik-cache/x86/system@framework@services.jar@classes.dex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x2a21;
-    L_0x2a1b:
+        if (r7 == 0) goto L_0x1fc1;
+    L_0x1fbb:
         r66 = "/data/dalvik-cache";
         r47 = "/x86";
         r40 = "/system@framework@services.jar@classes.dex";
-    L_0x2a21:
+    L_0x1fc1:
         r7 = new java.io.File;
         r8 = "/data/dalvik-cache/x86_64/system@framework@services.jar@classes.dex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x2a34;
-    L_0x2a2e:
+        if (r7 == 0) goto L_0x1fd4;
+    L_0x1fce:
         r66 = "/data/dalvik-cache";
         r47 = "/x86_64";
         r40 = "/system@framework@services.jar@classes.dex";
-    L_0x2a34:
+    L_0x1fd4:
         r7 = new java.io.File;
         r8 = "/data/dalvik-cache/oat/arm/system@framework@services.jar@classes.dex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x2a47;
-    L_0x2a41:
+        if (r7 == 0) goto L_0x1fe7;
+    L_0x1fe1:
         r66 = "/data/dalvik-cache/oat";
         r47 = "/arm";
         r40 = "/system@framework@services.jar@classes.dex";
-    L_0x2a47:
+    L_0x1fe7:
         r7 = new java.io.File;
         r8 = "/data/dalvik-cache/oat/arm64/system@framework@services.jar@classes.dex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x2a5a;
-    L_0x2a54:
+        if (r7 == 0) goto L_0x1ffa;
+    L_0x1ff4:
         r66 = "/data/dalvik-cache/oat";
         r47 = "/arm64";
         r40 = "/system@framework@services.jar@classes.dex";
-    L_0x2a5a:
+    L_0x1ffa:
         r7 = new java.io.File;
         r8 = "/data/dalvik-cache/oat/x86/system@framework@services.jar@classes.dex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x2a6d;
-    L_0x2a67:
+        if (r7 == 0) goto L_0x200d;
+    L_0x2007:
         r66 = "/data/dalvik-cache/oat";
         r47 = "/x86";
         r40 = "/system@framework@services.jar@classes.dex";
-    L_0x2a6d:
+    L_0x200d:
         r7 = new java.io.File;
         r8 = "/data/dalvik-cache/oat/x86_64/system@framework@services.jar@classes.dex";
         r7.<init>(r8);
         r7 = r7.exists();
-        if (r7 == 0) goto L_0x11f4;
-    L_0x2a7a:
+        if (r7 == 0) goto L_0x050b;
+    L_0x201a:
         r66 = "/data/dalvik-cache/oat";
         r47 = "/x86_64";
         r40 = "/system@framework@services.jar@classes.dex";
-        goto L_0x11f4;
-    L_0x2a82:
+        goto L_0x050b;
+    L_0x2022:
         r7 = 3;
         r7 = new java.lang.String[r7];
         r8 = 0;
@@ -6048,9 +4689,8 @@ public class corepatch {
         r7[r8] = r9;
         r8 = 2;
         r9 = new java.lang.StringBuilder;
-        r9.<init>();
-        r0 = r66;
-        r9 = r9.append(r0);
+        r10 = java.lang.String.valueOf(r66);
+        r9.<init>(r10);
         r0 = r47;
         r9 = r9.append(r0);
         r0 = r40;
@@ -6068,9 +4708,8 @@ public class corepatch {
         r7[r8] = r9;
         r8 = 2;
         r9 = new java.lang.StringBuilder;
-        r9.<init>();
-        r0 = r66;
-        r9 = r9.append(r0);
+        r10 = java.lang.String.valueOf(r66);
+        r9.<init>(r10);
         r0 = r47;
         r9 = r9.append(r0);
         r0 = r40;
@@ -6088,9 +4727,8 @@ public class corepatch {
         r7[r8] = r9;
         r8 = 2;
         r9 = new java.lang.StringBuilder;
-        r9.<init>();
-        r0 = r66;
-        r9 = r9.append(r0);
+        r10 = java.lang.String.valueOf(r66);
+        r9.<init>(r10);
         r0 = r47;
         r9 = r9.append(r0);
         r0 = r40;
@@ -6098,13 +4736,13 @@ public class corepatch {
         r9 = r9.toString();
         r7[r8] = r9;
         com.chelpus.Utils.run_all_no_root(r7);
-        goto L_0x12bd;
-    L_0x2b0e:
+        goto L_0x05c8;
+    L_0x20a8:
         r7 = java.lang.System.out;
         r8 = "LuckyPatcher: odex not equal lenght patched! Not enougth space in /system/!";
         r7.println(r8);
-        goto L_0x12ca;
-    L_0x2b17:
+        goto L_0x05d5;
+    L_0x20b1:
         r7 = 3;
         r7 = new java.lang.String[r7];
         r8 = 0;
@@ -6115,9 +4753,8 @@ public class corepatch {
         r7[r8] = r9;
         r8 = 2;
         r9 = new java.lang.StringBuilder;
-        r9.<init>();
-        r0 = r66;
-        r9 = r9.append(r0);
+        r10 = java.lang.String.valueOf(r66);
+        r9.<init>(r10);
         r0 = r47;
         r9 = r9.append(r0);
         r0 = r40;
@@ -6135,9 +4772,8 @@ public class corepatch {
         r7[r8] = r9;
         r8 = 2;
         r9 = new java.lang.StringBuilder;
-        r9.<init>();
-        r0 = r66;
-        r9 = r9.append(r0);
+        r10 = java.lang.String.valueOf(r66);
+        r9.<init>(r10);
         r0 = r47;
         r9 = r9.append(r0);
         r0 = r40;
@@ -6155,9 +4791,8 @@ public class corepatch {
         r7[r8] = r9;
         r8 = 2;
         r9 = new java.lang.StringBuilder;
-        r9.<init>();
-        r0 = r66;
-        r9 = r9.append(r0);
+        r10 = java.lang.String.valueOf(r66);
+        r9.<init>(r10);
         r0 = r47;
         r9 = r9.append(r0);
         r0 = r40;
@@ -6165,2042 +4800,3378 @@ public class corepatch {
         r9 = r9.toString();
         r7[r8] = r9;
         com.chelpus.Utils.run_all_no_root(r7);
-        goto L_0x13fc;
-    L_0x2ba3:
-        r7 = fileBytes;	 Catch:{ Exception -> 0x2bac }
-        r8 = r5 + 1;
-        r7.position(r8);	 Catch:{ Exception -> 0x2bac }
-        goto L_0x1477;
-    L_0x2bac:
+        goto L_0x06fb;
+    L_0x2137:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x281f }
+        r5 = r7.position();	 Catch:{ Exception -> 0x281f }
+        r7 = fileBytes;	 Catch:{ Exception -> 0x281f }
+        r6 = r7.get();	 Catch:{ Exception -> 0x281f }
+        r21 = byteOrigSOat1;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat1;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat1;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat1;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x217c;
+    L_0x2155:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2167;
+    L_0x2160:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2167:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2179;
+    L_0x2172:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2179:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x217c:
+        r21 = byteOrigSOat1_1;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat1_1;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat1_1;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat1_1;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x21b5;
+    L_0x218e:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x21a0;
+    L_0x2199:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x21a0:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x21b2;
+    L_0x21ab:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x21b2:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x21b5:
+        r21 = byteOrigSOat1_2;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat1_2;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat1_2;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat1_2;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x21ee;
+    L_0x21c7:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x21d9;
+    L_0x21d2:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x21d9:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x21eb;
+    L_0x21e4:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x21eb:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x21ee:
+        r21 = byteOrigSOat2;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat2;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat2;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat2;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2227;
+    L_0x2200:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2212;
+    L_0x220b:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2212:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2224;
+    L_0x221d:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2224:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x2227:
+        r21 = byteOrigSOat6_2;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat6_2;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat6_2;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat6_2;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2260;
+    L_0x2239:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x224b;
+    L_0x2244:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x224b:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x225d;
+    L_0x2256:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x225d:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x2260:
+        r21 = byteOrigSOat6_3;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat6_3;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat6_3;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat6_3;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2299;
+    L_0x2272:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2284;
+    L_0x227d:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2284:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2296;
+    L_0x228f:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2296:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x2299:
+        r21 = byteOrigSOat6_4;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat6_4;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat6_4;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat6_4;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x22d2;
+    L_0x22ab:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x22bd;
+    L_0x22b6:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x22bd:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x22cf;
+    L_0x22c8:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x22cf:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x22d2:
+        r21 = byteOrigSOat6_5;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat6_5;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat6_5;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat6_5;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x230b;
+    L_0x22e4:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x22f6;
+    L_0x22ef:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x22f6:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2308;
+    L_0x2301:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2308:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x230b:
+        r21 = byteOrigSOat3;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat3;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat3;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat3;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2344;
+    L_0x231d:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x232f;
+    L_0x2328:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x232f:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2341;
+    L_0x233a:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2341:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x2344:
+        r21 = byteOrigSOat6;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat6;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat6;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat6;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x237d;
+    L_0x2356:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2368;
+    L_0x2361:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2368:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x237a;
+    L_0x2373:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x237a:
+        r7 = 1;
+        patchOat6 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x237d:
+        r21 = byteOrigSOat7;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat7;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat7;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat7;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x23b6;
+    L_0x238f:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x23a1;
+    L_0x239a:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x23a1:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x23b3;
+    L_0x23ac:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x23b3:
+        r7 = 1;
+        patchOat6 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x23b6:
+        r21 = byteOrigSOat7_2;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat7_2;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat7_2;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat7_2;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x23ef;
+    L_0x23c8:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x23da;
+    L_0x23d3:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x23da:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x23ec;
+    L_0x23e5:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x23ec:
+        r7 = 1;
+        patchOat6 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x23ef:
+        r21 = byteOrigSOat4;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat4;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat4;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat4;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2428;
+    L_0x2401:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2413;
+    L_0x240c:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2413:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2425;
+    L_0x241e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2425:
+        r7 = 1;
+        patchOat6 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x2428:
+        r21 = byteOrigSOat5;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat5;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat5;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat5;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2461;
+    L_0x243a:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x244c;
+    L_0x2445:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x244c:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x245e;
+    L_0x2457:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x245e:
+        r7 = 1;
+        patchOat6 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x2461:
+        r21 = byteOrigSOat5_1;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat5_1;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat5_1;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat5_1;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x249a;
+    L_0x2473:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2485;
+    L_0x247e:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2485:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2497;
+    L_0x2490:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!FixForCM\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2497:
+        r7 = 1;
+        patchOat6 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x249a:
+        r21 = byteOrigSOat8;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat8;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat8;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat8;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x24d3;
+    L_0x24ac:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x24be;
+    L_0x24b7:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x24be:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x24d0;
+    L_0x24c9:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x24d0:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x24d3:
+        r21 = byteOrigSOat8_1;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat8_1;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat8_1;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat8_1;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x250c;
+    L_0x24e5:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x24f7;
+    L_0x24f0:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x24f7:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2509;
+    L_0x2502:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2509:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x250c:
+        r21 = byteOrigSOat8_2;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat8_2;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat8_2;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat8_2;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2545;
+    L_0x251e:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2530;
+    L_0x2529:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2530:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2542;
+    L_0x253b:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2542:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x2545:
+        r21 = byteOrigSOat9;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat9;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat9;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat9;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x257e;
+    L_0x2557:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2569;
+    L_0x2562:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2569:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x257b;
+    L_0x2574:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x257b:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x257e:
+        r21 = byteOrigSOat9_1;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat9_1;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat9_1;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat9_1;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x25b7;
+    L_0x2590:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x25a2;
+    L_0x259b:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x25a2:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x25b4;
+    L_0x25ad:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x25b4:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x25b7:
+        r21 = byteOrigSOat9_3;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat9_3;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat9_3;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat9_3;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x25f0;
+    L_0x25c9:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x25db;
+    L_0x25d4:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x25db:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x25ed;
+    L_0x25e6:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x25ed:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x25f0:
+        r21 = byteOrigSOat9_2;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat9_2;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat9_2;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat9_2;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2629;
+    L_0x2602:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2614;
+    L_0x260d:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2614:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2626;
+    L_0x261f:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2626:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x2629:
+        r21 = byteOrigSOat12;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat12;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat12;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat12;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2662;
+    L_0x263b:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x264d;
+    L_0x2646:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x264d:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x265f;
+    L_0x2658:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x265f:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x2662:
+        r21 = byteOrigSOat12_1;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat12_1;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat12_1;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat12_1;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x269b;
+    L_0x2674:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2686;
+    L_0x267f:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2686:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2698;
+    L_0x2691:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!InstallLocationPolice\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2698:
+        r7 = 1;
+        patchOat2 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x269b:
+        r21 = byteOrigSOat10;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat10;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat10;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat10;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x26d4;
+    L_0x26ad:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x26bf;
+    L_0x26b8:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x26bf:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x26d1;
+    L_0x26ca:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x26d1:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x26d4:
+        r21 = byteOrigSOat10_1;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat10_1;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat10_1;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat10_1;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x270d;
+    L_0x26e6:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x26f8;
+    L_0x26f1:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x26f8:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x270a;
+    L_0x2703:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x270a:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x270d:
+        r21 = byteOrigSOat11;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat11;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat11;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat11;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2746;
+    L_0x271f:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2731;
+    L_0x272a:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2731:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x2743;
+    L_0x273c:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x2743:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x2746:
+        r21 = byteOrigSOat11_1;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat11_1;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat11_1;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat11_1;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x277f;
+    L_0x2758:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x276a;
+    L_0x2763:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x276a:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x277c;
+    L_0x2775:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x277c:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x277f:
+        r21 = byteOrigSOat11_2;	 Catch:{ Exception -> 0x281f }
+        r22 = maskSOat11_2;	 Catch:{ Exception -> 0x281f }
+        r23 = byteReplaceSOat11_2;	 Catch:{ Exception -> 0x281f }
+        r24 = rep_maskSOat11_2;	 Catch:{ Exception -> 0x281f }
+        r19 = r5;
+        r20 = r6;
+        r7 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x27b8;
+    L_0x2791:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "patch";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x27a3;
+    L_0x279c:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 patched!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x27a3:
+        r7 = 0;
+        r7 = r71[r7];	 Catch:{ Exception -> 0x281f }
+        r8 = "restore";
+        r7 = r7.contains(r8);	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x27b5;
+    L_0x27ae:
+        r7 = java.lang.System.out;	 Catch:{ Exception -> 0x281f }
+        r8 = "Core4 restored!\n";
+        r7.println(r8);	 Catch:{ Exception -> 0x281f }
+    L_0x27b5:
+        r7 = 1;
+        patchOat1 = r7;	 Catch:{ Exception -> 0x281f }
+    L_0x27b8:
+        if (r25 == 0) goto L_0x283c;
+    L_0x27ba:
+        r7 = patchOat1;	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x283c;
+    L_0x27be:
+        r7 = patchOat2;	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x283c;
+    L_0x27c2:
+        r7 = patchOat6;	 Catch:{ Exception -> 0x281f }
+        if (r7 == 0) goto L_0x283c;
+    L_0x27c6:
+        r7 = onlyDalvik;	 Catch:{ Exception -> 0x281f }
+        if (r7 != 0) goto L_0x281a;
+    L_0x27ca:
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x281f }
+        r8 = "/data/dalvik-cache/arm/system@framework@services.jar@classes.dex";
+        r7.<init>(r8);	 Catch:{ Exception -> 0x281f }
+        r7.delete();	 Catch:{ Exception -> 0x281f }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x281f }
+        r8 = "/data/dalvik-cache/arm/system@framework@services.jar@classes.art";
+        r7.<init>(r8);	 Catch:{ Exception -> 0x281f }
+        r7.delete();	 Catch:{ Exception -> 0x281f }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x281f }
+        r8 = "/data/dalvik-cache/arm64/system@framework@services.jar@classes.dex";
+        r7.<init>(r8);	 Catch:{ Exception -> 0x281f }
+        r7.delete();	 Catch:{ Exception -> 0x281f }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x281f }
+        r8 = "/data/dalvik-cache/arm64/system@framework@services.jar@classes.art";
+        r7.<init>(r8);	 Catch:{ Exception -> 0x281f }
+        r7.delete();	 Catch:{ Exception -> 0x281f }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x281f }
+        r8 = "/data/dalvik-cache/x86/system@framework@services.jar@classes.dex";
+        r7.<init>(r8);	 Catch:{ Exception -> 0x281f }
+        r7.delete();	 Catch:{ Exception -> 0x281f }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x281f }
+        r8 = "/data/dalvik-cache/x86/system@framework@services.jar@classes.art";
+        r7.<init>(r8);	 Catch:{ Exception -> 0x281f }
+        r7.delete();	 Catch:{ Exception -> 0x281f }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x281f }
+        r8 = "/data/dalvik-cache/x86_64/system@framework@services.jar@classes.dex";
+        r7.<init>(r8);	 Catch:{ Exception -> 0x281f }
+        r7.delete();	 Catch:{ Exception -> 0x281f }
+        r7 = new java.io.File;	 Catch:{ Exception -> 0x281f }
+        r8 = "/data/dalvik-cache/x86_64/system@framework@services.jar@classes.art";
+        r7.<init>(r8);	 Catch:{ Exception -> 0x281f }
+        r7.delete();	 Catch:{ Exception -> 0x281f }
+    L_0x281a:
+        com.chelpus.Utils.reboot();	 Catch:{ Exception -> 0x281f }
+        goto L_0x077a;
+    L_0x281f:
         r38 = move-exception;
-        r7 = java.lang.System.out;	 Catch:{ IOException -> 0x2bc9 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x2bc9 }
-        r8.<init>();	 Catch:{ IOException -> 0x2bc9 }
-        r9 = "";
-        r8 = r8.append(r9);	 Catch:{ IOException -> 0x2bc9 }
+        r7 = java.lang.System.out;	 Catch:{ IOException -> 0x2836 }
+        r8 = new java.lang.StringBuilder;	 Catch:{ IOException -> 0x2836 }
+        r8.<init>();	 Catch:{ IOException -> 0x2836 }
         r0 = r38;
-        r8 = r8.append(r0);	 Catch:{ IOException -> 0x2bc9 }
-        r8 = r8.toString();	 Catch:{ IOException -> 0x2bc9 }
-        r7.println(r8);	 Catch:{ IOException -> 0x2bc9 }
-        goto L_0x1b65;
-    L_0x2bc9:
+        r8 = r8.append(r0);	 Catch:{ IOException -> 0x2836 }
+        r8 = r8.toString();	 Catch:{ IOException -> 0x2836 }
+        r7.println(r8);	 Catch:{ IOException -> 0x2836 }
+        goto L_0x077a;
+    L_0x2836:
         r38 = move-exception;
         r38.printStackTrace();
-        goto L_0x1b68;
-    L_0x2bcf:
+        goto L_0x077d;
+    L_0x283c:
+        r7 = fileBytes;	 Catch:{ Exception -> 0x281f }
+        r8 = r5 + 1;
+        r7.position(r8);	 Catch:{ Exception -> 0x281f }
+        goto L_0x0772;
+    L_0x2845:
         r7 = java.lang.System.out;
         r8 = "LuckyPatcher: odex not equal lenght patched! Not enougth space in /system/!";
         r7.println(r8);
-        goto L_0x1b68;
-    L_0x2bd8:
+        goto L_0x077d;
+    L_0x284e:
         r7 = 4;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "ART";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r7 == 0) goto L_0x2c63;
-    L_0x2be3:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r7 == 0) goto L_0x28d7;
+    L_0x2859:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "/system/framework/services.odex";
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = r7.exists();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r7 == 0) goto L_0x2c14;
-    L_0x2bf0:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = r7.exists();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r7 == 0) goto L_0x288a;
+    L_0x2866:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "/system/framework/services.odex";
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = r7.length();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = r7.length();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r12 = 0;
         r7 = (r8 > r12 ? 1 : (r8 == r12 ? 0 : -1));
-        if (r7 == 0) goto L_0x2c14;
-    L_0x2c01:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        if (r7 == 0) goto L_0x288a;
+    L_0x2877:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "Add services.odex for patch";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "/system/framework/services.odex";
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r42;
-        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x2c14:
-        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r0.add(r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x288a:
+        r7 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "/system/framework/services.jar";
-        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = com.chelpus.Utils.classes_test(r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r7 == 0) goto L_0x1c4f;
-    L_0x2c21:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7.<init>(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = com.chelpus.Utils.classes_test(r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r7 == 0) goto L_0x0864;
+    L_0x2897:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "services.jar contain classes,dex";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r64 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r64 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r7 = "/system/framework/services.jar";
         r0 = r64;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r7 = "/data/app";
         r0 = r64;
-        unzip(r0, r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r26 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        unzip(r0, r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r26 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r7 = "/data/app/classes.dex";
         r0 = r26;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = r26.exists();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r7 == 0) goto L_0x1c4f;
-    L_0x2c47:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = r26.exists();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r7 == 0) goto L_0x0864;
+    L_0x28bd:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "Add classes.dex for patch";
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r42;
         r1 = r26;
-        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        goto L_0x1c4f;
-    L_0x2c57:
+        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        goto L_0x0864;
+    L_0x28cd:
         r53 = move-exception;
-    L_0x2c58:
+    L_0x28ce:
         r7 = java.lang.System.out;
         r8 = "Error: services.odex not found!\n\nPlease Odex services.jar and try again!";
         r7.println(r8);
-    L_0x2c5f:
-        com.chelpus.Utils.exitFromRootJava();
-        return;
-    L_0x2c63:
-        r7 = onlyDalvik;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r7 == 0) goto L_0x2c8c;
-    L_0x2c67:
-        r52 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        goto L_0x086e;
+    L_0x28d7:
+        r7 = onlyDalvik;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r7 == 0) goto L_0x2900;
+    L_0x28db:
+        r52 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r7 = 2;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r52;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = r52.exists();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        if (r7 != 0) goto L_0x2c81;
-    L_0x2c77:
-        r7 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r7.<init>();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        throw r7;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-    L_0x2c7d:
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = r52.exists();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        if (r7 != 0) goto L_0x28f5;
+    L_0x28eb:
+        r7 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r7.<init>();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        throw r7;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+    L_0x28f1:
         r53 = move-exception;
         r49 = r52;
-        goto L_0x2c58;
-    L_0x2c81:
+        goto L_0x28ce;
+    L_0x28f5:
         r0 = r42;
         r1 = r52;
-        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r49 = r52;
-        goto L_0x1c4f;
-    L_0x2c8c:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.<init>();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        goto L_0x0864;
+    L_0x2900:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "Vhodjashij file ";
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = 2;
-        r9 = r71[r9];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r52 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r9 = r71[r9];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r52 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r7 = 2;
-        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r7 = r71[r7];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r52;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = r52.exists();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        if (r7 != 0) goto L_0x2cdd;
-    L_0x2cb7:
-        r7 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r7.<init>();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        throw r7;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-    L_0x2cbd:
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = r52.exists();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        if (r7 != 0) goto L_0x294a;
+    L_0x2927:
+        r7 = new java.io.FileNotFoundException;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r7.<init>();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        throw r7;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+    L_0x292d:
         r38 = move-exception;
         r49 = r52;
-    L_0x2cc0:
+    L_0x2930:
         r7 = java.lang.System.out;
         r8 = new java.lang.StringBuilder;
-        r8.<init>();
         r9 = "Exception e";
-        r8 = r8.append(r9);
+        r8.<init>(r9);
         r9 = r38.toString();
         r8 = r8.append(r9);
         r8 = r8.toString();
         r7.println(r8);
-        goto L_0x2c5f;
-    L_0x2cdd:
-        r7 = r52.toString();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        goto L_0x086e;
+    L_0x294a:
+        r7 = r52.toString();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r8 = "system@framework@services.jar@classes.dex";
-        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        if (r7 == 0) goto L_0x3ac8;
-    L_0x2ce9:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8.<init>();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        r7 = r7.contains(r8);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        if (r7 == 0) goto L_0x39c7;
+    L_0x2956:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r9 = "Vhodjashij file byl dalvick-cache ";
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r9 = 2;
-        r9 = r71[r9];	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r64 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        r9 = r71[r9];	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r64 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r7 = "/system/framework/services.jar";
         r0 = r64;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r7 = "/data/app";
         r0 = r64;
-        unzip(r0, r7);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r26 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        unzip(r0, r7);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r26 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r7 = "/data/app/classes.dex";
         r0 = r26;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r7 = r26.exists();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        if (r7 == 0) goto L_0x3ac4;
-    L_0x2d23:
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r7 = r26.exists();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        if (r7 == 0) goto L_0x39c3;
+    L_0x298c:
         r49 = r26;
-    L_0x2d25:
-        r28 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+    L_0x298e:
+        r28 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r7 = "/system/framework/services.odex";
         r0 = r28;
-        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7 = r28.exists();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r7 == 0) goto L_0x2d41;
-    L_0x2d34:
-        r8 = r28.length();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r0.<init>(r7);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7 = r28.exists();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r7 == 0) goto L_0x29aa;
+    L_0x299d:
+        r8 = r28.length();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r12 = 0;
         r7 = (r8 > r12 ? 1 : (r8 == r12 ? 0 : -1));
-        if (r7 != 0) goto L_0x2d41;
-    L_0x2d3e:
-        r28.delete();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x2d41:
-        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.<init>();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        if (r7 != 0) goto L_0x29aa;
+    L_0x29a7:
+        r28.delete();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x29aa:
+        r7 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "Add file for patch ";
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = r49.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = r49.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = r8.append(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = r8.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r7.println(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r42;
         r1 = r49;
-        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        goto L_0x1c4f;
-    L_0x2d66:
+        r0.add(r1);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        goto L_0x0864;
+    L_0x29cb:
         r38 = move-exception;
-        goto L_0x2cc0;
-    L_0x2d69:
-        r38 = move-exception;
-        r38.printStackTrace();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r10 = "";
-        r9 = r9.append(r10);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r0 = r38;
-        r9 = r9.append(r0);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x2d87:
-        r8 = lastPatchPosition;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 <= 0) goto L_0x2da2;
-    L_0x2d8b:
-        r8 = lastByteReplace;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x2da2;
-    L_0x2d8f:
-        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = lastPatchPosition;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.position(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = lastByteReplace;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.put(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.force();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x2da2:
-        r4.close();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = 4;
-        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = "framework";
-        r8 = r8.contains(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x35dc;
-    L_0x2db0:
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = "Rebuild file!";
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = r49.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = "/classes.dex";
-        r8 = r8.endsWith(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x2e32;
-    L_0x2dc3:
-        com.chelpus.Utils.fixadler(r49);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r61 == 0) goto L_0x35d7;
-    L_0x2dc8:
+        goto L_0x2930;
+    L_0x29ce:
+        r45 = r7.next();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r45 = (java.io.File) r45;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r10 = "Start patch for ";
+        r9.<init>(r10);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r10 = r45.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = r9.append(r10);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r49 = r45;
+        r48 = 0;
+        r8 = com.chelpus.Utils.isELFfiles(r49);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x29f8;
+    L_0x29f6:
+        r48 = 1;
+    L_0x29f8:
+        r8 = new java.io.RandomAccessFile;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = "rw";
+        r0 = r49;
+        r8.<init>(r0, r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r4 = r8.getChannel();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r14 = 0;
+        r8 = r4.size();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = (int) r8;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r0 = (long) r8;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r16 = r0;
+        r12 = r4;
+        r8 = r12.map(r13, r14, r16);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        fileBytes = r8;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r61 = 0;
+        r31 = 0;
+        r32 = 0;
+        if (r48 != 0) goto L_0x2d70;
+    L_0x2a20:
         r8 = 0;
-        not_found_bytes_for_patch = r8;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        lastByteReplace = r8;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = 0;
+        lastPatchPosition = r8;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r50 = 0;
+    L_0x2a28:
+        r8 = fileBytes;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r8 = r8.hasRemaining();	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 != 0) goto L_0x2b0d;
+    L_0x2a30:
+        r8 = lastPatchPosition;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 <= 0) goto L_0x2a4b;
+    L_0x2a34:
+        r8 = lastByteReplace;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x2a4b;
+    L_0x2a38:
+        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = lastPatchPosition;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.position(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = lastByteReplace;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.put(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.force();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x2a4b:
+        r4.close();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = 4;
+        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = "framework";
+        r8 = r8.contains(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x34de;
+    L_0x2a59:
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = "Rebuild file!";
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = r49.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = "/classes.dex";
+        r8 = r8.endsWith(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x2adb;
+    L_0x2a6c:
+        com.chelpus.Utils.fixadler(r49);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r61 == 0) goto L_0x34d9;
+    L_0x2a71:
+        r8 = 0;
+        not_found_bytes_for_patch = r8;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = 1;
-        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "/services.jar";
         r10 = "/services-patched.jar";
-        r37 = r8.replace(r9, r10);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r37 = r8.replace(r9, r10);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = 1;
-        r65 = r71[r8];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r65 = r71[r8];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r37;
-        r8.<init>(r0);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.delete();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r41 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r41.<init>();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.<init>(r0);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.delete();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r41 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r41.<init>();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "add files";
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = new com.android.vending.billing.InAppBillingService.LOCK.AddFilesItem;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r10 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r10.<init>();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r12 = com.chelpus.Utils.getDirs(r49);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r12 = r12.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r10 = r10.append(r12);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = new com.android.vending.billing.InAppBillingService.LOCK.AddFilesItem;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r10 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r12 = com.chelpus.Utils.getDirs(r49);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r12 = r12.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r12 = java.lang.String.valueOf(r12);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r10.<init>(r12);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r12 = "/";
-        r10 = r10.append(r12);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r10 = r10.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.<init>(r9, r10);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r10 = r10.append(r12);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r10 = r10.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.<init>(r9, r10);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r41;
-        r0.add(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r0.add(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r65;
         r1 = r37;
         r2 = r41;
-        com.chelpus.Utils.addFilesToZip(r0, r1, r2);	 Catch:{ Exception -> 0x35c7, FileNotFoundException -> 0x2c57 }
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35c7, FileNotFoundException -> 0x2c57 }
+        com.chelpus.Utils.addFilesToZip(r0, r1, r2);	 Catch:{ Exception -> 0x34c9, FileNotFoundException -> 0x28cd }
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34c9, FileNotFoundException -> 0x28cd }
         r9 = "add files finish";
-        r8.println(r9);	 Catch:{ Exception -> 0x35c7, FileNotFoundException -> 0x2c57 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x35c7, FileNotFoundException -> 0x2c57 }
+        r8.println(r9);	 Catch:{ Exception -> 0x34c9, FileNotFoundException -> 0x28cd }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x34c9, FileNotFoundException -> 0x28cd }
         r0 = r65;
-        r8.<init>(r0);	 Catch:{ Exception -> 0x35c7, FileNotFoundException -> 0x2c57 }
-        r8.delete();	 Catch:{ Exception -> 0x35c7, FileNotFoundException -> 0x2c57 }
-    L_0x2e32:
-        r8 = r49.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.<init>(r0);	 Catch:{ Exception -> 0x34c9, FileNotFoundException -> 0x28cd }
+        r8.delete();	 Catch:{ Exception -> 0x34c9, FileNotFoundException -> 0x28cd }
+    L_0x2adb:
+        r8 = r49.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "/services.odex";
-        r8 = r8.endsWith(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x1c53;
-    L_0x2e3e:
-        r8 = com.chelpus.Utils.isELFfiles(r49);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 != 0) goto L_0x2e4a;
-    L_0x2e44:
+        r8 = r8.endsWith(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x0868;
+    L_0x2ae7:
+        r8 = com.chelpus.Utils.isELFfiles(r49);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 != 0) goto L_0x2af3;
+    L_0x2aed:
         r8 = 0;
         r0 = r49;
-        com.chelpus.Utils.fixadlerOdex(r0, r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x2e4a:
-        if (r61 == 0) goto L_0x1c53;
-    L_0x2e4c:
-        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        com.chelpus.Utils.fixadlerOdex(r0, r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x2af3:
+        if (r61 == 0) goto L_0x0868;
+    L_0x2af5:
+        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = r49.getAbsolutePath();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r10 = "/services.odex";
         r12 = "/services-patched.odex";
-        r9 = r9.replace(r10, r12);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r9 = r9.replace(r10, r12);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r49;
-        r0.renameTo(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        goto L_0x1c53;
-    L_0x2e64:
+        r0.renameTo(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        goto L_0x0868;
+    L_0x2b0d:
+        r8 = fileBytes;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r5 = r8.position();	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r8 = fileBytes;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r6 = r8.get();	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r21 = byteOrigS2;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r22 = maskS2;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceS2;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskS2;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2b51;
+    L_0x2b2b:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2b3d;
+    L_0x2b36:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2b3d:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2b4f;
+    L_0x2b48:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2b4f:
+        r61 = 1;
+    L_0x2b51:
+        r21 = byteOrigS5;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r22 = maskS5;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceS5;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskS5;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2b89;
+    L_0x2b63:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2b75;
+    L_0x2b6e:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2b75:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2b87;
+    L_0x2b80:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2b87:
+        r61 = 1;
+    L_0x2b89:
+        r21 = byteOrigS14;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r22 = maskS14;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceS14;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskS14;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2bc1;
+    L_0x2b9b:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2bad;
+    L_0x2ba6:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2bad:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2bbf;
+    L_0x2bb8:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2bbf:
+        r61 = 1;
+    L_0x2bc1:
+        r21 = byteOrigS6;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r22 = maskS6;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceS6;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskS6;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2bf9;
+    L_0x2bd3:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2be5;
+    L_0x2bde:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!checkUpgradeKeySetLP\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2be5:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2bf7;
+    L_0x2bf0:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!checkUpgradeKeySetLP\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2bf7:
+        r61 = 1;
+    L_0x2bf9:
+        r21 = byteOrigS7;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r22 = maskS7;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceS7;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskS7;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2c31;
+    L_0x2c0b:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2c1d;
+    L_0x2c16:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\nCM12";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2c1d:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2c2f;
+    L_0x2c28:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\nCM12";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2c2f:
+        r61 = 1;
+    L_0x2c31:
+        r21 = byteOrigS7_1;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r22 = maskS7_1;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceS7_1;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskS7_1;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2c69;
+    L_0x2c43:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2c55;
+    L_0x2c4e:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\nCM12";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2c55:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2c67;
+    L_0x2c60:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\nCM12";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2c67:
+        r61 = 1;
+    L_0x2c69:
+        r21 = byteOrigS3;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r22 = maskS3;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceS3;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskS3;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2ca1;
+    L_0x2c7b:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2c8d;
+    L_0x2c86:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\nCM11";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2c8d:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2c9f;
+    L_0x2c98:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\nCM11";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2c9f:
+        r61 = 1;
+    L_0x2ca1:
+        r21 = byteOrigS4;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r22 = maskS4;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceS4;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskS4;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2cd9;
+    L_0x2cb3:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2cc5;
+    L_0x2cbe:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 policy patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2cc5:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2cd7;
+    L_0x2cd0:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 policy restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2cd7:
+        r61 = 1;
+    L_0x2cd9:
+        r21 = byteOrigS13;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r22 = maskS13;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceS13;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskS13;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2d11;
+    L_0x2ceb:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2cfd;
+    L_0x2cf6:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 policy patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2cfd:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2d0f;
+    L_0x2d08:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 policy restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2d0f:
+        r61 = 1;
+    L_0x2d11:
+        r21 = byteOrigS13_1;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r22 = maskS13_1;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceS13_1;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskS13_1;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2d49;
+    L_0x2d23:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2d35;
+    L_0x2d2e:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 policy patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2d35:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2d47;
+    L_0x2d40:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 policy restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+    L_0x2d47:
+        r61 = 1;
+    L_0x2d49:
+        r8 = fileBytes;	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r9 = r5 + 1;
+        r8.position(r9);	 Catch:{ Exception -> 0x2d56, FileNotFoundException -> 0x28cd }
+        r8 = 1;
+        r50 = r50 + r8;
+        goto L_0x2a28;
+    L_0x2d56:
+        r38 = move-exception;
+        r38.printStackTrace();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9.<init>();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r0 = r38;
+        r9 = r9.append(r0);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        goto L_0x2a30;
+    L_0x2d70:
         r0 = r49;
         r1 = r71;
         r2 = r25;
-        patchWithOatDumpP3(r0, r1, r2);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = patchOat1;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 != 0) goto L_0x2e73;
-    L_0x2e71:
-        if (r25 != 0) goto L_0x2e79;
-    L_0x2e73:
-        r8 = patchOat2;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 != 0) goto L_0x2da2;
-    L_0x2e77:
-        if (r25 == 0) goto L_0x2da2;
-    L_0x2e79:
-        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        patchWithOatDumpP3(r0, r1, r2);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = patchOat1;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 != 0) goto L_0x2d7f;
+    L_0x2d7d:
+        if (r25 != 0) goto L_0x2d85;
+    L_0x2d7f:
+        r8 = patchOat2;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 != 0) goto L_0x2a4b;
+    L_0x2d83:
+        if (r25 == 0) goto L_0x2a4b;
+    L_0x2d85:
+        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r14 = 0;
-        r8 = r4.size();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = (int) r8;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r0 = (long) r8;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = r4.size();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = (int) r8;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r0 = (long) r8;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r16 = r0;
         r12 = r4;
-        r8 = r12.map(r13, r14, r16);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        fileBytes = r8;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = r12.map(r13, r14, r16);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        fileBytes = r8;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = 4120; // 0x1018 float:5.773E-42 double:2.0356E-320;
-        r8.position(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = r8.get();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = r9.get();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r10 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r10 = r10.get();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r12 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r12 = r12.get();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r63 = com.chelpus.Utils.convertFourBytesToInt(r8, r9, r10, r12);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.position(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = r8.get();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = r9.get();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r10 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r10 = r10.get();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r12 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r12 = r12.get();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r63 = com.chelpus.Utils.convertFourBytesToInt(r8, r9, r10, r12);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r10 = "Start position:";
-        r9 = r9.append(r10);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r9.<init>(r10);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r63;
-        r9 = r9.append(r0);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r9 = r9.append(r0);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r63;
-        r8.position(r0);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x2ed0:
-        r8 = fileBytes;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r8 = r8.hasRemaining();	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2da2;
+        r8.position(r0);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x2dd8:
+        r8 = fileBytes;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r8 = r8.hasRemaining();	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2a4b;
+    L_0x2de0:
+        r8 = fileBytes;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r5 = r8.position();	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r8 = fileBytes;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r6 = r8.get();	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r21 = byteOrigSOat1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2e27;
+    L_0x2dfe:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2e10;
+    L_0x2e09:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2e10:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2e22;
+    L_0x2e1b:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2e22:
+        r8 = 1;
+        patchOat1 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
+    L_0x2e27:
+        r21 = byteOrigSOat1_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat1_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat1_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat1_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2e62;
+    L_0x2e39:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2e4b;
+    L_0x2e44:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2e4b:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2e5d;
+    L_0x2e56:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2e5d:
+        r8 = 1;
+        patchOat1 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
+    L_0x2e62:
+        r21 = byteOrigSOat1_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat1_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat1_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat1_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2e9d;
+    L_0x2e74:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2e86;
+    L_0x2e7f:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2e86:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2e98;
+    L_0x2e91:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2e98:
+        r8 = 1;
+        patchOat1 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
+    L_0x2e9d:
+        r21 = byteOrigSOat2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2ed8;
+    L_0x2eaf:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2ec1;
+    L_0x2eba:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2ec1:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2ed3;
+    L_0x2ecc:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2ed3:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x2ed8:
-        r8 = fileBytes;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r5 = r8.position();	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r8 = fileBytes;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r6 = r8.get();	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r21 = byteOrigSOat1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat6_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat6_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat6_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat6_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2f1f;
-    L_0x2ef6:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2f13;
+    L_0x2eea:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2f08;
-    L_0x2f01:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x2f08:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2efc;
+    L_0x2ef5:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2efc:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2f1a;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2f0e;
+    L_0x2f07:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2f0e:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x2f13:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x2f1a:
-        r8 = 1;
-        patchOat1 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x2f1f:
-        r21 = byteOrigSOat1_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat1_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat1_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat1_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat6_3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat6_3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat6_3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat6_3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2f5a;
-    L_0x2f31:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2f4e;
+    L_0x2f25:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2f43;
-    L_0x2f3c:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x2f43:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2f37;
+    L_0x2f30:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2f37:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2f55;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2f49;
+    L_0x2f42:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2f49:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x2f4e:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x2f55:
-        r8 = 1;
-        patchOat1 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x2f5a:
-        r21 = byteOrigSOat1_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat1_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat1_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat1_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat6_4;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat6_4;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat6_4;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat6_4;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2f95;
-    L_0x2f6c:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2f89;
+    L_0x2f60:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2f7e;
-    L_0x2f77:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x2f7e:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2f72;
+    L_0x2f6b:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2f72:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2f90;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2f84;
+    L_0x2f7d:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2f84:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x2f89:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x2f90:
-        r8 = 1;
-        patchOat1 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x2f95:
-        r21 = byteOrigSOat2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat6_5;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat6_5;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat6_5;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat6_5;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2fd0;
-    L_0x2fa7:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2fc4;
+    L_0x2f9b:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2fb9;
-    L_0x2fb2:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2fad;
+    L_0x2fa6:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x2fb9:
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2fad:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2fcb;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2fbf;
+    L_0x2fb8:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2fbf:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x2fc4:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x2fcb:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x2fd0:
-        r21 = byteOrigSOat6_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat6_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat6_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat6_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x300b;
-    L_0x2fe2:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2fff;
+    L_0x2fd6:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x2ff4;
-    L_0x2fed:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2fe8;
+    L_0x2fe1:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x2ff4:
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2fe8:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3006;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x2ffa;
+    L_0x2ff3:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x2ffa:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x2fff:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3006:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x300b:
-        r21 = byteOrigSOat6_3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat6_3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat6_3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat6_3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat6;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat6;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat6;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat6;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3046;
-    L_0x301d:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x303a;
+    L_0x3011:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x302f;
-    L_0x3028:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x302f:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3023;
+    L_0x301c:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!FixForCM\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3023:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3041;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3035;
+    L_0x302e:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!FixForCM\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3035:
+        r8 = 1;
+        patchOat6 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x303a:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3041:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x3046:
-        r21 = byteOrigSOat6_4;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat6_4;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat6_4;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat6_4;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat7;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat7;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat7;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat7;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3081;
-    L_0x3058:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3075;
+    L_0x304c:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x306a;
-    L_0x3063:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x306a:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x305e;
+    L_0x3057:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!FixForCM\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x305e:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x307c;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3070;
+    L_0x3069:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!FixForCM\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3070:
+        r8 = 1;
+        patchOat6 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x3075:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x307c:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x3081:
-        r21 = byteOrigSOat6_5;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat6_5;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat6_5;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat6_5;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat7_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat7_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat7_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat7_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x30bc;
-    L_0x3093:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x30b0;
+    L_0x3087:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x30a5;
-    L_0x309e:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x30a5:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3099;
+    L_0x3092:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!FixForCM\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3099:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x30b7;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x30ab;
+    L_0x30a4:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!FixForCM\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x30ab:
+        r8 = 1;
+        patchOat6 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x30b0:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x30b7:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x30bc:
-        r21 = byteOrigSOat3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat4;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat4;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat4;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat4;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x30f7;
-    L_0x30ce:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x30eb;
+    L_0x30c2:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x30e0;
-    L_0x30d9:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x30e0:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x30d4;
+    L_0x30cd:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!FixForCM\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x30d4:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x30f2;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x30e6;
+    L_0x30df:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!FixForCM\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x30e6:
+        r8 = 1;
+        patchOat6 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x30eb:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x30f2:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x30f7:
-        r21 = byteOrigSOat6;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat6;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat6;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat6;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat5;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat5;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat5;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat5;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3132;
-    L_0x3109:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3126;
+    L_0x30fd:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x311b;
-    L_0x3114:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x310f;
+    L_0x3108:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "Core4 patched!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x311b:
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x310f:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x312d;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3121;
+    L_0x311a:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!FixForCM\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3121:
+        r8 = 1;
+        patchOat6 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x3126:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x312d:
-        r8 = 1;
-        patchOat6 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x3132:
-        r21 = byteOrigSOat7;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat7;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat7;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat7;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat5_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat5_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat5_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat5_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x316d;
-    L_0x3144:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3161;
+    L_0x3138:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3156;
-    L_0x314f:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x314a;
+    L_0x3143:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "Core4 patched!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3156:
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x314a:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3168;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x315c;
+    L_0x3155:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!FixForCM\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x315c:
+        r8 = 1;
+        patchOat6 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x3161:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3168:
-        r8 = 1;
-        patchOat6 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x316d:
-        r21 = byteOrigSOat7_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat7_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat7_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat7_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x31a8;
-    L_0x317f:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x319c;
+    L_0x3173:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3191;
-    L_0x318a:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3191:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3185;
+    L_0x317e:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3185:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x31a3;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3197;
+    L_0x3190:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3197:
+        r8 = 1;
+        patchOat1 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x319c:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x31a3:
-        r8 = 1;
-        patchOat6 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x31a8:
-        r21 = byteOrigSOat4;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat4;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat4;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat4;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat8_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat8_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat8_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat8_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x31e3;
-    L_0x31ba:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x31d7;
+    L_0x31ae:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x31cc;
-    L_0x31c5:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x31cc:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x31c0;
+    L_0x31b9:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x31c0:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x31de;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x31d2;
+    L_0x31cb:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x31d2:
+        r8 = 1;
+        patchOat1 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x31d7:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x31de:
-        r8 = 1;
-        patchOat6 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x31e3:
-        r21 = byteOrigSOat5;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat5;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat5;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat5;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat8_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat8_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat8_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat8_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x321e;
-    L_0x31f5:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3212;
+    L_0x31e9:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3207;
-    L_0x3200:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3207:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x31fb;
+    L_0x31f4:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x31fb:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3219;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x320d;
+    L_0x3206:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x320d:
+        r8 = 1;
+        patchOat1 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x3212:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3219:
-        r8 = 1;
-        patchOat6 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x321e:
-        r21 = byteOrigSOat5_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat5_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat5_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat5_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat10;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat10;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat10;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat10;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3259;
-    L_0x3230:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x324d;
+    L_0x3224:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3242;
-    L_0x323b:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3242:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3236;
+    L_0x322f:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3236:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3254;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3248;
+    L_0x3241:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3248:
+        r8 = 1;
+        patchOat1 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x324d:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!FixForCM\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3254:
-        r8 = 1;
-        patchOat6 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x3259:
-        r21 = byteOrigSOat8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat10_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat10_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat10_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat10_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3294;
-    L_0x326b:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3288;
+    L_0x325f:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x327d;
-    L_0x3276:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3271;
+    L_0x326a:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x327d:
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3271:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x328f;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3283;
+    L_0x327c:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3283:
+        r8 = 1;
+        patchOat1 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x3288:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x328f:
-        r8 = 1;
-        patchOat1 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x3294:
-        r21 = byteOrigSOat8_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat8_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat8_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat8_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat11;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat11;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat11;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat11;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x32cf;
-    L_0x32a6:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x32c3;
+    L_0x329a:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x32b8;
-    L_0x32b1:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x32ac;
+    L_0x32a5:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x32b8:
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x32ac:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x32ca;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x32be;
+    L_0x32b7:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x32be:
+        r8 = 1;
+        patchOat1 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x32c3:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x32ca:
-        r8 = 1;
-        patchOat1 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x32cf:
-        r21 = byteOrigSOat8_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat8_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat8_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat8_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat11_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat11_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat11_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat11_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x330a;
-    L_0x32e1:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x32fe;
+    L_0x32d5:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x32f3;
-    L_0x32ec:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x32e7;
+    L_0x32e0:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x32f3:
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x32e7:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3305;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x32f9;
+    L_0x32f2:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x32f9:
+        r8 = 1;
+        patchOat1 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x32fe:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3305:
-        r8 = 1;
-        patchOat1 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x330a:
-        r21 = byteOrigSOat10;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat10;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat10;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat10;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat11_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat11_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat11_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat11_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3345;
-    L_0x331c:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3339;
+    L_0x3310:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x332e;
-    L_0x3327:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3322;
+    L_0x331b:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x332e:
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3322:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3340;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3334;
+    L_0x332d:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3334:
+        r8 = 1;
+        patchOat1 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x3339:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3340:
-        r8 = 1;
-        patchOat1 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x3345:
-        r21 = byteOrigSOat10_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat10_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat10_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat10_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat9;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat9;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat9;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat9;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3380;
-    L_0x3357:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3374;
+    L_0x334b:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3369;
-    L_0x3362:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3369:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x335d;
+    L_0x3356:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x335d:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x337b;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x336f;
+    L_0x3368:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x336f:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x3374:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x337b:
-        r8 = 1;
-        patchOat1 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x3380:
-        r21 = byteOrigSOat11;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat11;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat11;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat11;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat9_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat9_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat9_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat9_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x33bb;
-    L_0x3392:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x33af;
+    L_0x3386:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x33a4;
-    L_0x339d:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x33a4:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3398;
+    L_0x3391:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3398:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x33b6;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x33aa;
+    L_0x33a3:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x33aa:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x33af:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x33b6:
-        r8 = 1;
-        patchOat1 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x33bb:
-        r21 = byteOrigSOat11_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat11_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat11_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat11_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat9_3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat9_3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat9_3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat9_3;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x33f6;
-    L_0x33cd:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x33ea;
+    L_0x33c1:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x33df;
-    L_0x33d8:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x33df:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x33d3;
+    L_0x33cc:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x33d3:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x33f1;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x33e5;
+    L_0x33de:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x33e5:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x33ea:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x33f1:
-        r8 = 1;
-        patchOat1 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x33f6:
-        r21 = byteOrigSOat11_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat11_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat11_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat11_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat9_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat9_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat9_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat9_2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3431;
-    L_0x3408:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3425;
+    L_0x33fc:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x341a;
-    L_0x3413:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x341a:
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x340e;
+    L_0x3407:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 patched!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x340e:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x342c;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3420;
+    L_0x3419:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3420:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x3425:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x342c:
-        r8 = 1;
-        patchOat1 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x3431:
-        r21 = byteOrigSOat9;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat9;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat9;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat9;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat12;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat12;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat12;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat12;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x346c;
-    L_0x3443:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3460;
+    L_0x3437:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3455;
-    L_0x344e:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3449;
+    L_0x3442:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3455:
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3449:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3467;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x345b;
+    L_0x3454:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x345b:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x3460:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3467:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x346c:
-        r21 = byteOrigSOat9_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat9_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat9_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat9_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r21 = byteOrigSOat12_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r22 = maskSOat12_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r23 = byteReplaceSOat12_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r24 = rep_maskSOat12_1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x34a7;
-    L_0x347e:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x349b;
+    L_0x3472:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3490;
-    L_0x3489:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3484;
+    L_0x347d:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3490:
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3484:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x34a2;
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x3496;
+    L_0x348f:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r9 = "Core4 restored!InstallLocationPolice\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+    L_0x3496:
+        r8 = 1;
+        patchOat2 = r8;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        r61 = 1;
     L_0x349b:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x34a2:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x34a7:
-        r21 = byteOrigSOat9_3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat9_3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat9_3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat9_3;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x34e2;
-    L_0x34b9:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x34cb;
-    L_0x34c4:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x34cb:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x34dd;
-    L_0x34d6:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x34dd:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x34e2:
-        r21 = byteOrigSOat9_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat9_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat9_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat9_2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x351d;
-    L_0x34f4:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3506;
-    L_0x34ff:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3506:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3518;
-    L_0x3511:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3518:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x351d:
-        r21 = byteOrigSOat12;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat12;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat12;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat12;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3558;
-    L_0x352f:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3541;
-    L_0x353a:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3541:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3553;
-    L_0x354c:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x3553:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x3558:
-        r21 = byteOrigSOat12_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r22 = maskSOat12_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r23 = byteReplaceSOat12_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r24 = rep_maskSOat12_1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3593;
-    L_0x356a:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x357c;
-    L_0x3575:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 patched!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x357c:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x358e;
-    L_0x3587:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r9 = "Core4 restored!InstallLocationPolice\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-    L_0x358e:
-        r8 = 1;
-        patchOat2 = r8;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        r61 = 1;
-    L_0x3593:
-        if (r25 == 0) goto L_0x35a1;
-    L_0x3595:
-        r8 = patchOat1;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x35a1;
-    L_0x3599:
-        r8 = patchOat2;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x35a1;
-    L_0x359d:
-        r8 = patchOat6;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        if (r8 != 0) goto L_0x2da2;
-    L_0x35a1:
-        r8 = fileBytes;	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
+        if (r25 == 0) goto L_0x34a9;
+    L_0x349d:
+        r8 = patchOat1;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x34a9;
+    L_0x34a1:
+        r8 = patchOat2;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x34a9;
+    L_0x34a5:
+        r8 = patchOat6;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        if (r8 != 0) goto L_0x2a4b;
+    L_0x34a9:
+        r8 = fileBytes;	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
         r9 = r5 + 1;
-        r8.position(r9);	 Catch:{ Exception -> 0x35aa, FileNotFoundException -> 0x2c57 }
-        goto L_0x2ed0;
-    L_0x35aa:
+        r8.position(r9);	 Catch:{ Exception -> 0x34b2, FileNotFoundException -> 0x28cd }
+        goto L_0x2dd8;
+    L_0x34b2:
         r38 = move-exception;
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r10 = "";
-        r9 = r9.append(r10);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9.<init>();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r38;
-        r9 = r9.append(r0);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        goto L_0x2da2;
-    L_0x35c7:
+        r9 = r9.append(r0);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        goto L_0x2a4b;
+    L_0x34c9:
         r38 = move-exception;
-        r38.printStackTrace();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r38.printStackTrace();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r37;
-        r8.<init>(r0);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.delete();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        goto L_0x2e32;
-    L_0x35d7:
+        r8.<init>(r0);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.delete();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        goto L_0x2adb;
+    L_0x34d9:
         r8 = 1;
-        not_found_bytes_for_patch = r8;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        goto L_0x2e32;
-    L_0x35dc:
-        r8 = r49.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        not_found_bytes_for_patch = r8;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        goto L_0x2adb;
+    L_0x34de:
+        r8 = r49.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "/classes.dex";
-        r8 = r8.endsWith(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x37ea;
-    L_0x35e8:
-        com.chelpus.Utils.fixadler(r49);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x35eb:
-        r8 = r49.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = r8.endsWith(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x36ec;
+    L_0x34ea:
+        com.chelpus.Utils.fixadler(r49);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x34ed:
+        r8 = r49.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "system@framework@services.jar@classes.dex";
-        r8 = r8.contains(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x3600;
-    L_0x35f7:
-        if (r61 == 0) goto L_0x3600;
-    L_0x35f9:
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = r8.contains(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x3502;
+    L_0x34f9:
+        if (r61 == 0) goto L_0x3502;
+    L_0x34fb:
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "LuckyPatcher: dalvik-cache patched! ";
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x3600:
-        r8 = r49.toString();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x3502:
+        r8 = r49.toString();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "/classes.dex";
-        r8 = r8.contains(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x37a3;
-    L_0x360c:
-        if (r61 == 0) goto L_0x37a3;
-    L_0x360e:
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = r8.contains(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x36a5;
+    L_0x350e:
+        if (r61 == 0) goto L_0x36a5;
+    L_0x3510:
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "start";
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r37 = "/system/framework/services.backup";
         r65 = "/system/framework/services.jar";
         r8 = 1;
         r9 = 0;
         r0 = r65;
         r1 = r37;
-        r8 = com.chelpus.Utils.copyFile(r0, r1, r8, r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x380e;
-    L_0x3625:
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = com.chelpus.Utils.copyFile(r0, r1, r8, r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x3710;
+    L_0x3527:
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "good space";
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r37;
-        r8.<init>(r0);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.delete();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r41 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r41.<init>();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.<init>(r0);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.delete();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r41 = new java.util.ArrayList;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r41.<init>();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "add files";
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = new com.android.vending.billing.InAppBillingService.LOCK.AddFilesItem;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = new com.android.vending.billing.InAppBillingService.LOCK.AddFilesItem;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "/data/app/classes.dex";
         r10 = "/data/app/";
-        r8.<init>(r9, r10);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.<init>(r9, r10);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r41;
-        r0.add(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r0.add(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "/system/framework/services.jar";
         r9 = "/system/framework/services.backup";
         r0 = r41;
-        com.chelpus.Utils.addFilesToZip(r8, r9, r0);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        com.chelpus.Utils.addFilesToZip(r8, r9, r0);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = "add files finish";
-        r8.println(r9);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8.println(r9);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r8 = 3;
-        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 0;
         r10 = "chmod";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 1;
         r10 = "0644";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 2;
         r10 = "/system/framework/services.backup";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r8 = 3;
-        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 0;
         r10 = "chown";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 1;
         r10 = "0:0";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 2;
         r10 = "/system/framework/services.backup";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r8 = 3;
-        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 0;
         r10 = "chmod";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 1;
         r10 = "0.0";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 2;
         r10 = "/system/framework/services.backup";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r28 = new java.io.File;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r28 = new java.io.File;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r8 = "/system/framework/services.odex";
         r0 = r28;
-        r0.<init>(r8);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r0.<init>(r8);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r8 = "/system/framework/services.jar";
-        r35 = com.chelpus.Utils.getFileDalvikCache(r8);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r8 = r28.exists();	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x36c2;
-    L_0x36b4:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r35 = com.chelpus.Utils.getFileDalvikCache(r8);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r8 = r28.exists();	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x35c4;
+    L_0x35b6:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = "fix odex na osnove rebuild services";
-        r8.println(r9);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8.println(r9);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r8 = "/system/framework/services.backup";
         r0 = r28;
-        com.chelpus.Utils.fixadlerOdex(r0, r8);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-    L_0x36c2:
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r9 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r9.<init>();	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r10 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.toolfilesdir;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r9 = r9.append(r10);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        com.chelpus.Utils.fixadlerOdex(r0, r8);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+    L_0x35c4:
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r9 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r10 = com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment.toolfilesdir;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r10 = java.lang.String.valueOf(r10);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r9.<init>(r10);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r10 = "/ClearDalvik.on";
-        r9 = r9.append(r10);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r9 = r9.toString();	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r8.createNewFile();	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r9 = r9.append(r10);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r9 = r9.toString();	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r8.createNewFile();	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = "/system/framework/services.jar";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r8.delete();	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r8.delete();	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r8 = 2;
-        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 0;
         r10 = "rm";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 1;
         r10 = "/system/framework/services.jar";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = "/system/framework/services.backup";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r9 = new java.io.File;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r9 = new java.io.File;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r10 = "/system/framework/services.jar";
-        r9.<init>(r10);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r8.renameTo(r9);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r9.<init>(r10);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r8.renameTo(r9);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = "/system/framework/services.jar";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        r8 = r8.exists();	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        if (r8 != 0) goto L_0x372c;
-    L_0x3717:
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        r8 = r8.exists();	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        if (r8 != 0) goto L_0x362e;
+    L_0x3619:
         r8 = 3;
-        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 0;
         r10 = "mv";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 1;
         r10 = "/system/framework/services.backup";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
         r9 = 2;
         r10 = "/system/framework/services.jar";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-    L_0x372c:
-        if (r35 == 0) goto L_0x3749;
-    L_0x372e:
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+    L_0x362e:
+        if (r35 == 0) goto L_0x364b;
+    L_0x3630:
         r8 = 2;
-        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
+        r8 = new java.lang.String[r8];	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
         r9 = 0;
         r10 = "rm";
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
         r9 = 1;
-        r10 = r35.getAbsolutePath();	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8[r9] = r10;	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8 = r35.exists();	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        if (r8 == 0) goto L_0x3749;
-    L_0x3746:
-        r35.delete();	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-    L_0x3749:
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
+        r10 = r35.getAbsolutePath();	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8[r9] = r10;	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        com.chelpus.Utils.run_all_no_root(r8);	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8 = r35.exists();	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        if (r8 == 0) goto L_0x364b;
+    L_0x3648:
+        r35.delete();	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+    L_0x364b:
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
         r9 = "/data/dalvik-cache/arm/system@framework@arm@boot.oat";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8.delete();	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8.delete();	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
         r9 = "/data/dalvik-cache/arm/system@framework@arm@boot.art";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8.delete();	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8.delete();	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
         r9 = "/data/dalvik-cache/arm64/system@framework@arm@boot.oat";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8.delete();	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8.delete();	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
         r9 = "/data/dalvik-cache/arm64/system@framework@arm@boot.art";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8.delete();	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8.delete();	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
         r9 = "/data/dalvik-cache/x86/system@framework@arm@boot.oat";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8.delete();	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8.delete();	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
         r9 = "/data/dalvik-cache/x86/system@framework@arm@boot.art";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8.delete();	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8.delete();	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
         r9 = "/data/dalvik-cache/x86_64/system@framework@arm@boot.oat";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8.delete();	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8 = new java.io.File;	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8.delete();	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8 = new java.io.File;	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
         r9 = "/data/dalvik-cache/x86_64/system@framework@arm@boot.art";
-        r8.<init>(r9);	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-        r8.delete();	 Catch:{ Exception -> 0x37f3, FileNotFoundException -> 0x2c57 }
-    L_0x3799:
-        com.chelpus.Utils.clear_dalvik_cache();	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-    L_0x379c:
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.<init>(r9);	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+        r8.delete();	 Catch:{ Exception -> 0x36f5, FileNotFoundException -> 0x28cd }
+    L_0x369b:
+        com.chelpus.Utils.clear_dalvik_cache();	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+    L_0x369e:
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "finish";
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x37a3:
-        r8 = onlyDalvik;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 != 0) goto L_0x1c53;
-    L_0x37a7:
-        r27 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x36a5:
+        r8 = onlyDalvik;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 != 0) goto L_0x0868;
+    L_0x36a9:
+        r27 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "/system/framework/services.patched";
         r0 = r27;
-        r0.<init>(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = r27.exists();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x37bd;
-    L_0x37b6:
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r0.<init>(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = r27.exists();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x36bf;
+    L_0x36b8:
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "LuckyPatcher: root found services.patched! ";
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x37bd:
-        r27 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x36bf:
+        r27 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = "/system/framework/services.odex";
         r0 = r27;
-        r0.<init>(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = r27.exists();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x37d3;
-    L_0x37cc:
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r0.<init>(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = r27.exists();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x36d5;
+    L_0x36ce:
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "LuckyPatcher: root found services.odex! ";
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-    L_0x37d3:
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+    L_0x36d5:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        if (r8 == 0) goto L_0x1c53;
-    L_0x37de:
-        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = r8.contains(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        if (r8 == 0) goto L_0x0868;
+    L_0x36e0:
+        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "/system/framework/patch3.done";
-        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.delete();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        goto L_0x1c53;
-    L_0x37ea:
+        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.delete();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        goto L_0x0868;
+    L_0x36ec:
         r8 = "/system/framework/services.jar";
         r0 = r49;
-        com.chelpus.Utils.fixadlerOdex(r0, r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        goto L_0x35eb;
-    L_0x37f3:
+        com.chelpus.Utils.fixadlerOdex(r0, r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        goto L_0x34ed;
+    L_0x36f5:
         r38 = move-exception;
-        r38.printStackTrace();	 Catch:{ Exception -> 0x37f8, FileNotFoundException -> 0x2c57 }
-        goto L_0x3799;
-    L_0x37f8:
+        r38.printStackTrace();	 Catch:{ Exception -> 0x36fa, FileNotFoundException -> 0x28cd }
+        goto L_0x369b;
+    L_0x36fa:
         r38 = move-exception;
-        r38.printStackTrace();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r38.printStackTrace();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "LuckyPatcher: odex not equal lenght patched! Not enougth space in /system/!";
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r9 = "/system/framework/services.backup";
-        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.delete();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        goto L_0x379c;
-    L_0x380e:
-        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.<init>(r9);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.delete();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        goto L_0x369e;
+    L_0x3710:
+        r8 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r37;
-        r8.<init>(r0);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8.delete();	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r52 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8.<init>(r0);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8.delete();	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r52 = new java.io.File;	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r8 = 2;
-        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
+        r8 = r71[r8];	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
         r0 = r52;
-        r0.<init>(r8);	 Catch:{ FileNotFoundException -> 0x2c57, Exception -> 0x2d66 }
-        r8 = new java.io.RandomAccessFile;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        r0.<init>(r8);	 Catch:{ FileNotFoundException -> 0x28cd, Exception -> 0x29cb }
+        r8 = new java.io.RandomAccessFile;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r9 = "rw";
         r0 = r52;
-        r8.<init>(r0, r9);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r4 = r8.getChannel();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        r8.<init>(r0, r9);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r4 = r8.getChannel();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r13 = java.nio.channels.FileChannel.MapMode.READ_WRITE;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r14 = 0;
-        r8 = r4.size();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8 = (int) r8;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r0 = (long) r8;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        r8 = r4.size();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r8 = (int) r8;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r0 = (long) r8;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r16 = r0;
         r12 = r4;
-        r8 = r12.map(r13, r14, r16);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        fileBytes = r8;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        r8 = r12.map(r13, r14, r16);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        fileBytes = r8;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r31 = 0;
         r32 = 0;
         r8 = 0;
-        lastByteReplace = r8;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        lastByteReplace = r8;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r8 = 0;
-        lastPatchPosition = r8;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        lastPatchPosition = r8;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r61 = 0;
         r50 = 0;
-    L_0x3850:
-        r8 = fileBytes;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r8 = r8.hasRemaining();	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3a84;
+    L_0x3752:
+        r8 = fileBytes;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r8 = r8.hasRemaining();	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 != 0) goto L_0x3792;
+    L_0x375a:
+        r8 = lastPatchPosition;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        if (r8 <= 0) goto L_0x3775;
+    L_0x375e:
+        r8 = lastByteReplace;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        if (r8 == 0) goto L_0x3775;
+    L_0x3762:
+        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r9 = lastPatchPosition;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r8.position(r9);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r9 = lastByteReplace;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r8.put(r9);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r8.force();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+    L_0x3775:
+        r4.close();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r8 = r52.toString();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r9 = "/classes.dex";
+        r8 = r8.endsWith(r9);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        if (r8 == 0) goto L_0x39ba;
+    L_0x3784:
+        com.chelpus.Utils.fixadler(r52);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+    L_0x3787:
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r9 = "LuckyPatcher: odex not equal lenght patched! Not enougth space in /system/!";
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r49 = r52;
+        goto L_0x36a5;
+    L_0x3792:
+        r8 = fileBytes;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r5 = r8.position();	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r8 = fileBytes;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r6 = r8.get();	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r21 = byteOrigS2;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r22 = maskS2;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r23 = byteReplaceS2;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r24 = rep_maskS2;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x37d6;
+    L_0x37b0:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x37c2;
+    L_0x37bb:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x37c2:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x37d4;
+    L_0x37cd:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x37d4:
+        r61 = 1;
+    L_0x37d6:
+        r21 = byteOrigS5;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r22 = maskS5;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r23 = byteReplaceS5;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r24 = rep_maskS5;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x380e;
+    L_0x37e8:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x37fa;
+    L_0x37f3:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x37fa:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x380c;
+    L_0x3805:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x380c:
+        r61 = 1;
+    L_0x380e:
+        r21 = byteOrigS14;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r22 = maskS14;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r23 = byteReplaceS14;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r24 = rep_maskS14;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x3846;
+    L_0x3820:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "patch";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x3832;
+    L_0x382b:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "Core4 patched!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x3832:
+        r8 = 0;
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "restore";
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x3844;
+    L_0x383d:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r9 = "Core4 restored!\n";
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x3844:
+        r61 = 1;
+    L_0x3846:
+        r21 = byteOrigS6;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r22 = maskS6;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r23 = byteReplaceS6;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r24 = rep_maskS6;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r19 = r5;
+        r20 = r6;
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x387e;
     L_0x3858:
-        r8 = fileBytes;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r5 = r8.position();	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r8 = fileBytes;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r6 = r8.get();	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r21 = byteOrigS2;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r22 = maskS2;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r23 = byteReplaceS2;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r24 = rep_maskS2;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x389c;
-    L_0x3876:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3888;
-    L_0x3881:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x3888:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x389a;
-    L_0x3893:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x389a:
-        r61 = 1;
-    L_0x389c:
-        r21 = byteOrigS5;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r22 = maskS5;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r23 = byteReplaceS5;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r24 = rep_maskS5;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x38d4;
-    L_0x38ae:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x38c0;
-    L_0x38b9:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x38c0:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x38d2;
-    L_0x38cb:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x38d2:
-        r61 = 1;
-    L_0x38d4:
-        r21 = byteOrigS14;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r22 = maskS14;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r23 = byteReplaceS14;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r24 = rep_maskS14;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x390c;
-    L_0x38e6:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x38f8;
-    L_0x38f1:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "Core4 patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x38f8:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x390a;
-    L_0x3903:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "Core4 restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x390a:
-        r61 = 1;
-    L_0x390c:
-        r21 = byteOrigS6;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r22 = maskS6;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r23 = byteReplaceS6;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r24 = rep_maskS6;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r19 = r5;
-        r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3944;
-    L_0x391e:
-        r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3930;
-    L_0x3929:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x386a;
+    L_0x3863:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 patched!checkUpgradeKeySetLP\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x3930:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x386a:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3942;
-    L_0x393b:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x387c;
+    L_0x3875:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 restored!checkUpgradeKeySetLP\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x3942:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x387c:
         r61 = 1;
-    L_0x3944:
-        r21 = byteOrigS7;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r22 = maskS7;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r23 = byteReplaceS7;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r24 = rep_maskS7;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+    L_0x387e:
+        r21 = byteOrigS7;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r22 = maskS7;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r23 = byteReplaceS7;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r24 = rep_maskS7;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x397c;
-    L_0x3956:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x38b6;
+    L_0x3890:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3968;
-    L_0x3961:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x38a2;
+    L_0x389b:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 patched!\nCM12";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x3968:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x38a2:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x397a;
-    L_0x3973:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x38b4;
+    L_0x38ad:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 restored!\nCM12";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x397a:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x38b4:
         r61 = 1;
-    L_0x397c:
-        r21 = byteOrigS7_1;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r22 = maskS7_1;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r23 = byteReplaceS7_1;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r24 = rep_maskS7_1;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+    L_0x38b6:
+        r21 = byteOrigS7_1;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r22 = maskS7_1;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r23 = byteReplaceS7_1;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r24 = rep_maskS7_1;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x39b4;
-    L_0x398e:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x38ee;
+    L_0x38c8:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x39a0;
-    L_0x3999:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x38da;
+    L_0x38d3:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 patched!\nCM12";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x39a0:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x38da:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x39b2;
-    L_0x39ab:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x38ec;
+    L_0x38e5:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 restored!\nCM12";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x39b2:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x38ec:
         r61 = 1;
-    L_0x39b4:
-        r21 = byteOrigS3;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r22 = maskS3;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r23 = byteReplaceS3;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r24 = rep_maskS3;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+    L_0x38ee:
+        r21 = byteOrigS3;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r22 = maskS3;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r23 = byteReplaceS3;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r24 = rep_maskS3;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x39ec;
-    L_0x39c6:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x3926;
+    L_0x3900:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x39d8;
-    L_0x39d1:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x3912;
+    L_0x390b:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 patched!\nCM11";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x39d8:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x3912:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x39ea;
-    L_0x39e3:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x3924;
+    L_0x391d:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 restored!\nCM11";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x39ea:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x3924:
         r61 = 1;
-    L_0x39ec:
-        r21 = byteOrigS4;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r22 = maskS4;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r23 = byteReplaceS4;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r24 = rep_maskS4;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+    L_0x3926:
+        r21 = byteOrigS4;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r22 = maskS4;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r23 = byteReplaceS4;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r24 = rep_maskS4;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3a24;
-    L_0x39fe:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x395e;
+    L_0x3938:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3a10;
-    L_0x3a09:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x394a;
+    L_0x3943:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 policy patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x3a10:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x394a:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3a22;
-    L_0x3a1b:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x395c;
+    L_0x3955:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 policy restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x3a22:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x395c:
         r61 = 1;
-    L_0x3a24:
-        r21 = byteOrigS13_1;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r22 = maskS13_1;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r23 = byteReplaceS13_1;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        r24 = rep_maskS13_1;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+    L_0x395e:
+        r21 = byteOrigS13_1;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r22 = maskS13_1;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r23 = byteReplaceS13_1;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        r24 = rep_maskS13_1;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r19 = r5;
         r20 = r6;
-        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3a5c;
-    L_0x3a36:
+        r8 = applyPatch(r19, r20, r21, r22, r23, r24, r25);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x3996;
+    L_0x3970:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "patch";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3a48;
-    L_0x3a41:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x3982;
+    L_0x397b:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 policy patched!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x3a48:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x3982:
         r8 = 0;
-        r8 = r71[r8];	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r71[r8];	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "restore";
-        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-        if (r8 == 0) goto L_0x3a5a;
-    L_0x3a53:
-        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8 = r8.contains(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+        if (r8 == 0) goto L_0x3994;
+    L_0x398d:
+        r8 = java.lang.System.out;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = "Core4 policy restored!\n";
-        r8.println(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
-    L_0x3a5a:
+        r8.println(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
+    L_0x3994:
         r61 = 1;
-    L_0x3a5c:
-        r8 = fileBytes;	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+    L_0x3996:
+        r8 = fileBytes;	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r9 = r5 + 1;
-        r8.position(r9);	 Catch:{ Exception -> 0x3a69, FileNotFoundException -> 0x2c7d }
+        r8.position(r9);	 Catch:{ Exception -> 0x39a3, FileNotFoundException -> 0x28f1 }
         r8 = 1;
         r50 = r50 + r8;
-        goto L_0x3850;
-    L_0x3a69:
+        goto L_0x3752;
+    L_0x39a3:
         r38 = move-exception;
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r9.<init>();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r10 = "";
-        r9 = r9.append(r10);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
+        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r9 = new java.lang.StringBuilder;	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r9.<init>();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
         r0 = r38;
-        r9 = r9.append(r0);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-    L_0x3a84:
-        r8 = lastPatchPosition;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        if (r8 <= 0) goto L_0x3a9f;
-    L_0x3a88:
-        r8 = lastByteReplace;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        if (r8 == 0) goto L_0x3a9f;
-    L_0x3a8c:
-        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r9 = lastPatchPosition;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8.position(r9);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r9 = lastByteReplace;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8.put(r9);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8 = fileBytes;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8.force();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-    L_0x3a9f:
-        r4.close();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r8 = r52.toString();	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r9 = "/classes.dex";
-        r8 = r8.endsWith(r9);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        if (r8 == 0) goto L_0x3abc;
-    L_0x3aae:
-        com.chelpus.Utils.fixadler(r52);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-    L_0x3ab1:
-        r8 = java.lang.System.out;	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r9 = "LuckyPatcher: odex not equal lenght patched! Not enougth space in /system/!";
-        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        r49 = r52;
-        goto L_0x37a3;
-    L_0x3abc:
+        r9 = r9.append(r0);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r9 = r9.toString();	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        r8.println(r9);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        goto L_0x375a;
+    L_0x39ba:
         r8 = "/system/framework/services.jar";
         r0 = r52;
-        com.chelpus.Utils.fixadlerOdex(r0, r8);	 Catch:{ FileNotFoundException -> 0x2c7d, Exception -> 0x2cbd }
-        goto L_0x3ab1;
-    L_0x3ac4:
+        com.chelpus.Utils.fixadlerOdex(r0, r8);	 Catch:{ FileNotFoundException -> 0x28f1, Exception -> 0x292d }
+        goto L_0x3787;
+    L_0x39c3:
         r49 = r52;
-        goto L_0x2d25;
-    L_0x3ac8:
+        goto L_0x298e;
+    L_0x39c7:
         r49 = r52;
-        goto L_0x2d41;
+        goto L_0x29aa;
         */
         throw new UnsupportedOperationException("Method not decompiled: com.chelpus.root.utils.corepatch.main(java.lang.String[]):void");
     }
@@ -8213,7 +8184,7 @@ public class corepatch {
             ZipInputStream zin = new ZipInputStream(fin);
             for (ZipEntry ze = zin.getNextEntry(); ze != null && true; ze = zin.getNextEntry()) {
                 if (ze.getName().equals("classes.dex")) {
-                    FileOutputStream fout = new FileOutputStream(dir + InternalZipConstants.ZIP_FILE_SEPARATOR + "classes.dex");
+                    FileOutputStream fout = new FileOutputStream(new StringBuilder(String.valueOf(dir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append("classes.dex").toString());
                     byte[] buffer = new byte[InternalZipConstants.UFT8_NAMES_FLAG];
                     while (true) {
                         int length = zin.read(buffer);
@@ -8222,9 +8193,9 @@ public class corepatch {
                         }
                         fout.write(buffer, 0, length);
                     }
-                    Utils.run_all_no_root("chmod", "777", dir + InternalZipConstants.ZIP_FILE_SEPARATOR + "classes.dex");
-                    Utils.run_all_no_root("chown", "0.0", dir + InternalZipConstants.ZIP_FILE_SEPARATOR + "classes.dex");
-                    Utils.run_all_no_root("chown", "0:0", dir + InternalZipConstants.ZIP_FILE_SEPARATOR + "classes.dex");
+                    Utils.run_all_no_root("chmod", "777", new StringBuilder(String.valueOf(dir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append("classes.dex").toString());
+                    Utils.run_all_no_root("chown", "0.0", new StringBuilder(String.valueOf(dir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append("classes.dex").toString());
+                    Utils.run_all_no_root("chown", "0:0", new StringBuilder(String.valueOf(dir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append("classes.dex").toString());
                     zin.closeEntry();
                     fout.close();
                     found1 = true;
@@ -8273,6 +8244,12 @@ public class corepatch {
                         if (rep_mask[i] == (byte) 2) {
                             byteReplace[i] = (byte) ((prufbyte & 15) + ((prufbyte & 15) * 16));
                         }
+                        if (rep_mask[i] == (byte) 20) {
+                            byteReplace[i] = (byte) (prufbyte & 15);
+                        }
+                        if (rep_mask[i] == (byte) 21) {
+                            byteReplace[i] = (byte) ((prufbyte & 15) + 16);
+                        }
                         i++;
                         if (i == byteOrig.length) {
                             fileBytes.position(curentPos);
@@ -8302,7 +8279,6 @@ public class corepatch {
         }
         Iterator it2 = oatForPatch.iterator();
         while (it2.hasNext()) {
-            OatFuncDump oatDump;
             Iterator it3;
             OatFunc oatFunc;
             Iterator it4;
@@ -8324,15 +8300,15 @@ public class corepatch {
             count_oat_files++;
             System.out.println("oat file for patch:" + fileForPatch.getAbsolutePath());
             if (patch_for_conscrypt_oat && pattern1 && conscryptFound) {
-                oatDump = new Utils("").getOffsetOatdump(fileForPatch, new ArrayList<String>() {
+                OatFuncDump oatDump = new Utils("").getOffsetOatdump(fileForPatch, new ArrayList<String>() {
                     {
                         add("boolean com.android.org.conscrypt.OpenSSLSignature.engineVerify(byte[])");
                     }
                 });
                 System.out.println(oatDump.instruction);
-                try {
-                    it3 = oatDump.funcArray.iterator();
-                    while (it3.hasNext()) {
+                it3 = oatDump.funcArray.iterator();
+                while (it3.hasNext()) {
+                    try {
                         oatFunc = (OatFunc) it3.next();
                         System.out.println(oatFunc.funcName);
                         FileChannel ChannelDex = new RandomAccessFile(fileForPatch, InternalZipConstants.WRITE_MODE).getChannel();
@@ -8381,13 +8357,8 @@ public class corepatch {
                             }
                         }
                         ChannelDex.close();
-                    }
-                } catch (Exception e) {
-                    try {
+                    } catch (Exception e) {
                         e.printStackTrace();
-                    } catch (Exception e2) {
-                        e2.printStackTrace();
-                        return;
                     }
                 }
             }
@@ -8397,130 +8368,128 @@ public class corepatch {
                     }
                 }
             }
-            final boolean cf = conscryptFound;
-            final boolean z = pattern2;
-            final boolean z2 = pattern1;
-            oatDump = new Utils("").getOffsetOatdump(fileForPatch, new ArrayList<String>() {
-            });
-            System.out.println(oatDump.instruction);
-            it3 = oatDump.funcArray.iterator();
-            while (it3.hasNext()) {
-                oatFunc = (OatFunc) it3.next();
-                System.out.println(oatFunc.funcName);
-                if (oatFunc.funcName.equals("boolean java.security.MessageDigest.isEqual(byte[], byte[])")) {
-                    System.out.println(oatFunc.funcName);
-                    System.out.println(oatFunc.codeOffset);
-                    ChannelDex = new RandomAccessFile(fileForPatch, InternalZipConstants.WRITE_MODE).getChannel();
-                    fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
-                    if (oatFunc.codeOffset != 0) {
-                        it4 = new ArrayList<PatchesItem>() {
-                            {
-                                add(new PatchesItem(corepatch.byteOrig_patch2_arm, null, corepatch.byteReplace_patch2_arm, null, "", false));
-                                add(new PatchesItem(corepatch.byteOrig_patch2_arm_1, null, corepatch.byteReplace_patch2_arm_1, null, "", false));
-                                add(new PatchesItem(corepatch.byteOrig_patch2_arm64, null, corepatch.byteReplace_patch2_arm64, null, "", false));
-                                add(new PatchesItem(corepatch.byteOrig_patch2_arm64_1, null, corepatch.byteReplace_patch2_arm64_1, null, "", false));
-                                add(new PatchesItem(corepatch.byteOrig_patch2_arm64_2, null, corepatch.byteReplace_patch2_arm64_2, null, "", false));
-                                add(new PatchesItem(corepatch.byteOrig_patch2_x86, null, corepatch.byteReplace_patch2_x86, null, "", false));
-                                add(new PatchesItem(corepatch.byteOrig_patch2_x86_64, null, corepatch.byteReplace_patch2_x86_64, null, "", false));
-                            }
-                        }.iterator();
-                        while (it4.hasNext()) {
-                            pattern = (PatchesItem) it4.next();
-                            iArr = new int[10];
-                            iArr = new int[]{4090, 4091, 4092, 4093, 4094, 4095, LZMA2Options.DICT_SIZE_MIN, 4097, 4098, 4099};
-                            length = iArr.length;
-                            i = 0;
-                            while (i < length) {
-                                headerOffset = iArr[i];
-                                test = true;
-                                fileBytes.position(oatFunc.codeOffset + headerOffset);
-                                for (byte current2 : pattern.origByte) {
-                                    if (fileBytes.get() != current2) {
-                                        test = false;
+            try {
+                oatDump = new Utils("").getOffsetOatdump(fileForPatch, new AnonymousClass4(pattern2, conscryptFound, pattern1));
+                System.out.println(oatDump.instruction);
+                try {
+                    it3 = oatDump.funcArray.iterator();
+                    while (it3.hasNext()) {
+                        oatFunc = (OatFunc) it3.next();
+                        System.out.println(oatFunc.funcName);
+                        if (oatFunc.funcName.equals("boolean java.security.MessageDigest.isEqual(byte[], byte[])")) {
+                            System.out.println(oatFunc.funcName);
+                            System.out.println(oatFunc.codeOffset);
+                            ChannelDex = new RandomAccessFile(fileForPatch, InternalZipConstants.WRITE_MODE).getChannel();
+                            fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
+                            if (oatFunc.codeOffset != 0) {
+                                it4 = new ArrayList<PatchesItem>() {
+                                    {
+                                        add(new PatchesItem(corepatch.byteOrig_patch2_arm, null, corepatch.byteReplace_patch2_arm, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch2_arm_1, null, corepatch.byteReplace_patch2_arm_1, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch2_arm64, null, corepatch.byteReplace_patch2_arm64, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch2_arm64_1, null, corepatch.byteReplace_patch2_arm64_1, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch2_arm64_2, null, corepatch.byteReplace_patch2_arm64_2, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch2_x86, null, corepatch.byteReplace_patch2_x86, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch2_x86_2, null, corepatch.byteReplace_patch2_x86_2, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch2_x86_64, null, corepatch.byteReplace_patch2_x86_64, null, "", false));
+                                    }
+                                }.iterator();
+                                while (it4.hasNext()) {
+                                    pattern = (PatchesItem) it4.next();
+                                    iArr = new int[10];
+                                    iArr = new int[]{4090, 4091, 4092, 4093, 4094, 4095, LZMA2Options.DICT_SIZE_MIN, 4097, 4098, 4099};
+                                    length = iArr.length;
+                                    i = 0;
+                                    while (i < length) {
+                                        headerOffset = iArr[i];
+                                        test = true;
+                                        fileBytes.position(oatFunc.codeOffset + headerOffset);
+                                        for (byte current2 : pattern.origByte) {
+                                            if (fileBytes.get() != current2) {
+                                                test = false;
+                                            }
+                                        }
+                                        if (test) {
+                                            fileBytes.position(oatFunc.codeOffset + headerOffset);
+                                            fileBytes.put(pattern.repByte);
+                                            fileBytes.force();
+                                            if (paramArrayOfString[0].contains("patch")) {
+                                                System.out.println("Oat Core2 patched!\n");
+                                            }
+                                            if (paramArrayOfString[0].contains("restore")) {
+                                                System.out.println("Oat Core2 restored!\n");
+                                            }
+                                            patchOat2 = true;
+                                        } else {
+                                            i++;
+                                        }
                                     }
                                 }
-                                if (test) {
-                                    fileBytes.position(oatFunc.codeOffset + headerOffset);
-                                    fileBytes.put(pattern.repByte);
-                                    fileBytes.force();
-                                    if (paramArrayOfString[0].contains("patch")) {
-                                        System.out.println("Oat Core2 patched!\n");
+                            }
+                            ChannelDex.close();
+                        }
+                        if (oatFunc.funcName.equals("boolean com.android.org.conscrypt.OpenSSLSignature.engineVerify(byte[])")) {
+                            System.out.println(oatFunc.funcName);
+                            System.out.println(oatFunc.codeOffset);
+                            ChannelDex = new RandomAccessFile(fileForPatch, InternalZipConstants.WRITE_MODE).getChannel();
+                            fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
+                            if (oatFunc.codeOffset != 0) {
+                                it4 = new ArrayList<PatchesItem>() {
+                                    {
+                                        add(new PatchesItem(corepatch.byteOrig_patch1_arm, null, corepatch.byteReplace_patch1_arm, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch1_arm_1, null, corepatch.byteReplace_patch1_arm_1, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch1_arm64, null, corepatch.byteReplace_patch1_arm64, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch1_arm64_1, null, corepatch.byteReplace_patch1_arm64_1, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch1_arm64_2, null, corepatch.byteReplace_patch1_arm64_2, null, "", false));
+                                        add(new PatchesItem(corepatch.byteOrig_patch1_x86, null, corepatch.byteReplace_patch1_x86, null, "", false));
                                     }
-                                    if (paramArrayOfString[0].contains("restore")) {
-                                        System.out.println("Oat Core2 restored!\n");
+                                }.iterator();
+                                while (it4.hasNext()) {
+                                    pattern = (PatchesItem) it4.next();
+                                    iArr = new int[10];
+                                    iArr = new int[]{4090, 4091, 4092, 4093, 4094, 4095, LZMA2Options.DICT_SIZE_MIN, 4097, 4098, 4099};
+                                    length = iArr.length;
+                                    i = 0;
+                                    while (i < length) {
+                                        headerOffset = iArr[i];
+                                        test = true;
+                                        fileBytes.position(oatFunc.codeOffset + headerOffset);
+                                        for (byte current22 : pattern.origByte) {
+                                            if (fileBytes.get() != current22) {
+                                                test = false;
+                                            }
+                                        }
+                                        if (test) {
+                                            fileBytes.position(oatFunc.codeOffset + headerOffset);
+                                            fileBytes.put(pattern.repByte);
+                                            fileBytes.force();
+                                            if (paramArrayOfString[0].contains("patch")) {
+                                                System.out.println("Oat Core1uni patched!\n");
+                                            }
+                                            if (paramArrayOfString[0].contains("restore")) {
+                                                System.out.println("Oat Core1uni restored!\n");
+                                            }
+                                            patchOat1 = true;
+                                        } else {
+                                            i++;
+                                        }
                                     }
-                                    patchOat2 = true;
-                                } else {
-                                    i++;
                                 }
                             }
+                            ChannelDex.close();
                         }
                     }
-                    try {
-                        ChannelDex.close();
-                    } catch (Exception e22) {
-                        e22.printStackTrace();
-                    }
+                } catch (Exception e2) {
+                    e2.printStackTrace();
                 }
-                if (oatFunc.funcName.equals("boolean com.android.org.conscrypt.OpenSSLSignature.engineVerify(byte[])")) {
-                    System.out.println(oatFunc.funcName);
-                    System.out.println(oatFunc.codeOffset);
-                    ChannelDex = new RandomAccessFile(fileForPatch, InternalZipConstants.WRITE_MODE).getChannel();
-                    fileBytes = ChannelDex.map(MapMode.READ_WRITE, 0, (long) ((int) ChannelDex.size()));
-                    if (oatFunc.codeOffset != 0) {
-                        it4 = new ArrayList<PatchesItem>() {
-                            {
-                                add(new PatchesItem(corepatch.byteOrig_patch1_arm, null, corepatch.byteReplace_patch1_arm, null, "", false));
-                                add(new PatchesItem(corepatch.byteOrig_patch1_arm_1, null, corepatch.byteReplace_patch1_arm_1, null, "", false));
-                                add(new PatchesItem(corepatch.byteOrig_patch1_arm64, null, corepatch.byteReplace_patch1_arm64, null, "", false));
-                                add(new PatchesItem(corepatch.byteOrig_patch1_arm64_1, null, corepatch.byteReplace_patch1_arm64_1, null, "", false));
-                                add(new PatchesItem(corepatch.byteOrig_patch1_arm64_2, null, corepatch.byteReplace_patch1_arm64_2, null, "", false));
-                                add(new PatchesItem(corepatch.byteOrig_patch1_x86, null, corepatch.byteReplace_patch1_x86, null, "", false));
-                            }
-                        }.iterator();
-                        while (it4.hasNext()) {
-                            pattern = (PatchesItem) it4.next();
-                            iArr = new int[10];
-                            iArr = new int[]{4090, 4091, 4092, 4093, 4094, 4095, LZMA2Options.DICT_SIZE_MIN, 4097, 4098, 4099};
-                            length = iArr.length;
-                            i = 0;
-                            while (i < length) {
-                                headerOffset = iArr[i];
-                                test = true;
-                                fileBytes.position(oatFunc.codeOffset + headerOffset);
-                                for (byte current22 : pattern.origByte) {
-                                    if (fileBytes.get() != current22) {
-                                        test = false;
-                                    }
-                                }
-                                if (test) {
-                                    fileBytes.position(oatFunc.codeOffset + headerOffset);
-                                    fileBytes.put(pattern.repByte);
-                                    fileBytes.force();
-                                    if (paramArrayOfString[0].contains("patch")) {
-                                        System.out.println("Oat Core1uni patched!\n");
-                                    }
-                                    if (paramArrayOfString[0].contains("restore")) {
-                                        System.out.println("Oat Core1uni restored!\n");
-                                    }
-                                    patchOat1 = true;
-                                } else {
-                                    i++;
-                                }
-                            }
-                        }
-                    }
-                    ChannelDex.close();
-                }
+            } catch (Exception e22) {
+                e22.printStackTrace();
+                return;
             }
         }
-        if ((patchOat1 || patchOat2) && count_oat_files == oatForPatch.size()) {
-            if (onlyDalvik) {
-            }
-            if (listAppsFragment.api >= 24) {
-                System.out.println("patched cache " + listAppsFragment.toolfilesdir + "/reboot");
-                Utils.reboot();
-            }
+        if ((patchOat1 || patchOat2) && count_oat_files == oatForPatch.size() && listAppsFragment.api >= 24) {
+            System.out.println("patched cache " + listAppsFragment.toolfilesdir + "/reboot");
+            Utils.reboot();
         }
     }
 
@@ -8555,6 +8524,8 @@ public class corepatch {
                         it2 = new ArrayList<PatchesItem>() {
                             {
                                 add(new PatchesItem(corepatch.byteOrig_patch3_arm, null, corepatch.byteReplace_patch3_arm, null, "", false));
+                                add(new PatchesItem(corepatch.byteOrig_patch3_arm_2, null, corepatch.byteReplace_patch3_arm_2, null, "", false));
+                                add(new PatchesItem(corepatch.byteOrig_patch3_arm64_2, null, corepatch.byteReplace_patch3_arm64_2, null, "", false));
                                 add(new PatchesItem(corepatch.byteOrig_patch3_arm64, null, corepatch.byteReplace_patch3_arm64, null, "", false));
                                 add(new PatchesItem(corepatch.byteOrig_patch3_x86, null, corepatch.byteReplace_patch3_x86, null, "", false));
                             }
@@ -8601,6 +8572,7 @@ public class corepatch {
                         it2 = new ArrayList<PatchesItem>() {
                             {
                                 add(new PatchesItem(corepatch.byteOrig_patch3p_arm, null, corepatch.byteReplace_patch3p_arm, null, "", false));
+                                add(new PatchesItem(corepatch.byteOrig_patch3p_arm_2, null, corepatch.byteReplace_patch3p_arm_2, null, "", false));
                                 add(new PatchesItem(corepatch.byteOrig_patch3p_arm64, null, corepatch.byteReplace_patch3p_arm64, null, "", false));
                                 add(new PatchesItem(corepatch.byteOrig_patch3p_x86, null, corepatch.byteReplace_patch3p_x86, null, "", false));
                             }
@@ -8658,6 +8630,15 @@ public class corepatch {
                                 patchOat6 = true;
                             }
                             if (applyPatch(curentPos, curentByte, byteOrig_patch3cm_arm64, mask_patch3cm_arm64, byteReplace_patch3cm_arm64, rep_mask_patch3cm_arm64, pattern3)) {
+                                if (paramArrayOfString[0].contains("patch")) {
+                                    System.out.println("Core4 patched!FixForCM\n");
+                                }
+                                if (paramArrayOfString[0].contains("restore")) {
+                                    System.out.println("Core4 restored!FixForCM\n");
+                                }
+                                patchOat6 = true;
+                            }
+                            if (applyPatch(curentPos, curentByte, byteOrig_patch3cm_arm64_2, mask_patch3cm_arm64_2, byteReplace_patch3cm_arm64_2, rep_mask_patch3cm_arm64_2, pattern3)) {
                                 if (paramArrayOfString[0].contains("patch")) {
                                     System.out.println("Core4 patched!FixForCM\n");
                                 }

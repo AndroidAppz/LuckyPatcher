@@ -9,6 +9,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.pm.Signature;
 import android.os.Binder;
 import android.os.Build.VERSION;
 import com.android.vending.billing.InAppBillingService.LOCK.CoreItem;
@@ -16,6 +17,7 @@ import com.android.vending.billing.InAppBillingService.LOCK.listAppsFragment;
 import com.google.android.finsky.billing.iab.BuyMarketActivity;
 import com.google.android.finsky.billing.iab.InAppBillingService;
 import com.google.android.finsky.billing.iab.MarketBillingService;
+import com.google.android.finsky.billing.iab.google.util.Base64;
 import com.google.android.finsky.services.LicensingService;
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.IXposedHookZygoteInit;
@@ -37,7 +39,7 @@ public class XSupport implements IXposedHookLoadPackage, IXposedHookZygoteInit {
     public static boolean hide = false;
     public static boolean patch1 = true;
     public static boolean patch2 = true;
-    public static boolean patch3 = true;
+    public static boolean patch3 = false;
     public static boolean patch4 = false;
     Context PMcontext = null;
     public boolean checkDuplicatedPermissions;
@@ -51,6 +53,7 @@ public class XSupport implements IXposedHookLoadPackage, IXposedHookZygoteInit {
     public long initialize = 0;
     public boolean installUnsignedApps;
     Context mContext = null;
+    public String platform = "";
     public XSharedPreferences prefs;
     boolean skip1 = false;
     boolean skip2 = false;
@@ -289,16 +292,6 @@ public class XSupport implements IXposedHookLoadPackage, IXposedHookZygoteInit {
                         }
                     }
                 });
-                if (Common.LOLLIPOP_NEWER) {
-                    XposedBridge.hookAllMethods(packageManagerClass, "checkUpgradeKeySetLP", new XC_MethodHook() {
-                        protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                            XSupport.this.loadPrefs();
-                            if (XSupport.enable && XSupport.patch3) {
-                                param.setResult(Boolean.valueOf(true));
-                            }
-                        }
-                    });
-                }
                 XposedBridge.hookAllMethods(packageManagerClass, "scanPackageLI", new XC_MethodHook() {
                     protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                         XSupport.this.disableCheckSignatures = false;
@@ -320,7 +313,40 @@ public class XSupport implements IXposedHookLoadPackage, IXposedHookZygoteInit {
                     protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                         XSupport.this.loadPrefs();
                         if (XSupport.enable && XSupport.patch3 && XSupport.this.disableCheckSignatures) {
-                            param.setResult(Integer.valueOf(0));
+                            String platform_temp = "";
+                            if (XSupport.this.platform.equals("")) {
+                                try {
+                                    PackageInfo pi = XSupport.this.PMcontext.getPackageManager().getPackageInfo(Common.ANDROID_PKG, 64);
+                                    if (pi.signatures[0] != null) {
+                                        XSupport.this.platform = Base64.encode(pi.signatures[0].toByteArray()).replaceAll("\n", "");
+                                    } else {
+                                        return;
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    return;
+                                }
+                            }
+                            boolean skip = false;
+                            Signature[] sigs1 = param.args[0];
+                            Signature[] sigs2 = param.args[1];
+                            if (sigs1 != null && sigs1.length > 0) {
+                                for (Signature sig : sigs1) {
+                                    if (Base64.encode(sig.toByteArray()).replaceAll("\n", "").equals(XSupport.this.platform)) {
+                                        skip = true;
+                                    }
+                                }
+                            }
+                            if (sigs2 != null && sigs2.length > 0) {
+                                for (Signature sig2 : sigs2) {
+                                    if (Base64.encode(sig2.toByteArray()).replaceAll("\n", "").equals(XSupport.this.platform)) {
+                                        skip = true;
+                                    }
+                                }
+                            }
+                            if (!skip) {
+                                param.setResult(Integer.valueOf(0));
+                            }
                         }
                     }
                 });
@@ -580,15 +606,8 @@ public class XSupport implements IXposedHookLoadPackage, IXposedHookZygoteInit {
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     XSupport.this.loadPrefs();
                     if (XSupport.this.forHide != null && XSupport.this.forHide.booleanValue() && XSupport.enable && XSupport.hide) {
-                        List<ApplicationInfo> list;
-                        ApplicationInfo found;
-                        if (XSupport.this.ctx != null) {
-                            list = (List) param.getResult();
-                            found = null;
-                        } else {
-                            list = (List) param.getResult();
-                            found = null;
-                        }
+                        List<ApplicationInfo> list = (List) param.getResult();
+                        ApplicationInfo found = null;
                         for (ApplicationInfo app : list) {
                             if (app.packageName.equals(listAppsFragment.class.getPackage().getName())) {
                                 found = app;
@@ -605,15 +624,8 @@ public class XSupport implements IXposedHookLoadPackage, IXposedHookZygoteInit {
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     XSupport.this.loadPrefs();
                     if (XSupport.this.forHide != null && XSupport.this.forHide.booleanValue() && XSupport.enable && XSupport.hide) {
-                        List<PackageInfo> list;
-                        PackageInfo found;
-                        if (XSupport.this.ctx != null) {
-                            list = (List) param.getResult();
-                            found = null;
-                        } else {
-                            list = (List) param.getResult();
-                            found = null;
-                        }
+                        List<PackageInfo> list = (List) param.getResult();
+                        PackageInfo found = null;
                         for (PackageInfo app : list) {
                             if (app.packageName.equals(listAppsFragment.class.getPackage().getName())) {
                                 found = app;
@@ -629,15 +641,8 @@ public class XSupport implements IXposedHookLoadPackage, IXposedHookZygoteInit {
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     XSupport.this.loadPrefs();
                     if (XSupport.this.forHide != null && XSupport.this.forHide.booleanValue() && XSupport.enable && XSupport.hide) {
-                        List<PackageInfo> list;
-                        PackageInfo found;
-                        if (XSupport.this.ctx != null) {
-                            list = (List) param.getResult();
-                            found = null;
-                        } else {
-                            list = (List) param.getResult();
-                            found = null;
-                        }
+                        List<PackageInfo> list = (List) param.getResult();
+                        PackageInfo found = null;
                         for (PackageInfo app : list) {
                             if (app.packageName.equals(listAppsFragment.class.getPackage().getName())) {
                                 found = app;
@@ -678,7 +683,7 @@ public class XSupport implements IXposedHookLoadPackage, IXposedHookZygoteInit {
                     if (settings != null) {
                         patch1 = settings.optBoolean("patch1", true);
                         patch2 = settings.optBoolean("patch2", true);
-                        patch3 = settings.optBoolean("patch3", true);
+                        patch3 = settings.optBoolean("patch3", false);
                         patch4 = settings.optBoolean("patch4", false);
                         hide = settings.optBoolean("hide", false);
                         enable = settings.optBoolean("module_on", true);
@@ -690,7 +695,7 @@ public class XSupport implements IXposedHookLoadPackage, IXposedHookZygoteInit {
             }
             patch1 = true;
             patch2 = true;
-            patch3 = true;
+            patch3 = false;
             patch4 = false;
             hide = false;
             enable = true;

@@ -96,9 +96,14 @@ public class AESEncrpyter implements IEncrypter {
         if (len % 16 != 0) {
             this.finished = true;
         }
-        int j = start;
-        while (j < start + len) {
-            this.loopCount = j + 16 <= start + len ? 16 : (start + len) - j;
+        for (int j = start; j < start + len; j += 16) {
+            int i;
+            if (j + 16 <= start + len) {
+                i = 16;
+            } else {
+                i = (start + len) - j;
+            }
+            this.loopCount = i;
             Raw.prepareBuffAESIVBytes(this.iv, this.nonce, 16);
             this.aesEngine.processBlock(this.iv, this.counterBlock);
             for (int k = 0; k < this.loopCount; k++) {
@@ -106,7 +111,6 @@ public class AESEncrpyter implements IEncrypter {
             }
             this.mac.update(buff, j, this.loopCount);
             this.nonce++;
-            j += 16;
         }
         return len;
     }

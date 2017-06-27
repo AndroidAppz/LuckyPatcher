@@ -139,11 +139,11 @@ public class KeyStoreFileManager {
     }
 
     static void copyFile(File srcFile, File destFile, boolean preserveFileDate) throws IOException {
+        FileOutputStream output;
         if (destFile.exists() && destFile.isDirectory()) {
             throw new IOException("Destination '" + destFile + "' exists but is a directory");
         }
         FileInputStream input = new FileInputStream(srcFile);
-        FileOutputStream output;
         try {
             output = new FileOutputStream(destFile);
             byte[] buffer = new byte[LZMA2Options.DICT_SIZE_MIN];

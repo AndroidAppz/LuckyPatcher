@@ -9,7 +9,7 @@ public class IabResult {
         if (message == null || message.trim().length() == 0) {
             this.mMessage = IabHelper.getResponseDesc(response);
         } else {
-            this.mMessage = message + " (response: " + IabHelper.getResponseDesc(response) + ")";
+            this.mMessage = new StringBuilder(String.valueOf(message)).append(" (response: ").append(IabHelper.getResponseDesc(response)).append(")").toString();
         }
     }
 

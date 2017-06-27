@@ -6,7 +6,7 @@ public class MemoryLimitException extends XZIOException {
     private final int memoryNeeded;
 
     public MemoryLimitException(int memoryNeeded, int memoryLimit) {
-        super("" + memoryNeeded + " KiB of memory would be needed; limit was " + memoryLimit + " KiB");
+        super(memoryNeeded + " KiB of memory would be needed; limit was " + memoryLimit + " KiB");
         this.memoryNeeded = memoryNeeded;
         this.memoryLimit = memoryLimit;
     }

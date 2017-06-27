@@ -262,7 +262,6 @@ public class IabHelper {
     }
 
     public boolean handleActivityResult(int requestCode, int resultCode, Intent data) {
-        IabResult result;
         JSONException e;
         if (requestCode != this.mRequestCode) {
             return false;
@@ -270,6 +269,7 @@ public class IabHelper {
         checkNotDisposed();
         checkSetupDone("handleActivityResult");
         flagEndAsync();
+        IabResult result;
         if (data == null) {
             logError("Null data in IAB activity result.");
             result = new IabResult(IABHELPER_BAD_RESPONSE, "Null data in IAB result");
@@ -414,6 +414,8 @@ public class IabHelper {
                 final IabResult result_f = result;
                 final Inventory inv_f = inv;
                 if (!IabHelper.this.mDisposed && queryInventoryFinishedListener != null) {
+                    Handler handler = handler;
+                    final QueryInventoryFinishedListener queryInventoryFinishedListener = queryInventoryFinishedListener;
                     handler.post(new Runnable() {
                         public void run() {
                             queryInventoryFinishedListener.onQueryInventoryFinished(result_f, inv_f);
@@ -546,6 +548,7 @@ public class IabHelper {
     }
 
     int queryPurchases(Inventory inv, String itemType) throws JSONException, RemoteException {
+        int i;
         logDebug("Querying owned items, item type: " + itemType);
         logDebug("Package name: " + this.mContext.getPackageName());
         boolean verificationFailed = false;
@@ -562,10 +565,10 @@ public class IabHelper {
                 ArrayList<String> ownedSkus = ownedItems.getStringArrayList(RESPONSE_INAPP_ITEM_LIST);
                 ArrayList<String> purchaseDataList = ownedItems.getStringArrayList(RESPONSE_INAPP_PURCHASE_DATA_LIST);
                 ArrayList<String> signatureList = ownedItems.getStringArrayList(RESPONSE_INAPP_SIGNATURE_LIST);
-                for (int i = BILLING_RESPONSE_RESULT_OK; i < purchaseDataList.size(); i += BILLING_RESPONSE_RESULT_USER_CANCELED) {
-                    String purchaseData = (String) purchaseDataList.get(i);
-                    String signature = (String) signatureList.get(i);
-                    String sku = (String) ownedSkus.get(i);
+                for (int i2 = BILLING_RESPONSE_RESULT_OK; i2 < purchaseDataList.size(); i2 += BILLING_RESPONSE_RESULT_USER_CANCELED) {
+                    String purchaseData = (String) purchaseDataList.get(i2);
+                    String signature = (String) signatureList.get(i2);
+                    String sku = (String) ownedSkus.get(i2);
                     if (Security.verifyPurchase(this.mSignatureBase64, purchaseData, signature)) {
                         logDebug("Sku is owned: " + sku);
                         Purchase purchase = new Purchase(itemType, purchaseData, signature);
@@ -588,7 +591,12 @@ public class IabHelper {
                 return IABHELPER_BAD_RESPONSE;
             }
         } while (!TextUtils.isEmpty(continueToken));
-        return verificationFailed ? IABHELPER_VERIFICATION_FAILED : BILLING_RESPONSE_RESULT_OK;
+        if (verificationFailed) {
+            i = IABHELPER_VERIFICATION_FAILED;
+        } else {
+            i = BILLING_RESPONSE_RESULT_OK;
+        }
+        return i;
     }
 
     int querySkuDetails(String itemType, Inventory inv, List<String> moreSkus) throws RemoteException, JSONException {
@@ -647,6 +655,9 @@ public class IabHelper {
                 }
                 IabHelper.this.flagEndAsync();
                 if (!(IabHelper.this.mDisposed || onConsumeFinishedListener == null)) {
+                    Handler handler = handler;
+                    final OnConsumeFinishedListener onConsumeFinishedListener = onConsumeFinishedListener;
+                    final List list = list;
                     handler.post(new Runnable() {
                         public void run() {
                             onConsumeFinishedListener.onConsumeFinished((Purchase) list.get(IabHelper.BILLING_RESPONSE_RESULT_OK), (IabResult) results.get(IabHelper.BILLING_RESPONSE_RESULT_OK));
@@ -654,6 +665,9 @@ public class IabHelper {
                     });
                 }
                 if (!IabHelper.this.mDisposed && onConsumeMultiFinishedListener != null) {
+                    handler = handler;
+                    final OnConsumeMultiFinishedListener onConsumeMultiFinishedListener = onConsumeMultiFinishedListener;
+                    list = list;
                     handler.post(new Runnable() {
                         public void run() {
                             onConsumeMultiFinishedListener.onConsumeMultiFinished(list, results);

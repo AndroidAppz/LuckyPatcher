@@ -129,8 +129,8 @@ public class MarketBillingService extends Service {
                     purch = new JSONObject();
                     try {
                         base.put("nonce", nonce);
-                        purch.put("notificationId", "" + Utils.getRandom(1000000000000000000L, Util.VLI_MAX));
-                        purch.put("orderId", "" + Utils.getRandom(1000000000000000000L, Util.VLI_MAX) + Utils.getRandom(0, 9) + "." + Utils.getRandom(1000000000000000L, 9999999999999999L));
+                        purch.put("notificationId", Utils.getRandom(1000000000000000000L, Util.VLI_MAX));
+                        purch.put("orderId", Utils.getRandom(1000000000000000000L, Util.VLI_MAX) + Utils.getRandom(0, 9) + "." + Utils.getRandom(1000000000000000L, 9999999999999999L));
                         purch.put(BuyMarketActivity.EXTRA_PACKAGENAME, package_name);
                         purch.put("productId", "printhand.premium");
                         purch.put("purchaseTime", new Long(System.currentTimeMillis()));
@@ -158,7 +158,7 @@ public class MarketBillingService extends Service {
                 try {
                     base.put("nonce", nonce);
                     purch.put("notificationId", notify_ids[0]);
-                    purch.put("orderId", (Utils.getRandom(1000000000000000000L, Util.VLI_MAX) + Utils.getRandom(0, 9)) + "." + Utils.getRandom(1000000000000000L, 9999999999999999L));
+                    purch.put("orderId", new StringBuilder(String.valueOf(Utils.getRandom(1000000000000000000L, Util.VLI_MAX) + Utils.getRandom(0, 9))).append(".").append(Utils.getRandom(1000000000000000L, 9999999999999999L)).toString());
                     purch.put(BuyMarketActivity.EXTRA_PACKAGENAME, package_name);
                     purch.put("productId", MarketBillingService.item);
                     purch.put("purchaseTime", new Long(System.currentTimeMillis()));

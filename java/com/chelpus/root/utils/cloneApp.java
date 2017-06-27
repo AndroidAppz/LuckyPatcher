@@ -64,7 +64,7 @@ public class cloneApp {
                         String data_dir = "";
                         for (i = 0; i < tail.length - 1; i++) {
                             if (!tail[i].equals("")) {
-                                data_dir = data_dir + InternalZipConstants.ZIP_FILE_SEPARATOR + tail[i];
+                                data_dir = new StringBuilder(String.valueOf(data_dir)).append(InternalZipConstants.ZIP_FILE_SEPARATOR).append(tail[i]).toString();
                             }
                         }
                         _dirChecker(data_dir);
@@ -108,186 +108,184 @@ public class cloneApp {
         public java.lang.String unzip(java.lang.String r21) {
             /*
             r20 = this;
-            r9 = new java.io.FileInputStream;	 Catch:{ Exception -> 0x002b }
+            r9 = new java.io.FileInputStream;	 Catch:{ Exception -> 0x0034 }
             r0 = r20;
-            r0 = r0._zipFile;	 Catch:{ Exception -> 0x002b }
+            r0 = r0._zipFile;	 Catch:{ Exception -> 0x0034 }
             r17 = r0;
             r0 = r17;
-            r9.<init>(r0);	 Catch:{ Exception -> 0x002b }
-            r15 = new java.util.zip.ZipInputStream;	 Catch:{ Exception -> 0x002b }
-            r15.<init>(r9);	 Catch:{ Exception -> 0x002b }
+            r9.<init>(r0);	 Catch:{ Exception -> 0x0034 }
+            r15 = new java.util.zip.ZipInputStream;	 Catch:{ Exception -> 0x0034 }
+            r15.<init>(r9);	 Catch:{ Exception -> 0x0034 }
             r14 = 0;
         L_0x0013:
-            r14 = r15.getNextEntry();	 Catch:{ Exception -> 0x002b }
-            if (r14 == 0) goto L_0x0172;
+            r14 = r15.getNextEntry();	 Catch:{ Exception -> 0x0034 }
+            if (r14 != 0) goto L_0x0022;
         L_0x0019:
-            r17 = r14.isDirectory();	 Catch:{ Exception -> 0x002b }
-            if (r17 == 0) goto L_0x00a4;
+            r15.close();	 Catch:{ Exception -> 0x0034 }
+            r9.close();	 Catch:{ Exception -> 0x0034 }
         L_0x001f:
-            r17 = r14.getName();	 Catch:{ Exception -> 0x002b }
+            r17 = "";
+        L_0x0021:
+            return r17;
+        L_0x0022:
+            r17 = r14.isDirectory();	 Catch:{ Exception -> 0x0034 }
+            if (r17 == 0) goto L_0x00aa;
+        L_0x0028:
+            r17 = r14.getName();	 Catch:{ Exception -> 0x0034 }
             r0 = r20;
             r1 = r17;
-            r0._dirChecker(r1);	 Catch:{ Exception -> 0x002b }
+            r0._dirChecker(r1);	 Catch:{ Exception -> 0x0034 }
             goto L_0x0013;
-        L_0x002b:
+        L_0x0034:
             r5 = move-exception;
             r17 = com.chelpus.root.utils.cloneApp.print;
             r18 = new java.lang.StringBuilder;
-            r18.<init>();
             r19 = "Decompressunzip ";
-            r18 = r18.append(r19);
+            r18.<init>(r19);
             r0 = r18;
             r18 = r0.append(r5);
             r18 = r18.toString();
             r17.println(r18);
-            r16 = new net.lingala.zip4j.core.ZipFile;	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
+            r16 = new net.lingala.zip4j.core.ZipFile;	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
             r0 = r20;
-            r0 = r0._zipFile;	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
+            r0 = r0._zipFile;	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
             r17 = r0;
-            r16.<init>(r17);	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            r8 = r16.getFileHeaders();	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
+            r16.<init>(r17);	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            r8 = r16.getFileHeaders();	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
             r11 = 0;
-        L_0x0056:
-            r17 = r8.size();	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
+        L_0x005b:
+            r17 = r8.size();	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
             r0 = r17;
-            if (r11 >= r0) goto L_0x0178;
-        L_0x005e:
-            r7 = r8.get(r11);	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            r7 = (net.lingala.zip4j.model.FileHeader) r7;	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            r17 = r7.getFileName();	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
+            if (r11 >= r0) goto L_0x001f;
+        L_0x0063:
+            r7 = r8.get(r11);	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            r7 = (net.lingala.zip4j.model.FileHeader) r7;	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            r17 = r7.getFileName();	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
             r0 = r17;
             r1 = r21;
-            r17 = r0.equals(r1);	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            if (r17 == 0) goto L_0x017c;
-        L_0x0072:
-            r17 = com.chelpus.root.utils.cloneApp.print;	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            r18 = r7.getFileName();	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            r17.println(r18);	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            r17 = r7.getFileName();	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
+            r17 = r0.equals(r1);	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            if (r17 == 0) goto L_0x0177;
+        L_0x0077:
+            r17 = com.chelpus.root.utils.cloneApp.print;	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            r18 = r7.getFileName();	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            r17.println(r18);	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            r17 = r7.getFileName();	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
             r0 = r20;
-            r0 = r0._location;	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
+            r0 = r0._location;	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
             r18 = r0;
-            r16.extractFile(r17, r18);	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            r17 = new java.lang.StringBuilder;	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            r17.<init>();	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
+            r16.extractFile(r17, r18);	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            r17 = new java.lang.StringBuilder;	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
             r0 = r20;
-            r0 = r0._location;	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
+            r0 = r0._location;	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
             r18 = r0;
-            r17 = r17.append(r18);	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            r18 = r7.getFileName();	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            r17 = r17.append(r18);	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-            r17 = r17.toString();	 Catch:{ ZipException -> 0x0180, Exception -> 0x0185 }
-        L_0x00a3:
-            return r17;
-        L_0x00a4:
+            r18 = java.lang.String.valueOf(r18);	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            r17.<init>(r18);	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            r18 = r7.getFileName();	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            r17 = r17.append(r18);	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            r17 = r17.toString();	 Catch:{ ZipException -> 0x017b, Exception -> 0x0181 }
+            goto L_0x0021;
+        L_0x00aa:
             r17 = "/";
             r0 = r21;
             r1 = r17;
-            r17 = r0.startsWith(r1);	 Catch:{ Exception -> 0x002b }
-            if (r17 == 0) goto L_0x00be;
-        L_0x00b0:
+            r17 = r0.startsWith(r1);	 Catch:{ Exception -> 0x0034 }
+            if (r17 == 0) goto L_0x00c4;
+        L_0x00b6:
             r17 = "/";
             r18 = "";
             r0 = r21;
             r1 = r17;
             r2 = r18;
-            r21 = r0.replaceFirst(r1, r2);	 Catch:{ Exception -> 0x002b }
-        L_0x00be:
-            r17 = r14.getName();	 Catch:{ Exception -> 0x002b }
+            r21 = r0.replaceFirst(r1, r2);	 Catch:{ Exception -> 0x0034 }
+        L_0x00c4:
+            r17 = r14.getName();	 Catch:{ Exception -> 0x0034 }
             r0 = r17;
             r1 = r21;
-            r17 = r0.equals(r1);	 Catch:{ Exception -> 0x002b }
+            r17 = r0.equals(r1);	 Catch:{ Exception -> 0x0034 }
             if (r17 == 0) goto L_0x0013;
-        L_0x00cc:
-            r17 = r14.getName();	 Catch:{ Exception -> 0x002b }
+        L_0x00d2:
+            r17 = r14.getName();	 Catch:{ Exception -> 0x0034 }
             r18 = "\\/+";
-            r13 = r17.split(r18);	 Catch:{ Exception -> 0x002b }
+            r13 = r17.split(r18);	 Catch:{ Exception -> 0x0034 }
             r4 = "";
             r11 = 0;
-        L_0x00d9:
-            r0 = r13.length;	 Catch:{ Exception -> 0x002b }
+        L_0x00df:
+            r0 = r13.length;	 Catch:{ Exception -> 0x0034 }
             r17 = r0;
             r17 = r17 + -1;
             r0 = r17;
-            if (r11 >= r0) goto L_0x010a;
-        L_0x00e2:
-            r17 = r13[r11];	 Catch:{ Exception -> 0x002b }
-            r18 = "";
-            r17 = r17.equals(r18);	 Catch:{ Exception -> 0x002b }
-            if (r17 != 0) goto L_0x0107;
-        L_0x00ec:
-            r17 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x002b }
-            r17.<init>();	 Catch:{ Exception -> 0x002b }
-            r0 = r17;
-            r17 = r0.append(r4);	 Catch:{ Exception -> 0x002b }
-            r18 = "/";
-            r17 = r17.append(r18);	 Catch:{ Exception -> 0x002b }
-            r18 = r13[r11];	 Catch:{ Exception -> 0x002b }
-            r17 = r17.append(r18);	 Catch:{ Exception -> 0x002b }
-            r4 = r17.toString();	 Catch:{ Exception -> 0x002b }
-        L_0x0107:
-            r11 = r11 + 1;
-            goto L_0x00d9;
-        L_0x010a:
+            if (r11 < r0) goto L_0x0148;
+        L_0x00e8:
             r0 = r20;
-            r0._dirChecker(r4);	 Catch:{ Exception -> 0x002b }
-            r10 = new java.io.FileOutputStream;	 Catch:{ Exception -> 0x002b }
-            r17 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x002b }
-            r17.<init>();	 Catch:{ Exception -> 0x002b }
+            r0._dirChecker(r4);	 Catch:{ Exception -> 0x0034 }
+            r10 = new java.io.FileOutputStream;	 Catch:{ Exception -> 0x0034 }
+            r17 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0034 }
             r0 = r20;
-            r0 = r0._location;	 Catch:{ Exception -> 0x002b }
+            r0 = r0._location;	 Catch:{ Exception -> 0x0034 }
             r18 = r0;
-            r17 = r17.append(r18);	 Catch:{ Exception -> 0x002b }
-            r18 = r14.getName();	 Catch:{ Exception -> 0x002b }
-            r17 = r17.append(r18);	 Catch:{ Exception -> 0x002b }
-            r17 = r17.toString();	 Catch:{ Exception -> 0x002b }
+            r18 = java.lang.String.valueOf(r18);	 Catch:{ Exception -> 0x0034 }
+            r17.<init>(r18);	 Catch:{ Exception -> 0x0034 }
+            r18 = r14.getName();	 Catch:{ Exception -> 0x0034 }
+            r17 = r17.append(r18);	 Catch:{ Exception -> 0x0034 }
+            r17 = r17.toString();	 Catch:{ Exception -> 0x0034 }
             r0 = r17;
-            r10.<init>(r0);	 Catch:{ Exception -> 0x002b }
+            r10.<init>(r0);	 Catch:{ Exception -> 0x0034 }
             r17 = 1024; // 0x400 float:1.435E-42 double:5.06E-321;
             r0 = r17;
-            r3 = new byte[r0];	 Catch:{ Exception -> 0x002b }
-        L_0x0137:
-            r12 = r15.read(r3);	 Catch:{ Exception -> 0x002b }
+            r3 = new byte[r0];	 Catch:{ Exception -> 0x0034 }
+        L_0x0115:
+            r12 = r15.read(r3);	 Catch:{ Exception -> 0x0034 }
             r17 = -1;
             r0 = r17;
-            if (r12 == r0) goto L_0x0149;
-        L_0x0141:
+            if (r12 != r0) goto L_0x016f;
+        L_0x011f:
+            r15.closeEntry();	 Catch:{ Exception -> 0x0034 }
+            r10.close();	 Catch:{ Exception -> 0x0034 }
+            r15.close();	 Catch:{ Exception -> 0x0034 }
+            r9.close();	 Catch:{ Exception -> 0x0034 }
+            r17 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0034 }
+            r0 = r20;
+            r0 = r0._location;	 Catch:{ Exception -> 0x0034 }
+            r18 = r0;
+            r18 = java.lang.String.valueOf(r18);	 Catch:{ Exception -> 0x0034 }
+            r17.<init>(r18);	 Catch:{ Exception -> 0x0034 }
+            r18 = r14.getName();	 Catch:{ Exception -> 0x0034 }
+            r17 = r17.append(r18);	 Catch:{ Exception -> 0x0034 }
+            r17 = r17.toString();	 Catch:{ Exception -> 0x0034 }
+            goto L_0x0021;
+        L_0x0148:
+            r17 = r13[r11];	 Catch:{ Exception -> 0x0034 }
+            r18 = "";
+            r17 = r17.equals(r18);	 Catch:{ Exception -> 0x0034 }
+            if (r17 != 0) goto L_0x016b;
+        L_0x0152:
+            r17 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x0034 }
+            r18 = java.lang.String.valueOf(r4);	 Catch:{ Exception -> 0x0034 }
+            r17.<init>(r18);	 Catch:{ Exception -> 0x0034 }
+            r18 = "/";
+            r17 = r17.append(r18);	 Catch:{ Exception -> 0x0034 }
+            r18 = r13[r11];	 Catch:{ Exception -> 0x0034 }
+            r17 = r17.append(r18);	 Catch:{ Exception -> 0x0034 }
+            r4 = r17.toString();	 Catch:{ Exception -> 0x0034 }
+        L_0x016b:
+            r11 = r11 + 1;
+            goto L_0x00df;
+        L_0x016f:
             r17 = 0;
             r0 = r17;
-            r10.write(r3, r0, r12);	 Catch:{ Exception -> 0x002b }
-            goto L_0x0137;
-        L_0x0149:
-            r15.closeEntry();	 Catch:{ Exception -> 0x002b }
-            r10.close();	 Catch:{ Exception -> 0x002b }
-            r15.close();	 Catch:{ Exception -> 0x002b }
-            r9.close();	 Catch:{ Exception -> 0x002b }
-            r17 = new java.lang.StringBuilder;	 Catch:{ Exception -> 0x002b }
-            r17.<init>();	 Catch:{ Exception -> 0x002b }
-            r0 = r20;
-            r0 = r0._location;	 Catch:{ Exception -> 0x002b }
-            r18 = r0;
-            r17 = r17.append(r18);	 Catch:{ Exception -> 0x002b }
-            r18 = r14.getName();	 Catch:{ Exception -> 0x002b }
-            r17 = r17.append(r18);	 Catch:{ Exception -> 0x002b }
-            r17 = r17.toString();	 Catch:{ Exception -> 0x002b }
-            goto L_0x00a3;
-        L_0x0172:
-            r15.close();	 Catch:{ Exception -> 0x002b }
-            r9.close();	 Catch:{ Exception -> 0x002b }
-        L_0x0178:
-            r17 = "";
-            goto L_0x00a3;
-        L_0x017c:
+            r10.write(r3, r0, r12);	 Catch:{ Exception -> 0x0034 }
+            goto L_0x0115;
+        L_0x0177:
             r11 = r11 + 1;
-            goto L_0x0056;
-        L_0x0180:
+            goto L_0x005b;
+        L_0x017b:
             r6 = move-exception;
             r6.printStackTrace();
-            goto L_0x0178;
-        L_0x0185:
+            goto L_0x001f;
+        L_0x0181:
             r6 = move-exception;
             r6.printStackTrace();
-            goto L_0x0178;
+            goto L_0x001f;
             */
             throw new UnsupportedOperationException("Method not decompiled: com.chelpus.root.utils.cloneApp.Decompress.unzip(java.lang.String):java.lang.String");
         }
@@ -353,7 +351,7 @@ public class cloneApp {
             crkapk = new File(sddir + "/Modified/" + packageName + ".apk");
             Utils.copyFile(apk, crkapk);
             String newPackageName = Utils.stringModifyLastChar(packageName);
-            String[] stringsForChange = null;
+            String[] strArr = null;
             File androidManifest = new File(sddir + "/Modified/AndroidManifest.xml");
             if (androidManifest.exists()) {
                 try {
@@ -385,12 +383,12 @@ public class cloneApp {
                             }
                             leng += count;
                         }
-                        stringsForChange = new String[(leng + 1)];
+                        strArr = new String[(leng + 1)];
                         k = 0;
                         if (perms != null && perms.length > 0) {
                             for (i = 0; i < perms.length; i++) {
                                 if (!perms[i].contains(packageName)) {
-                                    stringsForChange[k] = perms[i];
+                                    strArr[k] = perms[i];
                                     k++;
                                 }
                             }
@@ -398,127 +396,138 @@ public class cloneApp {
                         if (prov != null && prov.length > 0) {
                             for (i = 0; i < prov.length; i++) {
                                 if (!prov[i].contains(packageName)) {
-                                    stringsForChange[k] = prov[i];
+                                    strArr[k] = prov[i];
                                     k++;
                                 }
                             }
                         }
-                        stringsForChange[k] = packageName;
-                        Utils.replaceStrings(androidManifest.getAbsolutePath(), stringsForChange);
-                    } else {
-                        perms = new AxmlExample().getLocalPermisson(androidManifest);
-                        prov = new AxmlExample().getProvidersAuthorities(androidManifest);
-                        leng = 0;
-                        if (perms != null && perms.length > 0) {
-                            leng = 0 + perms.length;
-                        }
-                        if (prov != null && prov.length > 0) {
-                            leng += prov.length;
-                        }
-                        stringsForChange = new String[leng];
-                        k = 0;
-                        if (perms != null && perms.length > 0) {
-                            for (String contains22 : perms) {
-                                stringsForChange[k] = contains22;
-                                k++;
+                        strArr[k] = packageName;
+                        Utils.replaceStrings(androidManifest.getAbsolutePath(), strArr);
+                        if (options.contains("DeepWork")) {
+                            if (classesFiles != null) {
                             }
-                        }
-                        if (prov != null && prov.length > 0) {
-                            for (String contains222 : prov) {
-                                stringsForChange[k] = contains222;
-                                k++;
+                            throw new FileNotFoundException();
+                        } else {
+                            if (classesFiles != null) {
                             }
+                            throw new FileNotFoundException();
                         }
-                        if (!new AxmlExample().changePackageName(androidManifest, packageName, newPackageName)) {
-                            androidManifest.delete();
+                        Utils.sendFromRoot("Analise Results:");
+                        Utils.sendFromRoot("Optional Steps After Patch:");
+                        result = logOutputStream.allresult;
+                    }
+                    perms = new AxmlExample().getLocalPermisson(androidManifest);
+                    prov = new AxmlExample().getProvidersAuthorities(androidManifest);
+                    leng = 0;
+                    if (perms != null && perms.length > 0) {
+                        leng = 0 + perms.length;
+                    }
+                    if (prov != null && prov.length > 0) {
+                        leng += prov.length;
+                    }
+                    strArr = new String[leng];
+                    k = 0;
+                    if (perms != null && perms.length > 0) {
+                        for (String contains22 : perms) {
+                            strArr[k] = contains22;
+                            k++;
                         }
                     }
+                    if (prov != null && prov.length > 0) {
+                        for (String contains222 : prov) {
+                            strArr[k] = contains222;
+                            k++;
+                        }
+                    }
+                    if (!new AxmlExample().changePackageName(androidManifest, packageName, newPackageName)) {
+                        androidManifest.delete();
+                    }
+                    Iterator it;
+                    File cl;
+                    File filepatch;
+                    if (options.contains("DeepWork")) {
+                        if (classesFiles != null || classesFiles.size() == 0) {
+                            throw new FileNotFoundException();
+                        }
+                        filestopatch.clear();
+                        it = classesFiles.iterator();
+                        while (it.hasNext()) {
+                            cl = (File) it.next();
+                            if (cl.exists()) {
+                                filestopatch.add(cl);
+                            } else {
+                                throw new FileNotFoundException();
+                            }
+                        }
+                        it = filestopatch.iterator();
+                        while (it.hasNext()) {
+                            filepatch = (File) it.next();
+                            Utils.sendFromRoot("String analysis.");
+                            print.println("String analysis.");
+                            if (Utils.changePackageNameIds(filepatch.getAbsolutePath(), packageName, newPackageName) > 0) {
+                                System.out.println("classes.dex changed!");
+                            }
+                            if (Utils.replaceStrings(filepatch.getAbsolutePath(), strArr) > 0) {
+                                System.out.println("global classes.dex changed!");
+                            }
+                            Utils.sendFromRoot("Analise Results:");
+                            Utils.fixadler(filepatch);
+                        }
+                        if (resourcesFiles_temp == null || resourcesFiles_temp.size() == 0) {
+                            throw new FileNotFoundException();
+                        }
+                        filestopatch.clear();
+                        it = resourcesFiles_temp.iterator();
+                        while (it.hasNext()) {
+                            cl = (File) it.next();
+                            if (cl.exists()) {
+                                filestopatch.add(cl);
+                            } else {
+                                throw new FileNotFoundException();
+                            }
+                        }
+                        it = filestopatch.iterator();
+                        while (it.hasNext()) {
+                            filepatch = (File) it.next();
+                            if (Utils.replaceStrings(filepatch.getAbsolutePath(), strArr) > 0) {
+                                System.out.println("resource changed!");
+                                resourcesFiles.add(filepatch);
+                            }
+                        }
+                    } else if (classesFiles != null || classesFiles.size() == 0) {
+                        throw new FileNotFoundException();
+                    } else {
+                        filestopatch.clear();
+                        it = classesFiles.iterator();
+                        while (it.hasNext()) {
+                            cl = (File) it.next();
+                            if (cl.exists()) {
+                                filestopatch.add(cl);
+                            } else {
+                                throw new FileNotFoundException();
+                            }
+                        }
+                        it = filestopatch.iterator();
+                        while (it.hasNext()) {
+                            filepatch = (File) it.next();
+                            Utils.sendFromRoot("String analysis.");
+                            print.println("String analysis.");
+                            if (Utils.replaceStrings(filepatch.getAbsolutePath(), strArr) > 0) {
+                                System.out.println("classes.dex changed!");
+                            }
+                            Utils.sendFromRoot("Analise Results:");
+                            Utils.fixadler(filepatch);
+                        }
+                    }
+                    Utils.sendFromRoot("Analise Results:");
+                    Utils.sendFromRoot("Optional Steps After Patch:");
+                    result = logOutputStream.allresult;
                 } catch (Exception e4) {
                     e4.printStackTrace();
                 }
-                Iterator it;
-                File cl;
-                File filepatch;
-                if (options.contains("DeepWork")) {
-                    if (classesFiles == null || classesFiles.size() == 0) {
-                        throw new FileNotFoundException();
-                    }
-                    filestopatch.clear();
-                    it = classesFiles.iterator();
-                    while (it.hasNext()) {
-                        cl = (File) it.next();
-                        if (cl.exists()) {
-                            filestopatch.add(cl);
-                        } else {
-                            throw new FileNotFoundException();
-                        }
-                    }
-                    it = filestopatch.iterator();
-                    while (it.hasNext()) {
-                        filepatch = (File) it.next();
-                        Utils.sendFromRoot("String analysis.");
-                        print.println("String analysis.");
-                        if (Utils.changePackageNameIds(filepatch.getAbsolutePath(), packageName, newPackageName) > 0) {
-                            System.out.println("classes.dex changed!");
-                        }
-                        if (Utils.replaceStrings(filepatch.getAbsolutePath(), stringsForChange) > 0) {
-                            System.out.println("global classes.dex changed!");
-                        }
-                        Utils.sendFromRoot("Analise Results:");
-                        Utils.fixadler(filepatch);
-                    }
-                    if (resourcesFiles_temp == null || resourcesFiles_temp.size() == 0) {
-                        throw new FileNotFoundException();
-                    }
-                    filestopatch.clear();
-                    it = resourcesFiles_temp.iterator();
-                    while (it.hasNext()) {
-                        cl = (File) it.next();
-                        if (cl.exists()) {
-                            filestopatch.add(cl);
-                        } else {
-                            throw new FileNotFoundException();
-                        }
-                    }
-                    it = filestopatch.iterator();
-                    while (it.hasNext()) {
-                        filepatch = (File) it.next();
-                        if (Utils.replaceStrings(filepatch.getAbsolutePath(), stringsForChange) > 0) {
-                            System.out.println("resource changed!");
-                            resourcesFiles.add(filepatch);
-                        }
-                    }
-                } else if (classesFiles == null || classesFiles.size() == 0) {
-                    throw new FileNotFoundException();
-                } else {
-                    filestopatch.clear();
-                    it = classesFiles.iterator();
-                    while (it.hasNext()) {
-                        cl = (File) it.next();
-                        if (cl.exists()) {
-                            filestopatch.add(cl);
-                        } else {
-                            throw new FileNotFoundException();
-                        }
-                    }
-                    it = filestopatch.iterator();
-                    while (it.hasNext()) {
-                        filepatch = (File) it.next();
-                        Utils.sendFromRoot("String analysis.");
-                        print.println("String analysis.");
-                        if (Utils.replaceStrings(filepatch.getAbsolutePath(), stringsForChange) > 0) {
-                            System.out.println("classes.dex changed!");
-                        }
-                        Utils.sendFromRoot("Analise Results:");
-                        Utils.fixadler(filepatch);
-                    }
-                }
-                Utils.sendFromRoot("Analise Results:");
-                Utils.sendFromRoot("Optional Steps After Patch:");
-                result = logOutputStream.allresult;
-                return;
+            } else {
+                throw new FileNotFoundException();
             }
-            throw new FileNotFoundException();
         } catch (Exception e42) {
             e42.printStackTrace();
         }
@@ -531,42 +540,41 @@ public class cloneApp {
             boolean classesdex = false;
             while (true) {
                 ZipEntry ze = zin.getNextEntry();
-                if (ze != null) {
-                    FileOutputStream fout;
-                    byte[] buffer;
-                    int length;
-                    if (!skipClasses && ze.getName().startsWith("classes") && ze.getName().endsWith(".dex") && !ze.getName().contains(InternalZipConstants.ZIP_FILE_SEPARATOR)) {
-                        fout = new FileOutputStream(sddir + "/Modified/" + ze.getName());
-                        buffer = new byte[Util.BLOCK_HEADER_SIZE_MAX];
-                        while (true) {
-                            length = zin.read(buffer);
-                            if (length == -1) {
-                                break;
-                            }
-                            fout.write(buffer, 0, length);
-                        }
-                        classesFiles.add(new File(sddir + "/Modified/" + ze.getName()));
-                        classesdex = true;
-                    }
-                    if (ze.getName().equals("AndroidManifest.xml")) {
-                        fout = new FileOutputStream(sddir + "/Modified/" + "AndroidManifest.xml");
-                        buffer = new byte[Util.BLOCK_HEADER_SIZE_MAX];
-                        while (true) {
-                            length = zin.read(buffer);
-                            if (length == -1) {
-                                break;
-                            }
-                            fout.write(buffer, 0, length);
-                        }
-                        if (classesdex) {
-                            zin.closeEntry();
-                            fout.close();
-                        }
-                    }
-                } else {
+                if (ze == null) {
                     zin.close();
                     fin.close();
                     return;
+                }
+                FileOutputStream fout;
+                byte[] buffer;
+                int length;
+                if (!skipClasses && ze.getName().startsWith("classes") && ze.getName().endsWith(".dex") && !ze.getName().contains(InternalZipConstants.ZIP_FILE_SEPARATOR)) {
+                    fout = new FileOutputStream(sddir + "/Modified/" + ze.getName());
+                    buffer = new byte[Util.BLOCK_HEADER_SIZE_MAX];
+                    while (true) {
+                        length = zin.read(buffer);
+                        if (length == -1) {
+                            break;
+                        }
+                        fout.write(buffer, 0, length);
+                    }
+                    classesFiles.add(new File(sddir + "/Modified/" + ze.getName()));
+                    classesdex = true;
+                }
+                if (ze.getName().equals("AndroidManifest.xml")) {
+                    fout = new FileOutputStream(sddir + "/Modified/" + "AndroidManifest.xml");
+                    buffer = new byte[Util.BLOCK_HEADER_SIZE_MAX];
+                    while (true) {
+                        length = zin.read(buffer);
+                        if (length == -1) {
+                            break;
+                        }
+                        fout.write(buffer, 0, length);
+                    }
+                    if (classesdex) {
+                        zin.closeEntry();
+                        fout.close();
+                    }
                 }
             }
         } catch (Exception e) {
@@ -593,7 +601,7 @@ public class cloneApp {
                 tempdex.delete();
             }
         } catch (Exception e) {
-            Utils.sendFromRoot("" + e.toString());
+            Utils.sendFromRoot(e.toString());
         }
     }
 }

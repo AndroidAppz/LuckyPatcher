@@ -32,8 +32,8 @@ public class checkRoot {
         }
         if (!dataDirSuperSu.equals(ZipSigner.KEY_NONE) && Integer.valueOf(api).intValue() >= 14) {
             try {
-                String cfgSuperSu = dataDirSuperSu + "/files/supersu.cfg";
-                String shared_prefs_SuperSu = dataDirSuperSu + "/shared_prefs/eu.chainfire.supersu_preferences.xml";
+                String cfgSuperSu = new StringBuilder(String.valueOf(dataDirSuperSu)).append("/files/supersu.cfg").toString();
+                String shared_prefs_SuperSu = new StringBuilder(String.valueOf(dataDirSuperSu)).append("/shared_prefs/eu.chainfire.supersu_preferences.xml").toString();
                 if (new File(cfgSuperSu).exists() && Utils.read_from_file(new File(cfgSuperSu)).contains("enablemountnamespaceseparation=1")) {
                     if (!new File(shared_prefs_SuperSu).exists()) {
                         Utils.save_text_to_file(new File(cfgSuperSu), Utils.read_from_file(new File(cfgSuperSu)).replace("enablemountnamespaceseparation=1", "enablemountnamespaceseparation=0"));
@@ -96,7 +96,7 @@ public class checkRoot {
                 System.out.println("Utils file contain incorrect path " + path);
                 Utils.run_all_no_root("chmod", "777", utils_file.getAbsolutePath());
                 Utils.run_all_no_root("chmod", "777", dir.getAbsolutePath());
-                Utils.save_text_to_file(utils_file, toolfilesdir + "%chelpus%" + api + "%chelpus%" + runtime + "%chelpus%" + selinux);
+                Utils.save_text_to_file(utils_file, new StringBuilder(String.valueOf(toolfilesdir)).append("%chelpus%").append(api).append("%chelpus%").append(runtime).append("%chelpus%").append(selinux).toString());
             }
         } else {
             dir.mkdirs();
@@ -105,7 +105,7 @@ public class checkRoot {
             }
             try {
                 utils_file.createNewFile();
-                Utils.save_text_to_file(utils_file, toolfilesdir + "%chelpus%" + api + "%chelpus%" + runtime + "%chelpus%" + selinux);
+                Utils.save_text_to_file(utils_file, new StringBuilder(String.valueOf(toolfilesdir)).append("%chelpus%").append(api).append("%chelpus%").append(runtime).append("%chelpus%").append(selinux).toString());
                 Utils.run_all_no_root("chmod", "777", utils_file.getAbsolutePath());
                 Utils.run_all_no_root("chmod", "777", dir.getAbsolutePath());
             } catch (IOException e4) {
@@ -120,20 +120,20 @@ public class checkRoot {
             System.out.println("LuckyPatcher: busybox not install!");
             System.out.println("busybox not found!");
         }
-        if (new File(toolfilesdir + "/dalvikvm").exists()) {
-            String dalvikvm = toolfilesdir + "/dalvikvm";
+        if (new File(new StringBuilder(String.valueOf(toolfilesdir)).append("/dalvikvm").toString()).exists()) {
+            String dalvikvm = new StringBuilder(String.valueOf(toolfilesdir)).append("/dalvikvm").toString();
             Utils.run_all_no_root("chmod", "777", dalvikvm);
             Utils.run_all_no_root("chown", "0.0", dalvikvm);
             Utils.run_all_no_root("chown", "0:0", dalvikvm);
         }
-        if (new File(toolfilesdir + "/busybox").exists()) {
-            String busybox = toolfilesdir + "/busybox";
+        if (new File(new StringBuilder(String.valueOf(toolfilesdir)).append("/busybox").toString()).exists()) {
+            String busybox = new StringBuilder(String.valueOf(toolfilesdir)).append("/busybox").toString();
             Utils.run_all_no_root("chmod", "06777", busybox);
             Utils.run_all_no_root("chown", "0.0", busybox);
             Utils.run_all_no_root("chown", "0:0", busybox);
         }
-        if (new File(toolfilesdir + "/reboot").exists()) {
-            String reboot = toolfilesdir + "/reboot";
+        if (new File(new StringBuilder(String.valueOf(toolfilesdir)).append("/reboot").toString()).exists()) {
+            String reboot = new StringBuilder(String.valueOf(toolfilesdir)).append("/reboot").toString();
             Utils.run_all_no_root("chmod", "777", reboot);
             Utils.run_all_no_root("chown", "0.0", reboot);
             Utils.run_all_no_root("chown", "0:0", reboot);

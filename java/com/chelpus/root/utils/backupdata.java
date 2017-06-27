@@ -15,12 +15,12 @@ public class backupdata {
         String backup_data_dir = paramArrayOfString[2];
         String sd_data_dir = paramArrayOfString[3];
         boolean error = false;
-        File data = new File(backup_data_dir + "/data.lpbkp");
-        File data2 = new File(backup_data_dir + "/data.lpbkp.tmp");
-        File dbdata = new File(backup_data_dir + "/dbdata.lpbkp");
-        File dbdata2 = new File(backup_data_dir + "/dbdata.lpbkp.tmp");
-        File file = new File(backup_data_dir + "/sddata.lpbkp");
-        file = new File(backup_data_dir + "/sddata.lpbkp.tmp");
+        File data = new File(new StringBuilder(String.valueOf(backup_data_dir)).append("/data.lpbkp").toString());
+        File data2 = new File(new StringBuilder(String.valueOf(backup_data_dir)).append("/data.lpbkp.tmp").toString());
+        File dbdata = new File(new StringBuilder(String.valueOf(backup_data_dir)).append("/dbdata.lpbkp").toString());
+        File dbdata2 = new File(new StringBuilder(String.valueOf(backup_data_dir)).append("/dbdata.lpbkp.tmp").toString());
+        File file = new File(new StringBuilder(String.valueOf(backup_data_dir)).append("/sddata.lpbkp").toString());
+        file = new File(new StringBuilder(String.valueOf(backup_data_dir)).append("/sddata.lpbkp.tmp").toString());
         if (data.exists()) {
             data.renameTo(data2);
         }
@@ -34,40 +34,38 @@ public class backupdata {
         File[] folders = datadirs.listFiles();
         if (!(folders == null || folders.length == 0)) {
             for (File file2 : folders) {
-                if (!file2.isDirectory() || file2.getName().equals("lib")) {
-                    try {
-                        if (file2.isFile()) {
-                            try {
-                                zipFile.addFile(file2, parameters);
-                            } catch (ZipException e) {
-                                e.printStackTrace();
-                                error = true;
-                                System.out.println("error");
-                            }
-                        } else {
-                            continue;
-                        }
-                    } catch (ZipException e2) {
-                        try {
-                            e2.printStackTrace();
-                            error = true;
-                            System.out.println("error");
-                        } catch (Exception e3) {
-                            e3.printStackTrace();
-                            System.out.println("Exception e" + e3.toString());
-                            error = true;
-                            System.out.println("error");
-                        }
-                    }
-                } else {
+                if (file2.isDirectory() && !file2.getName().equals("lib")) {
                     try {
                         System.out.println(file2.getAbsolutePath());
                         zipFile.addFolder(file2, parameters);
+                    } catch (ZipException e) {
+                        try {
+                            e.printStackTrace();
+                            error = true;
+                            System.out.println("error");
+                        } catch (ZipException e2) {
+                            try {
+                                e2.printStackTrace();
+                                error = true;
+                                System.out.println("error");
+                            } catch (Exception e3) {
+                                e3.printStackTrace();
+                                System.out.println("Exception e" + e3.toString());
+                                error = true;
+                                System.out.println("error");
+                            }
+                        }
+                    }
+                } else if (file2.isFile()) {
+                    try {
+                        zipFile.addFile(file2, parameters);
                     } catch (ZipException e22) {
                         e22.printStackTrace();
                         error = true;
                         System.out.println("error");
                     }
+                } else {
+                    continue;
                 }
             }
         }

@@ -16,7 +16,7 @@ public class live_backuplib {
                 localFile2 = localFile1;
             }
             if (!localFile2.exists()) {
-                localFile2 = new File(dalvikDex + "-1");
+                localFile2 = new File(new StringBuilder(String.valueOf(dalvikDex)).append("-1").toString());
             }
             if (!localFile2.exists()) {
                 localFile2 = new File(dalvikDex.replace("-1", "-2"));

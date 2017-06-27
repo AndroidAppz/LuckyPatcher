@@ -101,7 +101,7 @@ public class ZipParameters implements Cloneable {
     public void setRootFolderInZip(String rootFolderInZip) {
         if (Zip4jUtil.isStringNotNullAndNotEmpty(rootFolderInZip)) {
             if (!(rootFolderInZip.endsWith("\\") || rootFolderInZip.endsWith(InternalZipConstants.ZIP_FILE_SEPARATOR))) {
-                rootFolderInZip = rootFolderInZip + InternalZipConstants.FILE_SEPARATOR;
+                rootFolderInZip = new StringBuilder(String.valueOf(rootFolderInZip)).append(InternalZipConstants.FILE_SEPARATOR).toString();
             }
             rootFolderInZip = rootFolderInZip.replaceAll("\\\\", InternalZipConstants.ZIP_FILE_SEPARATOR);
         }

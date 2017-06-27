@@ -3,7 +3,6 @@ package org.tukaani.xz.index;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.zip.CRC32;
 import java.util.zip.CheckedOutputStream;
 import org.tukaani.xz.XZIOException;
@@ -30,14 +29,13 @@ public class IndexEncoder extends IndexBase {
     }
 
     public void encode(OutputStream out) throws IOException {
-        int i;
         CRC32 crc32 = new CRC32();
         CheckedOutputStream outChecked = new CheckedOutputStream(out, crc32);
         outChecked.write(0);
         EncoderUtil.encodeVLI(outChecked, this.recordCount);
-        Iterator i2 = this.records.iterator();
-        while (i2.hasNext()) {
-            IndexRecord record = (IndexRecord) i2.next();
+        int i = this.records.iterator();
+        while (i.hasNext()) {
+            IndexRecord record = (IndexRecord) i.next();
             EncoderUtil.encodeVLI(outChecked, record.unpadded);
             EncoderUtil.encodeVLI(outChecked, record.uncompressed);
         }

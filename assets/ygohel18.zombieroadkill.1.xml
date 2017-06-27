@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+<string name="AdFree">1</string>
+<int name="gold_amounts" value="999999999" />
+<long name="time_limited_offer_start_time" value="1473508300963" />
+</map>
+
