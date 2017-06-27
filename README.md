@@ -15,5 +15,6 @@ So, you are solely responsible for the use of this application and any problems 
 I ([Bluscream](https://github.com/Bluscream)) created this repository to give people insight in the code, provide a safe download mirror in case [chelpus website](https://lucky-patcher.netbew.com/) gets down and to have a cleaner website in general for this awesome project :)
 
 <details><summary>Statistics</summary>
-[https://i.imgur.com/X5x2M1u.png](https://i.imgur.com/X5x2M1u.png)
+
+![https://i.imgur.com/X5x2M1u.png](https://i.imgur.com/X5x2M1u.png)
 </details>
