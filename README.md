@@ -1,6 +1,5 @@
 # Lucky Patcher by Chelpus
 
-## Description
 Lucky Patcher is a great Android tool to remove ads, modify apps permissions, backup and restore apps, bypass premium applications license verification, and more.
 
 To use all features, you need a rooted device.
