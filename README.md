@@ -11,6 +11,9 @@ So, you are solely responsible for the use of this application and any problems 
 ## Download
 [Download Lucky Patcher from the authors website](http://chelpus.defcon5.biz/) | [Download Lucky Patcher directly from Github](https://github.com/AndroidAppz/LuckyPatcher/releases/latest)
 
+## Custom Patches
+A list of custom patches can be found [here](https://github.com/AndroidAppz/LuckyPatcherCustomPatches).
+
 ## Note
 I ([Bluscream](https://github.com/Bluscream)) created this repository to give people insight in the code, provide a safe download mirror in case [chelpus website](https://lucky-patcher.netbew.com/) gets down and to have a cleaner website in general for this awesome project :)
 
